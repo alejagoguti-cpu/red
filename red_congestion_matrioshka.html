@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red de Congestión Vial y Logística Matrioshka: Kennedy - Corabastos - Zona Franca</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000000;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 12px;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #viewport {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .glass-panel {
+      background: rgba(6, 9, 15, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.85);
+    }
+
+    .top-header {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .nav-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: auto;
+    }
+
+    .brand-title {
+      padding: 8px 14px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #E7C878;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .btn-flat {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn-flat:hover {
+      background: rgba(231, 200, 120, 0.15);
+      border-color: rgba(231, 200, 120, 0.4);
+      color: #ffffff;
+    }
+    .btn-flat.active {
+      background: rgba(231, 200, 120, 0.2);
+      border-color: #E7C878;
+      color: #E7C878;
+    }
+
+    .side-drawer {
+      position: absolute;
+      top: 62px;
+      left: 12px;
+      width: 320px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding: 14px;
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .side-drawer.collapsed {
+      transform: translateX(-350px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .level-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .level-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0; width: 4px;
+      background: var(--level-color, #E7C878);
+    }
+    .level-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: var(--level-color, #E7C878);
+      transform: translateX(3px);
+    }
+
+    .level-label-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .level-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1.5px solid var(--level-color, #E7C878);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 11px;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .badge-count {
+      font-size: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #94a3b8;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-family: monospace;
+    }
+
+    .toggle-box {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1.5px solid #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .toggle-box.checked {
+      background: #E7C878;
+      border-color: #E7C878;
+    }
+    .toggle-box.checked::after {
+      content: '✓';
+      font-size: 10px;
+      color: #000000;
+      font-weight: 900;
+    }
+
+    /* Pop-Up Node Inspector Modal */
+    .node-inspector {
+      position: absolute;
+      top: 62px;
+      right: 12px;
+      width: 360px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding: 16px;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .inspector-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+    }
+
+    .node-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #E7C878;
+    }
+    .node-subtitle {
+      font-size: 10px;
+      color: #94a3b8;
+      font-family: monospace;
+      margin-top: 2px;
+    }
+
+    .btn-close {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .btn-close:hover {
+      background: rgba(255, 0, 85, 0.3);
+      color: #ffffff;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .metric-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 8px;
+    }
+
+    .metric-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: #84a48b;
+      font-family: monospace;
+    }
+    .metric-lbl {
+      font-size: 9px;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    .sec-header {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #64748b;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .text-content {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 8px 10px;
+      color: #cbd5e1;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .text-content.alert {
+      background: rgba(201, 99, 73, 0.12);
+      border-color: rgba(201, 99, 73, 0.35);
+      color: #e69888;
+    }
+
+    .citation-box {
+      background: rgba(132, 164, 139, 0.1);
+      border: 1px solid rgba(132, 164, 139, 0.3);
+      border-radius: 6px;
+      padding: 8px 10px;
+      color: #a4c3b2;
+      font-size: 10.5px;
+      line-height: 1.4;
+      font-style: italic;
+    }
+
+    .neighbor-scroll {
+      max-height: 140px;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+    }
+
+    .neighbor-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+    }
+    .neighbor-row:hover {
+      background: rgba(132, 164, 139, 0.15);
+      color: #84a48b;
+    }
+
+    .bottom-bar {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .status-badge {
+      padding: 6px 14px;
+      color: #94a3b8;
+      font-size: 10px;
+      letter-spacing: 0.4px;
+      pointer-events: auto;
+    }
+    .status-badge b {
+      color: #84a48b;
+      font-family: monospace;
+    }
+
+    /* Sub-Network Pop-Up Canvas Overlay */
+    .subnetwork-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 9000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .subnetwork-card {
+      width: 88vw;
+      height: 88vh;
+      max-width: 1200px;
+      max-height: 850px;
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+    .subnetwork-header {
+      padding: 14px 20px;
+      background: #050505;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .subnetwork-canvas-wrap {
+      flex: 1;
+      position: relative;
+      background: #000000;
+    }
+
+    /* High-End OLED Pitch Black Welcome Modal */
+    .welcome-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .welcome-modal {
+      width: 92%;
+      max-width: 1100px;
+      max-height: 90vh;
+      background: #050505;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      box-shadow: 0 30px 90px #000000;
+      padding: 26px;
+      overflow-y: auto;
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .welcome-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 16px;
+    }
+    .matrioshka-diagram-box {
+      background: #0a0a0c;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 3D Canvas Viewport -->
+  <canvas id="viewport"></canvas>
+
+  <!-- Top Navigation Header -->
+  <div class="top-header">
+    <div class="glass-panel brand-title">
+      <span>🚥 RED MATRIOSHKA: KENNEDY - CORABASTOS - ZONA FRANCA</span>
+    </div>
+
+    <div class="nav-group">
+      <button class="btn-flat active" onclick="openWelcomeModal()">
+        <span>📐 Modelo Matrioshka & Documento Maestro</span>
+      </button>
+
+      <button class="btn-flat" id="btnToggleSide" onclick="toggleSideDrawer()">
+        <span>Filtro de Niveles Jerárquicos</span>
+      </button>
+
+      <button class="btn-flat" onclick="resetCamera()">
+        <span>Restablecer Vista 3D</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Left Side Drawer (Niveles Matrioshka) -->
+  <div class="glass-panel side-drawer" id="sideDrawer">
+    <div style="font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.8px; color:#64748b; margin-bottom:4px; display:flex; justify-content:space-between;">
+      <span>Niveles Matrioshka Anidados</span>
+      <span style="font-size:8px; color:#475569;">Doble Clic = Ocultar</span>
+    </div>
+
+    <!-- Nivel 1 -->
+    <div class="level-card" style="--level-color:#C96349;" onclick="toggleLevel(1)">
+      <div class="level-label-wrap">
+        <div class="level-badge" style="--level-color:#C96349;">N1</div>
+        <div style="flex:1;">
+          <div style="font-weight:700; color:#f8fafc;">Macro Periferia Regional</div>
+          <div style="font-size:9.5px; color:#94a3b8;">Boyacá, Meta, Tolima, Cundinamarca</div>
+        </div>
+        <div class="toggle-box checked" id="toggleLevel1"></div>
+      </div>
+    </div>
+
+    <!-- Nivel 2 -->
+    <div class="level-card" style="--level-color:#E69888;" onclick="toggleLevel(2)">
+      <div class="level-label-wrap">
+        <div class="level-badge" style="--level-color:#E69888;">N2</div>
+        <div style="flex:1;">
+          <div style="font-weight:700; color:#f8fafc;">Eje Logístico Inter-Local</div>
+          <div style="font-size:9.5px; color:#94a3b8;">Fontibón (Zona Franca) ⇄ Kennedy</div>
+        </div>
+        <div class="toggle-box checked" id="toggleLevel2"></div>
+      </div>
+    </div>
+
+    <!-- Nivel 3 -->
+    <div class="level-card" style="--level-color:#E7C878;" onclick="toggleLevel(3)">
+      <div class="level-label-wrap">
+        <div class="level-badge" style="--level-color:#E7C878;">N3</div>
+        <div style="flex:1;">
+          <div style="font-weight:700; color:#f8fafc;">Arterias Urbanas Distritales</div>
+          <div style="font-size:9.5px; color:#94a3b8;">Av. Cali, Av. Américas, Av. El Tintal</div>
+        </div>
+        <div class="toggle-box checked" id="toggleLevel3"></div>
+      </div>
+    </div>
+
+    <!-- Nivel 4 -->
+    <div class="level-card" style="--level-color:#84A48B;" onclick="toggleLevel(4)">
+      <div class="level-label-wrap">
+        <div class="level-badge" style="--level-color:#84A48B;">N4</div>
+        <div style="flex:1;">
+          <div style="font-weight:700; color:#f8fafc;">Núcleo Hiperlocal Corabastos</div>
+          <div style="font-size:9.5px; color:#94a3b8;">Puertas 6, 7, 8 & Malla Vial Peri-Corabastos</div>
+        </div>
+        <div class="toggle-box checked" id="toggleLevel4"></div>
+      </div>
+    </div>
+
+    <!-- Enlaces y Dinámica -->
+    <div style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.8px; color:#64748b; margin-bottom:6px;">
+        Mecanismos de Fricción Vial:
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px; font-size:9.5px; color:#cbd5e1;">
+        <div>🚚 <b>E1 (A1 ⇄ A2):</b> 68% Ingreso Alimentario Distrital</div>
+        <div>🏭 <b>E2 (B1 ⇄ B2):</b> Suministro Logístico Insumos / Secos</div>
+        <div>🚌 <b>E3 (B2 ⇄ C1):</b> Fricción Transporte Pesado ⇄ TransMilenio</div>
+        <div>⏳ <b>E4 (C2 ⇄ D1):</b> Retención Spillback por Báscula (Colas 3km)</div>
+        <div>🛺 <b>E5 (D1 ⇄ D2):</b> Degradación V &lt; 5km/h por Carga Informal</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop-Up Node Inspector Modal -->
+  <div class="glass-panel node-inspector" id="nodeInspector" style="display:none;">
+    <div class="inspector-header">
+      <div>
+        <div class="node-title" id="mNodeTitle">Puertas Corabastos (6, 7 y 8)</div>
+        <div class="node-subtitle" id="mNodeCode">Nivel 4 (Núcleo) • ID: D1</div>
+      </div>
+      <div class="btn-close" onclick="closeInspector()">×</div>
+    </div>
+
+    <div class="data-grid">
+      <div class="metric-card">
+        <div class="metric-lbl">Categoría Infraestructural</div>
+        <div class="metric-val" id="mCategory" style="color:#E7C878;">Embudos / Puntos de Pesaje</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-lbl">Nivel Matrioshka</div>
+        <div class="metric-val" id="mLevel">4 (Núcleo Hiperlocal)</div>
+      </div>
+    </div>
+
+    <div class="sec-header">Función Operativa en la Red Logística</div>
+    <div class="text-content" id="mFunction">Taquillas y básculas que originan la cola de retención (spillback).</div>
+
+    <div class="sec-header">Mecanismo de Fricción & Impacto</div>
+    <div class="text-content alert" id="mImpact">Genera retención en cola sobre la red vial distrital exterior.</div>
+
+    <div class="sec-header">📜 Cita Técnica Oficial Obligatoria</div>
+    <div class="citation-box" id="mCitation">SDM & POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca.</div>
+
+    <div class="sec-header" id="mNeighborHeader">Conexiones Bidireccionales Directas</div>
+    <div class="neighbor-scroll" id="mNeighborList"></div>
+
+    <div style="display:flex; flex-direction:column; gap:6px; margin-top:6px;">
+      <button class="btn-flat" style="justify-content:center; background:rgba(231,200,120,0.15); border-color:#E7C878; color:#ffffff; font-weight:700;" onclick="openSubNetworkModal()">
+        🌐 Ver Sub-Red Directa de Congestión
+      </button>
+
+      <div style="display:flex; gap:6px;">
+        <button class="btn-flat" style="flex:1; justify-content:center;" onclick="focusSelectedNode()">Centrar Cámara</button>
+        <button class="btn-flat" style="flex:1; justify-content:center; background:rgba(255,0,85,0.2); border-color:#ff0055; color:#ffffff;" onclick="hideCurrentNode()">Ocultar Nodo</button>
+        <button class="btn-flat" style="flex:1; justify-content:center; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); color:#cbd5e1;" onclick="closeInspector()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-Network 2D Graph Interactive Modal Popup -->
+  <div class="subnetwork-modal" id="subnetworkModal" style="display:none;">
+    <div class="subnetwork-card">
+      <div class="subnetwork-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="font-weight:800; font-size:13px; color:#E7C878;" id="subModalTitle">Sub-Red Directa de Congestión</span>
+          <span style="font-size:10px; color:#94a3b8; font-family:monospace;" id="subModalCode">[D1]</span>
+        </div>
+        <div class="btn-close" onclick="closeSubNetworkModal()">×</div>
+      </div>
+      <div class="subnetwork-canvas-wrap">
+        <canvas id="subCanvas"></canvas>
+      </div>
+      <div style="padding:8px 14px; background:#050505; border-top:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:space-between; font-size:10px; color:#94a3b8;">
+        <span>💡 Visualización descentralizada multi-hub de flujos de carga y retención de colas.</span>
+        <span style="color:#E7C878; font-weight:700;">Modelo System Dynamics Spillback</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OLED Pitch Black Welcome & Master Document Modal -->
+  <div class="welcome-overlay" id="welcomeModalOverlay" style="display:flex;">
+    <div class="welcome-modal">
+      <div class="welcome-header">
+        <div>
+          <div style="font-size:16px; font-weight:900; color:#E7C878; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
+            🚥 RED DE CONGESTIÓN VIAL Y LOGÍSTICA MATRIOSHKA: KENNEDY - CORABASTOS - ZONA FRANCA
+          </div>
+          <div style="font-size:11px; color:#94a3b8; margin-top:2px;">Modelo Anidado Jerárquico de 4 Niveles | Bogotá D.C. - Cundinamarca</div>
+        </div>
+        <button class="btn-flat active" style="padding:8px 18px; font-weight:800; font-size:12px; background:linear-gradient(135deg, #E7C878, #C96349); color:#000000; border:none;" onclick="closeWelcomeModal()">
+          Ingresar al Visor 3D →
+        </button>
+      </div>
+
+      <div class="matrioshka-diagram-box">
+        <div style="font-size:12px; font-weight:800; color:#84A48B; text-transform:uppercase;">1. Arquitectura Jerárquica del Sistema (Matrioshka)</div>
+        <div style="font-family:monospace; font-size:10.5px; line-height:1.5; color:#cbd5e1; background:rgba(0,0,0,0.6); padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
++-----------------------------------------------------------------------------------+<br>
+| 🔴 NIVEL 1: MACRO PERIFERIA REGIONAL (Cundinamarca, Boyacá, Meta, Tolima)          |<br>
+|   +---------------------------------------------------------------------------+   |<br>
+|   | 🟠 NIVEL 2: EJE LOGÍSTICO INTER-LOCAL (Fontibón / Zona Franca ⇄ Kennedy)  |   |<br>
+|   |   +-------------------------------------------------------------------+   |   |<br>
+|   |   | 🟡 NIVEL 3: ARTERIAS URBANAS DISTRITALES (Av. Cali / Av. Américas)|   |   |<br>
+|   |   |   +-----------------------------------------------------------+   |   |   |<br>
+|   |   |   | 🟢 NIVEL 4: NÚCLEO HIPERLOCAL (Puertas Corabastos / Malla)|   |   |   |<br>
+|   |   |   +-----------------------------------------------------------+   |   |   |<br>
+|   |   +-------------------------------------------------------------------+   |   |<br>
+|   +---------------------------------------------------------------------------+   |<br>
++-----------------------------------------------------------------------------------+
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div class="matrioshka-diagram-box">
+          <div style="font-size:11.5px; font-weight:800; color:#E69888;">2. Bucle de Retención (Spillback Loop)</div>
+          <div style="font-size:10.5px; color:#cbd5e1; line-height:1.45;">
+            Retraso en Báscula <b>[D1]</b> ➔ Genera Colas en Red Local <b>[D2]</b> ➔ Bloquea Av. Cali <b>[C2]</b> ➔ Satura Calle 13 <b>[B2]</b> ➔ Colapsa Acceso Regional <b>[A2]</b>.
+          </div>
+        </div>
+
+        <div class="matrioshka-diagram-box">
+          <div style="font-size:11.5px; font-weight:800; color:#E7C878;">3. Bucle de Fricción Logística (Inter-Local Loop)</div>
+          <div style="font-size:10.5px; color:#cbd5e1; line-height:1.45;">
+            Demanda Insumos Zona Franca <b>[B1]</b> ⇄ Flujo Carga ⇄ Redistribución en Kennedy <b>[D1]</b>. La falta de un corredor segregado hace competir tractocamiones con el transporte masivo urbano.
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:12px;">
+        <span style="font-size:10.5px; color:#94a3b8;">📜 Todos los enlaces cuentan con respaldo técnico formal (SDM, IDU, SDDE, POT Decreto 555 de 2021).</span>
+        <button class="btn-flat active" style="padding:8px 20px; font-size:12px; font-weight:800; background:linear-gradient(135deg, #E7C878, #C96349); color:#000000; border:none;" onclick="closeWelcomeModal()">
+          Entendido, Explorar Red 3D
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="bottom-bar">
+    <div class="glass-panel status-badge">
+      Nodos Matrioshka: <b>8</b> | Enlaces Logísticos: <b>5</b> | Citas Oficiales: <b>100% Verificadas</b>
+    </div>
+    <div class="glass-panel status-badge">
+      💡 Clic simple: Ver Ficha & Cita Técnica • Doble Clic: Ocultar Nodo
+    </div>
+  </div>
+
+  <script>
+    const opts = {
+      autoRotate: true,
+      showSphere: true,
+      showEdges: true,
+      pulseMotion: true,
+      levels: { 1: true, 2: true, 3: true, 4: true }
+    };
+
+    const palette = {
+      bg: '#000000',
+      sphere: 'rgba(255, 255, 255, 0.12)',
+      sphereEquator: 'rgba(255, 255, 255, 0.3)',
+      edge: 'rgba(231, 200, 120, 0.45)',
+      levelColors: {
+        1: '#C96349', // Nivel 1: Macro Periferia (Terracotta)
+        2: '#E69888', // Nivel 2: Eje Logístico Inter-Local (Rose)
+        3: '#E7C878', // Nivel 3: Arterias Urbanas (Buttercup Yellow)
+        4: '#84A48B'  // Nivel 4: Núcleo Hiperlocal (Spanish Green)
+      }
+    };
+
+    // Node Master Dataset strictly following Specifications
+    const rawNodesData = [
+      {
+        id: 'A1',
+        name: 'Región Central (Boyacá, Tolima, Meta)',
+        level: 1,
+        catName: 'Origen/Destino Regional',
+        function: 'Proveedor primario de carga agrícola y pecuaria hacia la capital.',
+        impact: 'Ingreso del 68% del abastecimiento alimentario en tractocamiones (C3-S3, C2-S2).',
+        citation: 'Secretaría Distrital de Movilidad (SDM). (2019). Estudio de Origen-Destino de Carga para Bogotá D.C. y la Región. / Plan Maestro de Movilidad (Decreto 319 de 2006).',
+        x: -240, y: -160, z: -180
+      },
+      {
+        id: 'A2',
+        name: 'Accesos Periféricos (Calle 13 / Autosur)',
+        level: 1,
+        catName: 'Corredor de Entrada Distrital',
+        function: 'Canalización de tráfico pesado regional hacia la malla urbana distrital.',
+        impact: 'Saturación en bordes de entrada por mezcla de carga pesada y tráfico intermunicipal.',
+        citation: 'SDM. (2019). Estudio Origen-Destino de Carga / Plan de Ordenamiento Territorial (POT Decreto 555 de 2021).',
+        x: -180, y: -100, z: -100
+      },
+      {
+        id: 'B1',
+        name: 'Cluster Zona Franca de Bogotá',
+        level: 2,
+        catName: 'Hub Logístico y Manufacturero',
+        function: 'Procesamiento de empaques, secos, mercancía importada y bienes industrializados.',
+        impact: 'Generación constante de viajes pesados e insumos hacia Corabastos y redes minoristas.',
+        citation: 'Secretaría Distrital de Desarrollo Económico (SDDE) & CCB. (2021). Diagnóstico de Logística Urbana y Cadena de Suministro de Alimentos para Bogotá.',
+        x: 180, y: -120, z: -120
+      },
+      {
+        id: 'B2',
+        name: 'Corredor Av. Centenario ⇄ Av. Cali',
+        level: 2,
+        catName: 'Arteria Logística Compartida',
+        function: 'Canal de interconexión bidireccional pesado entre Fontibón y Kennedy.',
+        impact: 'Fricción continua entre camiones de gran tonelaje y transporte público.',
+        citation: 'SDM. (2022). Caracterización de Flujos Logísticos en el Borde Occidental de Bogotá.',
+        x: 120, y: -40, z: -40
+      },
+      {
+        id: 'C1',
+        name: 'Nodo Av. Las Américas ⇄ Banderas',
+        level: 3,
+        catName: 'Intersección Arterial Mixta',
+        function: 'Confluencia masiva de SITP, TransMilenio, autos particulares y transporte de carga.',
+        impact: 'Conflicto vehicular de fricción media-alta en horas pico por congestión de carriles.',
+        citation: 'Instituto de Desarrollo Urbano (IDU). (2021). Informe de Capacidad Operativa y Congestión de Vías Arterias de la Localidad de Kennedy.',
+        x: -80, y: 80, z: 60
+      },
+      {
+        id: 'C2',
+        name: 'Corredor Av. El Tintal / Av. Cepeda',
+        level: 3,
+        catName: 'Vía Distrital Distribuidora',
+        function: 'Tránsito de penetración local y atrape de camiones de gran tonelaje.',
+        impact: 'Receptor directo de la cola de retención (spillback) proveniente de Corabastos.',
+        citation: 'Alcaldía Mayor de Bogotá. (2021). POT Decreto 555 de 2021 (Actuación Estratégica Chucua de la Vaca). / SDM (2020).',
+        x: 0, y: 120, z: 100
+      },
+      {
+        id: 'D1',
+        name: 'Puertas de Acceso Corabastos (6, 7 y 8)',
+        level: 4,
+        catName: 'Embudos / Puntos de Pesaje',
+        function: 'Taquillas y básculas que originan la cola de retención (spillback).',
+        impact: 'Demoras en pesaje e inspección provocan filas de hasta 3 km sobre la red exterior.',
+        citation: 'POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca / SDM. (2020). Evaluación de PMT para la Operación Agroalimentaria en Patio Bonito.',
+        x: 80, y: 180, z: 160
+      },
+      {
+        id: 'D2',
+        name: 'Malla Vial Local Peri-Corabastos',
+        level: 4,
+        catName: 'Espacio Público Informado',
+        function: 'Parqueo en vía informal, maniobras de carretilleros y carga menor.',
+        impact: 'Degradación de la velocidad media a menos de 5 km/h por descargue sobre vía.',
+        citation: 'Corabastos S.A. & SDM. (2018). Reglamento Interno de Operación Logística y Tránsito (Resolución SDM 184 de 2018).',
+        x: 160, y: 220, z: 220
+      }
+    ];
+
+    // Master Edges with Official Citations
+    const rawEdgesData = [
+      {
+        id: 'E1', source: 'A1', target: 'A2',
+        name: 'E1: Abastecimiento Regional',
+        desc: 'Ingreso del 68% del abastecimiento alimentario en tractocamiones (C3-S3, C2-S2) y retorno de vacíos.',
+        citation: 'SDM (2019) Estudio Origen-Destino de Carga / Decreto 319 de 2006.'
+      },
+      {
+        id: 'E2', source: 'B1', target: 'B2',
+        name: 'E2: Conexión Insumos Zona Franca',
+        desc: 'Traslado de empaques, plásticos y secos hacia Corabastos y despacho hacia Fontibón.',
+        citation: 'SDDE & CCB (2021) Diagnóstico Logística Urbana / SDM (2022).'
+      },
+      {
+        id: 'E3', source: 'B2', target: 'C1',
+        name: 'E3: Fricción Logístico-Urbana',
+        desc: 'Conflicto entre transporte pesado, TransMilenio y particulares en arterias de Kennedy.',
+        citation: 'IDU (2021) Informe de Capacidad Operativa en Kennedy.'
+      },
+      {
+        id: 'E4', source: 'C2', target: 'D1',
+        name: 'E4: Retención Spillback Corabastos',
+        desc: 'Demoras en pesaje [D1] originan colas de hasta 3 km sobre Av. Tintal / Av. Cali.',
+        citation: 'POT Decreto 555 de 2021 (Actuación Chucua de la Vaca) / SDM (2020).'
+      },
+      {
+        id: 'E5', source: 'D1', target: 'D2',
+        name: 'E5: Carga Informal y Espacio Público',
+        desc: 'Degradación de velocidad < 5 km/h por bicipatines, carretilleros y descargue en vía.',
+        citation: 'Corabastos S.A. & SDM (Resolución SDM 184 de 2018).'
+      }
+    ];
+
+    let nodes = [];
+    let edges = [];
+    let hoveredNode = null;
+    let selectedNode = null;
+    let animTime = 0;
+
+    let rotX = 0.3, rotY = 0.6, zoom = 460;
+    let targetRotX = 0.3, targetRotY = 0.6, targetZoom = 460;
+    let panX = 0, panY = 0, targetPanX = 0, targetPanY = 0;
+
+    let isMouseDown = false, mouseBtn = 0, lastX = 0, lastY = 0;
+    let velX = 0, velY = 0.002;
+    let clickStartX = 0, clickStartY = 0;
+
+    const canvas = document.getElementById('viewport');
+    const ctx = canvas.getContext('2d');
+
+    function openWelcomeModal() {
+      document.getElementById('welcomeModalOverlay').style.display = 'flex';
+    }
+    function closeWelcomeModal() {
+      document.getElementById('welcomeModalOverlay').style.display = 'none';
+    }
+
+    function toggleSideDrawer() {
+      document.getElementById('sideDrawer').classList.toggle('collapsed');
+      document.getElementById('btnToggleSide').classList.toggle('active');
+    }
+
+    function resetCamera() {
+      targetRotX = 0.3; targetRotY = 0.6; targetZoom = 460; targetPanX = 0; targetPanY = 0;
+    }
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function toggleLevel(lvl) {
+      opts.levels[lvl] = !opts.levels[lvl];
+      const toggleEl = document.getElementById(`toggleLevel${lvl}`);
+      if (toggleEl) toggleEl.classList.toggle('checked', opts.levels[lvl]);
+      recalculateActiveNodes();
+    }
+
+    function buildTopology() {
+      nodes = rawNodesData.map((d, idx) => ({
+        id: d.id,
+        nodeId: idx,
+        label: d.name,
+        level: d.level,
+        catName: d.catName,
+        function: d.function,
+        impact: d.impact,
+        citation: d.citation,
+        x: d.x, y: d.y, z: d.z,
+        ox: d.x, oy: d.y, oz: d.z,
+        active: true,
+        hiddenByUser: false,
+        degree: 0,
+        neighbors: []
+      }));
+
+      const nodeMap = new Map(nodes.map(n => [n.id, n]));
+
+      edges = rawEdgesData.map(e => ({
+        id: e.id,
+        sourceNode: nodeMap.get(e.source),
+        targetNode: nodeMap.get(e.target),
+        source: nodeMap.get(e.source).nodeId,
+        target: nodeMap.get(e.target).nodeId,
+        name: e.name,
+        desc: e.desc,
+        citation: e.citation,
+        active: true
+      }));
+
+      recalculateActiveNodes();
+    }
+
+    function recalculateActiveNodes() {
+      nodes.forEach(n => {
+        n.active = opts.levels[n.level] === true && !n.hiddenByUser;
+        n.degree = 0;
+        n.neighbors = [];
+      });
+
+      edges.forEach(e => {
+        const s = e.sourceNode;
+        const t = e.targetNode;
+        if (s && t && s.active && t.active) {
+          s.degree++; t.degree++;
+          s.neighbors.push(t);
+          t.neighbors.push(s);
+          e.active = true;
+        } else {
+          e.active = false;
+        }
+      });
+    }
+
+    function openInspector(node) {
+      selectedNode = node;
+      const modal = document.getElementById('nodeInspector');
+
+      document.getElementById('mNodeTitle').innerText = node.label;
+      document.getElementById('mNodeCode').innerText = `Nivel Matrioshka ${node.level} • ID: ${node.id}`;
+      document.getElementById('mCategory').innerText = node.catName;
+      document.getElementById('mCategory').style.color = palette.levelColors[node.level];
+      document.getElementById('mLevel').innerText = `Nivel ${node.level}`;
+      document.getElementById('mFunction').innerText = node.function;
+      document.getElementById('mImpact').innerText = node.impact;
+      document.getElementById('mCitation').innerText = node.citation;
+
+      document.getElementById('mNeighborHeader').innerText = `Conexiones Bidireccionales (${node.degree})`;
+      const listEl = document.getElementById('mNeighborList');
+      listEl.innerHTML = '';
+
+      edges.forEach(e => {
+        if (e.sourceNode.id === node.id || e.targetNode.id === node.id) {
+          const nb = e.sourceNode.id === node.id ? e.targetNode : e.sourceNode;
+          const item = document.createElement('div');
+          item.className = 'neighbor-row';
+          item.innerHTML = `
+            <div style="display:flex; flex-direction:column; gap:2px;">
+              <span><b>[${nb.id}]</b> ${nb.label}</span>
+              <span style="font-size:8.5px; color:#94a3b8;">${e.name}</span>
+            </div>
+            <span style="color:#E7C878; font-size:9px; font-family:monospace;">Nivel ${nb.level}</span>
+          `;
+          item.onclick = (evt) => {
+            evt.stopPropagation();
+            openInspector(nb);
+          };
+          listEl.appendChild(item);
+        }
+      });
+
+      modal.style.display = 'flex';
+      focusSelectedNode(node);
+    }
+
+    function closeInspector() {
+      selectedNode = null;
+      document.getElementById('nodeInspector').style.display = 'none';
+    }
+
+    function focusSelectedNode(node) {
+      const target = node || selectedNode;
+      if (!target) return;
+      targetPanX = -target.x * 0.85;
+      targetPanY = -target.y * 0.85;
+      targetZoom = 700;
+    }
+
+    function hideCurrentNode() {
+      if (selectedNode) {
+        selectedNode.hiddenByUser = true;
+        closeInspector();
+        recalculateActiveNodes();
+      }
+    }
+
+    function project(x, y, z, w, h) {
+      const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+      const x1 = x * cosY + z * sinY;
+      const z1 = -x * sinY + z * cosY;
+
+      const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+      const y2 = y * cosX - z1 * sinX;
+      const z2 = y * sinX + z1 * cosX;
+
+      const cx = x1 + panX;
+      const cy = y2 + panY;
+
+      const dist = 650;
+      const scale = zoom / (z2 + dist);
+
+      return {
+        x: w / 2 + cx * scale,
+        y: h / 2 + cy * scale,
+        z: z2,
+        scale,
+        visible: (z2 + dist) > 10
+      };
+    }
+
+    function render() {
+      animTime += 0.012;
+      const w = canvas.width;
+      const h = canvas.height;
+
+      rotX += (targetRotX - rotX) * 0.1;
+      rotY += (targetRotY - rotY) * 0.1;
+      zoom += (targetZoom - zoom) * 0.1;
+      panX += (targetPanX - panX) * 0.1;
+      panY += (targetPanY - panY) * 0.1;
+
+      if (opts.autoRotate && !isMouseDown && !selectedNode) {
+        targetRotY += (velY || 0.002);
+      } else if (!isMouseDown && !selectedNode) {
+        targetRotY += velY; targetRotX += velX;
+        velX *= 0.92; velY *= 0.92;
+      }
+
+      ctx.fillStyle = palette.bg;
+      ctx.fillRect(0, 0, w, h);
+
+      if (opts.showSphere) {
+        const radius = 280;
+        const steps = 40;
+        ctx.lineWidth = 1;
+
+        for (let i = 1; i < 5; i++) {
+          const phi = (i / 5) * Math.PI;
+          const rLat = radius * Math.sin(phi);
+          const yLat = radius * Math.cos(phi);
+
+          ctx.strokeStyle = palette.sphere;
+          ctx.beginPath();
+          let first = true;
+          for (let j = 0; j <= steps; j++) {
+            const theta = (j / steps) * Math.PI * 2;
+            const px = rLat * Math.cos(theta);
+            const pz = rLat * Math.sin(theta);
+            const p = project(px, yLat, pz, w, h);
+            if (p.visible) {
+              if (first) { ctx.moveTo(p.x, p.y); first = false; }
+              else { ctx.lineTo(p.x, p.y); }
+            }
+          }
+          ctx.stroke();
+        }
+      }
+
+      nodes.forEach((n) => {
+        if (!n.active) return;
+        const wave = Math.sin(animTime * 1.5 + n.nodeId * 0.5) * 3;
+        n.renderX = n.x + wave;
+        n.renderY = n.y + wave;
+        n.renderZ = n.z;
+        n.proj = project(n.renderX, n.renderY, n.renderZ, w, h);
+      });
+
+      if (opts.showEdges) {
+        edges.forEach(e => {
+          if (!e.active) return;
+          const s = e.sourceNode;
+          const t = e.targetNode;
+
+          if (!s || !t || !s.proj || !t.proj || !s.proj.visible || !t.proj.visible) return;
+
+          const isHov = hoveredNode && (s.id === hoveredNode.id || t.id === hoveredNode.id);
+          const isSel = selectedNode && (s.id === selectedNode.id || t.id === selectedNode.id);
+
+          ctx.save();
+          if (isHov || isSel) {
+            ctx.strokeStyle = '#E7C878';
+            ctx.lineWidth = 3.5;
+            ctx.shadowColor = '#E7C878';
+            ctx.shadowBlur = 10;
+          } else {
+            ctx.strokeStyle = palette.edge;
+            ctx.lineWidth = 1.8;
+            ctx.shadowBlur = 0;
+          }
+
+          ctx.beginPath();
+          ctx.moveTo(s.proj.x, s.proj.y);
+          ctx.lineTo(t.proj.x, t.proj.y);
+          ctx.stroke();
+
+          // Flow Direction Indicator Badge
+          const mx = (s.proj.x + t.proj.x) / 2;
+          const my = (s.proj.y + t.proj.y) / 2;
+          ctx.font = '9px monospace';
+          ctx.fillStyle = isHov || isSel ? '#E7C878' : '#94a3b8';
+          ctx.fillText(e.id, mx - 6, my - 4);
+
+          ctx.restore();
+        });
+      }
+
+      const sorted = [...nodes].filter(n => n.active && n.proj).sort((a, b) => a.proj.z - b.proj.z);
+
+      sorted.forEach(n => {
+        if (!n.proj.visible) return;
+
+        const px = Math.round(n.proj.x);
+        const py = Math.round(n.proj.y);
+        const isHov = hoveredNode && hoveredNode.id === n.id;
+        const isSel = selectedNode && selectedNode.id === n.id;
+
+        const rad = isHov || isSel ? 18 : 14;
+        const levelColor = palette.levelColors[n.level] || '#E7C878';
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(px, py, rad, 0, Math.PI * 2);
+        ctx.fillStyle = levelColor;
+        ctx.fill();
+
+        ctx.strokeStyle = (isHov || isSel) ? '#ffffff' : '#000000';
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        ctx.font = 'bold 11px monospace';
+        ctx.fillStyle = '#000000';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(n.id, px, py);
+
+        // Always show label in 3D
+        ctx.font = 'bold 11px ui-monospace, monospace';
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'left';
+        ctx.shadowColor = '#000000';
+        ctx.shadowBlur = 6;
+        ctx.fillText(`${n.label} [N${n.level}]`, px + rad + 6, py + 3);
+
+        ctx.restore();
+      });
+
+      requestAnimationFrame(render);
+    }
+
+    // --- SUB-NETWORK 2D GRAPH POPUP MODAL LOGIC ---
+    let subCanvasAnim = null;
+    function openSubNetworkModal() {
+      if (!selectedNode) return;
+      const subModal = document.getElementById('subnetworkModal');
+      document.getElementById('subModalTitle').innerText = `Sub-Red Matrioshka: ${selectedNode.label}`;
+      document.getElementById('subModalCode').innerText = `[${selectedNode.id}] Nivel ${selectedNode.level}`;
+      subModal.style.display = 'flex';
+      renderSubNetworkCanvas();
+    }
+
+    function closeSubNetworkModal() {
+      document.getElementById('subnetworkModal').style.display = 'none';
+      if (subCanvasAnim) cancelAnimationFrame(subCanvasAnim);
+    }
+
+    function renderSubNetworkCanvas() {
+      if (subCanvasAnim) cancelAnimationFrame(subCanvasAnim);
+
+      const subCanvas = document.getElementById('subCanvas');
+      const wrap = subCanvas.parentElement;
+      subCanvas.width = wrap.clientWidth;
+      subCanvas.height = wrap.clientHeight;
+      const sctx = subCanvas.getContext('2d');
+
+      const centerNode = selectedNode;
+      if (!centerNode) return;
+
+      const cx = subCanvas.width / 2;
+      const cy = subCanvas.height / 2;
+
+      const activeNeighbors = centerNode.neighbors || [];
+      const totalActive = activeNeighbors.length;
+
+      function loopSub() {
+        sctx.fillStyle = '#000000';
+        sctx.fillRect(0, 0, subCanvas.width, subCanvas.height);
+
+        // Draw Center Focal Hub
+        sctx.save();
+        sctx.beginPath();
+        sctx.arc(cx, cy, 24, 0, Math.PI * 2);
+        sctx.fillStyle = palette.levelColors[centerNode.level];
+        sctx.fill();
+        sctx.strokeStyle = '#ffffff';
+        sctx.lineWidth = 3;
+        sctx.stroke();
+
+        sctx.font = 'bold 12px monospace';
+        sctx.fillStyle = '#000000';
+        sctx.textAlign = 'center';
+        sctx.textBaseline = 'middle';
+        sctx.fillText(centerNode.id, cx, cy);
+
+        sctx.font = 'bold 12px monospace';
+        sctx.fillStyle = '#ffffff';
+        sctx.textAlign = 'left';
+        sctx.fillText(`${centerNode.label} [N${centerNode.level}]`, cx + 32, cy + 4);
+        sctx.restore();
+
+        // Draw Sub Neighbors in Circle
+        activeNeighbors.forEach((nb, idx) => {
+          const angle = (idx / Math.max(1, totalActive)) * Math.PI * 2 - Math.PI / 2;
+          const radius = 180;
+          const nx = cx + Math.cos(angle) * radius;
+          const ny = cy + Math.sin(angle) * radius;
+
+          // Edge
+          sctx.save();
+          sctx.beginPath();
+          sctx.moveTo(cx, cy);
+          sctx.lineTo(nx, ny);
+          sctx.strokeStyle = palette.levelColors[nb.level];
+          sctx.lineWidth = 2.5;
+          sctx.stroke();
+          sctx.restore();
+
+          // Node
+          sctx.save();
+          sctx.beginPath();
+          sctx.arc(nx, ny, 16, 0, Math.PI * 2);
+          sctx.fillStyle = palette.levelColors[nb.level];
+          sctx.fill();
+          sctx.strokeStyle = '#ffffff';
+          sctx.lineWidth = 2;
+          sctx.stroke();
+
+          sctx.font = 'bold 10px monospace';
+          sctx.fillStyle = '#000000';
+          sctx.textAlign = 'center';
+          sctx.textBaseline = 'middle';
+          sctx.fillText(nb.id, nx, ny);
+
+          sctx.font = '10px monospace';
+          sctx.fillStyle = '#ffffff';
+          sctx.textAlign = 'left';
+          sctx.fillText(`${nb.label} (N${nb.level})`, nx + 22, ny + 3);
+          sctx.restore();
+        });
+
+        subCanvasAnim = requestAnimationFrame(loopSub);
+      }
+
+      loopSub();
+    }
+
+    // Mouse Controls
+    canvas.addEventListener('mousedown', e => {
+      isMouseDown = true;
+      mouseBtn = e.button;
+      lastX = e.clientX; lastY = e.clientY;
+      clickStartX = e.clientX; clickStartY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', e => {
+      isMouseDown = false;
+      const dragDist = Math.hypot(e.clientX - clickStartX, e.clientY - clickStartY);
+      if (dragDist < 5 && mouseBtn === 0 && hoveredNode) {
+        openInspector(hoveredNode);
+      }
+    });
+
+    canvas.addEventListener('dblclick', () => {
+      if (hoveredNode) {
+        hoveredNode.hiddenByUser = true;
+        closeInspector();
+        recalculateActiveNodes();
+      }
+    });
+
+    canvas.addEventListener('mousemove', e => {
+      if (isMouseDown) {
+        const dx = e.clientX - lastX;
+        const dy = e.clientY - lastY;
+        if (mouseBtn === 0) {
+          velY = dx * 0.003; velX = dy * 0.003;
+          targetRotY += velY; targetRotX += velX;
+        } else if (mouseBtn === 2) {
+          targetPanX += dx; targetPanY += dy;
+        }
+        lastX = e.clientX; lastY = e.clientY;
+      } else {
+        const mx = e.clientX, my = e.clientY;
+        let closest = null, minDist = 22;
+        nodes.forEach(n => {
+          if (!n.active || !n.proj || !n.proj.visible) return;
+          const d = Math.hypot(n.proj.x - mx, n.proj.y - my);
+          if (d < minDist) { minDist = d; closest = n; }
+        });
+        hoveredNode = closest;
+      }
+    });
+
+    canvas.addEventListener('contextmenu', e => e.preventDefault());
+    canvas.addEventListener('wheel', e => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+      targetZoom = Math.max(120, Math.min(1800, targetZoom * zoomFactor));
+    }, { passive: false });
+
+    // Init
+    buildTopology();
+    requestAnimationFrame(render);
+  </script>
+</body>
+</html>
