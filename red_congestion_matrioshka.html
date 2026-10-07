@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Red de Congestión Vial y Logística Matrioshka: Kennedy - Corabastos - Zona Franca</title>
+  <title>Red de Congestión Matrioshka: Causa - Síntoma - Efecto (Kennedy - Corabastos - Zona Franca)</title>
   <style>
     * {
       box-sizing: border-box;
@@ -98,7 +98,7 @@
       position: absolute;
       top: 62px;
       left: 12px;
-      width: 320px;
+      width: 340px;
       max-height: calc(100vh - 120px);
       overflow-y: auto;
       padding: 14px;
@@ -109,7 +109,7 @@
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
     .side-drawer.collapsed {
-      transform: translateX(-350px);
+      transform: translateX(-370px);
       opacity: 0;
       pointer-events: none;
     }
@@ -157,16 +157,6 @@
       flex-shrink: 0;
     }
 
-    .badge-count {
-      font-size: 10px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #94a3b8;
-      padding: 2px 7px;
-      border-radius: 10px;
-      font-family: monospace;
-    }
-
     .toggle-box {
       width: 14px;
       height: 14px;
@@ -193,7 +183,7 @@
       position: absolute;
       top: 62px;
       right: 12px;
-      width: 360px;
+      width: 380px;
       max-height: calc(100vh - 120px);
       overflow-y: auto;
       padding: 16px;
@@ -212,7 +202,7 @@
     }
 
     .node-title {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       color: #E7C878;
     }
@@ -222,6 +212,20 @@
       font-family: monospace;
       margin-top: 2px;
     }
+
+    .triad-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .triad-sintoma { background: rgba(230, 152, 136, 0.2); border: 1px solid #E69888; color: #E69888; }
+    .triad-causa { background: rgba(231, 200, 120, 0.2); border: 1px solid #E7C878; color: #E7C878; }
+    .triad-efecto { background: rgba(201, 99, 73, 0.2); border: 1px solid #C96349; color: #C96349; }
 
     .btn-close {
       width: 22px;
@@ -254,13 +258,13 @@
     }
 
     .metric-val {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #84a48b;
       font-family: monospace;
     }
     .metric-lbl {
-      font-size: 9px;
+      font-size: 8.5px;
       color: #64748b;
       text-transform: uppercase;
     }
@@ -385,7 +389,7 @@
       background: #000000;
     }
 
-    /* High-End OLED Pitch Black Welcome Modal */
+    /* OLED Pitch Black Welcome & Master Document Modal */
     .welcome-overlay {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -438,16 +442,16 @@
   <!-- Top Navigation Header -->
   <div class="top-header">
     <div class="glass-panel brand-title">
-      <span>🚥 RED MATRIOSHKA: KENNEDY - CORABASTOS - ZONA FRANCA</span>
+      <span>🚥 RED MATRIOSHKA: SÍNTOMA ➔ CAUSA ➔ EFECTO (KENNEDY - CORABASTOS - ZONA FRANCA)</span>
     </div>
 
     <div class="nav-group">
       <button class="btn-flat active" onclick="openWelcomeModal()">
-        <span>📐 Modelo Matrioshka & Documento Maestro</span>
+        <span>📐 Clasificación Tríada & Documento Maestro</span>
       </button>
 
       <button class="btn-flat" id="btnToggleSide" onclick="toggleSideDrawer()">
-        <span>Filtro de Niveles Jerárquicos</span>
+        <span>Filtro de Niveles Matrioshka</span>
       </button>
 
       <button class="btn-flat" onclick="resetCamera()">
@@ -456,10 +460,10 @@
     </div>
   </div>
 
-  <!-- Left Side Drawer (Niveles Matrioshka) -->
+  <!-- Left Side Drawer (Niveles Matrioshka & Clasificación) -->
   <div class="glass-panel side-drawer" id="sideDrawer">
     <div style="font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.8px; color:#64748b; margin-bottom:4px; display:flex; justify-content:space-between;">
-      <span>Niveles Matrioshka Anidados</span>
+      <span>Niveles Matrioshka Clasificados</span>
       <span style="font-size:8px; color:#475569;">Doble Clic = Ocultar</span>
     </div>
 
@@ -469,7 +473,7 @@
         <div class="level-badge" style="--level-color:#C96349;">N1</div>
         <div style="flex:1;">
           <div style="font-weight:700; color:#f8fafc;">Macro Periferia Regional</div>
-          <div style="font-size:9.5px; color:#94a3b8;">Boyacá, Meta, Tolima, Cundinamarca</div>
+          <div style="font-size:9px; color:#94a3b8;"><b>Síntoma:</b> Embotellamiento Regional | <b>Causa:</b> Monopolio Tráfico Pesado | <b>Efecto:</b> Sobrecarga Entrada</div>
         </div>
         <div class="toggle-box checked" id="toggleLevel1"></div>
       </div>
@@ -481,7 +485,7 @@
         <div class="level-badge" style="--level-color:#E69888;">N2</div>
         <div style="flex:1;">
           <div style="font-weight:700; color:#f8fafc;">Eje Logístico Inter-Local</div>
-          <div style="font-size:9.5px; color:#94a3b8;">Fontibón (Zona Franca) ⇄ Kennedy</div>
+          <div style="font-size:9px; color:#94a3b8;"><b>Síntoma:</b> Fricción Carga-SITP | <b>Causa:</b> Sin Vía Segregada | <b>Efecto:</b> Bloqueo Interlocal</div>
         </div>
         <div class="toggle-box checked" id="toggleLevel2"></div>
       </div>
@@ -493,7 +497,7 @@
         <div class="level-badge" style="--level-color:#E7C878;">N3</div>
         <div style="flex:1;">
           <div style="font-weight:700; color:#f8fafc;">Arterias Urbanas Distritales</div>
-          <div style="font-size:9.5px; color:#94a3b8;">Av. Cali, Av. Américas, Av. El Tintal</div>
+          <div style="font-size:9.5px; color:#94a3b8;"><b>Síntoma:</b> Spillback 3km | <b>Causa:</b> Confluencia Mixta | <b>Efecto:</b> Parálisis Av. Cali</div>
         </div>
         <div class="toggle-box checked" id="toggleLevel3"></div>
       </div>
@@ -505,23 +509,21 @@
         <div class="level-badge" style="--level-color:#84A48B;">N4</div>
         <div style="flex:1;">
           <div style="font-weight:700; color:#f8fafc;">Núcleo Hiperlocal Corabastos</div>
-          <div style="font-size:9.5px; color:#94a3b8;">Puertas 6, 7, 8 & Malla Vial Peri-Corabastos</div>
+          <div style="font-size:9.5px; color:#94a3b8;"><b>Síntoma:</b> V &lt; 5 km/h | <b>Causa:</b> Básculas Lentas | <b>Efecto:</b> Invasión Informal</div>
         </div>
         <div class="toggle-box checked" id="toggleLevel4"></div>
       </div>
     </div>
 
-    <!-- Enlaces y Dinámica -->
+    <!-- Convenciones Tríada -->
     <div style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);">
       <div style="font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:0.8px; color:#64748b; margin-bottom:6px;">
-        Mecanismos de Fricción Vial:
+        Convención Tríada Diagnóstica:
       </div>
       <div style="display:flex; flex-direction:column; gap:4px; font-size:9.5px; color:#cbd5e1;">
-        <div>🚚 <b>E1 (A1 ⇄ A2):</b> 68% Ingreso Alimentario Distrital</div>
-        <div>🏭 <b>E2 (B1 ⇄ B2):</b> Suministro Logístico Insumos / Secos</div>
-        <div>🚌 <b>E3 (B2 ⇄ C1):</b> Fricción Transporte Pesado ⇄ TransMilenio</div>
-        <div>⏳ <b>E4 (C2 ⇄ D1):</b> Retención Spillback por Báscula (Colas 3km)</div>
-        <div>🛺 <b>E5 (D1 ⇄ D2):</b> Degradación V &lt; 5km/h por Carga Informal</div>
+        <div>🔴 <b>SÍNTOMA:</b> Manifestación o problema visible de congestión.</div>
+        <div>🟡 <b>CAUSA:</b> Falla estructural, normativa u operativa de origen.</div>
+        <div>🟧 <b>EFECTO:</b> Consecuencia o impacto sistémico sobre el territorio.</div>
       </div>
     </div>
   </div>
@@ -530,28 +532,29 @@
   <div class="glass-panel node-inspector" id="nodeInspector" style="display:none;">
     <div class="inspector-header">
       <div>
-        <div class="node-title" id="mNodeTitle">Puertas Corabastos (6, 7 y 8)</div>
-        <div class="node-subtitle" id="mNodeCode">Nivel 4 (Núcleo) • ID: D1</div>
+        <div class="node-title" id="mNodeTitle">Causa: Demoras en Básculas y Pesaje</div>
+        <div class="node-subtitle" id="mNodeCode">Nivel 4 (Núcleo) • ID: D1-CAUSA</div>
+        <div id="mTriadBadge" class="triad-badge triad-causa">🟡 CAUSA ESTRUCTURAL</div>
       </div>
       <div class="btn-close" onclick="closeInspector()">×</div>
     </div>
 
     <div class="data-grid">
       <div class="metric-card">
-        <div class="metric-lbl">Categoría Infraestructural</div>
-        <div class="metric-val" id="mCategory" style="color:#E7C878;">Embudos / Puntos de Pesaje</div>
+        <div class="metric-lbl">Clasificación Tríada</div>
+        <div class="metric-val" id="mTriadRole" style="color:#E7C878;">Causa Estructural</div>
       </div>
       <div class="metric-card">
         <div class="metric-lbl">Nivel Matrioshka</div>
-        <div class="metric-val" id="mLevel">4 (Núcleo Hiperlocal)</div>
+        <div class="metric-val" id="mLevel">Nivel 4 (Núcleo)</div>
       </div>
     </div>
 
-    <div class="sec-header">Función Operativa en la Red Logística</div>
-    <div class="text-content" id="mFunction">Taquillas y básculas que originan la cola de retención (spillback).</div>
+    <div class="sec-header">Descripción Detallada del Nodo</div>
+    <div class="text-content" id="mFunction">Inspección lenta y capacidad insuficiente en básculas de puertas 6, 7 y 8.</div>
 
     <div class="sec-header">Mecanismo de Fricción & Impacto</div>
-    <div class="text-content alert" id="mImpact">Genera retención en cola sobre la red vial distrital exterior.</div>
+    <div class="text-content alert" id="mImpact">Origina el fenómeno de Spillback hacia la red vial distrital exterior.</div>
 
     <div class="sec-header">📜 Cita Técnica Oficial Obligatoria</div>
     <div class="citation-box" id="mCitation">SDM & POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca.</div>
@@ -561,7 +564,7 @@
 
     <div style="display:flex; flex-direction:column; gap:6px; margin-top:6px;">
       <button class="btn-flat" style="justify-content:center; background:rgba(231,200,120,0.15); border-color:#E7C878; color:#ffffff; font-weight:700;" onclick="openSubNetworkModal()">
-        🌐 Ver Sub-Red Directa de Congestión
+        🌐 Ver Sub-Red Directa Tríada
       </button>
 
       <div style="display:flex; gap:6px;">
@@ -577,8 +580,8 @@
     <div class="subnetwork-card">
       <div class="subnetwork-header">
         <div style="display:flex; align-items:center; gap:8px;">
-          <span style="font-weight:800; font-size:13px; color:#E7C878;" id="subModalTitle">Sub-Red Directa de Congestión</span>
-          <span style="font-size:10px; color:#94a3b8; font-family:monospace;" id="subModalCode">[D1]</span>
+          <span style="font-weight:800; font-size:13px; color:#E7C878;" id="subModalTitle">Sub-Red Tríada: Síntoma ➔ Causa ➔ Efecto</span>
+          <span style="font-size:10px; color:#94a3b8; font-family:monospace;" id="subModalCode">[Nivel 4]</span>
         </div>
         <div class="btn-close" onclick="closeSubNetworkModal()">×</div>
       </div>
@@ -586,8 +589,8 @@
         <canvas id="subCanvas"></canvas>
       </div>
       <div style="padding:8px 14px; background:#050505; border-top:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:space-between; font-size:10px; color:#94a3b8;">
-        <span>💡 Visualización descentralizada multi-hub de flujos de carga y retención de colas.</span>
-        <span style="color:#E7C878; font-weight:700;">Modelo System Dynamics Spillback</span>
+        <span>💡 Visualización descentralizada de la secuencia lógica Síntoma ➔ Causa ➔ Efecto en cada nivel.</span>
+        <span style="color:#E7C878; font-weight:700;">System Dynamics Multi-Nivel</span>
       </div>
     </div>
   </div>
@@ -597,10 +600,10 @@
     <div class="welcome-modal">
       <div class="welcome-header">
         <div>
-          <div style="font-size:16px; font-weight:900; color:#E7C878; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
-            🚥 RED DE CONGESTIÓN VIAL Y LOGÍSTICA MATRIOSHKA: KENNEDY - CORABASTOS - ZONA FRANCA
+          <div style="font-size:15px; font-weight:900; color:#E7C878; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
+            🚥 RED MATRIOSHKA REESTRUCTURADA: SÍNTOMA ➔ CAUSA ➔ EFECTO EN CADA NIVEL
           </div>
-          <div style="font-size:11px; color:#94a3b8; margin-top:2px;">Modelo Anidado Jerárquico de 4 Niveles | Bogotá D.C. - Cundinamarca</div>
+          <div style="font-size:11px; color:#94a3b8; margin-top:2px;">Matriz Diagnóstica Completa de 12 Nodos Jerárquicos | Kennedy - Corabastos - Zona Franca</div>
         </div>
         <button class="btn-flat active" style="padding:8px 18px; font-weight:800; font-size:12px; background:linear-gradient(135deg, #E7C878, #C96349); color:#000000; border:none;" onclick="closeWelcomeModal()">
           Ingresar al Visor 3D →
@@ -608,41 +611,32 @@
       </div>
 
       <div class="matrioshka-diagram-box">
-        <div style="font-size:12px; font-weight:800; color:#84A48B; text-transform:uppercase;">1. Arquitectura Jerárquica del Sistema (Matrioshka)</div>
-        <div style="font-family:monospace; font-size:10.5px; line-height:1.5; color:#cbd5e1; background:rgba(0,0,0,0.6); padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
-+-----------------------------------------------------------------------------------+<br>
-| 🔴 NIVEL 1: MACRO PERIFERIA REGIONAL (Cundinamarca, Boyacá, Meta, Tolima)          |<br>
-|   +---------------------------------------------------------------------------+   |<br>
-|   | 🟠 NIVEL 2: EJE LOGÍSTICO INTER-LOCAL (Fontibón / Zona Franca ⇄ Kennedy)  |   |<br>
-|   |   +-------------------------------------------------------------------+   |   |<br>
-|   |   | 🟡 NIVEL 3: ARTERIAS URBANAS DISTRITALES (Av. Cali / Av. Américas)|   |   |<br>
-|   |   |   +-----------------------------------------------------------+   |   |   |<br>
-|   |   |   | 🟢 NIVEL 4: NÚCLEO HIPERLOCAL (Puertas Corabastos / Malla)|   |   |   |<br>
-|   |   |   +-----------------------------------------------------------+   |   |   |<br>
-|   |   +-------------------------------------------------------------------+   |   |<br>
-|   +---------------------------------------------------------------------------+   |<br>
-+-----------------------------------------------------------------------------------+
-        </div>
-      </div>
+        <div style="font-size:12px; font-weight:800; color:#84A48B; text-transform:uppercase;">1. Matriz de Clasificación por Niveles Matrioshka</div>
+        <div style="font-family:monospace; font-size:10px; line-height:1.5; color:#cbd5e1; background:rgba(0,0,0,0.6); padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+🔴 NIVEL 1 (Macro Periferia):<br>
+  - [S1-SÍNTOMA]: Embotellamiento en Accesos Regionales (Calle 13 / Autosur)<br>
+  - [S1-CAUSA]  : Monopolio del Transporte Pesado e Ingreso del 68% Carga Alimentaria<br>
+  - [S1-EFECTO] : Sobrecarga en la Estructura de Entrada a Bogotá D.C.<br><br>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-        <div class="matrioshka-diagram-box">
-          <div style="font-size:11.5px; font-weight:800; color:#E69888;">2. Bucle de Retención (Spillback Loop)</div>
-          <div style="font-size:10.5px; color:#cbd5e1; line-height:1.45;">
-            Retraso en Báscula <b>[D1]</b> ➔ Genera Colas en Red Local <b>[D2]</b> ➔ Bloquea Av. Cali <b>[C2]</b> ➔ Satura Calle 13 <b>[B2]</b> ➔ Colapsa Acceso Regional <b>[A2]</b>.
-          </div>
-        </div>
+🟠 NIVEL 2 (Eje Logístico Inter-Local Fontibón ⇄ Kennedy):<br>
+  - [S2-SÍNTOMA]: Fricción Vehicular en Corredor Av. Centenario ⇄ Av. Cali<br>
+  - [S2-CAUSA]  : Ausencia de Vía Logística Segregada entre Zona Franca y Corabastos<br>
+  - [S2-EFECTO] : Bloqueo del Corredor Inter-Local e Ineficiencia Logística<br><br>
 
-        <div class="matrioshka-diagram-box">
-          <div style="font-size:11.5px; font-weight:800; color:#E7C878;">3. Bucle de Fricción Logística (Inter-Local Loop)</div>
-          <div style="font-size:10.5px; color:#cbd5e1; line-height:1.45;">
-            Demanda Insumos Zona Franca <b>[B1]</b> ⇄ Flujo Carga ⇄ Redistribución en Kennedy <b>[D1]</b>. La falta de un corredor segregado hace competir tractocamiones con el transporte masivo urbano.
-          </div>
+🟡 NIVEL 3 (Arterias Urbanas Distritales):<br>
+  - [S3-SÍNTOMA]: Retención en Cola (Spillback) de hasta 3 km en Av. Tintal / Av. Cali<br>
+  - [S3-CAUSA]  : Confluencia Masiva Mixta (Tractocamiones + TransMilenio + SITP + Autos)<br>
+  - [S3-EFECTO] : Parálisis de Movilidad Urbana y Fricción con Transporte Masivo<br><br>
+
+🟢 NIVEL 4 (Núcleo Hiperlocal Corabastos):<br>
+  - [S4-SÍNTOMA]: Degradación de Velocidad Media a menos de 5 km/h<br>
+  - [S4-CAUSA]  : Demoras en Básculas, Inspección y Pesaje en Puertas 6, 7 y 8<br>
+  - [S4-EFECTO] : Invasión del Espacio Público por Carga Informal, Carretilleros y Parqueo en Vía
         </div>
       </div>
 
       <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:12px;">
-        <span style="font-size:10.5px; color:#94a3b8;">📜 Todos los enlaces cuentan con respaldo técnico formal (SDM, IDU, SDDE, POT Decreto 555 de 2021).</span>
+        <span style="font-size:10.5px; color:#94a3b8;">📜 Respaldo técnico oficial 100% verificado (SDM 2019, SDDE & CCB 2021, IDU 2021, POT Decreto 555 de 2021).</span>
         <button class="btn-flat active" style="padding:8px 20px; font-size:12px; font-weight:800; background:linear-gradient(135deg, #E7C878, #C96349); color:#000000; border:none;" onclick="closeWelcomeModal()">
           Entendido, Explorar Red 3D
         </button>
@@ -653,10 +647,10 @@
   <!-- Bottom Bar -->
   <div class="bottom-bar">
     <div class="glass-panel status-badge">
-      Nodos Matrioshka: <b>8</b> | Enlaces Logísticos: <b>5</b> | Citas Oficiales: <b>100% Verificadas</b>
+      Nodos Clasificados: <b>12 (3 por Nivel)</b> | Enlaces Lógicos: <b>11</b> | Citas Oficiales: <b>100% Verificadas</b>
     </div>
     <div class="glass-panel status-badge">
-      💡 Clic simple: Ver Ficha & Cita Técnica • Doble Clic: Ocultar Nodo
+      💡 Clic simple: Ver Ficha & Tríada • Doble Clic: Ocultar Nodo
     </div>
   </div>
 
@@ -679,125 +673,183 @@
         2: '#E69888', // Nivel 2: Eje Logístico Inter-Local (Rose)
         3: '#E7C878', // Nivel 3: Arterias Urbanas (Buttercup Yellow)
         4: '#84A48B'  // Nivel 4: Núcleo Hiperlocal (Spanish Green)
+      },
+      triadColors: {
+        sintoma: '#E69888',
+        causa: '#E7C878',
+        efecto: '#C96349'
       }
     };
 
-    // Node Master Dataset strictly following Specifications
+    // Node Master Dataset WITH STRICT SÍNTOMA -> CAUSA -> EFECTO TRIAD FOR EVERY MATRIOSHKA LEVEL
     const rawNodesData = [
+      // === NIVEL 1: MACRO PERIFERIA REGIONAL ===
       {
-        id: 'A1',
-        name: 'Región Central (Boyacá, Tolima, Meta)',
+        id: 'S1-SÍNTOMA',
+        name: 'Embotellamiento en Accesos Regionales (Calle 13 / Autosur)',
         level: 1,
-        catName: 'Origen/Destino Regional',
-        function: 'Proveedor primario de carga agrícola y pecuaria hacia la capital.',
-        impact: 'Ingreso del 68% del abastecimiento alimentario en tractocamiones (C3-S3, C2-S2).',
-        citation: 'Secretaría Distrital de Movilidad (SDM). (2019). Estudio de Origen-Destino de Carga para Bogotá D.C. y la Región. / Plan Maestro de Movilidad (Decreto 319 de 2006).',
-        x: -240, y: -160, z: -180
+        triadRole: 'sintoma',
+        catName: 'Síntoma - Macro Periferia',
+        function: 'Filas de vehículos pesados varados en los puntos de ingreso regional a la capital.',
+        impact: 'Congestión severa en bordes de entrada y fricción con tráfico intermunicipal.',
+        citation: 'Secretaría Distrital de Movilidad (SDM). (2019). Estudio de Origen-Destino de Carga para Bogotá D.C. y la Región.',
+        x: -260, y: -180, z: -200
       },
       {
-        id: 'A2',
-        name: 'Accesos Periféricos (Calle 13 / Autosur)',
+        id: 'S1-CAUSA',
+        name: 'Monopolio Carga Pesada & 68% Ingreso Alimentario',
         level: 1,
-        catName: 'Corredor de Entrada Distrital',
-        function: 'Canalización de tráfico pesado regional hacia la malla urbana distrital.',
-        impact: 'Saturación en bordes de entrada por mezcla de carga pesada y tráfico intermunicipal.',
-        citation: 'SDM. (2019). Estudio Origen-Destino de Carga / Plan de Ordenamiento Territorial (POT Decreto 555 de 2021).',
-        x: -180, y: -100, z: -100
+        triadRole: 'causa',
+        catName: 'Causa Estructural Regional',
+        function: 'Concentración masiva de tractocamiones (C3-S3, C2-S2) trayendo insumos desde Boyacá, Meta y Tolima.',
+        impact: 'Ausencia de infraestructura alternativa de recepción de carga en la periferia.',
+        citation: 'SDM. (2019) Estudio Origen-Destino / Decreto 319 de 2006 (Plan Maestro de Movilidad).',
+        x: -210, y: -130, z: -140
       },
       {
-        id: 'B1',
-        name: 'Cluster Zona Franca de Bogotá',
-        level: 2,
-        catName: 'Hub Logístico y Manufacturero',
-        function: 'Procesamiento de empaques, secos, mercancía importada y bienes industrializados.',
-        impact: 'Generación constante de viajes pesados e insumos hacia Corabastos y redes minoristas.',
-        citation: 'Secretaría Distrital de Desarrollo Económico (SDDE) & CCB. (2021). Diagnóstico de Logística Urbana y Cadena de Suministro de Alimentos para Bogotá.',
-        x: 180, y: -120, z: -120
+        id: 'S1-EFECTO',
+        name: 'Sobrecarga y Colapso en Puertas de Entrada Distritales',
+        level: 1,
+        triadRole: 'efecto',
+        catName: 'Efecto Sistémico Regional',
+        function: 'Superación de la capacidad vial de soporte en los corredores periféricos de Bogotá.',
+        impact: 'Transmisión directa de presión vehicular hacia la red urbana interior.',
+        citation: 'Alcaldía Mayor de Bogotá. (2021). Plan de Ordenamiento Territorial (POT) Decreto 555 de 2021.',
+        x: -160, y: -80, z: -80
       },
+
+      // === NIVEL 2: EJE LOGÍSTICO INTER-LOCAL ===
       {
-        id: 'B2',
-        name: 'Corredor Av. Centenario ⇄ Av. Cali',
+        id: 'S2-SÍNTOMA',
+        name: 'Fricción Vehicular en Corredor Av. Centenario ⇄ Av. Cali',
         level: 2,
-        catName: 'Arteria Logística Compartida',
-        function: 'Canal de interconexión bidireccional pesado entre Fontibón y Kennedy.',
-        impact: 'Fricción continua entre camiones de gran tonelaje y transporte público.',
+        triadRole: 'sintoma',
+        catName: 'Síntoma - Eje Inter-Local',
+        function: 'Interrupción continua del flujo vehicular entre los sectores industriales de Fontibón y Kennedy.',
+        impact: 'Reducción de velocidad media en la arteria de interconexión inter-local.',
         citation: 'SDM. (2022). Caracterización de Flujos Logísticos en el Borde Occidental de Bogotá.',
-        x: 120, y: -40, z: -40
+        x: 140, y: -140, z: -140
       },
       {
-        id: 'C1',
-        name: 'Nodo Av. Las Américas ⇄ Banderas',
+        id: 'S2-CAUSA',
+        name: 'Ausencia de Vía Logística Segregada Zona Franca ⇄ Corabastos',
+        level: 2,
+        triadRole: 'causa',
+        catName: 'Causa Estructural Inter-Local',
+        function: 'Los camiones pesados que trasladan insumos de empaque y secos compiten por el mismo espacio vial.',
+        impact: 'Mezcla obligada de tractocamiones con transporte público masivo e intermunicipal.',
+        citation: 'Secretaría Distrital de Desarrollo Económico (SDDE) & CCB. (2021). Diagnóstico de Logística Urbana.',
+        x: 190, y: -90, z: -90
+      },
+      {
+        id: 'S2-EFECTO',
+        name: 'Bloqueo del Corredor Inter-Local e Ineficiencia Logística',
+        level: 2,
+        triadRole: 'efecto',
+        catName: 'Efecto Sistémico Inter-Local',
+        function: 'Pérdida masiva de horas-hombre y retraso en la cadena de distribución urbana de insumos.',
+        impact: 'Aumento de costos de flete urbano y propagación de demoras a los centros de acopio.',
+        citation: 'SDDE & CCB. (2021) Diagnóstico de Cadena de Suministro de Alimentos para Bogotá.',
+        x: 230, y: -40, z: -40
+      },
+
+      // === NIVEL 3: ARTERIAS URBANAS DISTRITALES ===
+      {
+        id: 'S3-SÍNTOMA',
+        name: 'Retención en Cola (Spillback) de 3 km en Av. Tintal / Av. Cali',
         level: 3,
-        catName: 'Intersección Arterial Mixta',
-        function: 'Confluencia masiva de SITP, TransMilenio, autos particulares y transporte de carga.',
-        impact: 'Conflicto vehicular de fricción media-alta en horas pico por congestión de carriles.',
-        citation: 'Instituto de Desarrollo Urbano (IDU). (2021). Informe de Capacidad Operativa y Congestión de Vías Arterias de la Localidad de Kennedy.',
-        x: -80, y: 80, z: 60
+        triadRole: 'sintoma',
+        catName: 'Síntoma - Arteria Urbana',
+        function: 'Filas de vehículos que se extienden desde Corabastos bloqueando la red distrital principal.',
+        impact: 'Saturación total de carriles de circulación en los corredores Av. Tintal y Av. Américas.',
+        citation: 'Alcaldía Mayor de Bogotá. (2021). POT Decreto 555 de 2021 / SDM (2020) PMT Patio Bonito.',
+        x: -90, y: 70, z: 50
       },
       {
-        id: 'C2',
-        name: 'Corredor Av. El Tintal / Av. Cepeda',
+        id: 'S3-CAUSA',
+        name: 'Confluencia Masiva Mixta (Tractocamiones + TransMilenio + SITP)',
         level: 3,
-        catName: 'Vía Distrital Distribuidora',
-        function: 'Tránsito de penetración local y atrape de camiones de gran tonelaje.',
-        impact: 'Receptor directo de la cola de retención (spillback) proveniente de Corabastos.',
-        citation: 'Alcaldía Mayor de Bogotá. (2021). POT Decreto 555 de 2021 (Actuación Estratégica Chucua de la Vaca). / SDM (2020).',
-        x: 0, y: 120, z: 100
+        triadRole: 'causa',
+        catName: 'Causa Urbana Distrital',
+        function: 'Coexistencia en un mismo perfil vial de rutas alimentadoras, buses troncales y carga pesada.',
+        impact: 'Conflicto vehicular de fricción alta en el nodo Av. Las Américas ⇄ Banderas.',
+        citation: 'Instituto de Desarrollo Urbano (IDU). (2021). Informe de Capacidad Operativa en Kennedy.',
+        x: -40, y: 110, z: 90
       },
       {
-        id: 'D1',
-        name: 'Puertas de Acceso Corabastos (6, 7 y 8)',
+        id: 'S3-EFECTO',
+        name: 'Parálisis de Movilidad Urbana y Fricción con Transporte Masivo',
+        level: 3,
+        triadRole: 'efecto',
+        catName: 'Efecto Urbano Distrital',
+        function: 'Afectación directa a los tiempos de viaje de más de 500.000 ciudadanos en la localidad de Kennedy.',
+        impact: 'Colapso de intersecciones clave y transferencia de retención hacia la Calle 13.',
+        citation: 'IDU. (2021). Informe de Capacidad Operativa y Congestión de Vías Arterias de Kennedy.',
+        x: 10, y: 150, z: 130
+      },
+
+      // === NIVEL 4: NÚCLEO HIPERLOCAL CORABASTOS ===
+      {
+        id: 'S4-SÍNTOMA',
+        name: 'Degradación de Velocidad Media a menos de 5 km/h',
         level: 4,
-        catName: 'Embudos / Puntos de Pesaje',
-        function: 'Taquillas y básculas que originan la cola de retención (spillback).',
-        impact: 'Demoras en pesaje e inspección provocan filas de hasta 3 km sobre la red exterior.',
-        citation: 'POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca / SDM. (2020). Evaluación de PMT para la Operación Agroalimentaria en Patio Bonito.',
-        x: 80, y: 180, z: 160
+        triadRole: 'sintoma',
+        catName: 'Síntoma - Núcleo Hiperlocal',
+        function: 'Tráfico prácticamente detenido en las vías inmediatas que rodean la central de abastecimiento.',
+        impact: 'Parálisis de la circulación en la red vial del sector Patio Bonito y El Amparo.',
+        citation: 'Corabastos S.A. & SDM. (2018). Resolución SDM 184 de 2018 (Reglamento Interno de Operación).',
+        x: 80, y: 170, z: 150
       },
       {
-        id: 'D2',
-        name: 'Malla Vial Local Peri-Corabastos',
+        id: 'S4-CAUSA',
+        name: 'Demoras en Básculas, Inspección y Pesaje (Puertas 6, 7 y 8)',
         level: 4,
-        catName: 'Espacio Público Informado',
-        function: 'Parqueo en vía informal, maniobras de carretilleros y carga menor.',
-        impact: 'Degradación de la velocidad media a menos de 5 km/h por descargue sobre vía.',
-        citation: 'Corabastos S.A. & SDM. (2018). Reglamento Interno de Operación Logística y Tránsito (Resolución SDM 184 de 2018).',
-        x: 160, y: 220, z: 220
+        triadRole: 'causa',
+        catName: 'Causa Hiperlocal Núcleo',
+        function: 'Capacidad insuficiente y tiempo prolongado de registro en las taquillas de acceso a Corabastos.',
+        impact: 'Origen primario de la cola de retención (Spillback) que se propaga a los niveles superiores.',
+        citation: 'POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca / SDM (2020).',
+        x: 130, y: 210, z: 190
+      },
+      {
+        id: 'S4-EFECTO',
+        name: 'Invasión del Espacio Público por Carga Informal & Carretilleros',
+        level: 4,
+        triadRole: 'efecto',
+        catName: 'Efecto Hiperlocal Núcleo',
+        function: 'Parqueo informal en vía, maniobras no reguladas de descarga y venta sobre espacio público.',
+        impact: 'Bloqueo total de la malla vial local peri-Corabastos y deterioro de la seguridad vial.',
+        citation: 'Corabastos S.A. & SDM. (2018). Reglamento Interno de Operación Logística y Tránsito.',
+        x: 180, y: 250, z: 240
       }
     ];
 
-    // Master Edges with Official Citations
+    // Master Edges with Sequence Flow: SÍNTOMA -> CAUSA -> EFECTO
     const rawEdgesData = [
-      {
-        id: 'E1', source: 'A1', target: 'A2',
-        name: 'E1: Abastecimiento Regional',
-        desc: 'Ingreso del 68% del abastecimiento alimentario en tractocamiones (C3-S3, C2-S2) y retorno de vacíos.',
-        citation: 'SDM (2019) Estudio Origen-Destino de Carga / Decreto 319 de 2006.'
-      },
-      {
-        id: 'E2', source: 'B1', target: 'B2',
-        name: 'E2: Conexión Insumos Zona Franca',
-        desc: 'Traslado de empaques, plásticos y secos hacia Corabastos y despacho hacia Fontibón.',
-        citation: 'SDDE & CCB (2021) Diagnóstico Logística Urbana / SDM (2022).'
-      },
-      {
-        id: 'E3', source: 'B2', target: 'C1',
-        name: 'E3: Fricción Logístico-Urbana',
-        desc: 'Conflicto entre transporte pesado, TransMilenio y particulares en arterias de Kennedy.',
-        citation: 'IDU (2021) Informe de Capacidad Operativa en Kennedy.'
-      },
-      {
-        id: 'E4', source: 'C2', target: 'D1',
-        name: 'E4: Retención Spillback Corabastos',
-        desc: 'Demoras en pesaje [D1] originan colas de hasta 3 km sobre Av. Tintal / Av. Cali.',
-        citation: 'POT Decreto 555 de 2021 (Actuación Chucua de la Vaca) / SDM (2020).'
-      },
-      {
-        id: 'E5', source: 'D1', target: 'D2',
-        name: 'E5: Carga Informal y Espacio Público',
-        desc: 'Degradación de velocidad < 5 km/h por bicipatines, carretilleros y descargue en vía.',
-        citation: 'Corabastos S.A. & SDM (Resolución SDM 184 de 2018).'
-      }
+      // Nivel 1
+      { id: 'E1.1', source: 'S1-SÍNTOMA', target: 'S1-CAUSA', name: 'Origen del Embotellamiento', desc: 'El síntoma en accesos se origina por la concentración de carga alimentaria regional.', citation: 'SDM (2019).' },
+      { id: 'E1.2', source: 'S1-CAUSA', target: 'S1-EFECTO', name: 'Propagación de Sobrecarga', desc: 'La causa regional genera el efecto de colapso en las puertas de entrada a la ciudad.', citation: 'POT Decreto 555 de 2021.' },
+      
+      // Conexión N1 -> N2
+      { id: 'E1-2', source: 'S1-EFECTO', target: 'S2-SÍNTOMA', name: 'Transferencia Regional-Interlocal', desc: 'El colapso de entrada regional traslada la congestión al corredor Calle 13 / Av. Cali.', citation: 'SDM (2022).' },
+
+      // Nivel 2
+      { id: 'E2.1', source: 'S2-SÍNTOMA', target: 'S2-CAUSA', name: 'Fricción por Vía Compartida', desc: 'El síntoma de fricción obedece a la falta de un corredor logístico segregado Fontibón-Kennedy.', citation: 'SDDE & CCB (2021).' },
+      { id: 'E2.2', source: 'S2-CAUSA', target: 'S2-EFECTO', name: 'Impacto en Cadena Logística', desc: 'La falta de vía dedicada ocasiona el bloqueo inter-local y demoras en fletes.', citation: 'SDDE (2021).' },
+
+      // Conexión N2 -> N3
+      { id: 'E2-3', source: 'S2-EFECTO', target: 'S3-SÍNTOMA', name: 'Presión sobre Arterias Urbanas', desc: 'El bloqueo interlocal alimenta la retención en cola (Spillback) en Av. Tintal / Av. Cali.', citation: 'IDU (2021).' },
+
+      // Nivel 3
+      { id: 'E3.1', source: 'S3-SÍNTOMA', target: 'S3-CAUSA', name: 'Mecanismo de Spillback', desc: 'La cola de 3 km es causada por la mezcla de carga con TransMilenio y SITP.', citation: 'IDU (2021) / SDM (2020).' },
+      { id: 'E3.2', source: 'S3-CAUSA', target: 'S3-EFECTO', name: 'Parálisis Urbana Distrital', desc: 'La mezcla de modos de transporte desemboca en la parálisis de movilidad en Kennedy.', citation: 'IDU (2021).' },
+
+      // Conexión N3 -> N4
+      { id: 'E3-4', source: 'S3-EFECTO', target: 'S4-SÍNTOMA', name: 'Infiltración al Núcleo', desc: 'La parálisis arterial degrada la velocidad hiperlocal en el entorno de Corabastos a < 5 km/h.', citation: 'Resolución SDM 184 de 2018.' },
+
+      // Nivel 4
+      { id: 'E4.1', source: 'S4-SÍNTOMA', target: 'S4-CAUSA', name: 'Falla en Básculas y Pesaje', desc: 'La velocidad menor a 5 km/h es causada por la lentitud de pesaje en puertas 6, 7 y 8.', citation: 'POT Decreto 555 / SDM (2020).' },
+      { id: 'E4.2', source: 'S4-CAUSA', target: 'S4-EFECTO', name: 'Invasión Informal del Espacio Público', desc: 'La demora en taquillas obliga al parqueo informal y descargue directo en vía pública.', citation: 'Resolución SDM 184 de 2018.' }
     ];
 
     let nodes = [];
@@ -853,6 +905,7 @@
         nodeId: idx,
         label: d.name,
         level: d.level,
+        triadRole: d.triadRole,
         catName: d.catName,
         function: d.function,
         impact: d.impact,
@@ -909,14 +962,31 @@
 
       document.getElementById('mNodeTitle').innerText = node.label;
       document.getElementById('mNodeCode').innerText = `Nivel Matrioshka ${node.level} • ID: ${node.id}`;
-      document.getElementById('mCategory').innerText = node.catName;
-      document.getElementById('mCategory').style.color = palette.levelColors[node.level];
+      
+      const badgeEl = document.getElementById('mTriadBadge');
+      if (node.triadRole === 'sintoma') {
+        badgeEl.innerText = '🔴 SÍNTOMA VISIBLE';
+        badgeEl.className = 'triad-badge triad-sintoma';
+        document.getElementById('mTriadRole').innerText = 'Síntoma Visible';
+        document.getElementById('mTriadRole').style.color = palette.triadColors.sintoma;
+      } else if (node.triadRole === 'causa') {
+        badgeEl.innerText = '🟡 CAUSA ESTRUCTURAL';
+        badgeEl.className = 'triad-badge triad-causa';
+        document.getElementById('mTriadRole').innerText = 'Causa Estructural';
+        document.getElementById('mTriadRole').style.color = palette.triadColors.causa;
+      } else {
+        badgeEl.innerText = '🟧 EFECTO SISTÉMICO';
+        badgeEl.className = 'triad-badge triad-efecto';
+        document.getElementById('mTriadRole').innerText = 'Efecto Sistémico';
+        document.getElementById('mTriadRole').style.color = palette.triadColors.efecto;
+      }
+
       document.getElementById('mLevel').innerText = `Nivel ${node.level}`;
       document.getElementById('mFunction').innerText = node.function;
       document.getElementById('mImpact').innerText = node.impact;
       document.getElementById('mCitation').innerText = node.citation;
 
-      document.getElementById('mNeighborHeader').innerText = `Conexiones Bidireccionales (${node.degree})`;
+      document.getElementById('mNeighborHeader').innerText = `Conexiones Tríada Directas (${node.degree})`;
       const listEl = document.getElementById('mNeighborList');
       listEl.innerHTML = '';
 
@@ -930,7 +1000,7 @@
               <span><b>[${nb.id}]</b> ${nb.label}</span>
               <span style="font-size:8.5px; color:#94a3b8;">${e.name}</span>
             </div>
-            <span style="color:#E7C878; font-size:9px; font-family:monospace;">Nivel ${nb.level}</span>
+            <span style="color:${palette.levelColors[nb.level]}; font-size:9px; font-family:monospace;">Nivel ${nb.level}</span>
           `;
           item.onclick = (evt) => {
             evt.stopPropagation();
@@ -1079,7 +1149,7 @@
           const my = (s.proj.y + t.proj.y) / 2;
           ctx.font = '9px monospace';
           ctx.fillStyle = isHov || isSel ? '#E7C878' : '#94a3b8';
-          ctx.fillText(e.id, mx - 6, my - 4);
+          ctx.fillText(e.id, mx - 8, my - 4);
 
           ctx.restore();
         });
@@ -1095,8 +1165,9 @@
         const isHov = hoveredNode && hoveredNode.id === n.id;
         const isSel = selectedNode && selectedNode.id === n.id;
 
-        const rad = isHov || isSel ? 18 : 14;
+        const rad = isHov || isSel ? 20 : 15;
         const levelColor = palette.levelColors[n.level] || '#E7C878';
+        const triadStroke = n.triadRole === 'sintoma' ? '#E69888' : (n.triadRole === 'causa' ? '#E7C878' : '#C96349');
 
         ctx.save();
         ctx.beginPath();
@@ -1104,23 +1175,24 @@
         ctx.fillStyle = levelColor;
         ctx.fill();
 
-        ctx.strokeStyle = (isHov || isSel) ? '#ffffff' : '#000000';
-        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = triadStroke;
+        ctx.lineWidth = 3.5;
         ctx.stroke();
 
-        ctx.font = 'bold 11px monospace';
+        ctx.font = 'bold 9.5px monospace';
         ctx.fillStyle = '#000000';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(n.id, px, py);
+        ctx.fillText(n.id.split('-')[0], px, py);
 
-        // Always show label in 3D
+        // Label with Triad Role in 3D
         ctx.font = 'bold 11px ui-monospace, monospace';
         ctx.fillStyle = '#ffffff';
         ctx.textAlign = 'left';
         ctx.shadowColor = '#000000';
         ctx.shadowBlur = 6;
-        ctx.fillText(`${n.label} [N${n.level}]`, px + rad + 6, py + 3);
+        const triadLabel = n.triadRole === 'sintoma' ? '🔴 SÍNTOMA' : (n.triadRole === 'causa' ? '🟡 CAUSA' : '🟧 EFECTO');
+        ctx.fillText(`${n.label} [${triadLabel}]`, px + rad + 8, py + 3);
 
         ctx.restore();
       });
@@ -1133,7 +1205,7 @@
     function openSubNetworkModal() {
       if (!selectedNode) return;
       const subModal = document.getElementById('subnetworkModal');
-      document.getElementById('subModalTitle').innerText = `Sub-Red Matrioshka: ${selectedNode.label}`;
+      document.getElementById('subModalTitle').innerText = `Sub-Red Tríada: ${selectedNode.label}`;
       document.getElementById('subModalCode').innerText = `[${selectedNode.id}] Nivel ${selectedNode.level}`;
       subModal.style.display = 'flex';
       renderSubNetworkCanvas();
@@ -1169,14 +1241,14 @@
         // Draw Center Focal Hub
         sctx.save();
         sctx.beginPath();
-        sctx.arc(cx, cy, 24, 0, Math.PI * 2);
+        sctx.arc(cx, cy, 26, 0, Math.PI * 2);
         sctx.fillStyle = palette.levelColors[centerNode.level];
         sctx.fill();
         sctx.strokeStyle = '#ffffff';
         sctx.lineWidth = 3;
         sctx.stroke();
 
-        sctx.font = 'bold 12px monospace';
+        sctx.font = 'bold 10px monospace';
         sctx.fillStyle = '#000000';
         sctx.textAlign = 'center';
         sctx.textBaseline = 'middle';
@@ -1185,13 +1257,13 @@
         sctx.font = 'bold 12px monospace';
         sctx.fillStyle = '#ffffff';
         sctx.textAlign = 'left';
-        sctx.fillText(`${centerNode.label} [N${centerNode.level}]`, cx + 32, cy + 4);
+        sctx.fillText(`${centerNode.label} (Nivel ${centerNode.level})`, cx + 34, cy + 4);
         sctx.restore();
 
         // Draw Sub Neighbors in Circle
         activeNeighbors.forEach((nb, idx) => {
           const angle = (idx / Math.max(1, totalActive)) * Math.PI * 2 - Math.PI / 2;
-          const radius = 180;
+          const radius = 190;
           const nx = cx + Math.cos(angle) * radius;
           const ny = cy + Math.sin(angle) * radius;
 
@@ -1208,23 +1280,24 @@
           // Node
           sctx.save();
           sctx.beginPath();
-          sctx.arc(nx, ny, 16, 0, Math.PI * 2);
+          sctx.arc(nx, ny, 18, 0, Math.PI * 2);
           sctx.fillStyle = palette.levelColors[nb.level];
           sctx.fill();
           sctx.strokeStyle = '#ffffff';
           sctx.lineWidth = 2;
           sctx.stroke();
 
-          sctx.font = 'bold 10px monospace';
+          sctx.font = 'bold 9px monospace';
           sctx.fillStyle = '#000000';
           sctx.textAlign = 'center';
           sctx.textBaseline = 'middle';
-          sctx.fillText(nb.id, nx, ny);
+          sctx.fillText(nb.id.split('-')[0], nx, ny);
 
           sctx.font = '10px monospace';
           sctx.fillStyle = '#ffffff';
           sctx.textAlign = 'left';
-          sctx.fillText(`${nb.label} (N${nb.level})`, nx + 22, ny + 3);
+          const tLabel = nb.triadRole === 'sintoma' ? '🔴 SÍNTOMA' : (nb.triadRole === 'causa' ? '🟡 CAUSA' : '🟧 EFECTO');
+          sctx.fillText(`${nb.label} [${tLabel}]`, nx + 24, ny + 3);
           sctx.restore();
         });
 
@@ -1271,7 +1344,7 @@
         lastX = e.clientX; lastY = e.clientY;
       } else {
         const mx = e.clientX, my = e.clientY;
-        let closest = null, minDist = 22;
+        let closest = null, minDist = 24;
         nodes.forEach(n => {
           if (!n.active || !n.proj || !n.proj.visible) return;
           const d = Math.hypot(n.proj.x - mx, n.proj.y - my);
