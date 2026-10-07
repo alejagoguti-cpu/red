@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecosistema de Movilidad y Logística: Kennedy - Corabastos - Zona Franca</title>
+  <title>Red Causal Matrioshka Interactiva: Kennedy - Corabastos - Zona Franca</title>
   <style>
     * {
       box-sizing: border-box;
@@ -26,15 +26,12 @@
       width: 100%;
       height: 100%;
       display: block;
-      cursor: grab;
-    }
-    #viewport:active {
-      cursor: grabbing;
+      cursor: pointer;
     }
 
     .header-panel {
       position: absolute;
-      top: 20px;
+      top: 18px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -43,40 +40,41 @@
     }
 
     .main-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: #334155;
-      letter-spacing: 1px;
+      font-size: 19px;
+      font-weight: 900;
+      color: #0f172a;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
     }
     .main-subtitle {
       font-size: 12px;
-      color: #64748b;
-      margin-top: 4px;
-      font-weight: 500;
+      color: #475569;
+      margin-top: 3px;
+      font-weight: 600;
     }
 
-    /* Inspector Popup */
+    /* Inspector Popup Modal */
     .node-inspector {
       position: absolute;
-      top: 80px;
+      top: 75px;
       right: 20px;
-      width: 360px;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      width: 380px;
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
       padding: 18px;
       z-index: 120;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .node-title {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 800;
       color: #0f172a;
+      line-height: 1.35;
     }
     .node-subtitle {
       font-size: 10px;
@@ -85,6 +83,20 @@
       text-transform: uppercase;
       margin-top: 2px;
     }
+
+    .badge-triad {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .triad-sintoma { background: #FAD0C4; border: 1px solid #E8A598; color: #721C24; }
+    .triad-causa { background: #FFF3CD; border: 1px solid #E6C200; color: #856404; }
+    .triad-efecto { background: #F8D7DA; border: 1px solid #F5C6CB; color: #721C24; }
 
     .btn-close {
       width: 24px;
@@ -110,11 +122,11 @@
     }
 
     .citation-box {
-      background: rgba(132, 164, 139, 0.12);
-      border: 1px solid rgba(132, 164, 139, 0.35);
+      background: rgba(132, 164, 139, 0.14);
+      border: 1px solid rgba(132, 164, 139, 0.4);
       border-radius: 8px;
       padding: 10px 12px;
-      color: #2e5a36;
+      color: #1e4620;
       font-size: 11px;
       line-height: 1.4;
       font-style: italic;
@@ -123,16 +135,32 @@
     .bottom-bar {
       position: absolute;
       bottom: 20px;
-      left: 20px;
-      padding: 10px 18px;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      font-size: 11px;
-      color: #475569;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 22px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      font-size: 11.5px;
+      color: #334155;
+      font-weight: 600;
       pointer-events: auto;
       z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-reset {
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -141,24 +169,28 @@
   <canvas id="viewport"></canvas>
 
   <div class="header-panel">
-    <div class="main-title">ACTORES DE MOVILIDAD Y LOGÍSTICA EN KENNEDY</div>
-    <div class="main-subtitle">CORABASTOS - ZONA FRANCA - BOGOTÁ D.C.</div>
+    <div class="main-title">RED CAUSAL MATRIOSHKA: KENNEDY - CORABASTOS - ZONA FRANCA</div>
+    <div class="main-subtitle">Despliegue Progresivo por Capas • Síntoma ➔ Causa ➔ Efecto (Bogotá D.C.)</div>
   </div>
 
   <div class="node-inspector" id="nodeInspector" style="display:none;">
     <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
       <div>
         <div class="node-title" id="mNodeTitle">Título Nodo</div>
-        <div class="node-subtitle" id="mNodeCategory">Categoría Ecosistémica</div>
+        <div class="node-subtitle" id="mNodeCategory">Nivel Matrioshka</div>
+        <div id="mTriadBadge" class="badge-triad triad-sintoma">SÍNTOMA VISIBLE</div>
       </div>
       <div class="btn-close" onclick="closeInspector()">×</div>
     </div>
 
-    <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:800;">Función Operativa en el Ecosistema</div>
-    <div class="text-content" id="mNodeDesc">Descripción del actor.</div>
+    <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:800;">Función Operativa & Diagnóstico</div>
+    <div class="text-content" id="mNodeDesc">Descripción real.</div>
+
+    <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:800;">Impacto e Ineficiencia Sistémica</div>
+    <div class="text-content" id="mNodeImpact">Impacto real.</div>
 
     <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:800;">📜 Cita Técnica Oficial Obligatoria</div>
-    <div class="citation-box" id="mNodeCitation">Cita oficial.</div>
+    <div class="citation-box" id="mNodeCitation">Cita técnica.</div>
 
     <div style="display:flex; justify-content:flex-end; margin-top:4px;">
       <button style="background:#f1f5f9; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; font-weight:700; cursor:pointer;" onclick="closeInspector()">Cerrar</button>
@@ -166,7 +198,8 @@
   </div>
 
   <div class="bottom-bar">
-    💡 Clic en cualquier esfera o grupo de actores para ver su ficha técnica • Arrastra para desplazar el mapa
+    <span>💡 Haz clic en el centro o en una burbuja para desplegar el siguiente nivel Matrioshka</span>
+    <button class="btn-reset" onclick="resetMatrioshka()">Reiniciar Red</button>
   </div>
 
   <script>
@@ -175,88 +208,61 @@
 
     let scale = 1.0, targetScale = 1.0;
     let panX = 0, panY = 0, targetPanX = 0, targetPanY = 0;
-    let isMouseDown = false, lastX = 0, lastY = 0, clickStartX = 0, clickStartY = 0;
     let hoveredNode = null, selectedNode = null;
 
     // Colores Pastel calcados exactamente del referente visual de la imagen
     const colors = {
       bg: '#ffffff',
-      publicos: { sector: 'rgba(250, 208, 196, 0.35)', fill: '#FAD0C4', stroke: '#E8A598', text: '#5C1D24' },   // Rosa Pastel (Públicos / Región)
-      privados: { sector: 'rgba(247, 225, 160, 0.35)', fill: '#F7E1A0', stroke: '#E3C676', text: '#594406' },   // Crema Pastel (Privados / Gremios)
-      operadores: { sector: 'rgba(226, 212, 240, 0.35)', fill: '#E2D4F0', stroke: '#BEA6DE', text: '#36124A' }, // Violeta Pastel (Operadores / Hub)
-      oferta: { sector: 'rgba(212, 237, 218, 0.35)', fill: '#D4EDDA', stroke: '#9BD4A7', text: '#11471D' },     // Verde Menta (Oferta / Corabastos)
-      demanda: { sector: 'rgba(208, 225, 253, 0.35)', fill: '#D0E1FD', stroke: '#9EC2FC', text: '#002E66' },    // Azul Pastel (Demanda / Arterias)
-      espacio: { sector: 'rgba(226, 232, 240, 0.35)', fill: '#E2E8F0', stroke: '#CBD5E1', text: '#334155' }     // Gris Pastel (Espacio / Malla)
+      core: { sector: 'rgba(255, 243, 205, 0.4)', fill: '#FFF3CD', stroke: '#E6C200', text: '#856404' },
+      n1: { sector: 'rgba(250, 208, 196, 0.35)', fill: '#FAD0C4', stroke: '#E8A598', text: '#721C24' },
+      n2: { sector: 'rgba(226, 212, 240, 0.35)', fill: '#E2D4F0', stroke: '#BEA6DE', text: '#36124A' },
+      n3: { sector: 'rgba(208, 225, 253, 0.35)', fill: '#D0E1FD', stroke: '#9EC2FC', text: '#002E66' },
+      n4: { sector: 'rgba(212, 237, 218, 0.35)', fill: '#D4EDDA', stroke: '#9BD4A7', text: '#11471D' }
     };
 
-    // Dataset adaptado de Kennedy Bogotá conservando el esquema radial de la infografía
+    // Master dataset de Kennedy Bogotá con la Tríada Síntoma -> Causa -> Efecto REAL verificada por POT Decreto 555 de 2021 y SDM
     const rawNodesData = [
-      // === NODO CENTRAL MAESTRO ===
-      { id: 'CENTER', label: 'Ecosistema de Movilidad y Logística', category: 'Núcleo Central', cluster: 'privados', desc: 'Centro de coordinación de carga agroalimentaria y movilidad del Borde Occidental de Bogotá.', citation: 'POT Decreto 555 de 2021.', radius: 55, x: 0, y: 0 },
+      // NODO CENTRAL (Visible desde el inicio)
+      { id: 'CORE', label: 'Núcleo Matrioshka Bogotá Carga', category: 'Centro Matrioshka', level: 0, triadRole: 'core', cluster: 'core', desc: 'Sistema anidado de movilidad y abastecimiento agroalimentario de Bogotá D.C. Presiona para abrir Nivel 1.', impact: 'Punto de convergencia macro-regional de carga y transporte masivo.', citation: 'POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca.', radius: 56, x: 0, y: 0, visible: true, parent: null },
 
-      // === SECTOR 1: INSTITUCIONES PÚBLICAS & REGION (Arriba - Rosa Pastel) ===
-      { id: 'PUB_MAIN', label: 'Sector Público & Región', category: 'Actores Públicos', cluster: 'publicos', desc: 'Secretaría de Movilidad (SDM), Gobernación de Cundinamarca y Ministerios reguladores.', citation: 'SDM (2019) Estudio Origen-Destino.', radius: 42, x: 0, y: -220 },
-      { id: 'PUB_SDM', label: 'Sec. Distrital de Movilidad', category: 'Públicos', cluster: 'publicos', desc: 'Regulación de PMT y tráfico de carga.', citation: 'Resolución SDM 184 de 2018.', radius: 24, x: -75, y: -290 },
-      { id: 'PUB_IDU', label: 'Instituto de Desarrollo Urbano', category: 'Públicos', cluster: 'publicos', desc: 'Infraestructura vial y mantenimientos.', citation: 'IDU (2021) Informe Capacidad.', radius: 24, x: 0, y: -310 },
-      { id: 'PUB_CARGA', label: 'Accesos Calle 13 / Autosur', category: 'Públicos', cluster: 'publicos', desc: 'Portales de entrada del 68% de alimentos.', citation: 'Decreto 319 de 2006.', radius: 24, x: 75, y: -290 },
+      // NIVEL 1: MACRO PERIFERIA REGIONAL (Nivel 1 - Se despliega al pulsar el Centro)
+      { id: 'N1_S', label: '[N1] Saturación en Portales Periféricos', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'sintoma', cluster: 'n1', desc: 'Puntos de congestión fija por represamiento de tractocamiones C3-S3 en accesos distritales (Calle 13 / Autosur).', impact: 'Degradación del nivel de servicio vial (LOS F) en las entradas a la capital.', citation: 'Secretaría Distrital de Movilidad (SDM, 2019) Estudio Origen-Destino de Carga.', radius: 36, x: 0, y: -190, visible: false, parent: 'CORE' },
+      { id: 'N1_C', label: '[N1] Monopolio 68% Carga Alimentaria', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'causa', cluster: 'n1', desc: 'Concentración masiva de camiones pesados sin infraestructura alternativa de acopio periférico.', impact: 'Inflexibilidad operativa frente a variaciones de flujo regional.', citation: 'SDM (2019) / Decreto 319 de 2006 (Plan Maestro de Movilidad).', radius: 26, x: -80, y: -260, visible: false, parent: 'N1_S' },
+      { id: 'N1_E', label: '[N1] Inflexibilidad Estructural Entradas', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'efecto', cluster: 'n1', desc: 'Superación de la capacidad de soporte vial en corredores de ingreso distrital.', impact: 'Transmisión directa de presión vehicular hacia la red urbana interior.', citation: 'Alcaldía Mayor de Bogotá (2021) POT Decreto 555 de 2021.', radius: 26, x: 80, y: -260, visible: false, parent: 'N1_S' },
 
-      // === SECTOR 2: GREMIOS PRIVADOS & EMPRESAS (Derecha Arriba - Crema Pastel) ===
-      { id: 'PRIV_MAIN', label: 'Gremios & Transportadores', category: 'Sector Privado', cluster: 'privados', desc: 'Asociaciones camioneras (C3-S3), Cámara de Comercio de Bogotá y gremios de carga.', citation: 'SDDE & CCB (2021).', radius: 42, x: 220, y: -120 },
-      { id: 'PRIV_CAMION', label: 'Asociaciones de Carga Pesada', category: 'Privados', cluster: 'privados', desc: 'Operación de tractocamiones regionales.', citation: 'SDM (2019).', radius: 24, x: 290, y: -190 },
-      { id: 'PRIV_CCB', label: 'Cámara de Comercio Bogotá', category: 'Privados', cluster: 'privados', desc: 'Promoción logística y articulación empresarial.', citation: 'SDDE & CCB (2021).', radius: 24, x: 310, y: -110 },
+      // NIVEL 2: EJE LOGÍSTICO INTER-LOCAL FONTIBÓN ⇄ KENNEDY (Nivel 2 - Se despliega al pulsar N1)
+      { id: 'N2_S', label: '[N2] Fricción Vehicular Av. Centenario ⇄ Cali', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'sintoma', cluster: 'n2', desc: 'Interrupción continua del flujo entre la zona industrial de Fontibón y los acopios de Kennedy.', impact: 'Reducción severa de la velocidad media en la arteria de interconexión.', citation: 'SDM (2022) Caracterización de Flujos Logísticos en el Borde Occidental.', radius: 36, x: 200, y: -80, visible: false, parent: 'N1_E' },
+      { id: 'N2_C', label: '[N2] Ausencia Corredor Logístico Segregado', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'causa', cluster: 'n2', desc: 'Mezcla obligada de camiones pesados de empaques y secos de Zona Franca con el tráfico urbano.', impact: 'Fricción permanente y sobrecostos de flete en la distribución de alimentos.', citation: 'Secretaría Distrital de Desarrollo Económico (SDDE) & CCB (2021).', radius: 26, x: 280, y: -150, visible: false, parent: 'N2_S' },
+      { id: 'N2_E', label: '[N2] Bloqueo e Ineficiencia Logística', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'efecto', cluster: 'n2', desc: 'Pérdida masiva de horas-hombre y retraso en la cadena de distribución urbana de insumos.', impact: 'Aumento de costos de transporte que se trasladan al precio final de los alimentos.', citation: 'SDDE & Cámara de Comercio de Bogotá (2021).', radius: 26, x: 290, y: -20, visible: false, parent: 'N2_S' },
 
-      // === SECTOR 3: OPERADORES & HUB ZONA FRANCA (Derecha Abajo - Violeta Pastel) ===
-      { id: 'OP_MAIN', label: 'Cluster Zona Franca Fontibón', category: 'Hub Logístico', cluster: 'operadores', desc: 'Operadores logísticos, procesamiento de secos, empaques y bodegaje industrial.', citation: 'SDDE (2021) Diagnóstico Logística.', radius: 42, x: 220, y: 150 },
-      { id: 'OP_CENTENARIO', label: 'Corredor Av. Centenario', category: 'Operadores', cluster: 'operadores', desc: 'Vía de interconexión pesada Fontibón-Kennedy.', citation: 'SDM (2022).', radius: 24, x: 310, y: 100 },
-      { id: 'OP_EMPAQUES', label: 'Procesamiento de Empaques', category: 'Operadores', cluster: 'operadores', desc: 'Suministro de plásticos y empaques para Corabastos.', citation: 'SDDE (2021).', radius: 24, x: 290, y: 210 },
+      // NIVEL 3: ARTERIAS URBANAS DISTRITALES KENNEDY (Nivel 3 - Se despliega al pulsar N2)
+      { id: 'N3_S', label: '[N3] Retención Spillback 3 km Av. Tintal', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'sintoma', cluster: 'n3', desc: 'Filas de vehículos que se extienden desde Corabastos bloqueando la red distrital principal.', impact: 'Saturación total de carriles en Av. Tintal, Av. Cepeda y Av. Américas.', citation: 'Alcaldía Mayor de Bogotá (2021) POT Decreto 555 / SDM (2020) PMT Patio Bonito.', radius: 36, x: 200, y: 160, visible: false, parent: 'N2_E' },
+      { id: 'N3_C', label: '[N3] Mezcla Carga + TransMilenio + SITP', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'causa', cluster: 'n3', desc: 'Coexistencia en un mismo perfil vial de rutas alimentadoras, buses troncales y tractocamiones.', impact: 'Conflicto vehicular de fricción alta en el nodo Av. Las Américas ⇄ Banderas.', citation: 'Instituto de Desarrollo Urbano (IDU, 2021) Informe Capacidad en Kennedy.', radius: 26, x: 290, y: 100, visible: false, parent: 'N3_S' },
+      { id: 'N3_E', label: '[N3] Parálisis Movilidad Local Kennedy', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'efecto', cluster: 'n3', desc: 'Afectación directa a los tiempos de viaje de más de 500.000 ciudadanos en Kennedy.', impact: 'Colapso de intersecciones clave y transferencia de retención hacia la Calle 13.', citation: 'IDU (2021) Informe de Capacidad Operativa y Congestión.', radius: 26, x: 290, y: 220, visible: false, parent: 'N3_S' },
 
-      // === SECTOR 4: CENTRAL MAYORISTA CORABASTOS (Abajo - Verde Menta) ===
-      { id: 'OFERT_MAIN', label: 'Central Mayorista Corabastos', category: 'Oferta Agroalimentaria', cluster: 'oferta', desc: 'Núcleo de recepción de 13.500 ton/día de alimentos y comercio mayorista.', citation: 'POT Decreto 555 de 2021.', radius: 46, x: 0, y: 250 },
-      { id: 'OFERT_BASCULAS', label: 'Básculas Puertas 6, 7 y 8', category: 'Oferta', cluster: 'oferta', desc: 'Control de pesaje e inspección de entrada.', citation: 'Res. SDM 184 de 2018.', radius: 24, x: -80, y: 320 },
-      { id: 'OFERT_COMERCIO', label: 'Comerciantes & Mayoristas', category: 'Oferta', cluster: 'oferta', desc: 'Bodegas de acopio y redistribución urbana.', citation: 'SDDE & CCB (2021).', radius: 24, x: 80, y: 320 },
-
-      // === SECTOR 5: ARTERIAS URBANAS & TRANSMILENIO (Izquierda Abajo - Azul Celeste) ===
-      { id: 'DEM_MAIN', label: 'Arterias Urbanas Kennedy', category: 'Movilidad Urbana', cluster: 'demanda', desc: 'Corredores de transporte público masivo (TransMilenio), SITP y vehículos particulares.', citation: 'IDU (2021) Capacidad Operativa.', radius: 42, x: -220, y: 150 },
-      { id: 'DEM_BANDERAS', label: 'Nodo Banderas / Av. Américas', category: 'Demanda', cluster: 'demanda', desc: 'Intersección modal de alto tráfico mixto.', citation: 'IDU (2021).', radius: 24, x: -300, y: 210 },
-      { id: 'DEM_TINTAL', label: 'Av. Tintal (Spillback 3km)', category: 'Demanda', cluster: 'demanda', desc: 'Retención de cola que satura la red distrital.', citation: 'SDM (2020) PMT Patio Bonito.', radius: 24, x: -310, y: 100 },
-
-      // === SECTOR 6: ESPACIO LOCAL & COMUNIDAD (Izquierda Arriba - Gris Pastel) ===
-      { id: 'GEO_MAIN', label: 'Malla Local Peri-Corabastos', category: 'Espacio Local', cluster: 'espacio', desc: 'Entorno barrial del sector Patio Bonito, El Amparo y espacio público ocupado.', citation: 'Corabastos S.A. & SDM (2018).', radius: 42, x: -220, y: -120 },
-      { id: 'GEO_CARRETAS', label: 'Carga Informal & Carretilleros', category: 'Espacio Local', cluster: 'espacio', desc: 'Descargue sobre vía y maniobras menores.', citation: 'Resolución SDM 184 de 2018.', radius: 24, x: -310, y: -170 },
-      { id: 'GEO_RESIDENTES', label: 'Comunidad Patio Bonito / Amparo', category: 'Espacio Local', cluster: 'espacio', desc: 'Habitantes afectados por degradación de velocidad < 5 km/h.', citation: 'POT Decreto 555 de 2021.', radius: 24, x: -290, y: -70 }
+      // NIVEL 4: NÚCLEO HIPERLOCAL CORABASTOS (Nivel 4 - Se despliega al pulsar N3)
+      { id: 'N4_S', label: '[N4] Velocidad Operativa < 5 km/h', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'sintoma', cluster: 'n4', desc: 'Tráfico prácticamente detenido en las vías inmediatas que rodean la central de abastecimiento.', impact: 'Parálisis de la circulación en la red vial del sector Patio Bonito y El Amparo.', citation: 'Corabastos S.A. & SDM (2018) Resolución SDM 184 de 2018.', radius: 36, x: -200, y: 160, visible: false, parent: 'N3_E' },
+      { id: 'N4_C', label: '[N4] Demora Básculas Puertas 6, 7 y 8', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'causa', cluster: 'n4', desc: 'Capacidad insuficiente y tiempo prolongado de registro en las taquillas de acceso a Corabastos.', impact: 'Origen primario de la cola de retención (Spillback) que se propaga a los niveles superiores.', citation: 'POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca.', radius: 26, x: -290, y: 220, visible: false, parent: 'N4_S' },
+      { id: 'N4_E', label: '[N4] Invasión Espacio Público Carga Informal', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'efecto', cluster: 'n4', desc: 'Parqueo informal en vía, maniobras no reguladas de descarga y bicipatines cargadores.', impact: 'Bloqueo total de la malla vial local peri-Corabastos y deterioro de la seguridad vial.', citation: 'Corabastos S.A. & SDM (2018) Reglamento Interno de Operación Logística.', radius: 26, x: -290, y: 100, visible: false, parent: 'N4_S' }
     ];
 
     const edges = [
-      { source: 'CENTER', target: 'PUB_MAIN' },
-      { source: 'CENTER', target: 'PRIV_MAIN' },
-      { source: 'CENTER', target: 'OP_MAIN' },
-      { source: 'CENTER', target: 'OFERT_MAIN' },
-      { source: 'CENTER', target: 'DEM_MAIN' },
-      { source: 'CENTER', target: 'GEO_MAIN' },
+      { source: 'CORE', target: 'N1_S' },
+      { source: 'N1_S', target: 'N1_C' },
+      { source: 'N1_S', target: 'N1_E' },
 
-      { source: 'PUB_MAIN', target: 'PUB_SDM' },
-      { source: 'PUB_MAIN', target: 'PUB_IDU' },
-      { source: 'PUB_MAIN', target: 'PUB_CARGA' },
+      { source: 'N1_E', target: 'N2_S' },
+      { source: 'N2_S', target: 'N2_C' },
+      { source: 'N2_S', target: 'N2_E' },
 
-      { source: 'PRIV_MAIN', target: 'PRIV_CAMION' },
-      { source: 'PRIV_MAIN', target: 'PRIV_CCB' },
+      { source: 'N2_E', target: 'N3_S' },
+      { source: 'N3_S', target: 'N3_C' },
+      { source: 'N3_S', target: 'N3_E' },
 
-      { source: 'OP_MAIN', target: 'OP_CENTENARIO' },
-      { source: 'OP_MAIN', target: 'OP_EMPAQUES' },
-
-      { source: 'OFERT_MAIN', target: 'OFERT_BASCULAS' },
-      { source: 'OFERT_MAIN', target: 'OFERT_COMERCIO' },
-
-      { source: 'DEM_MAIN', target: 'DEM_BANDERAS' },
-      { source: 'DEM_MAIN', target: 'DEM_TINTAL' },
-
-      { source: 'GEO_MAIN', target: 'GEO_CARRETAS' },
-      { source: 'GEO_MAIN', target: 'GEO_RESIDENTES' },
-
-      // Interconexiones cruzadas
-      { source: 'OP_MAIN', target: 'OFERT_MAIN' },
-      { source: 'OFERT_BASCULAS', target: 'DEM_TINTAL' },
-      { source: 'GEO_CARRETAS', target: 'OFERT_MAIN' }
+      { source: 'N3_E', target: 'N4_S' },
+      { source: 'N4_S', target: 'N4_C' },
+      { source: 'N4_S', target: 'N4_E' },
+      { source: 'N4_C', target: 'N3_S' } // Spillback inverso
     ];
 
     let nodes = [];
@@ -282,12 +288,58 @@
       });
     }
 
+    function expandNode(node) {
+      // Al presionar un nodo, desplegar sus hijos directos en la jerarquía Matrioshka
+      let expandedCount = 0;
+      nodes.forEach(n => {
+        if (n.parent === node.id && !n.visible) {
+          n.visible = true;
+          expandedCount++;
+        }
+      });
+
+      // Si no tiene hijos directos por parent, abrir el siguiente nivel de la Matrioshka
+      if (expandedCount === 0) {
+        const nextLevel = node.level + 1;
+        nodes.forEach(n => {
+          if (n.level === nextLevel && !n.visible) {
+            n.visible = true;
+          }
+        });
+      }
+    }
+
+    function resetMatrioshka() {
+      nodes.forEach(n => {
+        n.visible = (n.level === 0);
+      });
+      selectedNode = null;
+      closeInspector();
+    }
+
     function openInspector(node) {
       selectedNode = node;
       document.getElementById('mNodeTitle').innerText = node.label;
-      document.getElementById('mNodeCategory').innerText = `Categoría: ${node.category}`;
+      document.getElementById('mNodeCategory').innerText = `Nivel Matrioshka ${node.level} • ${node.category}`;
       document.getElementById('mNodeDesc').innerText = node.desc;
+      document.getElementById('mNodeImpact').innerText = node.impact;
       document.getElementById('mNodeCitation').innerText = node.citation;
+
+      const badge = document.getElementById('mTriadBadge');
+      if (node.triadRole === 'sintoma') {
+        badge.innerText = '🔴 SÍNTOMA VISIBLE';
+        badge.className = 'badge-triad triad-sintoma';
+      } else if (node.triadRole === 'causa') {
+        badge.innerText = '🟡 CAUSA ESTRUCTURAL';
+        badge.className = 'badge-triad triad-causa';
+      } else if (node.triadRole === 'efecto') {
+        badge.innerText = '🟧 EFECTO SISTÉMICO';
+        badge.className = 'badge-triad triad-efecto';
+      } else {
+        badge.innerText = '⭐ NÚCLEO CENTRAL';
+        badge.className = 'badge-triad triad-causa';
+      }
+
       document.getElementById('nodeInspector').style.display = 'flex';
     }
 
@@ -312,14 +364,12 @@
       ctx.translate(cx, cy);
       ctx.scale(scale, scale);
 
-      // 1. Dibujar Sectores de Fondo en Arcos Pastel (Igual al gráfico)
+      // 1. Sectores Radiales de Fondo Pastel
       const sectors = [
-        { start: -Math.PI * 0.75, end: -Math.PI * 0.25, color: colors.publicos.sector, label: 'INSTITUCIONES & REGIÓN' },
-        { start: -Math.PI * 0.25, end: 0, color: colors.privados.sector, label: 'GREMIOS & CARGA' },
-        { start: 0, end: Math.PI * 0.4, color: colors.operadores.sector, label: 'HUB LOGÍSTICO FONTIBÓN' },
-        { start: Math.PI * 0.4, end: Math.PI * 0.75, color: colors.oferta.sector, label: 'CORABASTOS / OFERTA' },
-        { start: Math.PI * 0.75, end: Math.PI * 1.15, color: colors.demanda.sector, label: 'ARTERIAS / MOVILIDAD' },
-        { start: Math.PI * 1.15, end: Math.PI * 1.5, color: colors.espacio.sector, label: 'ESPACIO LOCAL' }
+        { start: -Math.PI * 0.75, end: -Math.PI * 0.25, color: colors.n1.sector },
+        { start: -Math.PI * 0.25, end: Math.PI * 0.25, color: colors.n2.sector },
+        { start: Math.PI * 0.25, end: Math.PI * 0.75, color: colors.n3.sector },
+        { start: Math.PI * 0.75, end: Math.PI * 1.25, color: colors.n4.sector }
       ];
 
       sectors.forEach(s => {
@@ -331,19 +381,21 @@
         ctx.fill();
       });
 
-      // 2. Anillos Concéntricos de Guía
-      [140, 240, 340].forEach(r => {
+      // 2. Anillos Concéntricos Guía
+      [140, 230, 320].forEach(r => {
         ctx.beginPath();
         ctx.arc(0, 0, r, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.06)';
         ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
         ctx.stroke();
+        ctx.setLineDash([]);
       });
 
-      // 3. Dibujar Conexiones Limpias entre Nodos
+      // 3. Render Edges (Solo visibles si ambos nodos están activos)
       edges.forEach(e => {
         const s = e.sourceNode, t = e.targetNode;
-        if (!s || !t) return;
+        if (!s || !t || !s.visible || !t.visible) return;
 
         const isHov = hoveredNode && (s.id === hoveredNode.id || t.id === hoveredNode.id);
         const isSel = selectedNode && (s.id === selectedNode.id || t.id === selectedNode.id);
@@ -352,33 +404,35 @@
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
         ctx.lineTo(t.x, t.y);
-        ctx.strokeStyle = (isHov || isSel) ? '#0284c7' : 'rgba(0, 0, 0, 0.12)';
-        ctx.lineWidth = (isHov || isSel) ? 2.5 : 1.2;
+        ctx.strokeStyle = (isHov || isSel) ? '#0284c7' : 'rgba(0, 0, 0, 0.15)';
+        ctx.lineWidth = (isHov || isSel) ? 2.8 : 1.4;
         ctx.stroke();
         ctx.restore();
       });
 
-      // 4. Dibujar Esferas FLAT Pastel con Borde y Texto
+      // 4. Render Nodos Visibles (Con animación flat de aparición)
       nodes.forEach(n => {
+        if (!n.visible) return;
+
         const isHov = hoveredNode && hoveredNode.id === n.id;
         const isSel = selectedNode && selectedNode.id === n.id;
-        const cStyle = colors[n.cluster] || colors.privados;
+        const cStyle = colors[n.cluster] || colors.core;
 
         ctx.save();
 
-        // Círculo Relleno Flat
+        // Relleno Sólido Flat Pastel
         ctx.fillStyle = cStyle.fill;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // Borde Sólido
+        // Borde Sólido Vectorial
         ctx.strokeStyle = (isHov || isSel) ? '#0f172a' : cStyle.stroke;
-        ctx.lineWidth = (isHov || isSel) ? 3 : 1.8;
+        ctx.lineWidth = (isHov || isSel) ? 3.5 : 2;
         ctx.stroke();
 
-        // Texto Integrado en Círculo o Flotante
-        ctx.font = (isHov || isSel) ? 'bold 11px sans-serif' : '10px sans-serif';
+        // Texto Integrado o Flotante
+        ctx.font = (isHov || isSel) ? 'bold 11px sans-serif' : 'bold 10px sans-serif';
         ctx.fillStyle = cStyle.text;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -392,7 +446,7 @@
             ctx.fillText(n.label, n.x, n.y);
           }
         } else {
-          ctx.fillText(n.label, n.x, n.y + n.radius + 12);
+          ctx.fillText(n.label, n.x, n.y + n.radius + 13);
         }
 
         ctx.restore();
@@ -403,40 +457,34 @@
       requestAnimationFrame(render);
     }
 
-    // Eventos Mouse
+    // Eventos Mouse e Interacción de Despliegue Progresivo
     canvas.addEventListener('mousedown', e => {
-      isMouseDown = true;
       lastX = e.clientX; lastY = e.clientY;
       clickStartX = e.clientX; clickStartY = e.clientY;
     });
 
     window.addEventListener('mouseup', e => {
-      isMouseDown = false;
       const dragDist = Math.hypot(e.clientX - clickStartX, e.clientY - clickStartY);
       if (dragDist < 5 && hoveredNode) {
+        expandNode(hoveredNode);
         openInspector(hoveredNode);
       }
     });
 
     canvas.addEventListener('mousemove', e => {
-      if (isMouseDown) {
-        targetPanX += e.clientX - lastX;
-        targetPanY += e.clientY - lastY;
-        lastX = e.clientX; lastY = e.clientY;
-      } else {
-        const w = canvas.width, h = canvas.height;
-        const cx = w / 2 + panX;
-        const cy = h / 2 + panY;
-        const mx = (e.clientX - cx) / scale;
-        const my = (e.clientY - cy) / scale;
+      const w = canvas.width, h = canvas.height;
+      const cx = w / 2 + panX;
+      const cy = h / 2 + panY;
+      const mx = (e.clientX - cx) / scale;
+      const my = (e.clientY - cy) / scale;
 
-        let closest = null, minDist = 40;
-        nodes.forEach(n => {
-          const d = Math.hypot(n.x - mx, n.y - my);
-          if (d < minDist) { minDist = d; closest = n; }
-        });
-        hoveredNode = closest;
-      }
+      let closest = null, minDist = 40;
+      nodes.forEach(n => {
+        if (!n.visible) return;
+        const d = Math.hypot(n.x - mx, n.y - my);
+        if (d < minDist) { minDist = d; closest = n; }
+      });
+      hoveredNode = closest;
     });
 
     canvas.addEventListener('wheel', e => {
