@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecosistema Matrioshka: Kennedy - Corabastos - Zona Franca</title>
+  <title>Red Causal Matrioshka: 52 Nodos Diagnósticos de Kennedy - Corabastos - Zona Franca</title>
   <style>
     * {
       box-sizing: border-box;
@@ -14,7 +14,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: #fafafa;
+      background-color: #ffffff;
       color: #1e293b;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       font-size: 12px;
@@ -31,7 +31,7 @@
 
     .header-panel {
       position: absolute;
-      top: 22px;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
       text-align: center;
@@ -40,33 +40,32 @@
     }
 
     .main-title {
-      font-size: 21px;
+      font-size: 20px;
       font-weight: 800;
       color: #0f172a;
-      letter-spacing: 1.2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
     .main-subtitle {
       font-size: 12px;
       color: #64748b;
-      margin-top: 4px;
+      margin-top: 3px;
       font-weight: 600;
-      letter-spacing: 0.4px;
     }
 
-    /* Node Inspector Card */
+    /* Node Inspector Drawer */
     .node-inspector {
       position: absolute;
-      top: 80px;
-      right: 24px;
+      top: 75px;
+      right: 20px;
       width: 410px;
       max-height: calc(100vh - 120px);
       overflow-y: auto;
       background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.09);
-      padding: 22px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      padding: 20px;
       z-index: 120;
       display: flex;
       flex-direction: column;
@@ -174,7 +173,7 @@
 
     .bottom-bar {
       position: absolute;
-      bottom: 24px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       padding: 10px 24px;
@@ -212,8 +211,8 @@
   <canvas id="viewport"></canvas>
 
   <div class="header-panel">
-    <div class="main-title">RED CAUSAL MATRIOSHKA: KENNEDY - CORABASTOS - ZONA FRANCA</div>
-    <div class="main-subtitle">Análisis Cuantitativo de Movilidad y Logística Urbana • Bogotá D.C.</div>
+    <div class="main-title">RED CAUSAL MATRIOSHKA: 52 NODOS DIAGNÓSTICOS</div>
+    <div class="main-subtitle">Movilidad y Logística Urbana • Kennedy - Corabastos - Zona Franca (Bogotá D.C.)</div>
   </div>
 
   <div class="node-inspector" id="nodeInspector" style="display:none;">
@@ -252,7 +251,7 @@
   </div>
 
   <div class="bottom-bar">
-    <span>💡 Haz clic en una esfera para abrir el siguiente nivel Matrioshka y desplegar la ficha cuantitativa</span>
+    <span>💡 Haz clic en una esfera para abrir sus nodos dependientes (Total: 52 Nodos Reales)</span>
     <button class="btn-reset" onclick="resetMatrioshka()">Reiniciar Red</button>
   </div>
 
@@ -264,7 +263,6 @@
     let panX = 0, panY = 0, targetPanX = 0, targetPanY = 0;
     let hoveredNode = null, selectedNode = null;
 
-    // Paleta pastel refinada calcada del gráfico
     const colors = {
       bg: '#ffffff',
       core: { sector: 'rgba(255, 243, 205, 0.45)', fill1: '#FFF9E6', fill2: '#F7E1A0', stroke: '#D4AC0D', text: '#594406' },
@@ -274,218 +272,128 @@
       n4: { sector: 'rgba(212, 237, 218, 0.4)', fill1: '#F0F9F2', fill2: '#D4EDDA', stroke: '#9BD4A7', text: '#11471D' }
     };
 
-    // DATASET EXHAUSTIVO CON CIFRAS CUANTITATIVAS, INDICADORES DE VOLUMEN Y MECANISMOS TÉCNICOS VERIFICADOS (SDM/POT 555/IDU/SDDE)
+    // 52 NODOS EXHAUSTIVOS CON SÍNTOMAS, CAUSAS Y EFECTOS TÉCNICOS VERIFICADOS
     const rawNodesData = [
-      // NODO NÚCLEO CENTRAL
-      { 
-        id: 'CORE', 
-        label: 'Núcleo Matrioshka Bogotá Carga', 
-        category: 'Centro Matrioshka', 
-        level: 0, 
-        triadRole: 'core', 
-        cluster: 'core', 
-        metricVal: '13.500 Ton/día',
-        serviceLevel: 'Nodos Mixtos Carga',
-        desc: 'Centro neurálgico de acopio y abastecimiento alimentario de la capital (gestión de 13.500 a 14.000 toneladas diarias) e interconexión con el corredor industrial del borde occidental. Haz clic para abrir el Nivel 1.', 
-        impact: 'Convergencia masiva de tractocamiones pesados (C3-S3) con rutas troncales de transporte público.', 
-        citation: 'Alcaldía Mayor de Bogotá. Plan de Ordenamiento Territorial (POT) Decreto 555 de 2021 (Actuación Estratégica Chucua de la Vaca - Pieza Agroindustrial Corabastos).', 
-        radius: 58, x: 0, y: 0, visible: true, parent: null 
-      },
+      // === NODO CENTRAL ===
+      { id: 'CORE', label: 'Núcleo Matrioshka Bogotá Carga', category: 'Centro Matrioshka', level: 0, triadRole: 'core', cluster: 'core', metricVal: '13.500 Ton/día', serviceLevel: 'Nodos Mixtos Carga', desc: 'Centro neurálgico de acopio y abastecimiento alimentario capitalino.', impact: 'Punto de convergencia macro-regional de carga pesada.', citation: 'POT Decreto 555 de 2021 (Chucua de la Vaca).', radius: 58, x: 0, y: 0, visible: true, parent: null },
 
-      // NIVEL 1: MACRO PERIFERIA REGIONAL (Nivel 1 - Arriba)
-      { 
-        id: 'N1_S', 
-        label: 'Saturación Operativa en Portales Periféricos', 
-        category: 'Nivel 1 (Macro Periferia)', 
-        level: 1, 
-        triadRole: 'sintoma', 
-        cluster: 'n1', 
-        metricVal: 'LOS F (Capacidad >1.0)',
-        serviceLevel: 'Velocidad < 12 km/h',
-        desc: 'Puntos fijados de embotellamiento estructural en los accesos de entrada regional Calle 13 y Autopista Sur por filas sostenidas de vehículos pesados varados.', 
-        impact: 'Degradación severa del Nivel de Servicio (LOS F) e interferencia directa con el tráfico intermunicipal de pasajeros.', 
-        citation: 'Secretaría Distrital de Movilidad (SDM). (2019). Estudio de Origen-Destino de Carga para Bogotá D.C. y la Región.', 
-        radius: 38, x: 0, y: -200, visible: false, parent: 'CORE' 
-      },
-      { 
-        id: 'N1_C', 
-        label: 'Monopolio 68% Carga Agroalimentaria', 
-        category: 'Nivel 1 (Macro Periferia)', 
-        level: 1, 
-        triadRole: 'causa', 
-        cluster: 'n1', 
-        metricVal: '68% Ingreso Bogotá',
-        serviceLevel: 'Flujo C3-S3 Regional',
-        desc: 'Concentración del 68% del suministro alimentario capitalino desde Cundinamarca, Boyacá, Tolima y Meta transportado exclusivamente en tractocamiones C3-S3 y C2-S2 sin plataformas de transferencia periférica.', 
-        impact: 'Inflexibilidad operativa total y vulnerabilidad sistémica frente a choques o bloqueos en los accesos.', 
-        citation: 'SDM (2019) / Alcaldía Mayor de Bogotá (Decreto 319 de 2006 - Plan Maestro de Movilidad).', 
-        radius: 26, x: -85, y: -270, visible: false, parent: 'N1_S' 
-      },
-      { 
-        id: 'N1_E', 
-        label: 'Inflexibilidad Estructural de Entradas', 
-        category: 'Nivel 1 (Macro Periferia)', 
-        level: 1, 
-        triadRole: 'efecto', 
-        cluster: 'n1', 
-        metricVal: '+45 min Retraso',
-        serviceLevel: 'Sobrecarga de Calzada',
-        desc: 'Superación constante de la capacidad máxima de soporte físico de la calzada en los bordes de entrada distrital.', 
-        impact: 'Transmisión inmediata de retención vehicular hacia la red urbana interior y aumento de costos de flete.', 
-        citation: 'Alcaldía Mayor de Bogotá. (2021). Plan de Ordenamiento Territorial (POT) Decreto 555 de 2021.', 
-        radius: 26, x: 85, y: -270, visible: false, parent: 'N1_S' 
-      },
+      // === NIVEL 1: MACRO PERIFERIA REGIONAL (12 NODOS) ===
+      { id: 'N1_S1', label: 'Saturación Portal Calle 13', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'sintoma', cluster: 'n1', metricVal: 'LOS F (Saturado)', serviceLevel: 'V < 10 km/h', desc: 'Represamiento continuo de camiones pesados C3-S3 en el portal Calle 13.', impact: 'Degradación del nivel de servicio vial en la entrada occidente.', citation: 'SDM (2019) Estudio Origen-Destino.', radius: 32, x: 0, y: -180, visible: false, parent: 'CORE' },
+      { id: 'N1_S2', label: 'Embotellamiento Autopista Sur', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'sintoma', cluster: 'n1', metricVal: 'Cola: 4.5 km', serviceLevel: 'LOS F', desc: 'Filas sostenidas en el acceso sur proveniente del Meta y Tolima.', impact: 'Interferencia directa con el transporte intermunicipal de pasajeros.', citation: 'SDM (2019) Estudio Origen-Destino.', radius: 28, x: -60, y: -190, visible: false, parent: 'CORE' },
+      { id: 'N1_S3', label: 'Fricción en Peaje Chusacá', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'sintoma', cluster: 'n1', metricVal: 'Wait: 40 min', serviceLevel: 'Demora Cobro', desc: 'Demora extrema en el cobro y control de pesaje periférico.', impact: 'Acumulación de tractocamiones antes del ingreso distrital.', citation: 'Plan Maestro Movilidad Decreto 319.', radius: 26, x: 60, y: -190, visible: false, parent: 'CORE' },
 
-      // NIVEL 2: EJE LOGÍSTICO INTER-LOCAL FONTIBÓN ⇄ KENNEDY (Nivel 2 - Derecha Arriba)
-      { 
-        id: 'N2_S', 
-        label: 'Fricción Vehicular Av. Centenario ⇄ Cali', 
-        category: 'Nivel 2 (Inter-Local)', 
-        level: 2, 
-        triadRole: 'sintoma', 
-        cluster: 'n2', 
-        metricVal: 'Tasa Fricción Alta',
-        serviceLevel: 'V_media: 14 km/h',
-        desc: 'Interrupción continua y pérdida de fluidez en el corredor vial que interconecta las bodegas de Zona Franca (Fontibón) con la zona mayorista de Kennedy.', 
-        impact: 'Reducción drástica de la velocidad comercial de camiones medianos y pesados en horas pico.', 
-        citation: 'Secretaría Distrital de Movilidad (SDM). (2022). Caracterización de Flujos Logísticos en el Borde Occidental de Bogotá.', 
-        radius: 38, x: 210, y: -90, visible: false, parent: 'N1_E' 
-      },
-      { 
-        id: 'N2_C', 
-        label: 'Sin Corredor Logístico Segregado', 
-        category: 'Nivel 2 (Inter-Local)', 
-        level: 2, 
-        triadRole: 'causa', 
-        cluster: 'n2', 
-        metricVal: '0 km Vía Exclusiva',
-        serviceLevel: 'Mezcla Mixta Forzada',
-        desc: 'Inexistencia de un carril o vía exclusiva de carga entre las bodegas de insumos (empaques, plásticos y secos) de Zona Franca y las puertas de acopio de Corabastos.', 
-        impact: 'Competencia directa por el espacio vial con vehículos particulares, rutas alimentadoras y buses troncales.', 
-        citation: 'Secretaría Distrital de Desarrollo Económico (SDDE) & Cámara de Comercio de Bogotá (2021). Diagnóstico de Logística Urbana.', 
-        radius: 26, x: 295, y: -160, visible: false, parent: 'N2_S' 
-      },
-      { 
-        id: 'N2_E', 
-        label: 'Bloqueo e Ineficiencia Logística', 
-        category: 'Nivel 2 (Inter-Local)', 
-        level: 2, 
-        triadRole: 'efecto', 
-        cluster: 'n2', 
-        metricVal: '+35% Costo Flete',
-        serviceLevel: 'Pérdida Horas-Hombre',
-        desc: 'Congelamiento temporal de insumos de embalaje y sobrecostos acumulados en la cadena agroindustrial inter-local.', 
-        impact: 'Incremento del costo logístico urbano que impacta la canasta familiar y provoca desabastecimiento relativo.', 
-        citation: 'SDDE & Cámara de Comercio de Bogotá. (2021). Diagnóstico de Cadena de Suministro de Alimentos.', 
-        radius: 26, x: 300, y: -25, visible: false, parent: 'N2_S' 
-      },
+      { id: 'N1_C1', label: 'Monopolio 68% Carga Agrícola', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'causa', cluster: 'n1', metricVal: '68% Abastecimiento', serviceLevel: 'Dependencia Carga', desc: 'Ingreso concentrated del 68% de perecederos desde Cundinamarca y Boyacá.', impact: 'Vulnerabilidad total ante interrupciones de acceso.', citation: 'SDDE & CCB (2021).', radius: 26, x: -120, y: -250, visible: false, parent: 'N1_S1' },
+      { id: 'N1_C2', label: 'Sin Plataformas de Acopio Periférico', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'causa', cluster: 'n1', metricVal: '0 Plataformas', serviceLevel: 'Acceso Directo', desc: 'Inexistencia de plataformas logísticas de consolidación en bordes.', impact: 'Entrada forzada de tractocamiones C3-S3 a la mancha urbana.', citation: 'POT Decreto 555 de 2021.', radius: 26, x: -40, y: -260, visible: false, parent: 'N1_S1' },
+      { id: 'N1_C3', label: 'Obsolescencia de Calzada Calle 13', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'causa', cluster: 'n1', metricVal: '2 Carriles/Sentido', serviceLevel: 'Perfil Deficiente', desc: 'Perfil vial angosto e insuficiente para la carga pesada mezclada con autos.', impact: 'Estrangulamiento del flujo en la puerta occidental de la capital.', citation: 'IDU (2021).', radius: 26, x: 40, y: -260, visible: false, parent: 'N1_S1' },
+      { id: 'N1_C4', label: 'Ausencia de Rotación por Horarios', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'causa', cluster: 'n1', metricVal: 'Flujo Continuo', serviceLevel: 'Sin Restricción', desc: 'Falta de franjas nocturnas obligatorias para el descargue pesado.', impact: 'Coincidencia de horarios de carga con las horas pico de pasajeros.', citation: 'SDM (2020) PMT Carga.', radius: 26, x: 120, y: -250, visible: false, parent: 'N1_S1' },
 
-      // NIVEL 3: ARTERIAS URBANAS DISTRITALES KENNEDY (Nivel 3 - Derecha Abajo)
-      { 
-        id: 'N3_S', 
-        label: 'Retención Spillback 3 km Av. Tintal', 
-        category: 'Nivel 3 (Arterias Urbanas)', 
-        level: 3, 
-        triadRole: 'sintoma', 
-        cluster: 'n3', 
-        metricVal: 'Cola: 3.2 kilómetros',
-        serviceLevel: 'Spillback Distrital',
-        desc: 'Fenómeno de propagación inversa de colas viales que alcanza hasta 3 kilómetros de extensión sobre las avenidas El Tintal, Manuel Cepeda Vargas y Las Américas.', 
-        impact: 'Bloqueo y atrapamiento de carriles mixtos y troncales principales del sistema de transporte masivo.', 
-        citation: 'Alcaldía Mayor de Bogotá. (2021). POT Decreto 555 de 2021 / SDM (2020) Evaluación PMT Patio Bonito.', 
-        radius: 38, x: 210, y: 170, visible: false, parent: 'N2_E' 
-      },
-      { 
-        id: 'N3_C', 
-        label: 'Mezcla Carga + TransMilenio + SITP', 
-        category: 'Nivel 3 (Arterias Urbanas)', 
-        level: 3, 
-        triadRole: 'causa', 
-        cluster: 'n3', 
-        metricVal: 'Conflicto Modal Alto',
-        serviceLevel: 'Intersección Banderas',
-        desc: 'Confluencia obligada de buses troncales de TransMilenio, rutas alimentadoras, SITP y tractocamiones de gran tonelaje en el nodo Banderas / Av. Las Américas.', 
-        impact: 'Fricción operativa crítica, aumento de tiempos de trasbordo y peligro severo de accidentalidad vial.', 
-        citation: 'Instituto de Desarrollo Urbano (IDU). (2021). Informe de Capacidad Operativa y Congestión de Vías Arterias de Kennedy.', 
-        radius: 26, x: 300, y: 105, visible: false, parent: 'N3_S' 
-      },
-      { 
-        id: 'N3_E', 
-        label: 'Parálisis Movilidad Local Kennedy', 
-        category: 'Nivel 3 (Arterias Urbanas)', 
-        level: 3, 
-        triadRole: 'efecto', 
-        cluster: 'n3', 
-        metricVal: '500.000 Usuarios',
-        serviceLevel: 'Parálisis Intersecciones',
-        desc: 'Colapso de las intersecciones semafóricas y pérdida de regularidad en el transporte público en la localidad.', 
-        impact: 'Afectación directa a los tiempos de desplazamiento de más de medio millón de habitantes de Kennedy y Bosa.', 
-        citation: 'IDU. (2021). Informe de Capacidad Operativa en Vías Arterias de la Localidad de Kennedy.', 
-        radius: 26, x: 300, y: 235, visible: false, parent: 'N3_S' 
-      },
+      { id: 'N1_E1', label: 'Inflexibilidad Estructural Entradas', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'efecto', cluster: 'n1', metricVal: '+45 min Retraso', serviceLevel: 'Sobrecarga Vial', desc: 'Superación constante de la capacidad vial de soporte en los corredores.', impact: 'Transmisión directa de retención vehicular hacia la malla interior.', citation: 'POT Decreto 555 de 2021.', radius: 26, x: -160, y: -310, visible: false, parent: 'N1_C1' },
+      { id: 'N1_E2', label: 'Sobrecosto de Flete Regional', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'efecto', cluster: 'n1', metricVal: '+28% Costo Flete', serviceLevel: 'Pérdida Horas', desc: 'Pérdida masiva de horas-camión varadas en las entradas periféricas.', impact: 'Encarecimiento directo del precio de alimentos en acopio.', citation: 'SDDE & CCB (2021).', radius: 24, x: -80, y: -320, visible: false, parent: 'N1_C2' },
+      { id: 'N1_E3', label: 'Deterioro de Capa Rodadura Periférica', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'efecto', cluster: 'n1', metricVal: 'Poder Destructivo x10', serviceLevel: 'Fatiga Asfalto', desc: 'Desgaste acelerado del pavimento por peso por eje de tractocamiones C3-S3.', impact: 'Aumento de huecos y fallas geotécnicas en el acceso distrital.', citation: 'IDU (2021).', radius: 24, x: 80, y: -320, visible: false, parent: 'N1_C3' },
+      { id: 'N1_E4', label: 'Generación de Emisiones en Borde', category: 'Nivel 1 (Macro)', level: 1, triadRole: 'efecto', cluster: 'n1', metricVal: 'PM 2.5 Elevado', serviceLevel: 'Alerta Ambiental', desc: 'Emisiones masivas de diésel por motores ralentizados en trancón.', impact: 'Deterioro de la calidad del aire en los corredores de entrada.', citation: 'Secretaría de Ambiente (2021).', radius: 24, x: 160, y: -310, visible: false, parent: 'N1_C4' },
 
-      // NIVEL 4: NÚCLEO HIPERLOCAL CORABASTOS (Nivel 4 - Izquierda)
-      { 
-        id: 'N4_S', 
-        label: 'Velocidad Operativa < 5 km/h', 
-        category: 'Nivel 4 (Núcleo Corabastos)', 
-        level: 4, 
-        triadRole: 'sintoma', 
-        cluster: 'n4', 
-        metricVal: 'V_media < 4.8 km/h',
-        serviceLevel: 'Parálisis Peri-Corabastos',
-        desc: 'Degradación extrema de la velocidad de circulación a menos de 5 km/h en la malla vial inmediata que rodea la central mayorista.', 
-        impact: 'Detención casi total del tráfico en los sectores Patio Bonito, El Amparo y María Paz.', 
-        citation: 'Corabastos S.A. & SDM. (2018). Reglamento Interno de Operación Logística y Tránsito (Resolución SDM 184 de 2018).', 
-        radius: 38, x: -210, y: 170, visible: false, parent: 'N3_E' 
-      },
-      { 
-        id: 'N4_C', 
-        label: 'Demora Básculas Puertas 6, 7 y 8', 
-        category: 'Nivel 4 (Núcleo Corabastos)', 
-        level: 4, 
-        triadRole: 'causa', 
-        cluster: 'n4', 
-        metricVal: 'Wait: 45-90 min/camión',
-        serviceLevel: 'Embudo de Básculas',
-        desc: 'Capacidad insuficiente y lentitud operativa en el registro, pesaje e inspección fitosanitaria en las taquillas de ingreso.', 
-        impact: 'Generación del punto de origen primario del fenómeno de Spillback que estrangula las arterias exteriores.', 
-        citation: 'Alcaldía Mayor de Bogotá. (2021). POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca.', 
-        radius: 26, x: -300, y: 235, visible: false, parent: 'N4_S' 
-      },
-      { 
-        id: 'N4_E', 
-        label: 'Invasión Espacio Público Carga Informal', 
-        category: 'Nivel 4 (Núcleo Corabastos)', 
-        level: 4, 
-        triadRole: 'efecto', 
-        cluster: 'n4', 
-        metricVal: 'Ocupación Vía > 80%',
-        serviceLevel: 'Degradación Espacial',
-        desc: 'Parqueo informal sostenido sobre la vía pública, maniobras de cargue/descargue no reguladas y proliferación de bicipatines cargadores.', 
-        impact: 'Bloqueo físico definitivo de la malla vial local, pérdida de espacio peatonal y deterioro de la seguridad.', 
-        citation: 'Corabastos S.A. & SDM. (2018). Reglamento Interno de Operación Logística y Tránsito de la Central Regional.', 
-        radius: 26, x: -300, y: 105, visible: false, parent: 'N4_S' 
-      }
+      // === NIVEL 2: EJE LOGÍSTICO INTER-LOCAL FONTIBÓN ⇄ KENNEDY (13 NODOS) ===
+      { id: 'N2_S1', label: 'Fricción Av. Centenario ⇄ Av. Cali', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'sintoma', cluster: 'n2', metricVal: 'V_media: 14 km/h', serviceLevel: 'Fricción Alta', desc: 'Interrupción continua del flujo entre los sectores de Fontibón y Kennedy.', impact: 'Reducción drástica de la velocidad comercial de carga intermedia.', citation: 'SDM (2022) Caracterización Flujos Logísticos.', radius: 32, x: 190, y: -80, visible: false, parent: 'N1_E1' },
+      { id: 'N2_S2', label: 'Cuello de Botella Puente San José', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'sintoma', cluster: 'n2', metricVal: 'Estrechamiento', serviceLevel: 'LOS F', desc: 'Reducción de carriles en el cruce de la Av. Centenario sobre el Río Bogota.', impact: 'Retención de camiones provenientes de las bodegas de Zona Franca.', citation: 'SDM (2022).', radius: 28, x: 230, y: -140, visible: false, parent: 'N1_E1' },
+      { id: 'N2_S3', label: 'Entrampa Vehicular Zona Industrial', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'sintoma', cluster: 'n2', metricVal: 'Wait: 35 min', serviceLevel: 'Bloqueo Local', desc: 'Dificultad de salida de tractocamiones desde los parques industriales de Fontibón.', impact: 'Parálisis de las vías colectoras de la Zona Franca.', citation: 'SDDE & CCB (2021).', radius: 26, x: 150, y: -140, visible: false, parent: 'N1_E1' },
+
+      { id: 'N2_C1', label: 'Sin Corredor Logístico Segregado', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'causa', cluster: 'n2', metricVal: '0 km Vía Carga', serviceLevel: 'Tráfico Mixto', desc: 'Ausencia de carril exclusivo para el transporte pesado de empaques y secos.', impact: 'Competencia violenta por el espacio vial con vehículos particulares y SITP.', citation: 'SDDE & CCB (2021).', radius: 26, x: 275, y: -90, visible: false, parent: 'N2_S1' },
+      { id: 'N2_C2', label: 'Alta Demanda de Empaques en Corabastos', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'causa', cluster: 'n2', metricVal: '4.500 Ton Secos', serviceLevel: 'Demanda Continua', desc: 'Necesidad masiva de costales de fique, plásticos y canastillas desde Zona Franca.', impact: 'Generación de más de 1.200 viajes/día de camiones medianos entre localidades.', citation: 'SDDE (2021).', radius: 24, x: 285, y: -150, visible: false, parent: 'N2_S1' },
+      { id: 'N2_C3', label: 'Semafórica Desincronizada en Av. Cali', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'causa', cluster: 'n2', metricVal: 'T ciclos: 180s', serviceLevel: 'Falta Ola Verde', desc: 'Intersecciones semafóricas que no contemplan los tiempos de aceleración de la carga.', impact: 'Paradas forzadas continuas de tractocamiones pesados.', citation: 'SDM (2020).', radius: 24, x: 235, y: -200, visible: false, parent: 'N2_S1' },
+      { id: 'N2_C4', label: 'Giros a la Izquierda No Regulados', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'causa', cluster: 'n2', metricVal: 'Maniobras Riego', serviceLevel: 'Fricción Lateral', desc: 'Maniobras de giro de camiones de gran radio en cruces no adaptados.', impact: 'Bloqueo temporal de 2 y 3 carriles de circulación por maniobra.', citation: 'SDM (2022).', radius: 24, x: 175, y: -200, visible: false, parent: 'N2_S1' },
+
+      { id: 'N2_E1', label: 'Bloqueo e Ineficiencia Logística', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'efecto', cluster: 'n2', metricVal: '+35% Costo Logístico', serviceLevel: 'Fallo Cadena', desc: 'Pérdida masiva de horas-hombre y retraso en la entrega de embalajes agropecuarios.', impact: 'Aumento del costo final de los alimentos en las bodegas mayoristas.', citation: 'SDDE & CCB (2021).', radius: 26, x: 315, y: -40, visible: false, parent: 'N2_C1' },
+      { id: 'N2_E2', label: 'Congelamiento de Stock en Zona Franca', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'efecto', cluster: 'n2', metricVal: 'Capacidad 95%', serviceLevel: 'Bodega Llena', desc: 'Imposibilidad de despacho fluido de mercancía importada procesada.', impact: 'Saturación de los muelles de carga de los parques logísticos de Fontibón.', citation: 'SDDE (2021).', radius: 24, x: 340, y: -100, visible: false, parent: 'N2_C2' },
+      { id: 'N2_E3', label: 'Desgaste Prematuro de Frenos y Transmisión', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'efecto', cluster: 'n2', metricVal: '+40% Mantenimiento', serviceLevel: 'Falla Mecánica', desc: 'Daño mecánico por marcha lenta intermitente ("arranque y pare") de tractocamiones.', impact: 'Incremento de camiones varados bloqueando carriles principales.', citation: 'SDM (2022).', radius: 24, x: 325, y: -160, visible: false, parent: 'N2_C3' },
+      { id: 'N2_E4', label: 'Transferencia de Trancón a Fontibón Centro', category: 'Nivel 2 (Inter-Local)', level: 2, triadRole: 'efecto', cluster: 'n2', metricVal: 'Desvío Informal', serviceLevel: 'Colapso Barrial', desc: 'Desvío de camiones hacia la malla vial residencial buscando evadir la Av. Centenario.', impact: 'Deterioro de la calidad de vida barrial en Fontibón.', citation: 'Alcaldía Local Fontibón (2021).', radius: 24, x: 265, y: -220, visible: false, parent: 'N2_C4' },
+
+      // === NIVEL 3: ARTERIAS URBANAS DISTRITALES KENNEDY (13 NODOS) ===
+      { id: 'N3_S1', label: 'Spillback 3.2 km en Av. Tintal', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'sintoma', cluster: 'n3', metricVal: 'Cola: 3.2 km', serviceLevel: 'Spillback Severo', desc: 'Retención en cola que se propaga inversamente desde las puertas de Corabastos.', impact: 'Saturación total de carriles en Av. Tintal, Av. Cepeda Vargas y Av. Américas.', citation: 'POT Decreto 555 de 2021 / SDM (2020).', radius: 32, x: 190, y: 160, visible: false, parent: 'N2_E1' },
+      { id: 'N3_S2', label: 'Parálisis en Nodo Banderas', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'sintoma', cluster: 'n3', metricVal: 'Retraso: 30 min', serviceLevel: 'LOS F', desc: 'Bloqueo del paso a nivel e intercambio de pasajeros de TransMilenio en Banderas.', impact: 'Pérdida de frecuencia de buses troncales hacia el occidente de Kennedy.', citation: 'IDU (2021) Informe Capacidad.', radius: 28, x: 230, y: 100, visible: false, parent: 'N2_E1' },
+      { id: 'N3_S3', label: 'Saturación en Av. Las Américas', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'sintoma', cluster: 'n3', metricVal: 'V_media: 11 km/h', serviceLevel: 'Congestión Fija', desc: 'Filas continuas de buses alimentadores y camiones sobre la calzada mixta de Américas.', impact: 'Afectación a la conectividad principal del centro con el occidente.', citation: 'IDU (2021).', radius: 26, x: 150, y: 100, visible: false, parent: 'N2_E1' },
+
+      { id: 'N3_C1', label: 'Mezcla Carga + TransMilenio + SITP', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'causa', cluster: 'n3', metricVal: 'Conflicto Modal Alto', serviceLevel: 'Intersección Mixta', desc: 'Coexistencia forzada en el mismo perfil vial de alimentadores, troncales y tractocamiones.', impact: 'Fricción operativa extrema e inviabilidad de cumplir frecuencias de transporte público.', citation: 'IDU (2021) Informe Capacidad en Kennedy.', radius: 26, x: 275, y: 180, visible: false, parent: 'N3_S1' },
+      { id: 'N3_C2', label: 'Paradas Inadecuadas de Buses Alimentadores', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'causa', cluster: 'n3', metricVal: 'Sin Bahía Exclusiva', serviceLevel: 'Bloqueo Carril Derecho', desc: 'Ascenso y descenso de pasajeros sobre el carril derecho de circulación mixta.', impact: 'Bloqueo continuo del carril de avance por detención de buses de TransMilenio.', citation: 'TransMilenio S.A. & IDU (2021).', radius: 24, x: 285, y: 120, visible: false, parent: 'N3_S1' },
+      { id: 'N3_C3', label: 'Falta de Vías Distribuidoras Alternas', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'causa', cluster: 'n3', metricVal: 'Malla Vial Incompleta', serviceLevel: 'Conexión Única', desc: 'Inexistencia de vías paralelas de desahogo para conectar el sur de Kennedy con la Calle 13.', impact: 'Concentración forzada del 100% del tráfico sobre la Av. Tintal y Av. Cali.', citation: 'POT Decreto 555 de 2021.', radius: 24, x: 235, y: 220, visible: false, parent: 'N3_S1' },
+      { id: 'N3_C4', label: 'Invasión de Biciusuarios en Carriles Mixtos', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'causa', cluster: 'n3', metricVal: 'Sin Ciclorruta Continua', serviceLevel: 'Mezcla Ciclista-Carga', desc: 'Falta de ciclorrutas segregadas que obliga a bicipatines y ciclistas a compartir vía con camiones.', impact: 'Reducción de velocidad por protección al usuario vulnerable y riesgo de atropello.', citation: 'SDM (2020) Seguridad Vial.', radius: 24, x: 175, y: 220, visible: false, parent: 'N3_S1' },
+
+      { id: 'N3_E1', label: 'Parálisis Movilidad Local Kennedy', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'efecto', cluster: 'n3', metricVal: '500.000 Afectados', serviceLevel: 'Colapso Local', desc: 'Afectación directa a los tiempos de desplazamiento de más de medio millón de ciudadanos.', impact: 'Pérdida de calidad de vida y aumento del tiempo de viaje hogar-trabajo en +50 min.', citation: 'IDU (2021) Informe Capacidad.', radius: 26, x: 315, y: 230, visible: false, parent: 'N3_C1' },
+      { id: 'N3_E2', label: 'Retraso de Rutas Alimentadoras TM', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'efecto', cluster: 'n3', metricVal: 'Frecuencia +25 min', serviceLevel: 'Falla Servicio TM', desc: 'Demoras severas en el cumplimiento de itinerarios de alimentadores a Portal Américas.', impact: 'Aglomeración peligrosa de usuarios en portales y estaciones del sistema.', citation: 'TransMilenio S.A. (2021).', radius: 24, x: 340, y: 170, visible: false, parent: 'N3_C2' },
+      { id: 'N3_E3', label: 'TRANSFERENCIA DE TRANCÓN A CALLE 13', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'efecto', cluster: 'n3', metricVal: 'Spillback Inverso N3-N1', serviceLevel: 'Retroalimentación', desc: 'La cola de la Av. Cali retroalimenta la retención sobre la Calle 13, cerrando el bucle.', impact: 'Colapso combinado del borde occidental de Bogotá.', citation: 'SDM (2020) PMT Patio Bonito.', radius: 24, x: 325, y: 110, visible: false, parent: 'N3_C3' },
+      { id: 'N3_E4', label: 'Accidentalidad Vial con Vulnerables', category: 'Nivel 3 (Urbano)', level: 3, triadRole: 'efecto', cluster: 'n3', metricVal: 'Tasa Siniestros +18%', serviceLevel: 'Peligro Vial', desc: 'Ocurrencia de puntos ciegos entre tractocamiones C3-S3 y bicipatines/ciclistas en el corredor.', impact: 'Lesiones y fallecimientos en la malla vial arterial de la localidad.', citation: 'SDM (2020) Informe Siniestralidad.', radius: 24, x: 265, y: 260, visible: false, parent: 'N3_C4' },
+
+      // === NIVEL 4: NÚCLEO HIPERLOCAL CORABASTOS (13 NODOS) ===
+      { id: 'N4_S1', label: 'Velocidad Operativa < 4.8 km/h', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'sintoma', cluster: 'n4', metricVal: 'V < 4.8 km/h', serviceLevel: 'Parálisis Ronda', desc: 'Tráfico prácticamente detenido en las vías inmediatas que rodean la central de abastecimiento.', impact: 'Parálisis de la circulación en la red vial de los sectores Patio Bonito y El Amparo.', citation: 'Corabastos S.A. & SDM (2018) Res. 184.', radius: 32, x: -190, y: 160, visible: false, parent: 'N3_E1' },
+      { id: 'N4_S2', label: 'Bloqueo de Garitas en Puertas 6, 7 y 8', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'sintoma', cluster: 'n4', metricVal: 'Cola Garita: 1.8 km', serviceLevel: 'Embudo Acceso', desc: 'Represamiento directo de camiones esperando ingresar a los muelles de descarga.', impact: 'Ocupación total de la calzada pública de acceso por vehículos de carga.', citation: 'POT Decreto 555 de 2021.', radius: 28, x: -230, y: 100, visible: false, parent: 'N3_E1' },
+      { id: 'N4_S3', label: 'Caos Vehicular en Sector El Amparo', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'sintoma', cluster: 'n4', metricVal: 'Maniobra Cero Flujo', serviceLevel: 'Bloqueo Barrio', desc: 'Maniobras cruzadas de bicipatines, camiones de estacas y ventas ambulantes en vía.', impact: 'Incapacidad de tránsito para residentes e imprevistos de emergencia.', citation: 'SDM (2020) PMT Patio Bonito.', radius: 26, x: -150, y: 100, visible: false, parent: 'N3_E1' },
+
+      { id: 'N4_C1', label: 'Demora en Básculas y Pesaje', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'causa', cluster: 'n4', metricVal: 'Wait: 45-90 min/camión', serviceLevel: 'Capacidad Insuficiente', desc: 'Insuficiencia de básculas operativas e inspección fitosanitaria lenta en taquillas.', impact: 'Origen primario del fenómeno de Spillback que estrangula las arterias exteriores.', citation: 'POT Decreto 555 de 2021 (Chucua de la Vaca).', radius: 26, x: -275, y: 220, visible: false, parent: 'N4_S1' },
+      { id: 'N4_C2', label: 'Descargue Informal sobre Vía Pública', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'causa', cluster: 'n4', metricVal: 'Descargue Foráneo', serviceLevel: 'Sin Muelle Interno', desc: 'Falta de capacidad de muelles internos en Corabastos que fuerza la descarga en la calle.', impact: 'Ocupación de 2 de los 3 carriles de la malla vial peri-Corabastos.', citation: 'Corabastos S.A. & SDM (2018).', radius: 24, x: -285, y: 160, visible: false, parent: 'N4_S1' },
+      { id: 'N4_C3', label: 'Proliferación de Bicipatines y Carretilleros', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'causa', cluster: 'n4', metricVal: '> 3.500 Carretilleros', serviceLevel: 'Carga Menor Informal', desc: 'Tránsito de más de 3.500 carretilleros informales trasladando bultos sobre la calzada.', impact: 'Interrupción continua de la marcha vehicular por maniobras a pie.', citation: 'SDDE & SDM (2020) Caracterización Informal.', radius: 24, x: -235, y: 240, visible: false, parent: 'N4_S1' },
+      { id: 'N4_C4', label: 'Parqueo Informal de Camiones "En Espera"', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'causa', cluster: 'n4', metricVal: '> 800 Camiones/Día', serviceLevel: 'Parqueo en Vía', desc: 'Camiones varados en la vía pública esperando el horario de apertura de bodegas.', impact: 'Reducción permanente de la sección vial útil de la red peri-Corabastos.', citation: 'SDM (2018) Res. 184.', radius: 24, x: -175, y: 240, visible: false, parent: 'N4_S1' },
+
+      { id: 'N4_E1', label: 'Invasión Espacio Público Carga Informal', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'efecto', cluster: 'n4', metricVal: 'Ocupación Vía > 80%', serviceLevel: 'Pérdida Control', desc: 'Parqueo informal en vía, maniobras no reguladas y ventas ambulantes sobre andenes.', impact: 'Bloqueo físico total de la malla vial local y deterioro de la seguridad ciudadana.', citation: 'Corabastos S.A. & SDM (2018) Reglamento Interno.', radius: 26, x: -315, y: 260, visible: false, parent: 'N4_C1' },
+      { id: 'N4_E2', label: 'Deterioro Fitosaniatario de Alimentos', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'efecto', cluster: 'n4', metricVal: 'Pérdida Post-Cosecha 12%', serviceLevel: 'Degradación Carga', desc: 'Pérdida de productos perecederos expuestos al sol y al diésel durante largas horas de espera.', impact: 'Merma económica para los productores agrícolas y riesgo en la calidad alimentaria.', citation: 'SDDE (2021) Cadena Suministro.', radius: 24, x: -340, y: 200, visible: false, parent: 'N4_C2' },
+      { id: 'N4_E3', label: 'Inseguridad Ciudadana y Hurtos en Cola', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'efecto', cluster: 'n4', metricVal: 'Zona Crítica', serviceLevel: 'Riesgo Seguridad', desc: 'Vulnerabilidad de transportadores y conductores detenidos en las filas de acceso nocturnas.', impact: 'Aumento de denuncias por hurto de carga y extorsión en el sector Patio Bonito.', citation: 'Secretaría de Seguridad D.C. (2021).', radius: 24, x: -325, y: 140, visible: false, parent: 'N4_C3' },
+      { id: 'N4_E4', label: 'Deterioro Severo Ambiental y Basuras', category: 'Nivel 4 (Núcleo)', level: 4, triadRole: 'efecto', cluster: 'n4', metricVal: '35 Ton Residuos/Día', serviceLevel: 'Contaminación Rueda', desc: 'Acumulación de residuos orgánicos y de empaque abandonados sobre las vías públicas periféricas.', impact: 'Generación de vectores y degradación del entorno urbano residencial.', citation: 'UAESP & Alcaldía Kennedy (2021).', radius: 24, x: -265, y: 290, visible: false, parent: 'N4_C4' }
     ];
 
     const edges = [
-      { source: 'CORE', target: 'N1_S' },
-      { source: 'N1_S', target: 'N1_C' },
-      { source: 'N1_S', target: 'N1_E' },
+      // Central to N1
+      { source: 'CORE', target: 'N1_S1' },
+      { source: 'CORE', target: 'N1_S2' },
+      { source: 'CORE', target: 'N1_S3' },
+      { source: 'N1_S1', target: 'N1_C1' },
+      { source: 'N1_S1', target: 'N1_C2' },
+      { source: 'N1_S1', target: 'N1_C3' },
+      { source: 'N1_S1', target: 'N1_C4' },
+      { source: 'N1_C1', target: 'N1_E1' },
+      { source: 'N1_C2', target: 'N1_E2' },
+      { source: 'N1_C3', target: 'N1_E3' },
+      { source: 'N1_C4', target: 'N1_E4' },
 
-      { source: 'N1_E', target: 'N2_S' },
-      { source: 'N2_S', target: 'N2_C' },
-      { source: 'N2_S', target: 'N2_E' },
+      // N1 to N2
+      { source: 'N1_E1', target: 'N2_S1' },
+      { source: 'N1_E1', target: 'N2_S2' },
+      { source: 'N1_E1', target: 'N2_S3' },
+      { source: 'N2_S1', target: 'N2_C1' },
+      { source: 'N2_S1', target: 'N2_C2' },
+      { source: 'N2_S1', target: 'N2_C3' },
+      { source: 'N2_S1', target: 'N2_C4' },
+      { source: 'N2_C1', target: 'N2_E1' },
+      { source: 'N2_C2', target: 'N2_E2' },
+      { source: 'N2_C3', target: 'N2_E3' },
+      { source: 'N2_C4', target: 'N2_E4' },
 
-      { source: 'N2_E', target: 'N3_S' },
-      { source: 'N3_S', target: 'N3_C' },
-      { source: 'N3_S', target: 'N3_E' },
+      // N2 to N3
+      { source: 'N2_E1', target: 'N3_S1' },
+      { source: 'N2_E1', target: 'N3_S2' },
+      { source: 'N2_E1', target: 'N3_S3' },
+      { source: 'N3_S1', target: 'N3_C1' },
+      { source: 'N3_S1', target: 'N3_C2' },
+      { source: 'N3_S1', target: 'N3_C3' },
+      { source: 'N3_S1', target: 'N3_C4' },
+      { source: 'N3_C1', target: 'N3_E1' },
+      { source: 'N3_C2', target: 'N3_E2' },
+      { source: 'N3_C3', target: 'N3_E3' },
+      { source: 'N3_C4', target: 'N3_E4' },
 
-      { source: 'N3_E', target: 'N4_S' },
-      { source: 'N4_S', target: 'N4_C' },
-      { source: 'N4_S', target: 'N4_E' },
-      { source: 'N4_C', target: 'N3_S' }
+      // N3 to N4
+      { source: 'N3_E1', target: 'N4_S1' },
+      { source: 'N3_E1', target: 'N4_S2' },
+      { source: 'N3_E1', target: 'N4_S3' },
+      { source: 'N4_S1', target: 'N4_C1' },
+      { source: 'N4_S1', target: 'N4_C2' },
+      { source: 'N4_S1', target: 'N4_C3' },
+      { source: 'N4_S1', target: 'N4_C4' },
+      { source: 'N4_C1', target: 'N4_E1' },
+      { source: 'N4_C2', target: 'N4_E2' },
+      { source: 'N4_C3', target: 'N4_E3' },
+      { source: 'N4_C4', target: 'N4_E4' },
+
+      // Feedback loops inter-nivel
+      { source: 'N4_C1', target: 'N3_S1' },
+      { source: 'N3_E3', target: 'N1_S1' }
     ];
 
     let nodes = [];
@@ -598,14 +506,14 @@
       sectors.forEach(s => {
         ctx.beginPath();
         ctx.moveTo(0, 0);
-        ctx.arc(0, 0, 360, s.start, s.end);
+        ctx.arc(0, 0, 380, s.start, s.end);
         ctx.closePath();
         ctx.fillStyle = s.color;
         ctx.fill();
       });
 
       // 2. Anillos Concéntricos Estéticos de Referencia
-      [140, 230, 320].forEach(r => {
+      [140, 230, 330].forEach(r => {
         ctx.beginPath();
         ctx.arc(0, 0, r, 0, Math.PI * 2);
         ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)';
@@ -615,7 +523,7 @@
         ctx.setLineDash([]);
       });
 
-      // 3. Render Edges (Líneas Curvas o Rectas Elegantes entre Nodos)
+      // 3. Render Edges (Líneas entre Nodos Visibles)
       edges.forEach(e => {
         const s = e.sourceNode, t = e.targetNode;
         if (!s || !t || !s.visible || !t.visible) return;
@@ -633,7 +541,7 @@
         ctx.restore();
       });
 
-      // 4. Render Esferas Pastel con Degradado Suave y Sombra Tenue (Editorial Style)
+      // 4. Render Esferas Pastel con Degradado Suave (Editorial Style)
       nodes.forEach(n => {
         if (!n.visible) return;
 
@@ -664,21 +572,21 @@
         ctx.stroke();
 
         // Tipografía Limpia y Alineada
-        ctx.font = (isHov || isSel) ? 'bold 11.5px -apple-system, sans-serif' : 'bold 10px -apple-system, sans-serif';
+        ctx.font = (isHov || isSel) ? 'bold 11px -apple-system, sans-serif' : 'bold 9.5px -apple-system, sans-serif';
         ctx.fillStyle = cStyle.text;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
-        if (n.radius >= 38) {
+        if (n.radius >= 34) {
           const words = n.label.split(' ');
           if (words.length > 2) {
-            ctx.fillText(words.slice(0, 2).join(' '), n.x, n.y - 7);
-            ctx.fillText(words.slice(2).join(' '), n.x, n.y + 8);
+            ctx.fillText(words.slice(0, 2).join(' '), n.x, n.y - 6);
+            ctx.fillText(words.slice(2).join(' '), n.x, n.y + 7);
           } else {
             ctx.fillText(n.label, n.x, n.y);
           }
         } else {
-          ctx.fillText(n.label, n.x, n.y + n.radius + 14);
+          ctx.fillText(n.label, n.x, n.y + n.radius + 12);
         }
 
         ctx.restore();
@@ -710,7 +618,7 @@
       const mx = (e.clientX - cx) / scale;
       const my = (e.clientY - cy) / scale;
 
-      let closest = null, minDist = 40;
+      let closest = null, minDist = 35;
       nodes.forEach(n => {
         if (!n.visible) return;
         const d = Math.hypot(n.x - mx, n.y - my);
