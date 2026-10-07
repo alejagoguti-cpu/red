@@ -1,0 +1,17 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1055,9 +1055,9 @@
+       panX += (targetPanX - panX) * 0.1;
+       panY += (targetPanY - panY) * 0.1;
+ 
+-      if (opts.autoRotate && !isMouseDown) {
++      if (opts.autoRotate && !isMouseDown && !selectedNode) {
+         targetRotY += (velY || 0.003);
+-      } else if (!isMouseDown) {
++      } else if (!isMouseDown && !selectedNode) {
+         targetRotY += velY; targetRotX += velX;
+         velX *= 0.92; velY *= 0.92;
+       }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

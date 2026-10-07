@@ -1,0 +1,30 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1163,11 +1163,19 @@
+       opts.layoutMode = mode;
+       nodes.forEach((n, idx) => {
+         if (mode === 'clustered') {
+-          const catAngle = ((idx * 7) % nodes.length / nodes.length) * Math.PI * 2;
+-          const r = 140 + (idx % 25) * 5;
+-          n.ox = Math.cos(catAngle) * r + (Math.random() - 0.5) * 40;
+-          n.oy = (Math.random() - 0.5) * 90;
+-          n.oz = Math.sin(catAngle) * r + (Math.random() - 0.5) * 40;
++          // Explicitly separate into 4 distinct 3D spatial category clusters
++          const centers = {
++            0: { x: -220, y: -80, z: -100 }, // Flora Cluster (Top-Left)
++            1: { x: 220, y: -80, z: 100 },   // Avifauna Cluster (Top-Right)
++            2: { x: -220, y: 140, z: 100 },   // Microorganismos Cluster (Bottom-Left)
++            3: { x: 220, y: 140, z: -100 }    // Herpetos / MIA Cluster (Bottom-Right)
++          };
++          const center = centers[n.cat] || { x: 0, y: 0, z: 0 };
++          const a = idx * 0.4;
++          const r = 40 + (idx % 12) * 5;
++          n.ox = center.x + Math.cos(a) * r;
++          n.oy = center.y + (idx % 6) * 14 - 35;
++          n.oz = center.z + Math.sin(a) * r;
+         } else if (mode === 'concentric') {
+           const r = 120 + (idx % 5) * 40;
+           const a = idx * 0.17;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

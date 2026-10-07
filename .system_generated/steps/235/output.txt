@@ -1,0 +1,86 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1071,6 +1071,80 @@
+       showToast('Todos los nodos ocultos fueron restablecidos');
+     }
+ 
++    // --- FAQ CHAT ASSISTANT LOGIC ---
++    function toggleFaqChat() {
++      const modal = document.getElementById('faqChatModal');
++      modal.style.display = (modal.style.display === 'none' || !modal.style.display) ? 'flex' : 'none';
++    }
++
++    function askFaq(questionId) {
++      const chatBody = document.getElementById('chatBody');
++
++      let userMsg = '';
++      let botMsg = '';
++      let targetTaxon = null;
++
++      if (questionId === 1) {
++        userMsg = '¿Cuál es la especie animal con más relaciones en la red?';
++        // Find animal (cat 1: avifauna or cat 3: fauna) with max degree
++        const faunaNodes = nodes.filter(n => (n.cat === 1 || n.cat === 3) && n.active);
++        faunaNodes.sort((a, b) => b.degree - a.degree);
++        targetTaxon = faunaNodes[0];
++        if (targetTaxon) {
++          botMsg = `El animal con mayor número de interacciones es <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>, Cód: ${targetTaxon.taxaId}) con un total de <b>${targetTaxon.degree} conexiones directas</b> en la red.`;
++        } else {
++          botMsg = 'No hay fauna activa disponible en el filtro actual.';
++        }
++      } else if (questionId === 2) {
++        userMsg = '¿Cuál es la planta (flora) más conectada?';
++        const floraNodes = nodes.filter(n => n.cat === 0 && n.active);
++        floraNodes.sort((a, b) => b.degree - a.degree);
++        targetTaxon = floraNodes[0];
++        if (targetTaxon) {
++          botMsg = `La especie de flora estructural más conectada es <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>) con <b>${targetTaxon.degree} enlaces</b> bionómicos con aves y polinizadores.`;
++        } else {
++          botMsg = 'No hay vegetación disponible en la selección actual.';
++        }
++      } else if (questionId === 3) {
++        userMsg = '¿Qué especie está en mayor peligro biológico?';
++        targetTaxon = nodes.find(n => n.taxaId === 'AVE-01' || n.alert.includes('En Peligro'));
++        if (targetTaxon) {
++          botMsg = `La especie de mayor vulnerabilidad es <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>), clasificada <b>En Peligro (EN)</b> y endémica de los humedales de Bogotá.`;
++        } else {
++          botMsg = 'Todas las especies en peligro están actualmente ocultas.';
++        }
++      } else if (questionId === 4) {
++        userMsg = '¿Cuál es el microorganismo clave en el suelo?';
++        targetTaxon = nodes.find(n => n.taxaId === 'MIC-01' || n.taxaId === 'MIC-07');
++        if (targetTaxon) {
++          botMsg = `El microorganismo clave es <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>), responsable de la nitrificación y biodisponibilidad de nitrógeno en el biofiltro hídrico.`;
++        } else {
++          botMsg = 'No se encontró la bacteria clave activa.';
++        }
++      }
++
++      // Append User message
++      const uBubble = document.createElement('div');
++      uBubble.className = 'msg-bubble msg-user';
++      uBubble.innerText = userMsg;
++      chatBody.appendChild(uBubble);
++
++      // Append Bot message
++      setTimeout(() => {
++        const bBubble = document.createElement('div');
++        bBubble.className = 'msg-bubble msg-bot';
++        bBubble.innerHTML = botMsg;
++        chatBody.appendChild(bBubble);
++        chatBody.scrollTop = chatBody.scrollHeight;
++
++        if (targetTaxon) {
++          openInspector(targetTaxon);
++        }
++      }, 250);
++
++      chatBody.scrollTop = chatBody.scrollHeight;
++    }
++
+     function showToast(msg) {
+       const toast = document.getElementById('toastNotify');
+       toast.innerText = msg;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

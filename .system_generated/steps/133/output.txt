@@ -1,0 +1,24 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -685,18 +685,6 @@
+       ];
+       aveList.forEach(a => taxa.push({ id: a[0], name: a[1], sciname: a[2], cat: 1, role: a[3], loc: a[4], alert: a[5], img: a[6] }));
+ 
+-      // FACTORES ABIÓTICOS
+-      const abiData = [
+-        ['ABI-01', 'Ruido Vehicular Continuo', 'Presión Acústica >75-84.2 dB(A)', 'Inhibición de canto de cucarachero y abandono de nido en tinguas', 'Corredor Av. Ciudad de Cali (El Burro)', 'Muy Alto Nivel de Repulsión ABM (Fuerza = 0.95)', 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=300'],
+-        ['ABI-02', 'Impermeabilización (NDBI)', '78.4% Concreto Urbano', 'Barrera física de desplazamiento para herpetos y mamíferos', 'Entorno urbano La Vaca y Techo', 'Alto Nivel de Repulsión (Fuerza = 0.85)', 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300'],
+-        ['ABI-03', 'Isla de Calor Urbana (LST)', '28.5°C - 33.2°C Temperatura', 'Estrés térmico y desecación de vegetación nativa', 'Zonas industriales y parqueaderos Kennedy', 'Requiere bosques urbanos de amortiguación', 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300'],
+-        ['ABI-04', 'Dióxido de Nitrógeno (NO2)', 'Pluma de Diésel 48.2 µg/m3', 'Deterioro de capacidad olfativa en polinizadores nativos', 'Corredor de transporte pesado Av. Cali', 'Zonas de Baja Emisión (ZBE) requeridas', 'https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=300'],
+-        ['ABI-05', 'Lixiviados Orgánicos & DBO5', '>180 mg/L DBO5 Vertimientos', 'Eutrofización acelerada, anoxia y muerte de peces', 'Humedal La Vaca (Corabastos / María Paz)', 'Muy Alto Nivel de Repulsión (Fuerza = 0.90)', 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300'],
+-        ['ABI-06', 'Espejo de Agua Activo (NDWI)', 'NDWI > 0.3 (Atracción Hídrica)', 'Centro de atracción de hábitat para avifauna acuática', 'Centro de los 3 humedales de Kennedy', 'Fuerza Atractora Hídrica (-0.90)', 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=300'],
+-        ['ABI-07', 'Microplásticos & Residuos', 'Plastic Index Alto', 'Ingestión accidental por tinguas y fochas en litorales', 'Espejo y orillas de Techo y El Burro', 'Requiere limpieza mecánica continua SDA', 'https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=300']
+-      ];
+-      abiData.forEach(b => taxa.push({ id: b[0], name: b[1], sciname: b[2], cat: 4, role: b[3], loc: b[4], alert: b[5], img: b[6] }));
+-
+       // FLORA & ARBOLADO CENSO SIGAU (108 REAL BOTANICAL PHOTOS)
+       const sigauBase = [
+         ['Sambucus nigra', 'Saúco', 'Adoxaceae', 'Flora Nativa Hub / Néctar, fruto y nido para 25+ aves', 'Muy Alto (38 aristas)', 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=300'],
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

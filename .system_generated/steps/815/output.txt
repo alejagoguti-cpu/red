@@ -1,0 +1,14 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1201,7 +1201,7 @@
+       const aveList = [
+         ['AVE-01', 'Tingua bogotana', 'Rallus semiplumbeus', 'En Peligro (EN) - Endémica', 'Humedal El Burro y La Vaca', 'Alta (>80% abandono por ruido >75dB)', 'https://raw.githubusercontent.com/alejagoguti-cpu/red/main/img/AVE-01.jpg'],
+         ['AVE-02', 'Cucarachero de pantano', 'Cistothorus apolinari', 'En Peligro (EN) - Endémico', 'Humedal El Burro (Sector Norte)', 'Muy Alta (Inhibición de canto de cortejo)', 'https://raw.githubusercontent.com/alejagoguti-cpu/red/main/img/AVE-02.png'],
+-        ['AVE-03', 'Monjita cabeciamarilla', 'Chrysomus icterocephalus', 'Vulnerable (VU) - Subesp. Endémica', 'Humedal La Vaca y Techo', 'Alta sensibilidad a pérdida de Juncales', 'https://images.unsplash.com/photo-1444464666168-49d633b86797?w=300'],
++        ['AVE-03', 'Monjita cabeciamarilla', 'Chrysomus icterocephalus', 'Vulnerable (VU) - Subesp. Endémica', 'Humedal La Vaca y Techo', 'Alta sensibilidad a pérdida de Juncales', 'https://raw.githubusercontent.com/alejagoguti-cpu/red/main/img/AVE-03.png'],
+         ['AVE-04', 'Pato andino', 'Oxyura ferruginea', 'Vulnerable (VU) / Malacófago', 'Espejo hídrico abierto El Burro', 'Sensible a contaminación con plásticos', 'https://images.unsplash.com/photo-1555169062-013468b47731?w=300'],
+         ['AVE-05', 'Tingua azul', 'Porphyrio martinica', 'Residente / Protegida', 'El Burro, La Vaca, Techo', 'Sensible a perros y gatos', 'https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=300'],
+         ['AVE-06', 'Tingua gris / Polla de agua', 'Gallinula galeata', 'Residente abundante / Herbívora', 'El Burro y La Vaca', 'Media', 'https://images.unsplash.com/photo-1516233758813-a38d024919c5?w=300'],
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

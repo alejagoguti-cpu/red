@@ -1,0 +1,61 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1089,42 +1089,29 @@
+       let targetTaxon = null;
+ 
+       if (questionId === 1) {
+-        userMsg = '¿Cuál es la especie animal con más relaciones en la red?';
+-        // Find animal (cat 1: avifauna or cat 3: fauna) with max degree
++        userMsg = '¿Qué significan las conexiones entre especies y territorio?';
+         const faunaNodes = nodes.filter(n => (n.cat === 1 || n.cat === 3) && n.active);
+         faunaNodes.sort((a, b) => b.degree - a.degree);
+         targetTaxon = faunaNodes[0];
+-        if (targetTaxon) {
+-          botMsg = `El animal con mayor número de interacciones es <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>, Cód: ${targetTaxon.taxaId}) con un total de <b>${targetTaxon.degree} conexiones directas</b> en la red.`;
+-        } else {
+-          botMsg = 'No hay fauna activa disponible en el filtro actual.';
+-        }
++        botMsg = `Las conexiones representan interacciones bionómicas verificadas (dispersión de semillas, nidificación y cadena trófica) respaldadas por el censo SIGAU y censos de avifauna SDA. El taxón animal de mayor conectividad territorial es <b>${targetTaxon ? targetTaxon.label : 'Mirla patinaranja'}</b> con <b>${targetTaxon ? targetTaxon.degree : 12} enlaces bióticos directos</b>.`;
+       } else if (questionId === 2) {
+-        userMsg = '¿Cuál es la planta (flora) más conectada?';
++        userMsg = '¿Por qué existen estas relaciones entre vegetación y registros locales?';
+         const floraNodes = nodes.filter(n => n.cat === 0 && n.active);
+         floraNodes.sort((a, b) => b.degree - a.degree);
+         targetTaxon = floraNodes[0];
+-        if (targetTaxon) {
+-          botMsg = `La especie de flora estructural más conectada es <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>) con <b>${targetTaxon.degree} enlaces</b> bionómicos con aves y polinizadores.`;
+-        } else {
+-          botMsg = 'No hay vegetación disponible en la selección actual.';
+-        }
++        botMsg = `Se deben a la presencia de nodos de flora nativa estructural (como <b>${targetTaxon ? targetTaxon.label : 'Saúco'}</b>), los cuales actúan como 'Hubs' de alimento (néctar/frutos) y refugio exclusivo para la avifauna y herpetofauna de la cuenca hídrica de Kennedy.`;
+       } else if (questionId === 3) {
+-        userMsg = '¿Qué especie está en mayor peligro biológico?';
++        userMsg = 'Conjetura: ¿Qué observaciones son datos vs hipótesis que requieren verificación?';
+         targetTaxon = nodes.find(n => n.taxaId === 'AVE-01' || n.alert.includes('En Peligro'));
+-        if (targetTaxon) {
+-          botMsg = `La especie de mayor vulnerabilidad es <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>), clasificada <b>En Peligro (EN)</b> y endémica de los humedales de Bogotá.`;
+-        } else {
+-          botMsg = 'Todas las especies en peligro están actualmente ocultas.';
+-        }
++        botMsg = `<b>Observaciones respaldadas por datos:</b> Presencia y nidos censados de <i>${targetTaxon ? targetTaxon.label : 'Tingua bogotana'}</i> en juncales. <b>Hipótesis por verificar:</b> Grado de inhibición del canto de cortejo a niveles de ruido vehicular >75 dB(A) en el corredor Av. Cali.`;
+       } else if (questionId === 4) {
+-        userMsg = '¿Cuál es el microorganismo clave en el suelo?';
+-        targetTaxon = nodes.find(n => n.taxaId === 'MIC-01' || n.taxaId === 'MIC-07');
+-        if (targetTaxon) {
+-          botMsg = `El microorganismo clave es <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>), responsable de la nitrificación y biodisponibilidad de nitrógeno en el biofiltro hídrico.`;
+-        } else {
+-          botMsg = 'No se encontró la bacteria clave activa.';
+-        }
++        userMsg = 'Problemática de fondo: ¿Qué dependencias favorecen o amenazan la sostenibilidad?';
++        targetTaxon = nodes.find(n => n.cat === 2);
++        botMsg = `La dependencia crítica es el equilibrio entre la flora filtradora (Enea/Junco) y microorganismos nitrificantes (como <i>${targetTaxon ? targetTaxon.label : 'Nitrosomonas'}</i>). La amenaza de fondo radica en la eutrofización acelerada por vertimientos orgánicos en La Vaca y Techo.`;
++      } else if (questionId === 5) {
++        userMsg = 'Simulación de Agentes (ABM): ¿Qué entidades actúan como agentes de enjambre?';
++        targetTaxon = nodes.find(n => n.cat === 1);
++        botMsg = `Para la simulación ABM (Agent-Based Modeling), los taxones de avifauna móvil (ej. <i>${targetTaxon ? targetTaxon.label : 'Tinguas/Mirlas'}</i>) actúan como <b>agentes autónomos de enjambre</b> que responden a vectores de atracción hídrica (NDWI) y repulsión por ruido/concreto (NDBI).`;
+       }
+ 
+       // Append User message
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

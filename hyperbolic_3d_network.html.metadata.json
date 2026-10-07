@@ -1,0 +1,5 @@
+{
+  "summary": "100% accurate species image matching (Garzas, Tinguas, Colibríes, Patos, Saúco, Capulí, Aliso, Enea, etc.) and double-click to hide node feature. Double-clicking any 3D node smoothly hides it and dynamically recalculates active connectivity topology across remaining nodes. Includes 'Restablecer Nodos Ocultos' button.",
+  "updatedAt": "2026-10-04T23:27:19.253772900Z",
+  "userFacing": true
+}

@@ -1,0 +1,279 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -544,6 +544,103 @@
+       color: #ffffff;
+       transform: translateX(2px);
+     }
++    /* Welcome Initial Pie Chart Modal Overlay */
++    .welcome-overlay {
++      position: fixed;
++      top: 0; left: 0; width: 100vw; height: 100vh;
++      background: rgba(2, 4, 8, 0.85);
++      backdrop-filter: blur(16px);
++      -webkit-backdrop-filter: blur(16px);
++      display: flex;
++      align-items: center;
++      justify-content: center;
++      z-index: 999;
++      animation: fadeIn 0.3s ease-out;
++    }
++    .welcome-modal {
++      width: 92%;
++      max-width: 1060px;
++      max-height: 90vh;
++      background: rgba(10, 15, 26, 0.95);
++      border: 1px solid rgba(0, 255, 255, 0.3);
++      border-radius: 14px;
++      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 255, 255, 0.15);
++      padding: 24px;
++      overflow-y: auto;
++      color: #f1f5f9;
++      display: flex;
++      flex-direction: column;
++      gap: 20px;
++    }
++    .welcome-header {
++      display: flex;
++      align-items: center;
++      justify-content: space-between;
++      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
++      padding-bottom: 14px;
++    }
++    .pie-grid {
++      display: grid;
++      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
++      gap: 18px;
++    }
++    .pie-card {
++      background: rgba(15, 23, 42, 0.8);
++      border: 1px solid rgba(255, 255, 255, 0.1);
++      border-radius: 10px;
++      padding: 16px;
++      display: flex;
++      flex-direction: column;
++      align-items: center;
++      gap: 12px;
++      transition: all 0.2s ease;
++    }
++    .pie-card:hover {
++      border-color: rgba(0, 255, 255, 0.4);
++      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
++    }
++    .pie-card-title {
++      font-size: 13px;
++      font-weight: 800;
++      color: #00ffff;
++      text-transform: uppercase;
++      letter-spacing: 0.5px;
++      text-align: center;
++    }
++    .pie-card-desc {
++      font-size: 10.5px;
++      color: #94a3b8;
++      text-align: center;
++      line-height: 1.35;
++    }
++    .pie-legend {
++      width: 100%;
++      display: flex;
++      flex-direction: column;
++      gap: 6px;
++      margin-top: 4px;
++    }
++    .legend-row {
++      display: flex;
++      align-items: center;
++      justify-content: space-between;
++      font-size: 10px;
++      padding: 3px 6px;
++      background: rgba(255, 255, 255, 0.03);
++      border-radius: 4px;
++    }
++    .legend-label {
++      display: flex;
++      align-items: center;
++      gap: 6px;
++      color: #cbd5e1;
++    }
++    .legend-dot {
++      width: 9px;
++      height: 9px;
++      border-radius: 50%;
++      flex-shrink: 0;
++    }
+   </style>
+ </head>
+ <body>
+@@ -550,3 +550,155 @@
++  <!-- Initial Welcome Modal Overlay: 3 Statistical Pie Charts -->
++  <div class="welcome-overlay" id="welcomeModalOverlay">
++    <div class="welcome-modal">
++      <div class="welcome-header">
++        <div>
++          <div style="font-size:16px; font-weight:900; color:#00ffff; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
++            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ffff" stroke-width="2.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
++            SISTEMA SOCIOECOLÓGICO DE KENNEDY — METRÍCAS ECOLÓGICAS Y MATRIZ DE EVIDENCIA
++          </div>
++          <div style="font-size:11px; color:#94a3b8; margin-top:2px;">Distribución funcional, composición taxonómica y respaldo técnico del modelo (180 taxones)</div>
++        </div>
++        <button class="btn-flat active" style="padding:8px 18px; font-weight:800; font-size:12px;" onclick="closeWelcomeModal()">
++          Explorar Red 3D →
++        </button>
++      </div>
++
++      <div class="pie-grid">
++        <!-- Torta A: Distribución por Tipos de Interacción Biótica -->
++        <div class="pie-card">
++          <div class="pie-card-title">1. Torta A: Distribución por Tipos de Interacción Biótica</div>
++          <div class="pie-card-desc">Representa cómo se distribuyen las relaciones funcionales registradas en la red socioecológica de Kennedy.</div>
++          
++          <!-- SVG Pie Chart A -->
++          <svg width="150" height="150" viewBox="-1.1 -1.1 2.2 2.2" style="transform: rotate(-90deg);">
++            <!-- Visita Floral / Polinización 39.18% -->
++            <path d="M 0 0 L 1 0 A 1 1 0 0 1 -0.584 0.812 Z" fill="#d000ff" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Herbivoría Parcial 31.58% -->
++            <path d="M 0 0 L -0.584 0.812 A 1 1 0 0 1 -0.892 -0.452 Z" fill="#00ff88" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Nidificación y Refugio 7.44% -->
++            <path d="M 0 0 L -0.892 -0.452 A 1 1 0 0 1 -0.669 -0.743 Z" fill="#ffaa00" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Dispersión de Semillas 4.88% -->
++            <path d="M 0 0 L -0.669 -0.743 A 1 1 0 0 1 -0.463 -0.886 Z" fill="#ff80a0" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Parasitismo / Depredación / Epibiosis 16.92% -->
++            <path d="M 0 0 L -0.463 -0.886 A 1 1 0 0 1 1 0 Z" fill="#ff0033" stroke="#0a0f1a" stroke-width="0.02"/>
++          </svg>
++
++          <div class="pie-legend">
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#d000ff;"></div>Visita Floral / Polinización</div>
++              <b style="color:#d000ff;">39.18%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#00ff88;"></div>Herbivoría Parcial</div>
++              <b style="color:#00ff88;">31.58%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#ffaa00;"></div>Nidificación y Refugio</div>
++              <b style="color:#ffaa00;">7.44%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#ff80a0;"></div>Dispersión de Semillas</div>
++              <b style="color:#ff80a0;">4.88%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#ff0033;"></div>Parasitismo / Depredación / Epibiosis</div>
++              <b style="color:#ff0033;">16.92%</b>
++            </div>
++            <div style="font-size:8.5px; color:#64748b; margin-top:2px; text-align:center;">(Desglose: Parásitos 4.92%, Epibiosis 4.69%, Predación 4.60%)</div>
++          </div>
++        </div>
++
++        <!-- Torta B: Composición por Reinos Taxonómicos -->
++        <div class="pie-card">
++          <div class="pie-card-title">🌿 2. Torta B: Composición por Reinos Taxonómicos</div>
++          <div class="pie-card-desc">Muestra el peso proporcional de los reinos biológicos y componentes en la matriz ambiental.</div>
++          
++          <!-- SVG Pie Chart B -->
++          <svg width="150" height="150" viewBox="-1.1 -1.1 2.2 2.2" style="transform: rotate(-90deg);">
++            <!-- Plantae 59.5% -->
++            <path d="M 0 0 L 1 0 A 1 1 0 1 1 -0.560 -0.828 Z" fill="#10B981" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Animalia 30.4% -->
++            <path d="M 0 0 L -0.560 -0.828 A 1 1 0 0 1 0.887 -0.462 Z" fill="#38BDF8" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Fungi 7.0% -->
++            <path d="M 0 0 L 0.887 -0.462 A 1 1 0 0 1 0.988 -0.156 Z" fill="#F43F5E" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Bacterias y Protistas 3.1% -->
++            <path d="M 0 0 L 0.988 -0.156 A 1 1 0 0 1 1 0 Z" fill="#FACC15" stroke="#0a0f1a" stroke-width="0.02"/>
++          </svg>
++
++          <div class="pie-legend">
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#10B981;"></div>Plantae (Flora Nativa e Invasora)</div>
++              <b style="color:#10B981;">59.5%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#38BDF8;"></div>Animalia (Avifauna, Herpetos, MAM)</div>
++              <b style="color:#38BDF8;">30.4%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#F43F5E;"></div>Fungi (Hongos y Micorrizas)</div>
++              <b style="color:#F43F5E;">7.0%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#FACC15;"></div>Bacterias y Protistas (Biofiltro)</div>
++              <b style="color:#FACC15;">3.1%</b>
++            </div>
++            <div style="font-size:8.5px; color:#64748b; margin-top:2px; text-align:center;">(Desglose: Bacterias 1.7%, Protistas 1.4%)</div>
++          </div>
++        </div>
++
++        <!-- Torta C: Origen y Soporte de Fuentes de Evidencia -->
++        <div class="pie-card">
++          <div class="pie-card-title">📜 3. Torta C: Origen y Soporte de Fuentes de Evidencia</div>
++          <div class="pie-card-desc">Demuestra el respaldo técnico del modelo socioecológico a partir del origen del dato.</div>
++          
++          <!-- SVG Pie Chart C -->
++          <svg width="150" height="150" viewBox="-1.1 -1.1 2.2 2.2" style="transform: rotate(-90deg);">
++            <!-- Artículos Científicos 36.1% -->
++            <path d="M 0 0 L 1 0 A 1 1 0 0 1 -0.741 0.672 Z" fill="#00ffff" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Registros Multimedia de Campo 25.8% -->
++            <path d="M 0 0 L -0.741 0.672 A 1 1 0 0 1 -0.722 -0.692 Z" fill="#ffee33" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Colecciones y Censo SIGAU 23.4% -->
++            <path d="M 0 0 L -0.722 -0.692 A 1 1 0 0 1 0.584 -0.812 Z" fill="#ff007f" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Literatura Gris / PMA 9.7% -->
++            <path d="M 0 0 L 0.584 -0.812 A 1 1 0 0 1 0.951 -0.309 Z" fill="#ffaa00" stroke="#0a0f1a" stroke-width="0.02"/>
++            <!-- Libros y Ciencia Participativa 5.0% -->
++            <path d="M 0 0 L 0.951 -0.309 A 1 1 0 0 1 1 0 Z" fill="#00ff88" stroke="#0a0f1a" stroke-width="0.02"/>
++          </svg>
++
++          <div class="pie-legend">
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#00ffff;"></div>Artículos Científicos</div>
++              <b style="color:#00ffff;">36.1%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#ffee33;"></div>Registros Multimedia de Campo</div>
++              <b style="color:#ffee33;">25.8%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#ff007f;"></div>Colecciones y Censo SIGAU</div>
++              <b style="color:#ff007f;">23.4%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#ffaa00;"></div>Literatura Gris / PMA Humedales</div>
++              <b style="color:#ffaa00;">9.7%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#00ff88;"></div>Libros y Ciencia Participativa</div>
++              <b style="color:#00ff88;">5.0%</b>
++            </div>
++          </div>
++        </div>
++      </div>
++
++      <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:14px;">
++        <span style="font-size:10.5px; color:#94a3b8;">💡 Puedes volver a abrir estas gráficas estadísticas en cualquier momento con el botón "📊 Métricas" del menú superior.</span>
++        <button class="btn-flat active" style="padding:9px 24px; font-size:12px; font-weight:800; background:linear-gradient(135deg, #00ffff, #0088ff); color:#000000; border:none;" onclick="closeWelcomeModal()">
++          Entendido, Ingresar al Visor 3D
++        </button>
++      </div>
++    </div>
++  </div>
++
+   <!-- Navigation Header -->
+   <div class="top-header">
+     <div class="nav-group">
+@@ -553,6 +553,11 @@
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ffff" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><circle cx="19" cy="5" r="2"></circle><circle cx="5" cy="19" r="2"></circle><path d="M12 9L19 5M12 15L5 19"></path></svg>
+-        IMÁGENES EXACTAS & OCULTAR POR DOBLE CLIC
+-      </div>
++        SISTEMA SOCIOECOLÓGICO KENNEDY
++      </div>
++
++      <button class="glass-panel btn-flat active" onclick="openWelcomeModal()">
++        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
++        📊 Métricas (Tortas A, B, C)
++      </button>
+ 
+       <button class="glass-panel btn-flat active" id="btnToggleSide" onclick="toggleSideDrawer()">
+         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,169 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1344,6 +1344,163 @@
+       focusSelectedNode(node);
+     }
+ 
++    // --- SUB-NETWORK 2D GRAPH POPUP MODAL LOGIC ---
++    let subCanvasAnim = null;
++
++    function openSubNetworkModal() {
++      if (!selectedNode) return;
++      const subModal = document.getElementById('subnetworkModal');
++      document.getElementById('subModalTitle').innerText = `Sub-Red Directa: ${selectedNode.label}`;
++      document.getElementById('subModalCode').innerText = `[${selectedNode.taxaId}]`;
++      subModal.style.display = 'flex';
++      renderSubNetworkCanvas();
++    }
++
++    function closeSubNetworkModal() {
++      document.getElementById('subnetworkModal').style.display = 'none';
++      if (subCanvasAnim) cancelAnimationFrame(subCanvasAnim);
++    }
++
++    function renderSubNetworkCanvas() {
++      const subCanvas = document.getElementById('subCanvas');
++      const wrap = subCanvas.parentElement;
++      subCanvas.width = wrap.clientWidth;
++      subCanvas.height = wrap.clientHeight;
++      const sctx = subCanvas.getContext('2d');
++
++      const centerNode = selectedNode;
++      const neighbors = centerNode.neighbors || [];
++
++      // Calculate 2D radial layout around central node
++      const cx = subCanvas.width / 2;
++      const cy = subCanvas.height / 2;
++      const subRadius = Math.min(cx, cy) - 90;
++
++      const subNodes = [
++        { ...centerNode, sx: cx, sy: cy, isCenter: true }
++      ];
++
++      neighbors.forEach((nb, idx) => {
++        const angle = (idx / neighbors.length) * Math.PI * 2;
++        const nx = cx + Math.cos(angle) * subRadius;
++        const ny = cy + Math.sin(angle) * subRadius;
++        subNodes.push({ ...nb, sx: nx, sy: ny, isCenter: false, angle });
++      });
++
++      const interactionTypes = [
++        { name: 'Depredación', color: '#ff0033' },
++        { name: 'Herbivoría', color: '#00ff88' },
++        { name: 'Dispersión', color: '#ff80a0' },
++        { name: 'Mutualismo', color: '#ffee33' },
++        { name: 'Nidificación', color: '#ffaa00' },
++        { name: 'Visita Floral', color: '#d000ff' },
++        { name: 'Anidamiento', color: '#a0522d' },
++        { name: 'Parasitismo', color: '#ffff00' },
++        { name: 'Alelopatía', color: '#888888' }
++      ];
++
++      function drawSub() {
++        sctx.fillStyle = '#020408';
++        sctx.fillRect(0, 0, subCanvas.width, subCanvas.height);
++
++        // Draw Sub-Network Edges with specific interaction colors
++        neighbors.forEach((nb, idx) => {
++          const targetSub = subNodes[idx + 1];
++
++          let inter = interactionTypes[0];
++          if (centerNode.cat === 0 && nb.cat === 1) inter = interactionTypes[5];
++          else if (centerNode.cat === 1 && nb.cat === 0) inter = interactionTypes[2];
++          else if (centerNode.cat === 1 && nb.cat === 3) inter = interactionTypes[0];
++          else if (centerNode.cat === 3 && nb.cat === 0) inter = interactionTypes[1];
++          else if (centerNode.cat === 0 && nb.cat === 0) inter = interactionTypes[8];
++          else if (centerNode.cat === 2) inter = interactionTypes[3];
++          else inter = interactionTypes[(idx + centerNode.id) % interactionTypes.length];
++
++          // Draw Glowing Edge
++          sctx.save();
++          sctx.beginPath();
++          sctx.moveTo(cx, cy);
++          sctx.lineTo(targetSub.sx, targetSub.sy);
++          sctx.strokeStyle = inter.color;
++          sctx.lineWidth = 2.5;
++          sctx.shadowColor = inter.color;
++          sctx.shadowBlur = 8;
++          sctx.stroke();
++          sctx.restore();
++
++          // Edge Label (Type)
++          const mx = (cx + targetSub.sx) / 2;
++          const my = (cy + targetSub.sy) / 2;
++          sctx.save();
++          sctx.font = '9px ui-monospace, monospace';
++          sctx.fillStyle = '#ffffff';
++          sctx.shadowColor = '#000000';
++          sctx.shadowBlur = 4;
++          sctx.fillText(inter.name, mx - 15, my - 4);
++          sctx.restore();
++        });
++
++        // Draw Sub-Network Nodes
++        subNodes.forEach(sn => {
++          const r = sn.isCenter ? 26 : 20;
++
++          sctx.save();
++          sctx.beginPath();
++          sctx.arc(sn.sx, sn.sy, r, 0, Math.PI * 2);
++          sctx.clip();
++
++          if (sn.imgObj && sn.imgObj.complete && sn.imgObj.naturalWidth !== 0) {
++            sctx.drawImage(sn.imgObj, sn.sx - r, sn.sy - r, r * 2, r * 2);
++          } else {
++            sctx.fillStyle = palette.catColors[sn.cat] || '#00ffff';
++            sctx.fillRect(sn.sx - r, sn.sy - r, r * 2, r * 2);
++          }
++          sctx.restore();
++
++          // Border Ring
++          sctx.save();
++          sctx.beginPath();
++          sctx.arc(sn.sx, sn.sy, r + 1, 0, Math.PI * 2);
++          sctx.strokeStyle = sn.isCenter ? '#00ffff' : palette.catColors[sn.cat];
++          sctx.lineWidth = sn.isCenter ? 3.5 : 2;
++          if (sn.isCenter) {
++            sctx.shadowColor = '#00ffff';
++            sctx.shadowBlur = 12;
++          }
++          sctx.stroke();
++          sctx.restore();
++
++          // Node Text Label
++          sctx.save();
++          sctx.font = sn.isCenter ? '11px monospace' : '9.5px monospace';
++          sctx.fillStyle = '#ffffff';
++          sctx.shadowColor = '#000000';
++          sctx.shadowBlur = 4;
++          sctx.fillText(`${sn.label} [${sn.taxaId}]`, sn.sx + r + 6, sn.sy + 4);
++          sctx.restore();
++        });
++      }
++
++      drawSub();
++
++      // Click event inside Sub-Network canvas to switch focus to neighbor
++      subCanvas.onclick = (e) => {
++        const rect = subCanvas.getBoundingClientRect();
++        const mx = e.clientX - rect.left;
++        const my = e.clientY - rect.top;
++
++        subNodes.forEach(sn => {
++          const r = sn.isCenter ? 26 : 20;
++          if (Math.hypot(sn.sx - mx, sn.sy - my) < r) {
++            if (!sn.isCenter) {
++              closeSubNetworkModal();
++              openInspector(nodes[sn.id]);
++            }
++          }
++        });
++      };
++    }
++
+     function closeInspector() {
+       selectedNode = null;
+       document.getElementById('nodeInspector').style.display = 'none';
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

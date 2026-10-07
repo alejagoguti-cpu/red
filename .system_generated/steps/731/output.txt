@@ -1,0 +1,27 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -885,9 +885,9 @@
+       </div>
+     </div>
+ 
+-    <div class="cat-card" style="--cat-color:#558E9B;" onclick="toggleCat(1)">
+-      <div class="cat-label-wrap">
+-        <img class="cat-thumb" style="--cat-color:#558E9B;" src="https://images.unsplash.com/photo-1520808663317-647b476a81b9?w=100" alt="Avifauna">
++    <div class="cat-card" style="--cat-color:#6B9080;" onclick="toggleCat(1)">
++      <div class="cat-label-wrap">
++        <img class="cat-thumb" style="--cat-color:#6B9080;" src="https://images.unsplash.com/photo-1520808663317-647b476a81b9?w=100" alt="Avifauna">
+         <div>
+           <div style="font-weight:700; color:#f8fafc;">Avifauna Evaluada</div>
+           <div style="font-size:9.5px; color:#94a3b8;">38 Taxones Acuáticos & Dosel</div>
+@@ -940,7 +940,7 @@
+         <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#A386A9;"></span><span>Visita Floral</span></div>
+         <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#D1A996;"></span><span>Anidamiento</span></div>
+         <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#C6B3CA;"></span><span>Parasitismo</span></div>
+-        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#558E9B;"></span><span>Alelopatía</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#6B9080;"></span><span>Alelopatía</span></div>
+       </div>
+     </div>
+   </div>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

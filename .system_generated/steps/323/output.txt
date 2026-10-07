@@ -1,0 +1,34 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1396,7 +1396,7 @@
+       const centerNode = selectedNode;
+       const neighbors = centerNode.neighbors || [];
+ 
+-      // Multi-Ring Staggered 2D Radial layout to guarantee 0% node overlap even for high-degree nodes
++      // Organic 2D Mesh Network layout (No linear axis, no cross alignments)
+       const cx = subCanvas.width / 2;
+       const cy = subCanvas.height / 2;
+ 
+@@ -1403,12 +1403,15 @@
+         { ...centerNode, sx: cx, sy: cy, isCenter: true }
+       ];
+ 
++      const totalNb = neighbors.length;
+       neighbors.forEach((nb, idx) => {
+-        const ringOffset = (idx % 2 === 0) ? 0 : 45;
+-        const subRadius = Math.min(cx, cy) - 95 + ringOffset;
+-        const angle = (idx / neighbors.length) * Math.PI * 2;
++        // Golden Ratio organic spiral distribution to prevent any 4-way cross or linear patterns
++        const angle = idx * 2.39996 + 0.4; // Golden angle offset
++        const distRatio = Math.sqrt((idx + 1) / totalNb);
++        const subRadius = 90 + distRatio * (Math.min(cx, cy) - 130);
++        
+         const nx = cx + Math.cos(angle) * subRadius;
+-        const ny = cy + Math.sin(angle) * subRadius;
++        const ny = cy + Math.sin(angle) * subRadius * 0.85; // Slight organic ellipse
+         subNodes.push({ ...nb, sx: nx, sy: ny, isCenter: false, angle });
+       });
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

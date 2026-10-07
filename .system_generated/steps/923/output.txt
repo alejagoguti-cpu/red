@@ -1,0 +1,9 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'red_congestion_matrioshka.html', LF will be replaced by CRLF the next time Git touches it
+[main 2faeb6c] Actualizacion de modal intro sin embotellamientos
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+To https://github.com/alejagoguti-cpu/red.git
+   dec7542..2faeb6c  main -> main
+

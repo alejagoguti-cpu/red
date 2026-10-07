@@ -1,0 +1,14 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -810,7 +810,7 @@
+ 
+       <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); padding-top:14px;">
+         <span style="font-size:10.5px; color:#94a3b8;">💡 Puedes volver a abrir estas gráficas estadísticas en cualquier momento con el botón "📊 Métricas" del menú superior.</span>
+-        <button class="btn-flat active" style="padding:9px 24px; font-size:12px; font-weight:800; background:linear-gradient(135deg, #00ffff, #0088ff); color:#000000; border:none;" onclick="closeWelcomeModal()">
++        <button class="btn-flat active" style="padding:9px 24px; font-size:12px; font-weight:800; background:linear-gradient(135deg, #84a48b, #558e9b); color:#000000; border:none;" onclick="closeWelcomeModal()">
+           Entendido, Ingresar al Visor 3D
+         </button>
+       </div>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

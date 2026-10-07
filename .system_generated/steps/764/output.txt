@@ -1,0 +1,5 @@
+
+The command exited with code 0.
+Output:
+git version 2.55.0.windows.3
+

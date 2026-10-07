@@ -1,0 +1,30 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1890,15 +1890,15 @@
+       subState.nodes = newSubNodes;
+ 
+       const interactionTypes = [
+-        { name: 'Depredación', color: '#ff0033' },
+-        { name: 'Herbivoría', color: '#00ff88' },
+-        { name: 'Dispersión', color: '#ff80a0' },
+-        { name: 'Mutualismo', color: '#ffee33' },
+-        { name: 'Nidificación', color: '#ffaa00' },
+-        { name: 'Visita Floral', color: '#d000ff' },
+-        { name: 'Anidamiento', color: '#a0522d' },
+-        { name: 'Parasitismo', color: '#ffff00' },
+-        { name: 'Alelopatía', color: '#888888' }
++        { name: 'Depredación', color: '#C96349' },
++        { name: 'Herbivoría', color: '#84A48B' },
++        { name: 'Dispersión', color: '#E69888' },
++        { name: 'Mutualismo', color: '#E7C878' },
++        { name: 'Nidificación', color: '#F79E70' },
++        { name: 'Visita Floral', color: '#A386A9' },
++        { name: 'Anidamiento', color: '#D1A996' },
++        { name: 'Parasitismo', color: '#C6B3CA' },
++        { name: 'Alelopatía', color: '#558E9B' }
+       ];
+ 
+       function loopSub() {
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

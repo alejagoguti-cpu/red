@@ -1,0 +1,43 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -588,7 +588,7 @@
+       }
+     };
+ 
+-    // SVG Data URI Generator for 100% Reliable Species Visuals (No CORS, No standard internet image loading failures)
++    // High-Tech Scientific Badge Generator for nodes (Strictly NO ICONS or visual symbols)
+     function generateSpeciesSvgDataUri(taxonId, speciesName, cat) {
+       const colors = {
+         0: ['#003318', '#00ff88', '#10B981'], // Flora
+@@ -601,24 +601,12 @@
+       const initials = taxonId.split('-')[0];
+       const codeNum = taxonId.split('-')[1] || '';
+ 
+-      let iconGraphic = '';
+-      if (cat === 1) { // Bird
+-        iconGraphic = `<path d="M12 28 C 16 18, 28 14, 38 18 C 44 14, 52 16, 54 22 C 48 24, 46 30, 38 32 C 28 34, 18 36, 12 28 Z M48 20 C 50 18, 54 18, 56 20 L 52 22 Z" fill="${c[1]}"/>`;
+-      } else if (cat === 0) { // Plant
+-        iconGraphic = `<path d="M32 48 V 24 M32 36 C 24 30, 16 32, 14 22 C 24 22, 30 28, 32 36 Z M32 30 C 40 24, 48 26, 50 16 C 40 16, 34 22, 32 30 Z" stroke="${c[1]}" stroke-width="2.5" fill="none"/>`;
+-      } else if (cat === 2) { // Micro
+-        iconGraphic = `<circle cx="32" cy="32" r="14" stroke="${c[1]}" stroke-width="2" fill="none" stroke-dasharray="3,3"/><circle cx="26" cy="28" r="3" fill="${c[1]}"/><circle cx="38" cy="36" r="4" fill="${c[1]}"/>`;
+-      } else if (cat === 3) { // Herpeto
+-        iconGraphic = `<path d="M20 40 C 20 24, 44 24, 44 40 C 44 44, 20 44, 20 40 Z M32 20 C 26 20, 26 26, 32 26 C 38 26, 38 20, 32 20 Z" fill="${c[1]}"/>`;
+-      } else { // Abiotic / Core
+-        iconGraphic = `<polygon points="32,12 50,46 14,46" stroke="${c[1]}" stroke-width="2.5" fill="none"/><circle cx="32" cy="32" r="5" fill="${c[1]}"/>`;
+-      }
+-
+       const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 64 64">
+         <rect width="64" height="64" rx="32" fill="${c[0]}"/>
+-        <circle cx="32" cy="32" r="29" stroke="${c[1]}" stroke-width="2" fill="none" opacity="0.6"/>
+-        ${iconGraphic}
+-        <text x="32" y="56" font-family="monospace" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">${taxonId}</text>
++        <circle cx="32" cy="32" r="29" stroke="${c[1]}" stroke-width="2" fill="none" opacity="0.8"/>
++        <circle cx="32" cy="32" r="23" stroke="${c[1]}" stroke-width="1" stroke-dasharray="2,2" fill="none" opacity="0.4"/>
++        <text x="32" y="28" font-family="ui-monospace, monospace" font-size="10" font-weight="900" fill="${c[1]}" text-anchor="middle" letter-spacing="0.5">${initials}</text>
++        <text x="32" y="42" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">${codeNum}</text>
+       </svg>`;
+       return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+     }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

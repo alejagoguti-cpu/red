@@ -1,0 +1,66 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1261,6 +1261,60 @@
+       chatBody.scrollTop = chatBody.scrollHeight;
+     }
+ 
++    function sendCustomChatMessage() {
++      const input = document.getElementById('chatInput');
++      const text = input.value.trim();
++      if (!text) return;
++
++      const chatBody = document.getElementById('chatBody');
++
++      // Append User Message
++      const uBubble = document.createElement('div');
++      uBubble.className = 'msg-bubble msg-user';
++      uBubble.innerText = text;
++      chatBody.appendChild(uBubble);
++
++      input.value = '';
++      chatBody.scrollTop = chatBody.scrollHeight;
++
++      // Intelligent Bio-statistical query matching
++      const query = text.toLowerCase();
++      let targetTaxon = nodes.find(n => n.active && (
++        n.label.toLowerCase().includes(query) ||
++        n.sciname.toLowerCase().includes(query) ||
++        n.taxaId.toLowerCase().includes(query) ||
++        n.role.toLowerCase().includes(query)
++      ));
++
++      let botMsg = '';
++      if (targetTaxon) {
++        botMsg = `Analizando <b>${targetTaxon.label}</b> (<i>${targetTaxon.sciname}</i>, Cód: <b>${targetTaxon.taxaId}</b>): Posee <b>${targetTaxon.degree} interacciones bióticas</b> en la cuenca socioecológica de Kennedy. Nicho: ${targetTaxon.role}.`;
++      } else if (query.includes('cuanto') || query.includes('total') || query.includes('especies') || query.includes('nodos')) {
++        const activeCount = nodes.filter(n => n.active).length;
++        const edgeCount = edges.filter(e => e.active).length;
++        botMsg = `La red socioecológica actual cuenta con <b>${activeCount} especies bióticas activas</b> y un total de <b>${edgeCount} relaciones ecológicas interconectadas</b>.`;
++      } else if (query.includes('amenaza') || query.includes('ruido') || query.includes('contaminacion')) {
++        targetTaxon = nodes.find(n => n.alert.includes('Alta') || n.alert.includes('Peligro'));
++        botMsg = `Las principales presiones antropogénicas registradas son el ruido vehicular continuous (>75dB en Av. Cali) y la eutrofización hídrica en La Vaca. Un taxón altamente vulnerable es <b>${targetTaxon ? targetTaxon.label : 'Tingua bogotana'}</b>.`;
++      } else {
++        // Fallback: select most connected species matching topic
++        targetTaxon = [...nodes].filter(n => n.active).sort((a, b) => b.degree - a.degree)[0];
++        botMsg = `Entendido. He analizado la topología del enjambre para tu consulta. Te ubico en el taxón con mayor centralidad biótica: <b>${targetTaxon ? targetTaxon.label : 'Especie Principal'}</b> con ${targetTaxon ? targetTaxon.degree : 0} interacciones activas.`;
++      }
++
++      setTimeout(() => {
++        const bBubble = document.createElement('div');
++        bBubble.className = 'msg-bubble msg-bot';
++        bBubble.innerHTML = botMsg;
++        chatBody.appendChild(bBubble);
++        chatBody.scrollTop = chatBody.scrollHeight;
++
++        if (targetTaxon) {
++          openInspector(targetTaxon);
++        }
++      }, 300);
++    }
++
+     function showToast(msg) {
+       const toast = document.getElementById('toastNotify');
+       toast.innerText = msg;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

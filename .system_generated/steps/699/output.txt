@@ -1,0 +1,26 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1902,17 +1902,11 @@
+         const centerSub = subState.nodes.find(n => n.isCenter);
+ 
+         // Draw Sub-Network Edges
+-        subState.nodes.forEach((sn, idx) => {
++        subState.nodes.forEach((sn) => {
+           if (sn.isCenter) return;
+ 
+-          let inter = interactionTypes[0];
+-          if (centerNode.cat === 0 && sn.cat === 1) inter = interactionTypes[5];
+-          else if (centerNode.cat === 1 && sn.cat === 0) inter = interactionTypes[2];
+-          else if (centerNode.cat === 1 && sn.cat === 3) inter = interactionTypes[0];
+-          else if (centerNode.cat === 3 && sn.cat === 0) inter = interactionTypes[1];
+-          else if (centerNode.cat === 0 && sn.cat === 0) inter = interactionTypes[8];
+-          else if (centerNode.cat === 2) inter = interactionTypes[3];
+-          else inter = interactionTypes[(idx + centerNode.id) % interactionTypes.length];
++          const typeId = sn.interType !== undefined ? sn.interType : 0;
++          const inter = interactionTypes[typeId] || interactionTypes[0];
+ 
+           if (centerSub) {
+             sctx.save();
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,10 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'index.html', LF will be replaced by CRLF the next time Git touches it
+[main db83dac] Agregada pagina de inicio index.html para solucionar error 404 en la raiz de GitHub Pages
+ 1 file changed, 127 insertions(+)
+ create mode 100644 index.html
+To https://github.com/alejagoguti-cpu/red.git
+   c969c6d..db83dac  main -> main
+

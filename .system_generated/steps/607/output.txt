@@ -1,0 +1,12 @@
+
+The command exited with code 1.
+Output:
+Select-String : No se puede convertir 'System.String' al tipo 'System.Management.Automation.SwitchParameter' requerido 
+por el par�metro 'CaseSensitive'. 
+En l�nea: 1 Car�cter: 166
++ ... perbolic_3d_network.html' -Pattern '00ffff|cyan' -CaseSensitive:False
++                                                                     ~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Select-String], ParameterBindingException
+    + FullyQualifiedErrorId : CannotConvertArgument,Microsoft.PowerShell.Commands.SelectStringCommand
+ 
+

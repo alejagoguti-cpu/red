@@ -1,0 +1,13 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -644,7 +644,6 @@
+     // --- 100% ACCURATE REAL HD SPECIES PHOTOS FOR ALL BIRDS, PLANTS, ANIMALS, MICROBES ---
+     function buildFull180Dataset() {
+       const taxa = [];
+-      taxa.push({ id: 'CORE-0', name: 'Sistema Socioecológico Kennedy', sciname: 'Humedales El Burro, La Vaca, Techo', cat: 5, role: 'Integración Total: Flora (108), Avifauna (38), Microorganismos (15), Herpetos & MIA (12), Factores Abióticos (7)', loc: 'Localidad de Kennedy (Bogotá)', alert: 'Red completa de enjambre V6 bajo presiones urbanas por ruido >75dB, concreto NDBI y lixiviados', img: '' });
+ 
+       // MICROORGANISMOS
+       const micData = [
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

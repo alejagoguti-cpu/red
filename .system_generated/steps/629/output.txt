@@ -1,0 +1,16 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -670,8 +670,8 @@
+     <div class="welcome-modal">
+       <div class="welcome-header">
+         <div>
+-          <div style="font-size:16px; font-weight:900; color:#00ffff; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
+-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00ffff" stroke-width="2.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
++          <div style="font-size:16px; font-weight:900; color:#84a48b; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
++            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#84a48b" stroke-width="2.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+             SISTEMA SOCIOECOLÓGICO DE KENNEDY — METRÍCAS ECOLÓGICAS Y MATRIZ DE EVIDENCIA
+           </div>
+           <div style="font-size:11px; color:#94a3b8; margin-top:2px;">Distribución funcional, composición taxonómica y respaldo técnico del modelo (180 taxones)</div>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

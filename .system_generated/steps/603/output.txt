@@ -1,0 +1,25 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -285,7 +285,7 @@
+     .metric-val {
+       font-size: 13px;
+       font-weight: 700;
+-      color: #00ffff;
++      color: #84a48b;
+       font-family: monospace;
+     }
+     .metric-lbl {
+@@ -336,8 +336,8 @@
+       cursor: pointer;
+     }
+     .neighbor-row:hover {
+-      background: rgba(0, 255, 255, 0.15);
+-      color: #00ffff;
++      background: rgba(132, 164, 139, 0.15);
++      color: #84a48b;
+     }
+ 
+     .bottom-bar {
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

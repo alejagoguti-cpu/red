@@ -1,0 +1,54 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1342,34 +1342,35 @@
+       opts.layoutMode = mode;
+       nodes.forEach((n, idx) => {
+         if (mode === 'clustered') {
+-          // Explicitly separate into 4 distinct 3D spatial category clusters
++          // Fully Decentralized 4-Cluster Organic Multi-Hub (Flora, Avifauna, Micro, Fauna)
+           const centers = {
+-            0: { x: -220, y: -80, z: -100 }, // Flora Cluster (Top-Left)
+-            1: { x: 220, y: -80, z: 100 },   // Avifauna Cluster (Top-Right)
+-            2: { x: -220, y: 140, z: 100 },   // Microorganismos Cluster (Bottom-Left)
+-            3: { x: 220, y: 140, z: -100 }    // Herpetos / MIA Cluster (Bottom-Right)
++            0: { x: -240, y: -90, z: -120 }, // Flora Hub
++            1: { x: 240, y: -90, z: 120 },   // Avifauna Hub
++            2: { x: -240, y: 150, z: 120 },   // Microorganismos Hub
++            3: { x: 240, y: 150, z: -120 }    // Herpetos / MIA Hub
+           };
+           const center = centers[n.cat] || { x: 0, y: 0, z: 0 };
+-          const a = idx * 0.4;
+-          const r = 40 + (idx % 12) * 5;
++          const a = idx * 2.39996 + (n.cat * Math.PI / 2); // Decentralized Golden Angle Offset per category
++          const r = 50 + (idx % 15) * 8;
+           n.ox = center.x + Math.cos(a) * r;
+-          n.oy = center.y + (idx % 6) * 14 - 35;
++          n.oy = center.y + Math.sin(a * 1.3) * (r * 0.7);
+           n.oz = center.z + Math.sin(a) * r;
+         } else if (mode === 'concentric') {
+-          // 3 Pristine Orbital 3D Rings (Inner 110px, Middle 190px, Outer 270px)
++          // Decentralized 3-Ring Multi-Orbit (Distributed across concentric spheres without a single center point)
+           const ringIndex = idx % 3;
+-          const radius = 110 + ringIndex * 80;
++          const radius = 140 + ringIndex * 85;
+           const totalInRing = Math.ceil(nodes.length / 3);
+           const posInRing = Math.floor(idx / 3);
+-          const angle = (posInRing / totalInRing) * Math.PI * 2;
++          const angle = (posInRing / totalInRing) * Math.PI * 2 + (ringIndex * 0.5);
+           
+           n.ox = Math.cos(angle) * radius;
+-          n.oy = (ringIndex - 1) * 45 + Math.sin(angle * 2) * 15;
++          n.oy = Math.sin(angle * 1.5) * (radius * 0.5);
+           n.oz = Math.sin(angle) * radius;
+         } else if (mode === 'hyperbolic') {
++          // Fully Decentralized Hyperbolic Organic Mesh Sphere (Distributed non-central Golden Spiral)
+           const phi = Math.acos(1 - 2 * ((idx + 0.5) / nodes.length));
+           const theta = Math.PI * (1 + Math.sqrt(5)) * idx;
+-          const rad = 170 + ((idx * 17) % 110);
++          const rad = 210 + ((idx * 29) % 130);
+           n.ox = rad * Math.sin(phi) * Math.cos(theta);
+           n.oy = rad * Math.sin(phi) * Math.sin(theta);
+           n.oz = rad * Math.cos(phi);
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

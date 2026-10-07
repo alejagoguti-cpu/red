@@ -1,0 +1,11 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'hyperbolic_3d_network.html', LF will be replaced by CRLF the next time Git touches it
+[main a428497] Add official photos for AVE-02 Cucarachero and AVE-03 Monjita cabeciamarilla
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+ create mode 100644 img/AVE-02.png
+ create mode 100644 img/AVE-03.png
+To https://github.com/alejagoguti-cpu/red.git
+   4342fc7..a428497  main -> main
+

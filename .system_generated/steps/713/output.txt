@@ -1,0 +1,33 @@
+
+The command exited with code 0.
+Output:
+
+hyperbolic_3d_network.html:739:            <path d="M 0 0 L -0.560 -0.828 A 1 1 0 0 1 0.887 -0.462 Z" fill="#558E9B" 
+stroke="#000000" stroke-width="0.02"/>
+hyperbolic_3d_network.html:752:              <div class="legend-label"><div class="legend-dot" 
+style="background:#558E9B;"></div>Animalia (Avifauna, Herpetos, MAM)</div>
+hyperbolic_3d_network.html:753:              <b style="color:#558E9B;">30.4%</b>
+hyperbolic_3d_network.html:783:            <path d="M 0 0 L 0.951 -0.309 A 1 1 0 0 1 1 0 Z" fill="#558E9B" 
+stroke="#000000" stroke-width="0.02"/>
+hyperbolic_3d_network.html:804:              <div class="legend-label"><div class="legend-dot" 
+style="background:#558E9B;"></div>Libros y Ciencia Participativa</div>
+hyperbolic_3d_network.html:805:              <b style="color:#558E9B;">5.0%</b>
+hyperbolic_3d_network.html:813:        <button class="btn-flat active" style="padding:9px 24px; font-size:12px; 
+font-weight:800; background:linear-gradient(135deg, #84a48b, #558e9b); color:#000000; border:none;" 
+onclick="closeWelcomeModal()">
+hyperbolic_3d_network.html:888:    <div class="cat-card" style="--cat-color:#558E9B;" onclick="toggleCat(1)">
+hyperbolic_3d_network.html:890:        <img class="cat-thumb" style="--cat-color:#558E9B;" 
+src="https://images.unsplash.com/photo-1520808663317-647b476a81b9?w=100" alt="Avifauna">
+hyperbolic_3d_network.html:944:        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; 
+height:8px; border-radius:50%; background:#558E9B;"></span><span>Alelopat�a</span></div>
+hyperbolic_3d_network.html:1016:        <button class="btn-flat active" id="subInterToggle8" 
+onclick="toggleSubInteraction(8)" style="font-size:8.5px; padding:2px 6px; border-color:#558E9B; color:#558E9B; 
+background:rgba(85,142,155,0.15);">Alelopat�a</button>
+hyperbolic_3d_network.html:1110:        1: '#558E9B', // Avifauna (Horizon Blue)
+hyperbolic_3d_network.html:1122:        1: ['#1C3038', '#558E9B', '#7BB2BA'], // Avifauna (Horizon / Neptune)
+hyperbolic_3d_network.html:1705:        { name: 'Alelopat�a', color: '#558E9B', bg: 'rgba(85,142,155,0.2)' }      // 
+Horizon Blue
+hyperbolic_3d_network.html:1893:        { name: 'Alelopat�a', color: '#558E9B' }
+
+
+

@@ -1,0 +1,235 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1484,7 +1484,11 @@
+       if (subCanvasAnim) cancelAnimationFrame(subCanvasAnim);
+     }
+ 
+-    let subAnimTime = 0;
++    let subState = {
++      nodes: [],
++      links: []
++    };
++
+     function renderSubNetworkCanvas() {
+       if (subCanvasAnim) cancelAnimationFrame(subCanvasAnim);
+ 
+@@ -1496,34 +1496,76 @@
+       const centerNode = selectedNode;
+       if (!centerNode) return;
+ 
+-      // Filter neighbors based on sub-network active layer toggles
+-      const neighbors = (centerNode.neighbors || []).filter(nb => subOpts.cats[nb.cat] !== false);
+-
+       const cx = subCanvas.width / 2;
+       const cy = subCanvas.height / 2;
+ 
+-      // Dynamic degree calculation for the active sub-network view
+-      const activeSubDegree = neighbors.length;
+-      const centerTargetSize = Math.min(32, Math.max(18, 14 + Math.sqrt(activeSubDegree) * 2.8));
+-
+-      const subNodes = [
+-        { ...centerNode, baseSx: cx, baseSy: cy, sx: cx, sy: cy, isCenter: true, targetSize: centerTargetSize, activeDegree: activeSubDegree }
+-      ];
+-
+-      const totalNb = neighbors.length;
+-      neighbors.forEach((nb, idx) => {
+-        const angle = idx * 2.39996 + 0.4; // Golden angle offset
+-        const distRatio = Math.sqrt((idx + 1) / Math.max(1, totalNb));
++      // Filter neighbors based on sub-network active layer toggles
++      const activeNeighbors = (centerNode.neighbors || []).filter(nb => subOpts.cats[nb.cat] !== false);
++      const totalActive = activeNeighbors.length;
++
++      // Target layout calculation using golden angle mesh to prevent overlaps
++      const targets = new Map();
++      
++      // Center node target
++      targets.set(centerNode.id, {
++        targetSx: cx,
++        targetSy: cy,
++        targetSize: Math.min(32, Math.max(18, 14 + Math.sqrt(totalActive) * 2.8)),
++        activeDegree: totalActive,
++        isCenter: true
++      });
++
++      activeNeighbors.forEach((nb, idx) => {
++        const angle = idx * 2.39996 + 0.4;
++        const distRatio = Math.sqrt((idx + 1) / Math.max(1, totalActive));
+         const subRadius = 90 + distRatio * (Math.min(cx, cy) - 130);
+-        
+-        const nx = cx + Math.cos(angle) * subRadius;
+-        const ny = cy + Math.sin(angle) * subRadius * 0.85;
+-        
++
++        const targetSx = cx + Math.cos(angle) * subRadius;
++        const targetSy = cy + Math.sin(angle) * subRadius * 0.85;
++
+         const nbActiveDegree = (nb.neighbors || []).filter(nnb => subOpts.cats[nnb.cat] !== false).length;
+-        const nbTargetSize = Math.min(24, Math.max(12, 10 + Math.sqrt(nbActiveDegree) * 1.8));
+-
+-        subNodes.push({ ...nb, baseSx: nx, baseSy: ny, sx: nx, sy: ny, isCenter: false, angle, targetSize: nbTargetSize, activeDegree: nbActiveDegree, phase: idx * 0.7 });
+-      });
++        const targetSize = Math.min(24, Math.max(12, 10 + Math.sqrt(nbActiveDegree) * 1.8));
++
++        targets.set(nb.id, {
++          targetSx,
++          targetSy,
++          targetSize,
++          activeDegree: nbActiveDegree,
++          isCenter: false
++        });
++      });
++
++      // Update or initialize subState nodes
++      const existingMap = new Map(subState.nodes.map(n => [n.id, n]));
++      const newSubNodes = [];
++
++      targets.forEach((t, id) => {
++        const fullObj = id === centerNode.id ? centerNode : nodes[id];
++        let existing = existingMap.get(id);
++
++        if (!existing) {
++          existing = {
++            ...fullObj,
++            sx: t.isCenter ? cx : cx + (Math.random() - 0.5) * 40,
++            sy: t.isCenter ? cy : cy + (Math.random() - 0.5) * 40,
++            currentSize: t.targetSize,
++            targetSx: t.targetSx,
++            targetSy: t.targetSy,
++            targetSize: t.targetSize,
++            activeDegree: t.activeDegree,
++            isCenter: t.isCenter
++          };
++        } else {
++          existing.targetSx = t.targetSx;
++          existing.targetSy = t.targetSy;
++          existing.targetSize = t.targetSize;
++          existing.activeDegree = t.activeDegree;
++          existing.isCenter = t.isCenter;
++        }
++        newSubNodes.push(existing);
++      });
++
++      subState.nodes = newSubNodes;
+ 
+       const interactionTypes = [
+         { name: 'Depredación', color: '#ff0033' },
+@@ -1537,64 +1537,58 @@
+       ];
+ 
+       function loopSub() {
+-        subAnimTime += 0.025;
+         sctx.fillStyle = '#020408';
+         sctx.fillRect(0, 0, subCanvas.width, subCanvas.height);
+ 
+-        // Update organic position drift (dynamic motion)
+-        subNodes.forEach(sn => {
+-          if (sn.isCenter) {
+-            sn.sx = sn.baseSx + Math.sin(subAnimTime * 1.2) * 3;
+-            sn.sy = sn.baseSy + Math.cos(subAnimTime * 1.0) * 3;
+-          } else {
+-            const waveX = Math.sin(subAnimTime * 1.5 + sn.phase) * 7;
+-            const waveY = Math.cos(subAnimTime * 1.3 + sn.phase) * 7;
+-            sn.sx = sn.baseSx + waveX;
+-            sn.sy = sn.baseSy + waveY;
+-          }
+-        });
+-
+-        // Draw Sub-Network Edges with specific interaction colors
+-        neighbors.forEach((nb, idx) => {
+-          const targetSub = subNodes[idx + 1];
+-          const centerSub = subNodes[0];
++        // Smooth physics lerp transition towards new restructured positions
++        subState.nodes.forEach(sn => {
++          sn.sx += (sn.targetSx - sn.sx) * 0.12;
++          sn.sy += (sn.targetSy - sn.sy) * 0.12;
++          sn.currentSize += (sn.targetSize - sn.currentSize) * 0.12;
++        });
++
++        const centerSub = subState.nodes.find(n => n.isCenter);
++
++        // Draw Sub-Network Edges
++        subState.nodes.forEach((sn, idx) => {
++          if (sn.isCenter) return;
+ 
+           let inter = interactionTypes[0];
+-          if (centerNode.cat === 0 && nb.cat === 1) inter = interactionTypes[5];
+-          else if (centerNode.cat === 1 && nb.cat === 0) inter = interactionTypes[2];
+-          else if (centerNode.cat === 1 && nb.cat === 3) inter = interactionTypes[0];
+-          else if (centerNode.cat === 3 && nb.cat === 0) inter = interactionTypes[1];
+-          else if (centerNode.cat === 0 && nb.cat === 0) inter = interactionTypes[8];
++          if (centerNode.cat === 0 && sn.cat === 1) inter = interactionTypes[5];
++          else if (centerNode.cat === 1 && sn.cat === 0) inter = interactionTypes[2];
++          else if (centerNode.cat === 1 && sn.cat === 3) inter = interactionTypes[0];
++          else if (centerNode.cat === 3 && sn.cat === 0) inter = interactionTypes[1];
++          else if (centerNode.cat === 0 && sn.cat === 0) inter = interactionTypes[8];
+           else if (centerNode.cat === 2) inter = interactionTypes[3];
+           else inter = interactionTypes[(idx + centerNode.id) % interactionTypes.length];
+ 
+-          // Draw Glowing Dynamic Edge
+-          sctx.save();
+-          sctx.beginPath();
+-          sctx.moveTo(centerSub.sx, centerSub.sy);
+-          sctx.lineTo(targetSub.sx, targetSub.sy);
+-          sctx.strokeStyle = inter.color;
+-          sctx.lineWidth = 2.5;
+-          sctx.shadowColor = inter.color;
+-          sctx.shadowBlur = 8;
+-          sctx.stroke();
+-          sctx.restore();
+-
+-          // Edge Label (Type)
+-          const mx = (centerSub.sx + targetSub.sx) / 2;
+-          const my = (centerSub.sy + targetSub.sy) / 2;
+-          sctx.save();
+-          sctx.font = '9px ui-monospace, monospace';
+-          sctx.fillStyle = '#ffffff';
+-          sctx.shadowColor = '#000000';
+-          sctx.shadowBlur = 4;
+-          sctx.fillText(inter.name, mx - 15, my - 4);
+-          sctx.restore();
++          if (centerSub) {
++            sctx.save();
++            sctx.beginPath();
++            sctx.moveTo(centerSub.sx, centerSub.sy);
++            sctx.lineTo(sn.sx, sn.sy);
++            sctx.strokeStyle = inter.color;
++            sctx.lineWidth = 2.5;
++            sctx.shadowColor = inter.color;
++            sctx.shadowBlur = 8;
++            sctx.stroke();
++            sctx.restore();
++
++            const mx = (centerSub.sx + sn.sx) / 2;
++            const my = (centerSub.sy + sn.sy) / 2;
++            sctx.save();
++            sctx.font = '9px ui-monospace, monospace';
++            sctx.fillStyle = '#ffffff';
++            sctx.shadowColor = '#000000';
++            sctx.shadowBlur = 4;
++            sctx.fillText(inter.name, mx - 15, my - 4);
++            sctx.restore();
++          }
+         });
+ 
+         // Draw Sub-Network Nodes
+-        subNodes.forEach(sn => {
+-          const r = sn.targetSize;
++        subState.nodes.forEach(sn => {
++          const r = sn.currentSize;
+ 
+           sctx.save();
+           sctx.beginPath();
+@@ -1642,8 +1642,8 @@
+         const mx = e.clientX - rect.left;
+         const my = e.clientY - rect.top;
+ 
+-        subNodes.forEach(sn => {
+-          const r = sn.targetSize || 20;
++        subState.nodes.forEach(sn => {
++          const r = sn.currentSize || 20;
+           if (Math.hypot(sn.sx - mx, sn.sy - my) < r) {
+             if (!sn.isCenter) {
+               closeSubNetworkModal();
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

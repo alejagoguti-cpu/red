@@ -1,0 +1,40 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -479,34 +479,6 @@
+         <div class="toggle-box checked" id="toggleCat3"></div>
+       </div>
+     </div>
+-
+-    <div class="cat-card" onclick="toggleCat(4)">
+-      <div class="cat-label-wrap">
+-        <div class="square-indicator" style="background:#ff0033;"></div>
+-        <div>
+-          <div style="font-weight:600;">Factores Abióticos & Presiones</div>
+-          <div style="font-size:9px; color:#64748b;">7 Indicadores (Mapas/Imágenes Reales)</div>
+-        </div>
+-      </div>
+-      <div style="display:flex; align-items:center; gap:8px;">
+-        <span class="badge-count" id="badgeCat4">7</span>
+-        <div class="toggle-box checked" id="toggleCat4"></div>
+-      </div>
+-    </div>
+-
+-    <div class="cat-card" onclick="toggleCat(5)">
+-      <div class="cat-label-wrap">
+-        <div class="square-indicator" style="background:#ffaa00;"></div>
+-        <div>
+-          <div style="font-weight:600;">Centro Integrador Kennedy</div>
+-          <div style="font-size:9px; color:#64748b;">1 Master Core</div>
+-        </div>
+-      </div>
+-      <div style="display:flex; align-items:center; gap:8px;">
+-        <span class="badge-count" id="badgeCat5">1</span>
+-        <div class="toggle-box checked" id="toggleCat5"></div>
+-      </div>
+-    </div>
+   </div>
+ 
+   <!-- Pop-Up Inspector Modal -->
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

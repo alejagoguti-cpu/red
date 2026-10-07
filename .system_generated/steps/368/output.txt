@@ -1,0 +1,56 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1499,8 +1499,12 @@
+       const cx = subCanvas.width / 2;
+       const cy = subCanvas.height / 2;
+ 
++      // Dynamic degree calculation for the active sub-network view
++      const activeSubDegree = neighbors.length;
++      const centerTargetSize = Math.min(32, Math.max(18, 14 + Math.sqrt(activeSubDegree) * 2.8));
++
+       const subNodes = [
+-        { ...centerNode, sx: cx, sy: cy, isCenter: true }
++        { ...centerNode, sx: cx, sy: cy, isCenter: true, targetSize: centerTargetSize, activeDegree: activeSubDegree }
+       ];
+ 
+       const totalNb = neighbors.length;
+@@ -1507,6 +1507,6 @@
+         // Golden Ratio organic spiral distribution to prevent any 4-way cross or linear patterns
+         const angle = idx * 2.39996 + 0.4; // Golden angle offset
+-        const distRatio = Math.sqrt((idx + 1) / totalNb);
++        const distRatio = Math.sqrt((idx + 1) / Math.max(1, totalNb));
+         const subRadius = 90 + distRatio * (Math.min(cx, cy) - 130);
+         
+         const nx = cx + Math.cos(angle) * subRadius;
+@@ -1513,4 +1513,9 @@
+-        subNodes.push({ ...nb, sx: nx, sy: ny, isCenter: false, angle });
++        
++        // Recalculate neighbor active sub-degree considering layer toggles
++        const nbActiveDegree = (nb.neighbors || []).filter(nnb => subOpts.cats[nnb.cat] !== false).length;
++        const nbTargetSize = Math.min(24, Math.max(12, 10 + Math.sqrt(nbActiveDegree) * 1.8));
++
++        subNodes.push({ ...nb, sx: nx, sy: ny, isCenter: false, angle, targetSize: nbTargetSize, activeDegree: nbActiveDegree });
+       });
+ 
+       const interactionTypes = [
+@@ -1567,7 +1567,7 @@
+ 
+         // Draw Sub-Network Nodes
+         subNodes.forEach(sn => {
+-          const r = sn.isCenter ? 26 : 20;
++          const r = sn.targetSize;
+ 
+           sctx.save();
+           sctx.beginPath();
+@@ -1600,7 +1600,7 @@
+           sctx.fillStyle = '#ffffff';
+           sctx.shadowColor = '#000000';
+           sctx.shadowBlur = 4;
+-          sctx.fillText(`${sn.label} [${sn.taxaId}]`, sn.sx + r + 6, sn.sy + 4);
++          sctx.fillText(`${sn.label} [${sn.taxaId}] (k=${sn.activeDegree})`, sn.sx + r + 6, sn.sy + 4);
+           sctx.restore();
+         });
+       }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

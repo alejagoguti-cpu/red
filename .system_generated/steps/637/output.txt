@@ -1,0 +1,63 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -983,8 +983,7 @@
+     </div>
+ 
+     <div style="display:flex; flex-direction:column; gap:6px; margin-top:12px;">
+-      <button class="btn-flat" style="justify-content:center; background:linear-gradient(135deg, rgba(0,255,255,0.25), rgba(0,120,255,0.3)); border-color:#00ffff; color:#ffffff; font-weight:700;" onclick="openSubNetworkModal()">
+-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
++      <button class="btn-flat" style="justify-content:center; background:rgba(132,164,139,0.2); border-color:#84a48b; color:#ffffff; font-weight:700;" onclick="openSubNetworkModal()">
+         🕸️ Ver Sub-Red de Interacciones a Detalle
+       </button>
+ 
+@@ -999,7 +999,7 @@
+   <div class="subnetwork-modal" id="subnetworkModal" style="display:none;">
+     <div class="subnetwork-header">
+       <div style="display:flex; align-items:center; gap:8px;">
+-        <span style="font-weight:800; font-size:13px; color:#00ffff;" id="subModalTitle">Sub-Red de Interacciones Bióticas</span>
++        <span style="font-weight:800; font-size:13px; color:#84a48b;" id="subModalTitle">Sub-Red de Interacciones Bióticas</span>
+         <span style="font-size:10px; color:#94a3b8; font-family:monospace;" id="subModalCode">[AVE-19]</span>
+       </div>
+ 
+@@ -1019,9 +1019,9 @@
+     <div class="subnetwork-canvas-wrap">
+       <canvas id="subCanvas"></canvas>
+     </div>
+-    <div style="padding:8px 14px; background:rgba(10,15,26,0.95); border-top:1px solid rgba(0,255,255,0.2); display:flex; align-items:center; justify-content:space-between; font-size:10px; color:#94a3b8;">
++    <div style="padding:8px 14px; background:rgba(10,15,26,0.95); border-top:1px solid rgba(132,164,139,0.3); display:flex; align-items:center; justify-content:space-between; font-size:10px; color:#94a3b8;">
+       <span>💡 Haz clic en las etiquetas de interacción de arriba para encender/apagar tipos específicos (Depredación, Dispersión, Visita Floral, etc.)</span>
+-      <span style="color:#00ffff; font-weight:700;">Filtro por Tipo de Interacción Ecológica</span>
++      <span style="color:#84a48b; font-weight:700;">Filtro por Tipo de Interacción Ecológica</span>
+     </div>
+   </div>
+ 
+@@ -1034,7 +1034,7 @@
+   <div class="glass-panel faq-chat-modal" id="faqChatModal" style="display:none;">
+     <div class="chat-header">
+       <div class="chat-title-wrap">
+-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ffff" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
++        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#84a48b" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+         <span>Consultas Frecuentes de la Red</span>
+       </div>
+       <div class="btn-close" onclick="toggleFaqChat()">×</div>
+@@ -1046,14 +1046,14 @@
+     </div>
+ 
+     <div class="predefined-chips" style="max-height:220px; overflow-y:auto;">
+-      <div style="font-size:9px; color:#00ffff; font-weight:800; text-transform:uppercase; margin-bottom:4px; letter-spacing:0.5px;">Preguntas de Investigación (Sección 5.2 Tesis):</div>
++      <div style="font-size:9px; color:#84a48b; font-weight:800; text-transform:uppercase; margin-bottom:4px; letter-spacing:0.5px;">Preguntas de Investigación (Sección 5.2 Tesis):</div>
+       <button class="chip-btn" onclick="askFaq(1)">
+         <span>1. ¿Qué significan las conexiones y fuentes de evidencia entre especies y territorio?</span>
+-        <span style="color:#00ffff;">→</span>
++        <span style="color:#84a48b;">→</span>
+       </button>
+       <button class="chip-btn" onclick="askFaq(2)">
+         <span>2. ¿Por qué existen estas relaciones entre la vegetación y los registros locales?</span>
+-        <span style="color:#00ff88;">→</span>
++        <span style="color:#84a48b;">→</span>
+       </button>
+       <button class="chip-btn" onclick="askFaq(3)">
+         <span>3. Conjetura: ¿Qué observaciones son datos vs hipótesis de campo?</span>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

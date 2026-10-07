@@ -1,0 +1,22 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -360,7 +360,7 @@
+       letter-spacing: 0.4px;
+     }
+     .status-badge b {
+-      color: #00ffff;
++      color: #84a48b;
+       font-family: monospace;
+     }
+ 
+@@ -367,6 +367,6 @@
+       background: rgba(0, 0, 0, 0.5);
+       border: 1px solid rgba(255, 255, 255, 0.15);
+-      color: #00ffff;
++      color: #84a48b;
+       padding: 6px 10px;
+       border-radius: 6px;
+       font-family: inherit;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

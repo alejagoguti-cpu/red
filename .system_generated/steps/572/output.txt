@@ -1,0 +1,72 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -384,11 +384,11 @@
+       transform: translate(-50%, -50%);
+       width: 680px;
+       height: 480px;
+-      background: rgba(4, 8, 16, 0.96);
+-      backdrop-filter: blur(24px);
+-      -webkit-backdrop-filter: blur(24px);
+-      border: 1.5px solid #00ffff;
+-      box-shadow: 0 0 50px rgba(0, 255, 255, 0.35), 0 30px 80px rgba(0, 0, 0, 0.95);
++      background: #050505;
++      backdrop-filter: blur(24px);
++      -webkit-backdrop-filter: blur(24px);
++      border: 1.5px solid #84A48B;
++      box-shadow: 0 30px 80px #000000;
+       border-radius: 12px;
+       z-index: 300;
+       display: flex;
+@@ -399,8 +399,8 @@
+ 
+     .subnetwork-header {
+       padding: 12px 16px;
+-      background: rgba(15, 23, 42, 0.9);
+-      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
++      background: #0a0a0c;
++      border-bottom: 1px solid rgba(132, 164, 139, 0.25);
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+@@ -408,7 +408,7 @@
+     .subnetwork-canvas-wrap {
+       flex: 1;
+       position: relative;
+-      background: #020408;
++      background: #000000;
+     }
+     #subCanvas {
+       width: 100%;
+@@ -420,9 +420,9 @@
+       position: absolute;
+       bottom: 16px;
+       right: 16px;
+-      background: linear-gradient(135deg, rgba(0, 255, 255, 0.25), rgba(0, 150, 255, 0.35));
+-      border: 1px solid #00ffff;
+-      color: #ffffff;
++      background: #0a0a0c;
++      border: 1px solid #84A48B;
++      color: #84A48B;
+       padding: 10px 16px;
+       border-radius: 24px;
+       font-size: 11px;
+@@ -432,7 +432,7 @@
+       display: flex;
+       align-items: center;
+       gap: 8px;
+-      box-shadow: 0 8px 24px rgba(0, 255, 255, 0.3);
++      box-shadow: 0 8px 24px #000000;
+       transition: all 0.2s ease;
+     }
+     .chat-widget-btn:hover {
+@@ -439,5 +439,5 @@
+-      box-shadow: 0 12px 32px rgba(0, 255, 255, 0.5);
+-      background: linear-gradient(135deg, rgba(0, 255, 255, 0.4), rgba(0, 180, 255, 0.5));
++      background: rgba(132, 164, 139, 0.15);
++      color: #ffffff;
+     }
+ 
+     .faq-chat-modal {
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

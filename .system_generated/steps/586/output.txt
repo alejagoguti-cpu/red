@@ -1,0 +1,62 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -821,22 +821,22 @@
+   <div class="top-header">
+     <div class="nav-group">
+       <div class="glass-panel brand-title">
+-        <span>🌐 SISTEMA SOCIOECOLÓGICO KENNEDY</span>
++        <span>SISTEMA SOCIOECOLÓGICO KENNEDY</span>
+       </div>
+ 
+       <button class="glass-panel btn-flat active" onclick="openWelcomeModal()">
+-        <span>📊 Métricas (Tortas A, B, C)</span>
++        <span>Métricas (Tortas A, B, C)</span>
+       </button>
+ 
+       <button class="glass-panel btn-flat active" id="btnToggleSide" onclick="toggleSideDrawer()">
+-        <span>🗂️ Filtro de Capas Bióticas</span>
++        <span>Filtro de Capas Bióticas</span>
+       </button>
+ 
+       <button class="glass-panel btn-flat" onclick="restoreHiddenNodes()">
+-        <span>👁️ Restablecer (<span id="lblHiddenCount">0</span>)</span>
+-      </button>
+-
+-      <input type="text" id="searchInput" placeholder="🔍 Buscar taxón..." oninput="searchNode(this.value)" class="glass-panel search-box">
++        <span>Restablecer (<span id="lblHiddenCount">0</span>)</span>
++      </button>
++
++      <input type="text" id="searchInput" placeholder="Buscar taxón..." oninput="searchNode(this.value)" class="glass-panel search-box">
+     </div>
+ 
+     <div class="nav-group">
+@@ -843,19 +843,19 @@
+-        <span>🌀 Hiperbólico</span>
++        <span>Hiperbólico</span>
+       </button>
+ 
+       <button class="glass-panel btn-flat" onclick="setLayout('clustered')">
+-        <span>🧩 Por Grupos</span>
++        <span>Por Grupos</span>
+       </button>
+ 
+       <button class="glass-panel btn-flat" onclick="setLayout('concentric')">
+-        <span>🪐 Anillos</span>
++        <span>Anillos</span>
+       </button>
+ 
+       <button class="glass-panel btn-flat active" id="btnAutoRot" onclick="opts.autoRotate = !opts.autoRotate; this.classList.toggle('active')">
+-        <span>🔄 Giro 3D</span>
+-      </button>
+-
+-      <button class="glass-panel btn-flat" onclick="resetCamera()">🎯 Reset</button>
++        <span>Giro 3D</span>
++      </button>
++
++      <button class="glass-panel btn-flat" onclick="resetCamera()">Reset</button>
+     </div>
+   </div>
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

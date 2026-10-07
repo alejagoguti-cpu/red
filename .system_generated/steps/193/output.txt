@@ -1,0 +1,37 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -932,21 +932,21 @@
+       opts.layoutMode = mode;
+       nodes.forEach((n, idx) => {
+         if (mode === 'clustered') {
+-          const catAngle = (n.cat / 6) * Math.PI * 2;
+-          const r = 160 + (idx % 20) * 4;
+-          n.ox = Math.cos(catAngle) * r + (Math.random() - 0.5) * 30;
+-          n.oy = (Math.random() - 0.5) * 80;
+-          n.oz = Math.sin(catAngle) * r + (Math.random() - 0.5) * 30;
++          const catAngle = ((idx * 7) % nodes.length / nodes.length) * Math.PI * 2;
++          const r = 140 + (idx % 25) * 5;
++          n.ox = Math.cos(catAngle) * r + (Math.random() - 0.5) * 40;
++          n.oy = (Math.random() - 0.5) * 90;
++          n.oz = Math.sin(catAngle) * r + (Math.random() - 0.5) * 40;
+         } else if (mode === 'concentric') {
+-          const r = (n.cat + 1) * 45;
+-          const a = idx * 0.15;
++          const r = 120 + (idx % 5) * 40;
++          const a = idx * 0.17;
+           n.ox = Math.cos(a) * r;
+-          n.oy = (idx % 5) * 15 - 30;
++          n.oy = (idx % 7) * 16 - 48;
+           n.oz = Math.sin(a) * r;
+         } else if (mode === 'hyperbolic') {
+-          const phi = Math.acos(1 - 2 * (idx / nodes.length));
++          const phi = Math.acos(1 - 2 * ((idx + 0.5) / nodes.length));
+           const theta = Math.PI * (1 + Math.sqrt(5)) * idx;
+-          const rad = n.cat === 4 ? 290 : (n.cat === 0 ? 180 + (idx % 4) * 25 : 230);
++          const rad = 170 + ((idx * 17) % 110);
+           n.ox = rad * Math.sin(phi) * Math.cos(theta);
+           n.oy = rad * Math.sin(phi) * Math.sin(theta);
+           n.oz = rad * Math.cos(phi);
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

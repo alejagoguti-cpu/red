@@ -1,0 +1,176 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1808,10 +1808,16 @@
+       });
+       const totalActive = activeNeighbors.length;
+ 
+-      // Target layout calculation using golden angle mesh
++      // Multi-hub organic layout calculation: group sub-nodes into 4 decentralized category clusters
+       const targets = new Map();
+-      
+-      // Center node target calculation
++      const clusterCenters = {
++        0: { angle: -Math.PI * 0.75, dist: Math.min(cx, cy) * 0.52 }, // Flora Cluster
++        1: { angle: -Math.PI * 0.15, dist: Math.min(cx, cy) * 0.52 }, // Avifauna Cluster
++        2: { angle: Math.PI * 0.65, dist: Math.min(cx, cy) * 0.52 },  // Microorganismos Cluster
++        3: { angle: Math.PI * 0.25, dist: Math.min(cx, cy) * 0.52 }   // Fauna Cluster
++      };
++      
++      // Center focal node target calculation
+       targets.set(centerNode.id, {
+         targetSx: cx,
+         targetSy: cy,
+@@ -1819,30 +1819,44 @@
+         isCenter: true
+       });
+ 
++      // Group neighbors by category for cluster dispersion
++      const catGroups = { 0: [], 1: [], 2: [], 3: [] };
+       activeNeighbors.forEach((nb, idx) => {
+-        const angle = idx * 2.39996 + 0.4;
+-        const distRatio = Math.sqrt((idx + 1) / Math.max(1, totalActive));
+-        const subRadius = 90 + distRatio * (Math.min(cx, cy) - 130);
+-
+-        const targetSx = cx + Math.cos(angle) * subRadius;
+-        const targetSy = cy + Math.sin(angle) * subRadius * 0.85;
+-
+-        // Recalculate neighbor degree against visible interaction types
+-        const nbActiveDegree = (nb.neighbors || []).filter((nnb, nidx) => {
+-          if (!nnb.active) return false;
+-          const tId = getInteractionType(nb, nnb, nidx);
+-          return subOpts.interactions[tId] !== false;
+-        }).length;
+-
+-        const targetSize = Math.min(26, Math.max(12, 10 + Math.sqrt(nbActiveDegree) * 2.0));
+-
+-        targets.set(nb.id, {
+-          targetSx,
+-          targetSy,
+-          targetSize,
+-          activeDegree: nbActiveDegree,
+-          isCenter: false,
+-          interType: getInteractionType(centerNode, nb, idx)
++        const cat = nb.cat !== undefined ? nb.cat : 0;
++        if (!catGroups[cat]) catGroups[cat] = [];
++        catGroups[cat].push({ nb, idx });
++      });
++
++      Object.keys(catGroups).forEach(catKey => {
++        const group = catGroups[catKey];
++        const cluster = clusterCenters[catKey] || { angle: 0, dist: Math.min(cx, cy) * 0.4 };
++        const hubCx = cx + Math.cos(cluster.angle) * cluster.dist;
++        const hubCy = cy + Math.sin(cluster.angle) * cluster.dist * 0.85;
++
++        group.forEach((item, gIdx) => {
++          const { nb, idx } = item;
++          const spreadAngle = (gIdx - (group.length - 1) / 2) * 0.45;
++          const offsetRadius = 35 + (gIdx % 3) * 22;
++
++          const targetSx = hubCx + Math.cos(cluster.angle + spreadAngle) * offsetRadius;
++          const targetSy = hubCy + Math.sin(cluster.angle + spreadAngle) * offsetRadius * 0.85;
++
++          const nbActiveDegree = (nb.neighbors || []).filter((nnb, nidx) => {
++            if (!nnb.active) return false;
++            const tId = getInteractionType(nb, nnb, nidx);
++            return subOpts.interactions[tId] !== false;
++          }).length;
++
++          const targetSize = Math.min(26, Math.max(12, 10 + Math.sqrt(nbActiveDegree) * 2.0));
++
++          targets.set(nb.id, {
++            targetSx,
++            targetSy,
++            targetSize,
++            activeDegree: nbActiveDegree,
++            isCenter: false,
++            interType: getInteractionType(centerNode, nb, idx)
++          });
+         });
+       });
+ 
+@@ -1856,9 +1856,9 @@
+         if (!existing) {
+           existing = {
+             ...fullObj,
+-            sx: t.isCenter ? cx : cx + (Math.random() - 0.5) * 40,
+-            sy: t.isCenter ? cy : cy + (Math.random() - 0.5) * 40,
+-            currentSize: 4, // start small for morphing
++            sx: t.isCenter ? cx : cx + (Math.random() - 0.5) * 60,
++            sy: t.isCenter ? cy : cy + (Math.random() - 0.5) * 60,
++            currentSize: 4,
+             targetSx: t.targetSx,
+             targetSy: t.targetSy,
+             targetSize: t.targetSize,
+@@ -1891,7 +1891,7 @@
+       ];
+ 
+       function loopSub() {
+-        sctx.fillStyle = '#020408';
++        sctx.fillStyle = '#000000';
+         sctx.fillRect(0, 0, subCanvas.width, subCanvas.height);
+ 
+         // Smooth physics lerp transition towards new restructured positions
+@@ -1900,9 +1900,33 @@
+           sn.currentSize += (sn.targetSize - sn.currentSize) * 0.12;
+         });
+ 
++        const subNodeMap = new Map(subState.nodes.map(n => [n.id, n]));
++
++        // Draw Inter-Neighbor Decentralized Cross-Links first
++        subState.nodes.forEach(snA => {
++          if (!snA.neighbors) return;
++          snA.neighbors.forEach((nbB, nidx) => {
++            const snB = subNodeMap.get(nbB.id);
++            if (snB && snA.id < snB.id && !snA.isCenter && !snB.isCenter) {
++              const typeId = getInteractionType(snA, snB, nidx);
++              if (subOpts.interactions[typeId] !== false) {
++                const inter = interactionTypes[typeId] || interactionTypes[0];
++                sctx.save();
++                sctx.beginPath();
++                sctx.moveTo(snA.sx, snA.sy);
++                sctx.lineTo(snB.sx, snB.sy);
++                sctx.strokeStyle = inter.color;
++                sctx.lineWidth = 1.2;
++                sctx.globalAlpha = 0.5;
++                sctx.stroke();
++                sctx.restore();
++              }
++            }
++          });
++        });
++
++        // Draw Focal Hub Direct Edges
+         const centerSub = subState.nodes.find(n => n.isCenter);
+-
+-        // Draw Sub-Network Edges
+         subState.nodes.forEach((sn) => {
+           if (sn.isCenter) return;
+ 
+@@ -1914,9 +1914,9 @@
+             sctx.moveTo(centerSub.sx, centerSub.sy);
+             sctx.lineTo(sn.sx, sn.sy);
+             sctx.strokeStyle = inter.color;
+-            sctx.lineWidth = 2.5;
++            sctx.lineWidth = 2.2;
+             sctx.shadowColor = inter.color;
+-            sctx.shadowBlur = 8;
++            sctx.shadowBlur = 6;
+             sctx.stroke();
+             sctx.restore();
+ 
+@@ -1923,10 +1923,10 @@
+             const my = (centerSub.sy + sn.sy) / 2;
+             sctx.save();
+-            sctx.font = '9px ui-monospace, monospace';
++            sctx.font = '8.5px ui-monospace, monospace';
+             sctx.fillStyle = '#ffffff';
+             sctx.shadowColor = '#000000';
+             sctx.shadowBlur = 4;
+-            sctx.fillText(inter.name, mx - 15, my - 4);
++            sctx.fillText(inter.name, mx - 14, my - 4);
+             sctx.restore();
+           }
+         });
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

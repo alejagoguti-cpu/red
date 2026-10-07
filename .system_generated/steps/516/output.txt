@@ -1,0 +1,30 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1018,15 +1018,15 @@
+ 
+       <!-- Sub-Network Interaction Type Filter Bar -->
+       <div style="display:flex; align-items:center; gap:4px; flex-wrap:wrap; max-width:620px;">
+-        <button class="btn-flat active" id="subInterToggle0" onclick="toggleSubInteraction(0)" style="font-size:8.5px; padding:2px 6px; border-color:#ff0033; color:#ff0033; background:rgba(255,0,51,0.15);">Depredación</button>
+-        <button class="btn-flat active" id="subInterToggle1" onclick="toggleSubInteraction(1)" style="font-size:8.5px; padding:2px 6px; border-color:#00ff88; color:#00ff88; background:rgba(0,255,136,0.15);">Herbivoría</button>
+-        <button class="btn-flat active" id="subInterToggle2" onclick="toggleSubInteraction(2)" style="font-size:8.5px; padding:2px 6px; border-color:#ff80a0; color:#ff80a0; background:rgba(255,128,160,0.15);">Dispersión</button>
+-        <button class="btn-flat active" id="subInterToggle3" onclick="toggleSubInteraction(3)" style="font-size:8.5px; padding:2px 6px; border-color:#ffee33; color:#ffee33; background:rgba(255,238,51,0.15);">Mutualismo</button>
+-        <button class="btn-flat active" id="subInterToggle4" onclick="toggleSubInteraction(4)" style="font-size:8.5px; padding:2px 6px; border-color:#ffaa00; color:#ffaa00; background:rgba(255,170,0,0.15);">Nidificación</button>
+-        <button class="btn-flat active" id="subInterToggle5" onclick="toggleSubInteraction(5)" style="font-size:8.5px; padding:2px 6px; border-color:#d000ff; color:#d000ff; background:rgba(208,0,255,0.15);">Visita Floral</button>
+-        <button class="btn-flat active" id="subInterToggle6" onclick="toggleSubInteraction(6)" style="font-size:8.5px; padding:2px 6px; border-color:#a0522d; color:#a0522d; background:rgba(160,82,45,0.15);">Anidamiento</button>
+-        <button class="btn-flat active" id="subInterToggle7" onclick="toggleSubInteraction(7)" style="font-size:8.5px; padding:2px 6px; border-color:#ffff00; color:#ffff00; background:rgba(255,255,0,0.15);">Parasitismo</button>
+-        <button class="btn-flat active" id="subInterToggle8" onclick="toggleSubInteraction(8)" style="font-size:8.5px; padding:2px 6px; border-color:#888888; color:#888888; background:rgba(136,136,136,0.15);">Alelopatía</button>
++        <button class="btn-flat active" id="subInterToggle0" onclick="toggleSubInteraction(0)" style="font-size:8.5px; padding:2px 6px; border-color:#C96349; color:#C96349; background:rgba(201,99,73,0.15);">Depredación</button>
++        <button class="btn-flat active" id="subInterToggle1" onclick="toggleSubInteraction(1)" style="font-size:8.5px; padding:2px 6px; border-color:#84A48B; color:#84A48B; background:rgba(132,164,139,0.15);">Herbivoría</button>
++        <button class="btn-flat active" id="subInterToggle2" onclick="toggleSubInteraction(2)" style="font-size:8.5px; padding:2px 6px; border-color:#E69888; color:#E69888; background:rgba(230,152,136,0.15);">Dispersión</button>
++        <button class="btn-flat active" id="subInterToggle3" onclick="toggleSubInteraction(3)" style="font-size:8.5px; padding:2px 6px; border-color:#E7C878; color:#E7C878; background:rgba(231,200,120,0.15);">Mutualismo</button>
++        <button class="btn-flat active" id="subInterToggle4" onclick="toggleSubInteraction(4)" style="font-size:8.5px; padding:2px 6px; border-color:#F79E70; color:#F79E70; background:rgba(247,158,112,0.15);">Nidificación</button>
++        <button class="btn-flat active" id="subInterToggle5" onclick="toggleSubInteraction(5)" style="font-size:8.5px; padding:2px 6px; border-color:#A386A9; color:#A386A9; background:rgba(163,134,169,0.15);">Visita Floral</button>
++        <button class="btn-flat active" id="subInterToggle6" onclick="toggleSubInteraction(6)" style="font-size:8.5px; padding:2px 6px; border-color:#D1A996; color:#D1A996; background:rgba(209,169,150,0.15);">Anidamiento</button>
++        <button class="btn-flat active" id="subInterToggle7" onclick="toggleSubInteraction(7)" style="font-size:8.5px; padding:2px 6px; border-color:#C6B3CA; color:#C6B3CA; background:rgba(198,179,202,0.15);">Parasitismo</button>
++        <button class="btn-flat active" id="subInterToggle8" onclick="toggleSubInteraction(8)" style="font-size:8.5px; padding:2px 6px; border-color:#558E9B; color:#558E9B; background:rgba(85,142,155,0.15);">Alelopatía</button>
+         <div class="btn-close" style="margin-left:6px;" onclick="closeSubNetworkModal()">×</div>
+       </div>
+     </div>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

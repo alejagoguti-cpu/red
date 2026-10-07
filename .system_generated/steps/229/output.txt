@@ -1,0 +1,63 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -682,6 +682,49 @@
+     </div>
+   </div>
+ 
++  <!-- FAQ Chat Floating Button -->
++  <button class="chat-widget-btn" onclick="toggleFaqChat()">
++    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
++    <span>Asistente de Preguntas Frecuentes</span>
++  </button>
++
++  <!-- FAQ Chat Modal Window -->
++  <div class="glass-panel faq-chat-modal" id="faqChatModal" style="display:none;">
++    <div class="chat-header">
++      <div class="chat-title-wrap">
++        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ffff" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
++        <span>Consultas Frecuentes de la Red</span>
++      </div>
++      <div class="btn-close" onclick="toggleFaqChat()">×</div>
++    </div>
++
++    <div class="chat-body" id="chatBody">
++      <div class="msg-bubble msg-bot">
++        ¡Hola! 👋 Soy el asistente bioestadístico de la Red Kennedy V6. Selecciona una de las preguntas preparadas abajo para responderte al instante y enfocar el nodo correspondiente.
++      </div>
++    </div>
++
++    <div class="predefined-chips">
++      <div style="font-size:9px; color:#64748b; font-weight:700; text-transform:uppercase; margin-bottom:2px;">Preguntas Frecuentes:</div>
++      <button class="chip-btn" onclick="askFaq(1)">
++        <span>1. ¿Cuál es la especie animal con más relaciones?</span>
++        <span style="color:#00ffff;">→</span>
++      </button>
++      <button class="chip-btn" onclick="askFaq(2)">
++        <span>2. ¿Cuál es la planta (flora) más conectada?</span>
++        <span style="color:#00ff88;">→</span>
++      </button>
++      <button class="chip-btn" onclick="askFaq(3)">
++        <span>3. ¿Qué especie está en mayor peligro biológico?</span>
++        <span style="color:#ff0055;">→</span>
++      </button>
++      <button class="chip-btn" onclick="askFaq(4)">
++        <span>4. ¿Cuál es el microorganismo clave en el suelo?</span>
++        <span style="color:#ff007f;">→</span>
++      </button>
++    </div>
++  </div>
++
+   <!-- Bottom Bar -->
+   <div class="bottom-bar">
+     <div class="glass-panel status-badge">
+@@ -688,6 +688,6 @@
+     </div>
+     <div class="glass-panel status-badge">
+-      💡 Clic simple: Ver Ficha • Doble Clic: Ocultar Nodo de la Red
++      💡 Clic simple: Ver Ficha & Zoom • Doble Clic: Ocultar Nodo
+     </div>
+   </div>
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

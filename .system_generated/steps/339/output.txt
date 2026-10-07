@@ -1,0 +1,31 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -737,7 +737,15 @@
+         <span style="font-weight:800; font-size:13px; color:#00ffff;" id="subModalTitle">Sub-Red de Interacciones Bióticas</span>
+         <span style="font-size:10px; color:#94a3b8; font-family:monospace;" id="subModalCode">[AVE-19]</span>
+       </div>
+-      <div class="btn-close" onclick="closeSubNetworkModal()">×</div>
++
++      <!-- Sub-Network Layer Filter Bar -->
++      <div style="display:flex; align-items:center; gap:6px;">
++        <button class="btn-flat active" id="subToggle0" onclick="toggleSubCat(0)" style="font-size:9px; padding:3px 8px; border-color:#00ff88; color:#00ff88; background:rgba(0,255,136,0.15);">Flora</button>
++        <button class="btn-flat active" id="subToggle1" onclick="toggleSubCat(1)" style="font-size:9px; padding:3px 8px; border-color:#00ffff; color:#00ffff; background:rgba(0,255,255,0.15);">Aves</button>
++        <button class="btn-flat active" id="subToggle2" onclick="toggleSubCat(2)" style="font-size:9px; padding:3px 8px; border-color:#ff007f; color:#ff007f; background:rgba(255,0,127,0.15);">Micro</button>
++        <button class="btn-flat active" id="subToggle3" onclick="toggleSubCat(3)" style="font-size:9px; padding:3px 8px; border-color:#ffee33; color:#ffee33; background:rgba(255,238,51,0.15);">Fauna</button>
++        <div class="btn-close" style="margin-left:8px;" onclick="closeSubNetworkModal()">×</div>
++      </div>
+     </div>
+     <div class="subnetwork-canvas-wrap">
+       <canvas id="subCanvas"></canvas>
+@@ -744,6 +744,6 @@
+     <div style="padding:8px 14px; background:rgba(10,15,26,0.95); border-top:1px solid rgba(0,255,255,0.2); display:flex; align-items:center; justify-content:space-between; font-size:10px; color:#94a3b8;">
+-      <span>💡 Haz clic en cualquier nodo vecino de la sub-red para inspeccionarlo</span>
+-      <span style="color:#00ffff; font-weight:700;">Sub-Red 2D Interactiva con Fotografías y Tipos</span>
++      <span>💡 Haz clic en los botones de capa de arriba para encender/apagar categorías o en los nodos vecinos para navegar</span>
++      <span style="color:#00ffff; font-weight:700;">Sub-Red 2D Interactiva con Control de Capas</span>
+     </div>
+   </div>
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

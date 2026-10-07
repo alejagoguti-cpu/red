@@ -1,0 +1,61 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1116,27 +1116,27 @@
+       bg: '#000000',
+       sphere: 'rgba(255, 255, 255, 0.15)',
+       sphereEquator: 'rgba(255, 255, 255, 0.35)',
+-      edge: 'rgba(160, 32, 64, 0.55)',
+-      edgeActive: '#00ff88',
++      edge: 'rgba(163, 99, 97, 0.45)',
++      edgeActive: '#84A48B',
+       catColors: {
+-        0: '#00ff88',
+-        1: '#00ffff',
+-        2: '#ff007f',
+-        3: '#ffee33',
+-        4: '#ff0033',
+-        5: '#ffaa00'
+-      }
+-    };
+-
+-    // High-Tech Scientific Badge Generator for nodes displaying exact species title and code
++        0: '#84A48B', // Flora (Spanish Green)
++        1: '#558E9B', // Avifauna (Horizon Blue)
++        2: '#A386A9', // Micro (Dusty Lavender)
++        3: '#C96349', // Fauna / Herpetos (Terracotta)
++        4: '#A36361', // Abióticos (Herald of Spring)
++        5: '#E7C878'  // Core (Buttercup Yellow)
++      }
++    };
++
++    // High-Tech Scientific Badge Generator with Morandi / Spring Meadow Palette
+     function generateSpeciesSvgDataUri(taxonId, speciesName, cat) {
+       const colors = {
+-        0: ['#003318', '#00ff88', '#10B981'], // Flora
+-        1: ['#002233', '#00ffff', '#38BDF8'], // Avifauna
+-        2: ['#33001a', '#ff007f', '#F43F5E'], // Micro
+-        3: ['#332c00', '#ffee33', '#FACC15'], // Herpetos / MIA
+-        4: ['#33000a', '#ff0033', '#EF4444'], // Abióticos
+-        5: ['#332200', '#ffaa00', '#F59E0B']  // Core
++        0: ['#2A3A2F', '#84A48B', '#AECBB8'], // Flora (Spanish Green / Sweet Mint)
++        1: ['#1C3038', '#558E9B', '#7BB2BA'], // Avifauna (Horizon / Neptune)
++        2: ['#322535', '#A386A9', '#C6B3CA'], // Micro (Dusty Lavender / Wisteria)
++        3: ['#3F221B', '#C96349', '#F79E70'], // Fauna (Terracotta / Tangerine)
++        4: ['#3A2323', '#A36361', '#E69888'], // Abióticos
++        5: ['#3A321B', '#E7C878', '#F8D481']  // Core
+       };
+       const c = colors[cat] || colors[0];
+       const cleanTitle = (speciesName || '').split('(')[0].trim().substring(0, 9);
+@@ -1143,7 +1143,7 @@
+       const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 64 64">
+         <rect width="64" height="64" rx="32" fill="${c[0]}"/>
+-        <circle cx="32" cy="32" r="29" stroke="${c[1]}" stroke-width="2" fill="none" opacity="0.8"/>
+-        <circle cx="32" cy="32" r="23" stroke="${c[1]}" stroke-width="1" stroke-dasharray="2,2" fill="none" opacity="0.4"/>
++        <circle cx="32" cy="32" r="29" stroke="${c[1]}" stroke-width="2" fill="none" opacity="0.85"/>
++        <circle cx="32" cy="32" r="23" stroke="${c[1]}" stroke-width="1" stroke-dasharray="2,2" fill="none" opacity="0.45"/>
+         <text x="32" y="27" font-family="ui-monospace, monospace" font-size="8.5" font-weight="900" fill="${c[1]}" text-anchor="middle" letter-spacing="0.2">${taxonId}</text>
+         <text x="32" y="41" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#ffffff" text-anchor="middle">${cleanTitle}</text>
+       </svg>`;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

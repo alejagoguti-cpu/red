@@ -1,0 +1,60 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -786,16 +786,25 @@
+ 
+     function buildTopology() {
+       const fullTaxa = buildFull180Dataset();
++      
++      // Shuffle taxa deterministically so category groups (Flora, Avifauna, Micro, Herpetos) are 100% mixed throughout the 3D space
++      const shuffledTaxa = [...fullTaxa];
++      for (let i = shuffledTaxa.length - 1; i > 0; i--) {
++        const j = (i * 37 + 13) % (i + 1);
++        [shuffledTaxa[i], shuffledTaxa[j]] = [shuffledTaxa[j], shuffledTaxa[i]];
++      }
++
+       nodes = [];
+       edges = [];
+ 
+-      fullTaxa.forEach((tData, idx) => {
++      shuffledTaxa.forEach((tData, idx) => {
+         const imgObj = getPreloadedImage(tData.img, tData.id, tData.name, tData.cat);
+ 
+-        const phi = Math.acos(1 - 2 * ((idx + 0.5) / fullTaxa.length));
++        // Uniform 3D Fibonacci Sphere distribution with random radius variation for a 100% organic blended swarm
++        const phi = Math.acos(1 - 2 * ((idx + 0.5) / shuffledTaxa.length));
+         const theta = Math.PI * (1 + Math.sqrt(5)) * idx;
+-
+-        const rad = tData.cat === 4 ? 290 : (tData.cat === 0 ? 180 + (idx % 4) * 25 : 230);
++        const rad = 170 + ((idx * 17) % 110);
++
+         const nx = rad * Math.sin(phi) * Math.cos(theta);
+         const ny = rad * Math.sin(phi) * Math.sin(theta);
+         const nz = rad * Math.cos(phi);
+@@ -802,7 +802,7 @@
+         const nodeId = nodes.length;
+         nodes.push({
+           id: nodeId, taxaId: tData.id, label: tData.name, sciname: tData.sciname, cat: tData.cat, role: tData.role, loc: tData.loc, alert: tData.alert, photoUrl: tData.img || generateSpeciesSvgDataUri(tData.id, tData.name, tData.cat), imgObj,
+-          x: nx, y: ny, z: nz, ox: nx, oy: ny, oz: nz, level: tData.cat === 0 ? 1 : 2, hiddenByUser: false
++          x: nx, y: ny, z: nz, ox: nx, oy: ny, oz: nz, level: 1, hiddenByUser: false
+         });
+       });
+ 
+@@ -809,11 +809,10 @@
+         for (let j = i + 1; j < nodes.length; j++) {
+           const a = nodes[i];
+           const b = nodes[j];
+-          if (a.cat === b.cat || (a.cat === 0 && b.cat === 1) || (a.cat === 0 && b.cat === 3) || (a.cat === 1 && b.cat === 3)) {
+-            const dist = Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+-            if (dist < 140 && Math.random() < 0.35) {
+-              edges.push({ source: a.id, target: b.id });
+-            }
++          const dist = Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
++          // Inter-category and intra-category biological interactions across nearby nodes
++          if (dist < 135 && Math.random() < 0.32) {
++            edges.push({ source: a.id, target: b.id });
+           }
+         }
+       }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

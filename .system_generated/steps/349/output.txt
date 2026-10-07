@@ -1,0 +1,18 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -801,6 +801,12 @@
+         <span style="color:#ff007f;">→</span>
+       </button>
+     </div>
++
++    <!-- Custom Chat Input Bar -->
++    <div style="padding:10px 12px; background:rgba(15,23,42,0.98); border-top:1px solid rgba(0,255,255,0.2); display:flex; gap:8px; align-items:center;">
++      <input type="text" id="chatInput" placeholder="Escribe tu pregunta sobre la red..." onkeydown="if(event.key==='Enter') sendCustomChatMessage()" style="flex:1; background:rgba(0,0,0,0.6); border:1px solid rgba(0,255,255,0.3); color:#ffffff; padding:7px 10px; border-radius:6px; font-size:11px; outline:none;">
++      <button class="btn-flat active" onclick="sendCustomChatMessage()" style="padding:7px 12px; font-weight:700;">Enviar</button>
++    </div>
+   </div>
+ 
+   <!-- Bottom Bar -->
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

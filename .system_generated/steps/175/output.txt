@@ -1,0 +1,81 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -447,12 +447,12 @@
+       <span style="color:#00ffff; font-size:9px;">DOBLE CLIC = OCULTAR NODO</span>
+     </div>
+ 
+-    <div class="cat-card" onclick="toggleCat(0)">
+-      <div class="cat-label-wrap">
+-        <div class="square-indicator" style="background:#00ff88;"></div>
+-        <div>
+-          <div style="font-weight:600;">Flora & Arbolado SIGAU</div>
+-          <div style="font-size:9px; color:#64748b;">108 Taxones (Fotos Botánicas Exactas)</div>
++    <div class="cat-card" style="--cat-color:#00ff88;" onclick="toggleCat(0)">
++      <div class="cat-label-wrap">
++        <img class="cat-thumb" style="--cat-color:#00ff88;" src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=100" alt="Flora">
++        <div>
++          <div style="font-weight:700; color:#f8fafc;">Flora & Arbolado SIGAU</div>
++          <div style="font-size:9.5px; color:#94a3b8;">108 Taxones Botánicos Nativo/Urbano</div>
+         </div>
+       </div>
+       <div style="display:flex; align-items:center; gap:8px;">
+@@ -460,12 +460,12 @@
+       </div>
+     </div>
+ 
+-    <div class="cat-card" onclick="toggleCat(1)">
+-      <div class="cat-label-wrap">
+-        <div class="square-indicator" style="background:#00ffff;"></div>
+-        <div>
+-          <div style="font-weight:600;">Avifauna Evaluada</div>
+-          <div style="font-size:9px; color:#64748b;">38 Taxones (Fotos de Aves Exactas)</div>
++    <div class="cat-card" style="--cat-color:#00ffff;" onclick="toggleCat(1)">
++      <div class="cat-label-wrap">
++        <img class="cat-thumb" style="--cat-color:#00ffff;" src="https://images.unsplash.com/photo-1520808663317-647b476a81b9?w=100" alt="Avifauna">
++        <div>
++          <div style="font-weight:700; color:#f8fafc;">Avifauna Evaluada</div>
++          <div style="font-size:9.5px; color:#94a3b8;">38 Taxones Acuáticos & Dosel</div>
+         </div>
+       </div>
+       <div style="display:flex; align-items:center; gap:8px;">
+@@ -473,12 +473,12 @@
+       </div>
+     </div>
+ 
+-    <div class="cat-card" onclick="toggleCat(2)">
+-      <div class="cat-label-wrap">
+-        <div class="square-indicator" style="background:#ff007f;"></div>
+-        <div>
+-          <div style="font-weight:600;">Microorganismos & Biota</div>
+-          <div style="font-size:9px; color:#64748b;">15 Taxones (Microfotografías Reales)</div>
++    <div class="cat-card" style="--cat-color:#ff007f;" onclick="toggleCat(2)">
++      <div class="cat-label-wrap">
++        <img class="cat-thumb" style="--cat-color:#ff007f;" src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=100" alt="Micro">
++        <div>
++          <div style="font-weight:700; color:#f8fafc;">Microorganismos & Biota</div>
++          <div style="font-size:9.5px; color:#94a3b8;">15 Taxones Biofiltro & Suelo</div>
+         </div>
+       </div>
+       <div style="display:flex; align-items:center; gap:8px;">
+@@ -486,12 +486,12 @@
+       </div>
+     </div>
+ 
+-    <div class="cat-card" onclick="toggleCat(3)">
+-      <div class="cat-label-wrap">
+-        <div class="square-indicator" style="background:#ffee33;"></div>
+-        <div>
+-          <div style="font-weight:600;">Herpetos, Mamíferos & MIA</div>
+-          <div style="font-size:9px; color:#64748b;">12 Taxones (Fotos de Fauna Reales)</div>
++    <div class="cat-card" style="--cat-color:#ffee33;" onclick="toggleCat(3)">
++      <div class="cat-label-wrap">
++        <img class="cat-thumb" style="--cat-color:#ffee33;" src="https://images.unsplash.com/photo-1559253664-ca249d4608c6?w=100" alt="Fauna">
++        <div>
++          <div style="font-weight:700; color:#f8fafc;">Herpetos, Mamíferos & MIA</div>
++          <div style="font-size:9.5px; color:#94a3b8;">12 Taxones Fauna & Bentos</div>
+         </div>
+       </div>
+       <div style="display:flex; align-items:center; gap:8px;">
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

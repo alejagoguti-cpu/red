@@ -1,0 +1,39 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1083,7 +1083,7 @@
+           const b = nodes[j];
+           const dist = Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
+           // Inter-category and intra-category biological interactions across nearby nodes
+-          if (dist < 135 && Math.random() < 0.32) {
++          if (dist < 165 && Math.random() < 0.38) {
+             edges.push({ source: a.id, target: b.id });
+           }
+         }
+@@ -1090,4 +1090,24 @@
+ 
++      // GUARANTEE NO SOLITARY OR ISOLATED SPECIES: Ensure 100% of nodes have a rich sub-network (minimum 3-6 connections)
++      nodes.forEach((n, idx) => {
++        let count = edges.filter(e => e.source === n.id || e.target === n.id).length;
++        if (count < 3) {
++          // Find closest 4 species from complementary ecological categories
++          const candidates = [...nodes]
++            .filter(other => other.id !== n.id)
++            .map(other => ({ other, dist: Math.hypot(other.x - n.x, other.y - n.y, other.z - n.z) }))
++            .sort((a, b) => a.dist - b.dist);
++
++          for (let k = 0; k < Math.min(4, candidates.length); k++) {
++            const partner = candidates[k].other;
++            const exists = edges.some(e => (e.source === n.id && e.target === partner.id) || (e.source === partner.id && e.target === n.id));
++            if (!exists) {
++              edges.push({ source: n.id, target: partner.id });
++            }
++          }
++        }
++      });
++
+       recalculateDegreesAndSizes();
+     }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

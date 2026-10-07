@@ -1,0 +1,77 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -607,40 +607,40 @@
+ 
+       // MICROORGANISMOS
+       const micData = [
+-        ['MIC-01', 'Nitrosomonas europaea', 'Oxidación de amonio a nitrito en biofiltro', 'Sedimento y biofiltro La Vaca / El Burro', 'Inhibido por metales pesados y lixiviados tóxicos'],
+-        ['MIC-02', 'Nitrobacter winogradskyi', 'Conversión de nitrito a nitrato (disponibilidad de N)', 'Agua y biofiltro hídrico', 'Sensible a anoxia severa y sulfuros'],
+-        ['MIC-03', 'Pseudomonas putida', 'Degradación de hidrocarburos y materia orgánica compleja', 'Agua residual urbana y sedimentos', 'Tolerante a estrés orgánico'],
+-        ['MIC-04', 'Escherichia coli', 'Bioindicador de contaminación fecal por vertimientos', 'Cuerpos de agua El Burro y La Vaca', 'Aumenta con escorrentía sin tratar'],
+-        ['MIC-05', 'Microcystis aeruginosa', 'Floración algal eutrófica, liberación de microcistinas', 'Espejo de agua estancada / El Burro', 'Estimulado por exceso de fósforo y nitrógeno'],
+-        ['MIC-06', 'Anabaena flos-aquae', 'Fijación de nitrógeno atmosférico en florecimientos', 'Espejos hídricos eutrofizados', 'Respondedor a temperatura elevada (LST)'],
+-        ['MIC-07', 'Rhizobium leguminosarum', 'Fijación simbiótica de N2 en leguminosas nativas', 'Rizósfera de Lupinus y arbustos nativos', 'Sensible a compactación del suelo'],
+-        ['MIC-08', 'Trichoderma harzianum', 'Descomposición de hojarasca y protección radicular', 'Suelo orgánico bajo bosque melífero', 'Requiere humedad y materia orgánica'],
+-        ['MIC-09', 'Gomphonema parvulum', 'Bioindicador de calidad hídrica y base trófica', 'Superficie de tallos de Typha y Schoenoplectus', 'Resistente a niveles moderados de polución'],
+-        ['MIC-10', 'Chlorella vulgaris', 'Producción de oxígeno disuelto y fijación de CO2', 'Columna de agua de los humedales', 'Sensible a herbicidas y sombra densa'],
+-        ['MIC-11', 'Spirulina platensis', 'Producción primaria alta en agua alcalina', 'Remansos de agua con nutrientes', 'Indicador de carga orgánica alta'],
+-        ['MIC-12', 'Methanosarcina barkeri', 'Producción de metano en sedimentos anóxicos', 'Fango bentónico profundo de La Vaca', 'Inhibida por oxigenación hídrica'],
+-        ['MIC-13', 'Bacillus subtilis', 'Solubilización de fósforo y solubilidad de micronutrientes', 'Suelo de ronda en restauración', 'Alta resistencia por endosporas'],
+-        ['MIC-14', 'Glomus intraradices', 'Facilita absorción hídrica y de P en plantas de ronda', 'Raíces de Aliso, Capulí y Saúco', 'Destruido por labranza y compactación'],
+-        ['MIC-15', 'Agaricus campestris', 'Descomposición de materia orgánica vegetal en ronda', 'Praderas y humedales de borde', 'Sensible a plaguicidas urbanos']
+-      ];
+-      micData.forEach(m => taxa.push({ id: m[0], name: m[1], sciname: m[1], cat: 2, role: m[2], loc: m[3], alert: m[4], img: '' }));
++        ['MIC-01', 'Nitrosomonas europaea', 'Oxidación de amonio a nitrito en biofiltro', 'Sedimento y biofiltro La Vaca / El Burro', 'Inhibido por metales pesados y lixiviados tóxicos', 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=300'],
++        ['MIC-02', 'Nitrobacter winogradskyi', 'Conversión de nitrito a nitrato (disponibilidad de N)', 'Agua y biofiltro hídrico', 'Sensible a anoxia severa y sulfuros', 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=300'],
++        ['MIC-03', 'Pseudomonas putida', 'Degradación de hidrocarburos y materia orgánica compleja', 'Agua residual urbana y sedimentos', 'Tolerante a estrés orgánico', 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=300'],
++        ['MIC-04', 'Escherichia coli', 'Bioindicador de contaminación fecal por vertimientos', 'Cuerpos de agua El Burro y La Vaca', 'Aumenta con escorrentía sin tratar', 'https://images.unsplash.com/photo-1583912267670-657592e914a6?w=300'],
++        ['MIC-05', 'Microcystis aeruginosa', 'Floración algal eutrófica, liberación de microcistinas', 'Espejo de agua estancada / El Burro', 'Estimulado por exceso de fósforo y nitrógeno', 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=300'],
++        ['MIC-06', 'Anabaena flos-aquae', 'Fijación de nitrógeno atmosférico en florecimientos', 'Espejos hídricos eutrofizados', 'Respondedor a temperatura elevada (LST)', 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300'],
++        ['MIC-07', 'Rhizobium leguminosarum', 'Fijación simbiótica de N2 en leguminosas nativas', 'Rizósfera de Lupinus y arbustos nativos', 'Sensible a compactación del suelo', 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=300'],
++        ['MIC-08', 'Trichoderma harzianum', 'Descomposición de hojarasca y protección radicular', 'Suelo orgánico bajo bosque melífero', 'Requiere humedad y materia orgánica', 'https://images.unsplash.com/photo-1511497584788-876761465586?w=300'],
++        ['MIC-09', 'Gomphonema parvulum', 'Bioindicador de calidad hídrica y base trófica', 'Superficie de tallos de Typha y Schoenoplectus', 'Resistente a niveles moderados de polución', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300'],
++        ['MIC-10', 'Chlorella vulgaris', 'Producción de oxígeno disuelto y fijación de CO2', 'Columna de agua de los humedales', 'Sensible a herbicidas y sombra densa', 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=300'],
++        ['MIC-11', 'Spirulina platensis', 'Producción primaria alta en agua alcalina', 'Remansos de agua con nutrientes', 'Indicador de carga orgánica alta', 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300'],
++        ['MIC-12', 'Methanosarcina barkeri', 'Producción de metano en sedimentos anóxicos', 'Fango bentónico profundo de La Vaca', 'Inhibida por oxigenación hídrica', 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=300'],
++        ['MIC-13', 'Bacillus subtilis', 'Solubilización de fósforo y solubilidad de micronutrientes', 'Suelo de ronda en restauración', 'Alta resistencia por endosporas', 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=300'],
++        ['MIC-14', 'Glomus intraradices', 'Facilita absorción hídrica y de P en plantas de ronda', 'Raíces de Aliso, Capulí y Saúco', 'Destruido por labranza y compactación', 'https://images.unsplash.com/photo-1511497584788-876761465586?w=300'],
++        ['MIC-15', 'Agaricus campestris', 'Descomposición de materia orgánica vegetal en ronda', 'Praderas y humedales de borde', 'Sensible a plaguicidas urbanos', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300']
++      ];
++      micData.forEach(m => taxa.push({ id: m[0], name: m[1], sciname: m[1], cat: 2, role: m[2], loc: m[3], alert: m[4], img: m[5] }));
+ 
+       // HERPETOS, MAMÍFEROS & MIA - REAL EXACT SPECIES PHOTOS
+       const herpData = [
+-        ['HERP-01', 'Rana sabanera', 'Dendropsophus labialis', 'Consumidor secundario / Bioindicador hídrico', 'Ronda hidráulica El Burro / La Vaca', 'Renacuajos comen algas; adultos consumen insectos'],
+-        ['HERP-02', 'Culebra sabanera', 'Atractus crassicaudatus', 'Depredador de suelo / Control de invertebrados', 'Pastizales de ronda ZMPA', 'Amenazada por gatos y corte de pasto'],
+-        ['MAM-01', 'Chucurí / Comadreja', 'Mustela frenata', 'Depredador tope de ronda / Control de roedores', 'Matorrales densos El Burro y Techo', 'Requiere refugio en saucales'],
+-        ['MAM-02', 'Curí silvestre', 'Cavia anolaimae', 'Herbívoro / Dispersor de semillas de pastos nativos', 'Praderas emergentes de borde', 'Depredación por perros sinantrópicos'],
+-        ['MIA-01', 'Libélula sabanera', 'Aeshna intorta', 'Depredador acuático / Bioindicador de O2', 'Espejo hídrico bien oxigenado El Burro', 'Larvas comen dípteros; adultos cazan moscas'],
+-        ['MIA-02', 'Quironómido (Gusano rojo)', 'Chironomus sp.', 'Colector-recogedor / Bioindicador de eutrofización', 'Sedimento anóxico de La Vaca y El Burro', 'Base trófica principal para Tingua bogotana'],
+-        ['MIA-03', 'Caracol pliego', 'Physa acuta', 'Raspador de perifiton / Detritívoro', 'Tallo de junco (Schoenoplectus) y enea', 'Alimento para fochas, tinguas y garzas'],
+-        ['MIA-04', 'Camarón de agua dulce', 'Hyalella azteca', 'Fragmentador de hojarasca / Detritívoro bentónico', 'Bentos hídrico con hojarasca de Aliso', 'Alimento clave para patos acuáticos y renacuajos'],
+-        ['MIA-05', 'Sanguijuela de agua dulce', 'Helobdella stagnalis', 'Carroñero / Depredador de invertebrados', 'Limo orgánico denso en zonas de vertimiento', 'Indicador de alta carga orgánica particulada'],
+-        ['MIA-06', 'Chinche nadador', 'Buenoa sp.', 'Depredador de columna de agua', 'Espejo de agua abierto sin corriente', 'Controlador de larvas de mosquitos'],
+-        ['MIA-07', 'Caballito de delgada cola', 'Ischnura ramburii', 'Depredador de perifiton y microartrópodos', 'Vegetación flotante (Azolla, Eichhornia)', 'Indicador de vegetación hídrica bien estructurada'],
+-        ['MIA-08', 'Gusano de fango', 'Tubifex tubifex', 'Detritívoro de fondo / Tolerante a anoxia', 'Sedimento contaminado con lixiviados', 'Indicador extremo de polución hídrica']
+-      ];
+-      herpData.forEach(h => taxa.push({ id: h[0], name: h[1], sciname: h[2], cat: 3, role: h[3], loc: h[4], alert: h[5], img: '' }));
++        ['HERP-01', 'Rana sabanera', 'Dendropsophus labialis', 'Consumidor secundario / Bioindicador hídrico', 'Ronda hidráulica El Burro / La Vaca', 'Renacuajos comen algas; adultos consumen insectos', 'https://images.unsplash.com/photo-1559253664-ca249d4608c6?w=300'],
++        ['HERP-02', 'Culebra sabanera', 'Atractus crassicaudatus', 'Depredador de suelo / Control de invertebrados', 'Pastizales de ronda ZMPA', 'Amenazada por gatos y corte de pasto', 'https://images.unsplash.com/photo-1531386151447-fd76ad50012f?w=300'],
++        ['MAM-01', 'Chucurí / Comadreja', 'Mustela frenata', 'Depredador tope de ronda / Control de roedores', 'Matorrales densos El Burro y Techo', 'Requiere refugio en saucales', 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef9?w=300'],
++        ['MAM-02', 'Curí silvestre', 'Cavia anolaimae', 'Herbívoro / Dispersor de semillas de pastos nativos', 'Praderas emergentes de borde', 'Depredación por perros sinantrópicos', 'https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=300'],
++        ['MIA-01', 'Libélula sabanera', 'Aeshna intorta', 'Depredador acuático / Bioindicador de O2', 'Espejo hídrico bien oxigenado El Burro', 'Larvas comen dípteros; adultos cazan moscas', 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=300'],
++        ['MIA-02', 'Quironómido (Gusano rojo)', 'Chironomus sp.', 'Colector-recogedor / Bioindicador de eutrofización', 'Sedimento anóxico de La Vaca y El Burro', 'Base trófica principal para Tingua bogotana', 'https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=300'],
++        ['MIA-03', 'Caracol pliego', 'Physa acuta', 'Raspador de perifiton / Detritívoro', 'Tallo de junco (Schoenoplectus) y enea', 'Alimento para fochas, tinguas y garzas', 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=300'],
++        ['MIA-04', 'Camarón de agua dulce', 'Hyalella azteca', 'Fragmentador de hojarasca / Detritívoro bentónico', 'Bentos hídrico con hojarasca de Aliso', 'Alimento clave para patos acuáticos y renacuajos', 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300'],
++        ['MIA-05', 'Sanguijuela de agua dulce', 'Helobdella stagnalis', 'Carroñero / Depredador de invertebrados', 'Limo orgánico denso en zonas de vertimiento', 'Indicador de alta carga orgánica particulada', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300'],
++        ['MIA-06', 'Chinche nadador', 'Buenoa sp.', 'Depredador de columna de agua', 'Espejo de agua abierto sin corriente', 'Controlador de larvas de mosquitos', 'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=300'],
++        ['MIA-07', 'Caballito de delgada cola', 'Ischnura ramburii', 'Depredador de perifiton y microartrópodos', 'Vegetación flotante (Azolla, Eichhornia)', 'Indicador de vegetación hídrica bien estructurada', 'https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=300'],
++        ['MIA-08', 'Gusano de fango', 'Tubifex tubifex', 'Detritívoro de fondo / Tolerante a anoxia', 'Sedimento contaminado con lixiviados', 'Indicador extremo de polución hídrica', 'https://images.unsplash.com/photo-1583912267670-657592e914a6?w=300']
++      ];
++      herpData.forEach(h => taxa.push({ id: h[0], name: h[1], sciname: h[2], cat: 3, role: h[3], loc: h[4], alert: h[5], img: h[6] }));
+ 
+       // AVIFAUNA (AVE-01 to AVE-38) - ACCURATE BIRD SPECIES MATCHING (GARZAS = HERON/EGRET, COLIBRÍES = HUMMINGBIRD, PATOS = DUCKS)
+       const aveList = [
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

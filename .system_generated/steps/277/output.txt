@@ -1,0 +1,30 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -637,6 +637,24 @@
+         <div class="toggle-box checked" id="toggleCat3"></div>
+       </div>
+     </div>
++
++    <!-- Interaction Legend Box -->
++    <div style="margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.12);">
++      <div style="font-weight:800; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:#00ffff; margin-bottom:8px;">
++        Tipos de Interacción Evaluados:
++      </div>
++      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:4px 8px; font-size:9px;">
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#ff0033;"></span><span>Depredación</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#00ff88;"></span><span>Herbivoría</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#ff80a0;"></span><span>Dispersión</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#ffee33;"></span><span>Mutualismo</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#ffaa00;"></span><span>Nidificación</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#d000ff;"></span><span>Visita Floral</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#a0522d;"></span><span>Anidamiento</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#ffff00;"></span><span>Parasitismo</span></div>
++        <div style="display:flex; align-items:center; gap:6px;"><span style="width:8px; height:8px; border-radius:50%; background:#888888;"></span><span>Alelopatía</span></div>
++      </div>
++    </div>
+   </div>
+ 
+   <!-- Pop-Up Inspector Modal -->
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

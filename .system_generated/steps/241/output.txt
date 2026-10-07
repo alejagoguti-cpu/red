@@ -1,0 +1,39 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -704,22 +704,26 @@
+       </div>
+     </div>
+ 
+-    <div class="predefined-chips">
+-      <div style="font-size:9px; color:#64748b; font-weight:700; text-transform:uppercase; margin-bottom:2px;">Preguntas Frecuentes:</div>
++    <div class="predefined-chips" style="max-height:220px; overflow-y:auto;">
++      <div style="font-size:9px; color:#00ffff; font-weight:800; text-transform:uppercase; margin-bottom:4px; letter-spacing:0.5px;">Preguntas de Investigación (Sección 5.2 Tesis):</div>
+       <button class="chip-btn" onclick="askFaq(1)">
+-        <span>1. ¿Cuál es la especie animal con más relaciones?</span>
++        <span>1. ¿Qué significan las conexiones y fuentes de evidencia entre especies y territorio?</span>
+         <span style="color:#00ffff;">→</span>
+       </button>
+       <button class="chip-btn" onclick="askFaq(2)">
+-        <span>2. ¿Cuál es la planta (flora) más conectada?</span>
++        <span>2. ¿Por qué existen estas relaciones entre la vegetación y los registros locales?</span>
+         <span style="color:#00ff88;">→</span>
+       </button>
+       <button class="chip-btn" onclick="askFaq(3)">
+-        <span>3. ¿Qué especie está en mayor peligro biológico?</span>
+-        <span style="color:#ff0055;">→</span>
++        <span>3. Conjetura: ¿Qué observaciones son datos vs hipótesis de campo?</span>
++        <span style="color:#ffee33;">→</span>
+       </button>
+       <button class="chip-btn" onclick="askFaq(4)">
+-        <span>4. ¿Cuál es el microorganismo clave en el suelo?</span>
++        <span>4. Problemática de fondo: ¿Qué dependencias favorecen o amenazan la sostenibilidad?</span>
++        <span style="color:#ff0055;">→</span>
++      </button>
++      <button class="chip-btn" onclick="askFaq(5)">
++        <span>5. Simulación de Agentes (ABM): ¿Qué entidades actúan como agentes de enjambre?</span>
+         <span style="color:#ff007f;">→</span>
+       </button>
+     </div>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,32 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1399,6 +1399,16 @@
+ 
+     // --- SUB-NETWORK 2D GRAPH POPUP MODAL LOGIC ---
+     let subCanvasAnim = null;
++    const subOpts = {
++      cats: { 0: true, 1: true, 2: true, 3: true }
++    };
++
++    function toggleSubCat(catId) {
++      subOpts.cats[catId] = !subOpts.cats[catId];
++      const btn = document.getElementById(`subToggle${catId}`);
++      if (btn) btn.classList.toggle('active', subOpts.cats[catId]);
++      renderSubNetworkCanvas();
++    }
+ 
+     function openSubNetworkModal() {
+       if (!selectedNode) return;
+@@ -1421,7 +1421,8 @@
+       const sctx = subCanvas.getContext('2d');
+ 
+       const centerNode = selectedNode;
+-      const neighbors = centerNode.neighbors || [];
++      // Filter neighbors based on sub-network active layer toggles
++      const neighbors = (centerNode.neighbors || []).filter(nb => subOpts.cats[nb.cat] !== false);
+ 
+       // Organic 2D Mesh Network layout (No linear axis, no cross alignments)
+       const cx = subCanvas.width / 2;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

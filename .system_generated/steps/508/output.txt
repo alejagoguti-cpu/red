@@ -1,0 +1,30 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1707,15 +1707,15 @@
+       listEl.innerHTML = '';
+ 
+       const interactionTypes = [
+-        { name: 'Depredación', color: '#ff0033', bg: 'rgba(255,0,51,0.2)' },
+-        { name: 'Herbivoría', color: '#00ff88', bg: 'rgba(0,255,136,0.2)' },
+-        { name: 'Dispersión', color: '#ff80a0', bg: 'rgba(255,128,160,0.2)' },
+-        { name: 'Mutualismo', color: '#ffee33', bg: 'rgba(255,238,51,0.2)' },
+-        { name: 'Nidificación', color: '#ffaa00', bg: 'rgba(255,170,0,0.2)' },
+-        { name: 'Visita Floral', color: '#d000ff', bg: 'rgba(208,0,255,0.2)' },
+-        { name: 'Anidamiento', color: '#a0522d', bg: 'rgba(160,82,45,0.2)' },
+-        { name: 'Parasitismo', color: '#ffff00', bg: 'rgba(255,255,0,0.2)' },
+-        { name: 'Alelopatía', color: '#888888', bg: 'rgba(136,136,136,0.2)' }
++        { name: 'Depredación', color: '#C96349', bg: 'rgba(201,99,73,0.2)' },     // Terracotta
++        { name: 'Herbivoría', color: '#84A48B', bg: 'rgba(132,164,139,0.2)' },    // Spanish Green
++        { name: 'Dispersión', color: '#E69888', bg: 'rgba(230,152,136,0.2)' },    // Rose
++        { name: 'Mutualismo', color: '#E7C878', bg: 'rgba(231,200,120,0.2)' },    // Buttercup
++        { name: 'Nidificación', color: '#F79E70', bg: 'rgba(247,158,112,0.2)' },   // Atomic Tangerine
++        { name: 'Visita Floral', color: '#A386A9', bg: 'rgba(163,134,169,0.2)' },  // Dusty Lavender
++        { name: 'Anidamiento', color: '#D1A996', bg: 'rgba(209,169,150,0.2)' },   // Tumbleweed
++        { name: 'Parasitismo', color: '#C6B3CA', bg: 'rgba(198,179,202,0.2)' },   // Wisteria Purple
++        { name: 'Alelopatía', color: '#558E9B', bg: 'rgba(85,142,155,0.2)' }      // Horizon Blue
+       ];
+ 
+       node.neighbors.forEach((nb, idx) => {
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

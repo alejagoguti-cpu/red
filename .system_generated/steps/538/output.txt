@@ -1,0 +1,189 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -694,37 +694,37 @@
+           <!-- SVG Pie Chart A -->
+           <svg width="150" height="150" viewBox="-1.1 -1.1 2.2 2.2" style="transform: rotate(-90deg);">
+             <!-- Visita Floral / Polinización 39.18% -->
+-            <path d="M 0 0 L 1 0 A 1 1 0 0 1 -0.584 0.812 Z" fill="#d000ff" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L 1 0 A 1 1 0 0 1 -0.584 0.812 Z" fill="#A386A9" stroke="#000000" stroke-width="0.02"/>
+             <!-- Herbivoría Parcial 31.58% -->
+-            <path d="M 0 0 L -0.584 0.812 A 1 1 0 0 1 -0.892 -0.452 Z" fill="#00ff88" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L -0.584 0.812 A 1 1 0 0 1 -0.892 -0.452 Z" fill="#84A48B" stroke="#000000" stroke-width="0.02"/>
+             <!-- Nidificación y Refugio 7.44% -->
+-            <path d="M 0 0 L -0.892 -0.452 A 1 1 0 0 1 -0.669 -0.743 Z" fill="#ffaa00" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L -0.892 -0.452 A 1 1 0 0 1 -0.669 -0.743 Z" fill="#F79E70" stroke="#000000" stroke-width="0.02"/>
+             <!-- Dispersión de Semillas 4.88% -->
+-            <path d="M 0 0 L -0.669 -0.743 A 1 1 0 0 1 -0.463 -0.886 Z" fill="#ff80a0" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L -0.669 -0.743 A 1 1 0 0 1 -0.463 -0.886 Z" fill="#E69888" stroke="#000000" stroke-width="0.02"/>
+             <!-- Parasitismo / Depredación / Epibiosis 16.92% -->
+-            <path d="M 0 0 L -0.463 -0.886 A 1 1 0 0 1 1 0 Z" fill="#ff0033" stroke="#0a0f1a" stroke-width="0.02"/>
+-          </svg>
+-
+-          <div class="pie-legend">
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#d000ff;"></div>Visita Floral / Polinización</div>
+-              <b style="color:#d000ff;">39.18%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#00ff88;"></div>Herbivoría Parcial</div>
+-              <b style="color:#00ff88;">31.58%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#ffaa00;"></div>Nidificación y Refugio</div>
+-              <b style="color:#ffaa00;">7.44%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#ff80a0;"></div>Dispersión de Semillas</div>
+-              <b style="color:#ff80a0;">4.88%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#ff0033;"></div>Parasitismo / Depredación / Epibiosis</div>
+-              <b style="color:#ff0033;">16.92%</b>
++            <path d="M 0 0 L -0.463 -0.886 A 1 1 0 0 1 1 0 Z" fill="#C96349" stroke="#000000" stroke-width="0.02"/>
++          </svg>
++
++          <div class="pie-legend">
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#A386A9;"></div>Visita Floral / Polinización</div>
++              <b style="color:#A386A9;">39.18%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#84A48B;"></div>Herbivoría Parcial</div>
++              <b style="color:#84A48B;">31.58%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#F79E70;"></div>Nidificación y Refugio</div>
++              <b style="color:#F79E70;">7.44%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#E69888;"></div>Dispersión de Semillas</div>
++              <b style="color:#E69888;">4.88%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#C96349;"></div>Parasitismo / Depredación / Epibiosis</div>
++              <b style="color:#C96349;">16.92%</b>
+             </div>
+             <div style="font-size:8.5px; color:#64748b; margin-top:2px; text-align:center;">(Desglose: Parásitos 4.92%, Epibiosis 4.69%, Predación 4.60%)</div>
+           </div>
+@@ -737,31 +737,31 @@
+           <!-- SVG Pie Chart B -->
+           <svg width="150" height="150" viewBox="-1.1 -1.1 2.2 2.2" style="transform: rotate(-90deg);">
+             <!-- Plantae 59.5% -->
+-            <path d="M 0 0 L 1 0 A 1 1 0 1 1 -0.560 -0.828 Z" fill="#10B981" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L 1 0 A 1 1 0 1 1 -0.560 -0.828 Z" fill="#84A48B" stroke="#000000" stroke-width="0.02"/>
+             <!-- Animalia 30.4% -->
+-            <path d="M 0 0 L -0.560 -0.828 A 1 1 0 0 1 0.887 -0.462 Z" fill="#38BDF8" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L -0.560 -0.828 A 1 1 0 0 1 0.887 -0.462 Z" fill="#558E9B" stroke="#000000" stroke-width="0.02"/>
+             <!-- Fungi 7.0% -->
+-            <path d="M 0 0 L 0.887 -0.462 A 1 1 0 0 1 0.988 -0.156 Z" fill="#F43F5E" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L 0.887 -0.462 A 1 1 0 0 1 0.988 -0.156 Z" fill="#A386A9" stroke="#000000" stroke-width="0.02"/>
+             <!-- Bacterias y Protistas 3.1% -->
+-            <path d="M 0 0 L 0.988 -0.156 A 1 1 0 0 1 1 0 Z" fill="#FACC15" stroke="#0a0f1a" stroke-width="0.02"/>
+-          </svg>
+-
+-          <div class="pie-legend">
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#10B981;"></div>Plantae (Flora Nativa e Invasora)</div>
+-              <b style="color:#10B981;">59.5%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#38BDF8;"></div>Animalia (Avifauna, Herpetos, MAM)</div>
+-              <b style="color:#38BDF8;">30.4%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#F43F5E;"></div>Fungi (Hongos y Micorrizas)</div>
+-              <b style="color:#F43F5E;">7.0%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#FACC15;"></div>Bacterias y Protistas (Biofiltro)</div>
+-              <b style="color:#FACC15;">3.1%</b>
++            <path d="M 0 0 L 0.988 -0.156 A 1 1 0 0 1 1 0 Z" fill="#E7C878" stroke="#000000" stroke-width="0.02"/>
++          </svg>
++
++          <div class="pie-legend">
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#84A48B;"></div>Plantae (Flora Nativa e Invasora)</div>
++              <b style="color:#84A48B;">59.5%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#558E9B;"></div>Animalia (Avifauna, Herpetos, MAM)</div>
++              <b style="color:#558E9B;">30.4%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#A386A9;"></div>Fungi (Hongos y Micorrizas)</div>
++              <b style="color:#A386A9;">7.0%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#E7C878;"></div>Bacterias y Protistas (Biofiltro)</div>
++              <b style="color:#E7C878;">3.1%</b>
+             </div>
+             <div style="font-size:8.5px; color:#64748b; margin-top:2px; text-align:center;">(Desglose: Bacterias 1.7%, Protistas 1.4%)</div>
+           </div>
+@@ -774,37 +774,37 @@
+           <!-- SVG Pie Chart C -->
+           <svg width="150" height="150" viewBox="-1.1 -1.1 2.2 2.2" style="transform: rotate(-90deg);">
+             <!-- Artículos Científicos 36.1% -->
+-            <path d="M 0 0 L 1 0 A 1 1 0 0 1 -0.741 0.672 Z" fill="#00ffff" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L 1 0 A 1 1 0 0 1 -0.741 0.672 Z" fill="#84A48B" stroke="#000000" stroke-width="0.02"/>
+             <!-- Registros Multimedia de Campo 25.8% -->
+-            <path d="M 0 0 L -0.741 0.672 A 1 1 0 0 1 -0.722 -0.692 Z" fill="#ffee33" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L -0.741 0.672 A 1 1 0 0 1 -0.722 -0.692 Z" fill="#E7C878" stroke="#000000" stroke-width="0.02"/>
+             <!-- Colecciones y Censo SIGAU 23.4% -->
+-            <path d="M 0 0 L -0.722 -0.692 A 1 1 0 0 1 0.584 -0.812 Z" fill="#ff007f" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L -0.722 -0.692 A 1 1 0 0 1 0.584 -0.812 Z" fill="#A386A9" stroke="#000000" stroke-width="0.02"/>
+             <!-- Literatura Gris / PMA 9.7% -->
+-            <path d="M 0 0 L 0.584 -0.812 A 1 1 0 0 1 0.951 -0.309 Z" fill="#ffaa00" stroke="#0a0f1a" stroke-width="0.02"/>
++            <path d="M 0 0 L 0.584 -0.812 A 1 1 0 0 1 0.951 -0.309 Z" fill="#F79E70" stroke="#000000" stroke-width="0.02"/>
+             <!-- Libros y Ciencia Participativa 5.0% -->
+-            <path d="M 0 0 L 0.951 -0.309 A 1 1 0 0 1 1 0 Z" fill="#00ff88" stroke="#0a0f1a" stroke-width="0.02"/>
+-          </svg>
+-
+-          <div class="pie-legend">
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#00ffff;"></div>Artículos Científicos</div>
+-              <b style="color:#00ffff;">36.1%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#ffee33;"></div>Registros Multimedia de Campo</div>
+-              <b style="color:#ffee33;">25.8%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#ff007f;"></div>Colecciones y Censo SIGAU</div>
+-              <b style="color:#ff007f;">23.4%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#ffaa00;"></div>Literatura Gris / PMA Humedales</div>
+-              <b style="color:#ffaa00;">9.7%</b>
+-            </div>
+-            <div class="legend-row">
+-              <div class="legend-label"><div class="legend-dot" style="background:#00ff88;"></div>Libros y Ciencia Participativa</div>
+-              <b style="color:#00ff88;">5.0%</b>
++            <path d="M 0 0 L 0.951 -0.309 A 1 1 0 0 1 1 0 Z" fill="#558E9B" stroke="#000000" stroke-width="0.02"/>
++          </svg>
++
++          <div class="pie-legend">
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#84A48B;"></div>Artículos Científicos</div>
++              <b style="color:#84A48B;">36.1%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#E7C878;"></div>Registros Multimedia de Campo</div>
++              <b style="color:#E7C878;">25.8%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#A386A9;"></div>Colecciones y Censo SIGAU</div>
++              <b style="color:#A386A9;">23.4%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#F79E70;"></div>Literatura Gris / PMA Humedales</div>
++              <b style="color:#F79E70;">9.7%</b>
++            </div>
++            <div class="legend-row">
++              <div class="legend-label"><div class="legend-dot" style="background:#558E9B;"></div>Libros y Ciencia Participativa</div>
++              <b style="color:#558E9B;">5.0%</b>
+             </div>
+           </div>
+         </div>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

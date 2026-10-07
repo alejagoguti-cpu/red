@@ -1,0 +1,189 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -544,33 +544,37 @@
+       color: #ffffff;
+       transform: translateX(2px);
+     }
+-    /* Welcome Initial Pie Chart Modal Overlay */
++    /* High-End Luxury Cyberpunk Glassmorphism Welcome Modal */
+     .welcome-overlay {
+       position: fixed;
+       top: 0; left: 0; width: 100vw; height: 100vh;
+-      background: rgba(2, 4, 8, 0.85);
+-      backdrop-filter: blur(16px);
+-      -webkit-backdrop-filter: blur(16px);
+-      display: flex;
+-      align-items: center;
+-      justify-content: center;
+-      z-index: 999;
+-      animation: fadeIn 0.3s ease-out;
++      background: radial-gradient(circle at 50% 50%, rgba(10, 15, 30, 0.92), rgba(2, 4, 8, 0.98));
++      backdrop-filter: blur(24px);
++      -webkit-backdrop-filter: blur(24px);
++      display: flex;
++      align-items: center;
++      justify-content: center;
++      z-index: 9999;
++      animation: modalFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
++    }
++    @keyframes modalFadeIn {
++      from { opacity: 0; transform: scale(0.96); }
++      to { opacity: 1; transform: scale(1); }
+     }
+     .welcome-modal {
+       width: 92%;
+-      max-width: 1060px;
++      max-width: 1120px;
+       max-height: 90vh;
+-      background: rgba(10, 15, 26, 0.95);
+-      border: 1px solid rgba(0, 255, 255, 0.3);
+-      border-radius: 14px;
+-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 255, 255, 0.15);
+-      padding: 24px;
+-      overflow-y: auto;
+-      color: #f1f5f9;
+-      display: flex;
+-      flex-direction: column;
+-      gap: 20px;
++      background: linear-gradient(145deg, rgba(13, 20, 36, 0.95), rgba(6, 10, 20, 0.98));
++      border: 1px solid rgba(0, 255, 255, 0.35);
++      border-radius: 18px;
++      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 45px rgba(0, 255, 255, 0.12);
++      padding: 28px;
++      overflow-y: auto;
++      color: #f1f5f9;
++      display: flex;
++      flex-direction: column;
++      gap: 22px;
+     }
+     .welcome-header {
+       display: flex;
+@@ -577,40 +577,52 @@
+       justify-content: space-between;
+-      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+-      padding-bottom: 14px;
++      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
++      padding-bottom: 16px;
+     }
+     .pie-grid {
+       display: grid;
+-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+-      gap: 18px;
++      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
++      gap: 22px;
+     }
+     .pie-card {
+-      background: rgba(15, 23, 42, 0.8);
+-      border: 1px solid rgba(255, 255, 255, 0.1);
+-      border-radius: 10px;
+-      padding: 16px;
+-      display: flex;
+-      flex-direction: column;
+-      align-items: center;
+-      gap: 12px;
+-      transition: all 0.2s ease;
++      background: linear-gradient(160deg, rgba(20, 30, 52, 0.65), rgba(10, 16, 30, 0.85));
++      border: 1px solid rgba(0, 255, 255, 0.18);
++      border-radius: 14px;
++      padding: 20px;
++      display: flex;
++      flex-direction: column;
++      align-items: center;
++      gap: 14px;
++      position: relative;
++      overflow: hidden;
++      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
++      transition: all 0.25s ease;
++    }
++    .pie-card::before {
++      content: '';
++      position: absolute;
++      top: 0; left: 0; right: 0; height: 2px;
++      background: linear-gradient(90deg, transparent, #00ffff, transparent);
++      opacity: 0.7;
+     }
+     .pie-card:hover {
+-      border-color: rgba(0, 255, 255, 0.4);
+-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
++      border-color: rgba(0, 255, 255, 0.5);
++      transform: translateY(-3px);
++      box-shadow: 0 16px 40px rgba(0, 255, 255, 0.15);
+     }
+     .pie-card-title {
+-      font-size: 13px;
+-      font-weight: 800;
+-      color: #00ffff;
+-      text-transform: uppercase;
+-      letter-spacing: 0.5px;
+-      text-align: center;
++      font-size: 13.5px;
++      font-weight: 800;
++      color: #00ffff;
++      letter-spacing: 0.5px;
++      text-align: center;
++      text-transform: uppercase;
++      text-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+     }
+     .pie-card-desc {
+-      font-size: 10.5px;
+-      color: #94a3b8;
+-      text-align: center;
+-      line-height: 1.35;
++      font-size: 11px;
++      color: #94a3b8;
++      text-align: center;
++      line-height: 1.4;
+     }
+     .pie-legend {
+       width: 100%;
+@@ -617,6 +617,6 @@
+       flex-direction: column;
+-      gap: 6px;
+-      margin-top: 4px;
++      gap: 7px;
++      margin-top: 6px;
+     }
+     .legend-row {
+       display: flex;
+@@ -623,8 +623,14 @@
+       justify-content: space-between;
+-      font-size: 10px;
+-      padding: 3px 6px;
+-      background: rgba(255, 255, 255, 0.03);
+-      border-radius: 4px;
++      font-size: 10.5px;
++      padding: 5px 10px;
++      background: rgba(255, 255, 255, 0.04);
++      border: 1px solid rgba(255, 255, 255, 0.06);
++      border-radius: 6px;
++      transition: background 0.15s ease;
++    }
++    .legend-row:hover {
++      background: rgba(0, 255, 255, 0.08);
++      border-color: rgba(0, 255, 255, 0.2);
+     }
+     .legend-label {
+       display: flex;
+@@ -631,11 +631,13 @@
+-      gap: 6px;
+-      color: #cbd5e1;
++      gap: 8px;
++      color: #cbd5e1;
++      font-weight: 500;
+     }
+     .legend-dot {
+-      width: 9px;
+-      height: 9px;
+-      border-radius: 50%;
+-      flex-shrink: 0;
++      width: 10px;
++      height: 10px;
++      border-radius: 50%;
++      flex-shrink: 0;
++      box-shadow: 0 0 8px currentColor;
+     }
+   </style>
+ </head>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

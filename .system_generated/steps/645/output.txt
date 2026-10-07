@@ -1,0 +1,17 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -2150,9 +2150,9 @@
+           const isSrch = searchedId !== null && (e.source === searchedId || e.target === searchedId);
+ 
+           if (isHov || isSel || isSrch) {
+-            ctx.strokeStyle = '#00ffff';
++            ctx.strokeStyle = '#84a48b';
+             ctx.lineWidth = 3.5;
+-            ctx.shadowColor = '#00ffff';
++            ctx.shadowColor = '#84a48b';
+             ctx.shadowBlur = 10;
+           } else {
+             ctx.strokeStyle = selectedNode ? 'rgba(60, 15, 30, 0.15)' : palette.edge;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

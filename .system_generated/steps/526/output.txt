@@ -1,0 +1,37 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -606,13 +606,13 @@
+       content: '';
+       position: absolute;
+       top: 0; left: 0; right: 0; height: 2px;
+-      background: linear-gradient(90deg, transparent, #00ffff, transparent);
+-      opacity: 0.7;
++      background: linear-gradient(90deg, transparent, #84A48B, transparent);
++      opacity: 0.8;
+     }
+     .pie-card:hover {
+-      border-color: rgba(0, 255, 255, 0.5);
++      border-color: rgba(132, 164, 139, 0.4);
+       transform: translateY(-3px);
+-      box-shadow: 0 16px 40px rgba(0, 255, 255, 0.15);
++      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+     }
+     .pie-card-title {
+       font-size: 13.5px;
+@@ -619,8 +619,8 @@
+-      color: #00ffff;
+-      letter-spacing: 0.5px;
+-      text-align: center;
+-      text-transform: uppercase;
+-      text-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
++      color: #84A48B;
++      letter-spacing: 0.5px;
++      text-align: center;
++      text-transform: uppercase;
++      text-shadow: none;
+     }
+     .pie-card-desc {
+       font-size: 11px;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

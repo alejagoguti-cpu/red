@@ -1,0 +1,14 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1702,7 +1702,7 @@
+         { name: 'Visita Floral', color: '#A386A9', bg: 'rgba(163,134,169,0.2)' },  // Dusty Lavender
+         { name: 'Anidamiento', color: '#D1A996', bg: 'rgba(209,169,150,0.2)' },   // Tumbleweed
+         { name: 'Parasitismo', color: '#C6B3CA', bg: 'rgba(198,179,202,0.2)' },   // Wisteria Purple
+-        { name: 'Alelopatía', color: '#558E9B', bg: 'rgba(85,142,155,0.2)' }      // Horizon Blue
++        { name: 'Alelopatía', color: '#6B9080', bg: 'rgba(107,144,128,0.2)' }      // Morandi Sage Green
+       ];
+ 
+       node.neighbors.forEach((nb, idx) => {
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

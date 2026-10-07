@@ -1,0 +1,14 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1013,7 +1013,7 @@
+         <button class="btn-flat active" id="subInterToggle5" onclick="toggleSubInteraction(5)" style="font-size:8.5px; padding:2px 6px; border-color:#A386A9; color:#A386A9; background:rgba(163,134,169,0.15);">Visita Floral</button>
+         <button class="btn-flat active" id="subInterToggle6" onclick="toggleSubInteraction(6)" style="font-size:8.5px; padding:2px 6px; border-color:#D1A996; color:#D1A996; background:rgba(209,169,150,0.15);">Anidamiento</button>
+         <button class="btn-flat active" id="subInterToggle7" onclick="toggleSubInteraction(7)" style="font-size:8.5px; padding:2px 6px; border-color:#C6B3CA; color:#C6B3CA; background:rgba(198,179,202,0.15);">Parasitismo</button>
+-        <button class="btn-flat active" id="subInterToggle8" onclick="toggleSubInteraction(8)" style="font-size:8.5px; padding:2px 6px; border-color:#558E9B; color:#558E9B; background:rgba(85,142,155,0.15);">Alelopatía</button>
++        <button class="btn-flat active" id="subInterToggle8" onclick="toggleSubInteraction(8)" style="font-size:8.5px; padding:2px 6px; border-color:#6B9080; color:#6B9080; background:rgba(107,144,128,0.15);">Alelopatía</button>
+         <div class="btn-close" style="margin-left:6px;" onclick="closeSubNetworkModal()">×</div>
+       </div>
+     </div>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

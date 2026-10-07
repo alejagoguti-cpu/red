@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'hyperbolic_3d_network.html', LF will be replaced by CRLF the next time Git touches it
+[main (root-commit) c4b0056] Add 3D Hyperbolic Socioecological Network for Kennedy
+ 1 file changed, 2346 insertions(+)
+ create mode 100644 hyperbolic_3d_network.html
+

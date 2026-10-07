@@ -1,0 +1,27 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1177,11 +1177,16 @@
+           n.oy = center.y + (idx % 6) * 14 - 35;
+           n.oz = center.z + Math.sin(a) * r;
+         } else if (mode === 'concentric') {
+-          const r = 120 + (idx % 5) * 40;
+-          const a = idx * 0.17;
+-          n.ox = Math.cos(a) * r;
+-          n.oy = (idx % 7) * 16 - 48;
+-          n.oz = Math.sin(a) * r;
++          // 3 Pristine Orbital 3D Rings (Inner 110px, Middle 190px, Outer 270px)
++          const ringIndex = idx % 3;
++          const radius = 110 + ringIndex * 80;
++          const totalInRing = Math.ceil(nodes.length / 3);
++          const posInRing = Math.floor(idx / 3);
++          const angle = (posInRing / totalInRing) * Math.PI * 2;
++          
++          n.ox = Math.cos(angle) * radius;
++          n.oy = (ringIndex - 1) * 45 + Math.sin(angle * 2) * 15;
++          n.oz = Math.sin(angle) * radius;
+         } else if (mode === 'hyperbolic') {
+           const phi = Math.acos(1 - 2 * ((idx + 0.5) / nodes.length));
+           const theta = Math.PI * (1 + Math.sqrt(5)) * idx;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

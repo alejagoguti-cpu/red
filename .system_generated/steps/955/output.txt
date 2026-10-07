@@ -1,0 +1,12 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'kennedy_radial.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'red_ecosistema_kennedy.html', LF will be replaced by CRLF the next time Git touches it
+[main c969c6d] Agregada Red Radial interactiva de Ecosistema Kennedy-Corabastos-Zona Franca
+ 2 files changed, 1076 insertions(+)
+ create mode 100644 kennedy_radial.html
+ create mode 100644 red_ecosistema_kennedy.html
+To https://github.com/alejagoguti-cpu/red.git
+   af17bb2..c969c6d  main -> main
+

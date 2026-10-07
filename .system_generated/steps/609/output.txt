@@ -1,0 +1,41 @@
+
+The command exited with code 0.
+Output:
+
+hyperbolic_3d_network.html:152:      background: var(--cat-color, #00ffff);
+hyperbolic_3d_network.html:153:      box-shadow: 0 0 10px var(--cat-color, #00ffff);
+hyperbolic_3d_network.html:172:      border: 1.5px solid var(--cat-color, #00ffff);
+hyperbolic_3d_network.html:363:      color: #00ffff;
+hyperbolic_3d_network.html:370:      color: #00ffff;
+hyperbolic_3d_network.html:477:      color: #00ffff;
+hyperbolic_3d_network.html:539:      border-color: #00ffff;
+hyperbolic_3d_network.html:673:          <div style="font-size:16px; font-weight:900; color:#00ffff; 
+letter-spacing:0.5px; display:flex; align-items:center; gap:8px;">
+hyperbolic_3d_network.html:674:            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" 
+stroke="#00ffff" stroke-width="2.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 
+2v10z"></path></svg>
+hyperbolic_3d_network.html:813:        <button class="btn-flat active" style="padding:9px 24px; font-size:12px; 
+font-weight:800; background:linear-gradient(135deg, #00ffff, #0088ff); color:#000000; border:none;" 
+onclick="closeWelcomeModal()">
+hyperbolic_3d_network.html:986:      <button class="btn-flat" style="justify-content:center; 
+background:linear-gradient(135deg, rgba(0,255,255,0.25), rgba(0,120,255,0.3)); border-color:#00ffff; color:#ffffff; 
+font-weight:700;" onclick="openSubNetworkModal()">
+hyperbolic_3d_network.html:1003:        <span style="font-weight:800; font-size:13px; color:#00ffff;" 
+id="subModalTitle">Sub-Red de Interacciones Bi�ticas</span>
+hyperbolic_3d_network.html:1026:      <span style="color:#00ffff; font-weight:700;">Filtro por Tipo de Interacci�n 
+Ecol�gica</span>
+hyperbolic_3d_network.html:1040:        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ffff" 
+stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line 
+x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+hyperbolic_3d_network.html:1053:      <div style="font-size:9px; color:#00ffff; font-weight:800; 
+text-transform:uppercase; margin-bottom:4px; letter-spacing:0.5px;">Preguntas de Investigaci�n (Secci�n 5.2 
+Tesis):</div>
+hyperbolic_3d_network.html:1056:        <span style="color:#00ffff;"></span>
+hyperbolic_3d_network.html:1954:            sctx.fillStyle = palette.catColors[sn.cat] || '#00ffff';
+hyperbolic_3d_network.html:1963:          sctx.strokeStyle = sn.isCenter ? '#00ffff' : palette.catColors[sn.cat];
+hyperbolic_3d_network.html:1966:            sctx.shadowColor = '#00ffff';
+hyperbolic_3d_network.html:2154:            ctx.strokeStyle = '#00ffff';
+hyperbolic_3d_network.html:2156:            ctx.shadowColor = '#00ffff';
+
+
+

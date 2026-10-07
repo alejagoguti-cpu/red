@@ -1,0 +1,97 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1466,14 +1466,24 @@
+     // --- SUB-NETWORK 2D GRAPH POPUP MODAL LOGIC ---
+     let subCanvasAnim = null;
+     const subOpts = {
+-      cats: { 0: true, 1: true, 2: true, 3: true }
+-    };
+-
+-    function toggleSubCat(catId) {
+-      subOpts.cats[catId] = !subOpts.cats[catId];
+-      const btn = document.getElementById(`subToggle${catId}`);
+-      if (btn) btn.classList.toggle('active', subOpts.cats[catId]);
+-      renderSubNetworkCanvas();
++      interactions: { 0: true, 1: true, 2: true, 3: true, 4: true, 5: true, 6: true, 7: true, 8: true }
++    };
++
++    function toggleSubInteraction(typeId) {
++      subOpts.interactions[typeId] = !subOpts.interactions[typeId];
++      const btn = document.getElementById(`subInterToggle${typeId}`);
++      if (btn) btn.classList.toggle('active', subOpts.interactions[typeId]);
++      renderSubNetworkCanvas();
++    }
++
++    function getInteractionType(nodeA, nodeB, idx) {
++      if (nodeA.cat === 0 && nodeB.cat === 1) return 5; // Visita Floral
++      if (nodeA.cat === 1 && nodeB.cat === 0) return 2; // Dispersión
++      if (nodeA.cat === 1 && nodeB.cat === 3) return 0; // Depredación
++      if (nodeA.cat === 3 && nodeB.cat === 0) return 1; // Herbivoría
++      if (nodeA.cat === 0 && nodeB.cat === 0) return 8; // Alelopatía
++      if (nodeA.cat === 2) return 3; // Mutualismo
++      return (idx + nodeA.id) % 9;
+     }
+ 
+     function openSubNetworkModal() {
+@@ -1509,8 +1509,12 @@
+       const cx = subCanvas.width / 2;
+       const cy = subCanvas.height / 2;
+ 
+-      // Filter neighbors strictly based on active layer category toggles and active state
+-      const activeNeighbors = (centerNode.neighbors || []).filter(nb => nb.active && subOpts.cats[nb.cat] !== false);
++      // Filter neighbors strictly based on active interaction type toggles
++      const activeNeighbors = (centerNode.neighbors || []).filter((nb, idx) => {
++        if (!nb.active) return false;
++        const typeId = getInteractionType(centerNode, nb, idx);
++        return subOpts.interactions[typeId] !== false;
++      });
+       const totalActive = activeNeighbors.length;
+ 
+       // Target layout calculation using golden angle mesh
+@@ -1532,8 +1532,13 @@
+         const targetSx = cx + Math.cos(angle) * subRadius;
+         const targetSy = cy + Math.sin(angle) * subRadius * 0.85;
+ 
+-        // Recalculate neighbor degree against visible sub-network layers
+-        const nbActiveDegree = (nb.neighbors || []).filter(nnb => nnb.active && subOpts.cats[nnb.cat] !== false).length;
++        // Recalculate neighbor degree against visible interaction types
++        const nbActiveDegree = (nb.neighbors || []).filter((nnb, nidx) => {
++          if (!nnb.active) return false;
++          const tId = getInteractionType(nb, nnb, nidx);
++          return subOpts.interactions[tId] !== false;
++        }).length;
++
+         const targetSize = Math.min(26, Math.max(12, 10 + Math.sqrt(nbActiveDegree) * 2.0));
+ 
+         targets.set(nb.id, {
+@@ -1540,7 +1540,8 @@
+           targetSy,
+           targetSize,
+           activeDegree: nbActiveDegree,
+-          isCenter: false
++          isCenter: false,
++          interType: getInteractionType(centerNode, nb, idx)
+         });
+       });
+ 
+@@ -1561,7 +1561,8 @@
+             targetSy: t.targetSy,
+             targetSize: t.targetSize,
+             activeDegree: t.activeDegree,
+-            isCenter: t.isCenter
++            isCenter: t.isCenter,
++            interType: t.interType
+           };
+         } else {
+           existing.targetSx = t.targetSx;
+@@ -1568,6 +1568,7 @@
+           existing.targetSize = t.targetSize;
+           existing.activeDegree = t.activeDegree;
+           existing.isCenter = t.isCenter;
++          existing.interType = t.interType;
+         }
+         newSubNodes.push(existing);
+       });
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

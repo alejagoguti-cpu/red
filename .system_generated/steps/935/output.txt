@@ -1,0 +1,12 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'red_actores_turismo_valparaiso.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'valparaiso.html', LF will be replaced by CRLF the next time Git touches it
+[main bd7e513] Agregada Red 3D interactiva de Actores del Turismo en Valparaíso
+ 2 files changed, 984 insertions(+)
+ create mode 100644 red_actores_turismo_valparaiso.html
+ create mode 100644 valparaiso.html
+To https://github.com/alejagoguti-cpu/red.git
+   2faeb6c..bd7e513  main -> main
+

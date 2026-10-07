@@ -1,0 +1,59 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1505,18 +1505,18 @@
+       const cx = subCanvas.width / 2;
+       const cy = subCanvas.height / 2;
+ 
+-      // Filter neighbors based on sub-network active layer toggles
+-      const activeNeighbors = (centerNode.neighbors || []).filter(nb => subOpts.cats[nb.cat] !== false);
++      // Filter neighbors strictly based on active layer category toggles and active state
++      const activeNeighbors = (centerNode.neighbors || []).filter(nb => nb.active && subOpts.cats[nb.cat] !== false);
+       const totalActive = activeNeighbors.length;
+ 
+-      // Target layout calculation using golden angle mesh to prevent overlaps
++      // Target layout calculation using golden angle mesh
+       const targets = new Map();
+       
+-      // Center node target
++      // Center node target calculation
+       targets.set(centerNode.id, {
+         targetSx: cx,
+         targetSy: cy,
+-        targetSize: Math.min(32, Math.max(18, 14 + Math.sqrt(totalActive) * 2.8)),
++        targetSize: Math.min(34, Math.max(18, 14 + Math.sqrt(totalActive) * 3.0)),
+         activeDegree: totalActive,
+         isCenter: true
+       });
+@@ -1528,8 +1528,9 @@
+         const targetSx = cx + Math.cos(angle) * subRadius;
+         const targetSy = cy + Math.sin(angle) * subRadius * 0.85;
+ 
+-        const nbActiveDegree = (nb.neighbors || []).filter(nnb => subOpts.cats[nnb.cat] !== false).length;
+-        const targetSize = Math.min(24, Math.max(12, 10 + Math.sqrt(nbActiveDegree) * 1.8));
++        // Recalculate neighbor degree against visible sub-network layers
++        const nbActiveDegree = (nb.neighbors || []).filter(nnb => nnb.active && subOpts.cats[nnb.cat] !== false).length;
++        const targetSize = Math.min(26, Math.max(12, 10 + Math.sqrt(nbActiveDegree) * 2.0));
+ 
+         targets.set(nb.id, {
+           targetSx,
+@@ -1539,7 +1539,7 @@
+         });
+       });
+ 
+-      // Update or initialize subState nodes
++      // Synchronize subState nodes: ONLY keep nodes that exist in current active targets
+       const existingMap = new Map(subState.nodes.map(n => [n.id, n]));
+       const newSubNodes = [];
+ 
+@@ -1551,7 +1551,7 @@
+             ...fullObj,
+             sx: t.isCenter ? cx : cx + (Math.random() - 0.5) * 40,
+             sy: t.isCenter ? cy : cy + (Math.random() - 0.5) * 40,
+-            currentSize: t.targetSize,
++            currentSize: 4, // start small for morphing
+             targetSx: t.targetSx,
+             targetSy: t.targetSy,
+             targetSize: t.targetSize,
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

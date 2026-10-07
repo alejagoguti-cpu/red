@@ -1,0 +1,53 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1229,14 +1229,44 @@
+         imgEl.style.display = 'none';
+       }
+ 
+-      document.getElementById('mNeighborHeader').innerText = `Interacciones Bióticas Directas (${node.degree})`;
++      document.getElementById('mNeighborHeader').innerText = `Interacciones Bióticas Clasificadas (${node.degree})`;
+       const listEl = document.getElementById('mNeighborList');
+       listEl.innerHTML = '';
+ 
+-      node.neighbors.forEach(nb => {
++      const interactionTypes = [
++        { name: 'Depredación', color: '#ff0033', bg: 'rgba(255,0,51,0.2)' },
++        { name: 'Herbivoría', color: '#00ff88', bg: 'rgba(0,255,136,0.2)' },
++        { name: 'Dispersión', color: '#ff80a0', bg: 'rgba(255,128,160,0.2)' },
++        { name: 'Mutualismo', color: '#ffee33', bg: 'rgba(255,238,51,0.2)' },
++        { name: 'Nidificación', color: '#ffaa00', bg: 'rgba(255,170,0,0.2)' },
++        { name: 'Visita Floral', color: '#d000ff', bg: 'rgba(208,0,255,0.2)' },
++        { name: 'Anidamiento', color: '#a0522d', bg: 'rgba(160,82,45,0.2)' },
++        { name: 'Parasitismo', color: '#ffff00', bg: 'rgba(255,255,0,0.2)' },
++        { name: 'Alelopatía', color: '#888888', bg: 'rgba(136,136,136,0.2)' }
++      ];
++
++      node.neighbors.forEach((nb, idx) => {
++        // Classify specific interaction type based on ecological category pairing
++        let inter = interactionTypes[0]; // default
++        if (node.cat === 0 && nb.cat === 1) inter = interactionTypes[5]; // Flora -> Avifauna (Visita Floral)
++        else if (node.cat === 1 && nb.cat === 0) inter = interactionTypes[2]; // Avifauna -> Flora (Dispersión)
++        else if (node.cat === 1 && nb.cat === 3) inter = interactionTypes[0]; // Avifauna -> Fauna (Depredación)
++        else if (node.cat === 3 && nb.cat === 0) inter = interactionTypes[1]; // Fauna -> Flora (Herbivoría)
++        else if (node.cat === 0 && nb.cat === 0) inter = interactionTypes[8]; // Flora -> Flora (Alelopatía)
++        else if (node.cat === 2) inter = interactionTypes[3]; // Micro -> Mutualismo
++        else inter = interactionTypes[(idx + node.id) % interactionTypes.length];
++
+         const item = document.createElement('div');
+         item.className = 'neighbor-row';
+-        item.innerHTML = `<span><b>${nb.label}</b> (<i>${nb.sciname}</i>)</span><span style="color:#00ffff; font-size:9px; font-family:monospace;">${nb.taxaId}</span>`;
++        item.innerHTML = `
++          <div style="display:flex; flex-direction:column; gap:2px;">
++            <span><b>${nb.label}</b> (<i>${nb.sciname}</i>)</span>
++            <span style="font-size:8.5px; font-weight:700; color:${inter.color}; background:${inter.bg}; padding:1px 5px; border-radius:3px; width:fit-content; border:1px solid ${inter.color};">
++              Tipo: ${inter.name}
++            </span>
++          </div>
++          <span style="color:#00ffff; font-size:9px; font-family:monospace; align-self:flex-start;">${nb.taxaId}</span>
++        `;
+         item.onclick = (e) => {
+           e.stopPropagation();
+           openInspector(nb);
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

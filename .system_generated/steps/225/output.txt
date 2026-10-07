@@ -1,0 +1,135 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -398,6 +398,129 @@
+       box-shadow: 0 4px 20px rgba(0, 255, 255, 0.4);
+       display: none;
+     }
++
++    /* FAQ Chat Floating Assistant */
++    .chat-widget-btn {
++      position: absolute;
++      bottom: 16px;
++      right: 16px;
++      background: linear-gradient(135deg, rgba(0, 255, 255, 0.25), rgba(0, 150, 255, 0.35));
++      border: 1px solid #00ffff;
++      color: #ffffff;
++      padding: 10px 16px;
++      border-radius: 24px;
++      font-size: 11px;
++      font-weight: 700;
++      cursor: pointer;
++      pointer-events: auto;
++      z-index: 180;
++      display: flex;
++      align-items: center;
++      gap: 8px;
++      box-shadow: 0 8px 24px rgba(0, 255, 255, 0.3);
++      transition: all 0.2s ease;
++    }
++    .chat-widget-btn:hover {
++      transform: translateY(-2px);
++      box-shadow: 0 12px 32px rgba(0, 255, 255, 0.5);
++      background: linear-gradient(135deg, rgba(0, 255, 255, 0.4), rgba(0, 180, 255, 0.5));
++    }
++
++    .faq-chat-modal {
++      position: absolute;
++      bottom: 66px;
++      right: 16px;
++      width: 360px;
++      max-height: 480px;
++      display: flex;
++      flex-direction: column;
++      pointer-events: auto;
++      z-index: 180;
++      border: 1px solid rgba(0, 255, 255, 0.3);
++      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
++      border-radius: 12px;
++      overflow: hidden;
++      animation: fadeIn 0.2s ease-out;
++    }
++
++    .chat-header {
++      background: rgba(15, 23, 42, 0.95);
++      padding: 12px 14px;
++      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
++      display: flex;
++      align-items: center;
++      justify-content: space-between;
++    }
++    .chat-title-wrap {
++      display: flex;
++      align-items: center;
++      gap: 8px;
++      color: #00ffff;
++      font-weight: 700;
++      font-size: 12px;
++    }
++
++    .chat-body {
++      padding: 12px;
++      overflow-y: auto;
++      max-height: 280px;
++      display: flex;
++      flex-direction: column;
++      gap: 10px;
++      background: rgba(6, 9, 15, 0.85);
++    }
++
++    .msg-bubble {
++      max-width: 85%;
++      padding: 8px 12px;
++      border-radius: 10px;
++      font-size: 11px;
++      line-height: 1.4;
++    }
++    .msg-bot {
++      background: rgba(15, 23, 42, 0.9);
++      border: 1px solid rgba(0, 255, 255, 0.2);
++      color: #e2e8f0;
++      align-self: flex-start;
++      border-bottom-left-radius: 2px;
++    }
++    .msg-user {
++      background: rgba(0, 255, 255, 0.2);
++      border: 1px solid rgba(0, 255, 255, 0.4);
++      color: #ffffff;
++      align-self: flex-end;
++      border-bottom-right-radius: 2px;
++    }
++
++    .predefined-chips {
++      padding: 10px 12px;
++      background: rgba(10, 15, 26, 0.95);
++      border-top: 1px solid rgba(255, 255, 255, 0.08);
++      display: flex;
++      flex-direction: column;
++      gap: 6px;
++    }
++    .chip-btn {
++      background: rgba(255, 255, 255, 0.04);
++      border: 1px solid rgba(0, 255, 255, 0.2);
++      color: #cbd5e1;
++      padding: 6px 10px;
++      border-radius: 6px;
++      font-size: 10px;
++      font-weight: 600;
++      cursor: pointer;
++      text-align: left;
++      transition: all 0.15s ease;
++      display: flex;
++      align-items: center;
++      justify-content: space-between;
++    }
++    .chip-btn:hover {
++      background: rgba(0, 255, 255, 0.15);
++      border-color: #00ffff;
++      color: #ffffff;
++      transform: translateX(2px);
++    }
+   </style>
+ </head>
+ <body>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,13 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -942,7 +942,6 @@
+     function setLayout(mode) {
+       opts.layoutMode = mode;
+       nodes.forEach((n, idx) => {
+-        if (n.id === 0) return;
+         if (mode === 'clustered') {
+           const catAngle = (n.cat / 6) * Math.PI * 2;
+           const r = 160 + (idx % 20) * 4;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

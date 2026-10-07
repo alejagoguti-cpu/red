@@ -1,0 +1,9 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'red_congestion_matrioshka.html', LF will be replaced by CRLF the next time Git touches it
+[main 36cd564] Actualizacion: Red causal matrioshka estatica con nodos de tarjeta rectangular y clasificacion sintoma-causa-efecto
+ 1 file changed, 197 insertions(+), 169 deletions(-)
+To https://github.com/alejagoguti-cpu/red.git
+   3a3d1a0..36cd564  main -> main
+

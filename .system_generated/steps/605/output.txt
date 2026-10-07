@@ -1,0 +1,14 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1726,7 +1726,7 @@
+               Tipo: ${inter.name}
+             </span>
+           </div>
+-          <span style="color:#00ffff; font-size:9px; font-family:monospace; align-self:flex-start;">${nb.taxaId}</span>
++          <span style="color:#84a48b; font-size:9px; font-family:monospace; align-self:flex-start;">${nb.taxaId}</span>
+         `;
+         item.onclick = (e) => {
+           e.stopPropagation();
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

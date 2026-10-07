@@ -1,0 +1,38 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -416,7 +416,8 @@
+       </button>
+ 
+       <button class="glass-panel btn-flat" onclick="restoreHiddenNodes()">
+-        👁️ Restablecer Ocultos (<span id="lblHiddenCount">0</span>)
++        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
++        <span>Restablecer (<span id="lblHiddenCount">0</span>)</span>
+       </button>
+ 
+       <input type="text" id="searchInput" placeholder="Buscar taxón..." oninput="searchNode(this.value)" class="glass-panel search-box">
+@@ -423,8 +423,19 @@
+ 
+     <div class="nav-group">
+-      <button class="glass-panel btn-flat" onclick="setLayout('hyperbolic')">🌐 Hiperbólico</button>
+-      <button class="glass-panel btn-flat" onclick="setLayout('clustered')">🧬 Por Grupos</button>
+-      <button class="glass-panel btn-flat" onclick="setLayout('concentric')">🪐 Anillos</button>
++      <button class="glass-panel btn-flat" onclick="setLayout('hyperbolic')">
++        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
++        Hiperbólico
++      </button>
++
++      <button class="glass-panel btn-flat" onclick="setLayout('clustered')">
++        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle><line x1="8.5" y1="7.5" x2="15.5" y2="7.5"></line><line x1="7.5" y1="8.5" x2="10.5" y2="15.5"></line><line x1="16.5" y1="8.5" x2="13.5" y2="15.5"></line></svg>
++        Por Grupos
++      </button>
++
++      <button class="glass-panel btn-flat" onclick="setLayout('concentric')">
++        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
++        Anillos
++      </button>
+ 
+       <button class="glass-panel btn-flat active" id="btnAutoRot" onclick="opts.autoRotate = !opts.autoRotate; this.classList.toggle('active')">
+         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

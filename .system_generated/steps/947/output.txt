@@ -1,0 +1,10 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'red_actores_turismo_valparaiso.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'valparaiso.html', LF will be replaced by CRLF the next time Git touches it
+[main af17bb2] Convertida Red de Valparaíso a plantilla estática Matrioshka con tarjetas rectangulares y tríadas Síntoma-Causa-Efecto
+ 2 files changed, 546 insertions(+), 290 deletions(-)
+To https://github.com/alejagoguti-cpu/red.git
+   bd7e513..af17bb2  main -> main
+

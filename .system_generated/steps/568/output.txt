@@ -1,0 +1,47 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -180,7 +180,7 @@
+       border: 1px solid rgba(255, 255, 255, 0.15);
+       padding: 3px 8px;
+       border-radius: 6px;
+-      color: #00ffff;
++      color: #84A48B;
+       font-family: ui-monospace, monospace;
+       font-weight: 700;
+     }
+@@ -196,12 +196,8 @@
+       transition: all 0.15s;
+     }
+     .toggle-box.checked {
+-      background: #00ffff;
+-      border-color: #00ffff;
+-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+-    }
+-      background: #00ffff;
+-      border-color: #00ffff;
++      background: #84A48B;
++      border-color: #84A48B;
+     }
+     .toggle-box.checked::after {
+       content: "";
+@@ -219,7 +219,7 @@
+       padding: 16px;
+       pointer-events: auto;
+       z-index: 150;
+-      border-left: 4px solid #00ffff;
++      border-left: 4px solid #84A48B;
+       animation: fadeIn 0.2s ease-out;
+     }
+ 
+@@ -239,7 +239,7 @@
+     .node-title {
+       font-size: 14px;
+       font-weight: 700;
+-      color: #00ffff;
++      color: #84A48B;
+     }
+     .node-subtitle {
+       font-size: 11px;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

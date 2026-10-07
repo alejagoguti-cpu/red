@@ -1,0 +1,45 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -716,10 +716,35 @@
+     <div class="neighbor-scroll" id="mNeighborList">
+     </div>
+ 
+-    <div style="display:flex; gap:8px; margin-top:12px;">
+-      <button class="btn-flat" style="flex:1; justify-content:center;" onclick="focusSelectedNode()">Centrar Cámara</button>
+-      <button class="btn-flat" style="flex:1; justify-content:center; background:rgba(255,0,85,0.2); border-color:#ff0055; color:#ffffff;" onclick="hideCurrentNode()">Ocultar Nodo</button>
+-      <button class="btn-flat" style="flex:1; justify-content:center; background:rgba(0,255,255,0.15); border-color:#00ffff; color:#00ffff;" onclick="closeInspector()">Cerrar</button>
++    <div style="display:flex; flex-direction:column; gap:6px; margin-top:12px;">
++      <button class="btn-flat" style="justify-content:center; background:linear-gradient(135deg, rgba(0,255,255,0.25), rgba(0,120,255,0.3)); border-color:#00ffff; color:#ffffff; font-weight:700;" onclick="openSubNetworkModal()">
++        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
++        🕸️ Ver Sub-Red de Interacciones a Detalle
++      </button>
++
++      <div style="display:flex; gap:6px;">
++        <button class="btn-flat" style="flex:1; justify-content:center;" onclick="focusSelectedNode()">Centrar Cámara</button>
++        <button class="btn-flat" style="flex:1; justify-content:center; background:rgba(255,0,85,0.2); border-color:#ff0055; color:#ffffff;" onclick="hideCurrentNode()">Ocultar Nodo</button>
++        <button class="btn-flat" style="flex:1; justify-content:center; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); color:#cbd5e1;" onclick="closeInspector()">Cerrar</button>
++      </div>
++    </div>
++  </div>
++
++  <!-- Sub-Network 2D Graph Interactive Modal Popup -->
++  <div class="subnetwork-modal" id="subnetworkModal" style="display:none;">
++    <div class="subnetwork-header">
++      <div style="display:flex; align-items:center; gap:8px;">
++        <span style="font-weight:800; font-size:13px; color:#00ffff;" id="subModalTitle">Sub-Red de Interacciones Bióticas</span>
++        <span style="font-size:10px; color:#94a3b8; font-family:monospace;" id="subModalCode">[AVE-19]</span>
++      </div>
++      <div class="btn-close" onclick="closeSubNetworkModal()">×</div>
++    </div>
++    <div class="subnetwork-canvas-wrap">
++      <canvas id="subCanvas"></canvas>
++    </div>
++    <div style="padding:8px 14px; background:rgba(10,15,26,0.95); border-top:1px solid rgba(0,255,255,0.2); display:flex; align-items:center; justify-content:space-between; font-size:10px; color:#94a3b8;">
++      <span>💡 Haz clic en cualquier nodo vecino de la sub-red para inspeccionarlo</span>
++      <span style="color:#00ffff; font-weight:700;">Sub-Red 2D Interactiva con Fotografías y Tipos</span>
+     </div>
+   </div>
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

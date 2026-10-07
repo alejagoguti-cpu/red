@@ -1,0 +1,35 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\hyperbolic_3d_network.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1001,6 +1001,7 @@
+       });
+ 
+       modal.style.display = 'block';
++      focusSelectedNode(node);
+     }
+ 
+     function closeInspector() {
+@@ -1007,10 +1007,15 @@
+       document.getElementById('nodeInspector').style.display = 'none';
+-    }
+-
+-    function focusSelectedNode() {
+-      if (!selectedNode || !selectedNode.proj) return;
+-      targetPanX = -selectedNode.x * (zoom / 650);
+-      targetPanY = -selectedNode.y * (zoom / 650);
++      targetZoom = 420;
++      targetPanX = 0;
++      targetPanY = 0;
++    }
++
++    function focusSelectedNode(node) {
++      const target = node || selectedNode;
++      if (!target) return;
++      targetPanX = -target.x * 0.9;
++      targetPanY = -target.y * 0.9;
++      targetZoom = 750;
+     }
+ 
+     function project(x, y, z, w, h) {
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

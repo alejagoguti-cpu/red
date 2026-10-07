@@ -1,0 +1,1 @@
+A1: (Recomendado) Crear una Red 3D interactiva en HTML/JS con nodos anidados de burbujas en fondo oscuro OLED (estilo premium) y subirla a GitHub
