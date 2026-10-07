@@ -1,0 +1,68 @@
+The following changes were made by the replace_file_content tool to: C:\Users\aleja\.gemini\antigravity\brain\d3de736b-bad3-4cd4-b3f7-8b59f3dfee52\red_ecosistema_kennedy.html. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -281,7 +281,7 @@
+     const canvas = document.getElementById('viewport');
+     const ctx = canvas.getContext('2d');
+ 
+-    let isDark = true;
++    let isDark = false;
+     let rotX = 0.25, rotY = 0.45, zoom = 480;
+     let targetRotX = 0.25, targetRotY = 0.45, targetZoom = 480;
+     let panX = 0, panY = 0, targetPanX = 0, targetPanY = 0;
+@@ -292,30 +292,30 @@
+       document.body.classList.toggle('dark-mode', isDark);
+     }
+ 
+-    // Dataset adaptado del ecosistema de Kennedy-Corabastos-Zona Franca conservando exactamente la estética radial de burbujas/nubes
++    // Master dataset de Kennedy con la paleta de colores pastel exacta de la infografía radial de referencia
+     const rawNodesData = [
+-      // NODO NÚCLEO CENTRAL
+-      { id: 'CORE', label: 'Ecosistema Agroalimentario & Logístico', category: 'Núcleo Central', color: '#E7C878', desc: 'Centro neurálgico de abastecimiento alimentario y redistribución logística del Borde Occidental de Bogotá D.C.', citation: 'POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca.', x: 0, y: 0, z: 0, radius: 46 },
+-
+-      // CLUSTER 1: MACRO REGIONAL (Boyacá, Tolima, Meta, Calle 13)
+-      { id: 'REG_MAIN', label: 'Región Central & Accesos Periféricos', category: 'Macro Regional', color: '#E69888', desc: 'Proveedor primario de carga agrícola e insumos pecuarios procesados en tractocamiones pesados C3-S3.', citation: 'SDM (2019) Estudio Origen-Destino de Carga.', x: -200, y: -190, z: -40, radius: 34 },
+-      { id: 'REG_CALLE13', label: 'Corredor Calle 13 / Autosur', category: 'Macro Regional', color: '#E69888', desc: 'Punto de ingreso del 68% de los alimentos de la capital y canalización de tráfico de carga intermunicipal.', citation: 'Decreto 319 de 2006 (Plan Maestro de Movilidad).', x: -270, y: -240, z: -60, radius: 24 },
+-      { id: 'REG_PRODUCT', label: 'Productores Boyacá/Meta/Tolima', category: 'Macro Regional', color: '#E69888', desc: 'Centros de despacho de alimentos perecederos y grano seco desde la Región Central.', citation: 'SDDE & CCB (2021) Diagnóstico de Cadena de Suministro.', x: -290, y: -140, z: -80, radius: 22 },
+-
+-      // CLUSTER 2: HUB LOGÍSTICO FONTIBÓN (Zona Franca, Av. Centenario)
+-      { id: 'LOG_MAIN', label: 'Cluster Zona Franca de Bogotá', category: 'Hub Logístico', color: '#C96349', desc: 'Hub de empaques, secos, mercancía industrializada de importación e intermediación logística.', citation: 'SDDE & Cámara de Comercio de Bogotá (2021).', x: 200, y: -190, z: -40, radius: 34 },
+-      { id: 'LOG_CENTENARIO', label: 'Av. Centenario ⇄ Av. Cali', category: 'Hub Logístico', color: '#C96349', desc: 'Corredor de conexión pesada bidireccional entre las industrias de Fontibón y los acopios de Kennedy.', citation: 'SDM (2022) Caracterización de Flujos Logísticos.', x: 280, y: -240, z: -60, radius: 24 },
+-      { id: 'LOG_EMPAQUES', label: 'Procesamiento Secos & Empaques', category: 'Hub Logístico', color: '#C96349', desc: 'Suministro masivo de empaques plásticos y costalería requerida para el embalaje en Corabastos.', citation: 'SDDE (2021) Diagnóstico Logística Urbana.', x: 270, y: -130, z: -80, radius: 22 },
+-
+-      // CLUSTER 3: ARTERIAS URBANAS KENNEDY (Av. Américas, Av. Tintal, TransMilenio)
+-      { id: 'URB_MAIN', label: 'Arterias Urbanas Kennedy', category: 'Arterias Distritales', color: '#E7C878', desc: 'Malla vial colectora y distribuidora distrital que absorbe el flujo masivo de carga y pasajeros.', citation: 'IDU (2021) Informe de Capacidad Operativa en Kennedy.', x: 220, y: 140, z: 60, radius: 34 },
+-      { id: 'URB_AMERICAS', label: 'Nodo Banderas / Av. Américas', category: 'Arterias Distritales', color: '#E7C878', desc: 'Confluencia de rutas troncales de TransMilenio, alimentadores, transporte particular y camiones.', citation: 'IDU (2021) Capacidad Operativa Kennedy.', x: 300, y: 80, z: 40, radius: 24 },
+-      { id: 'URB_TINTAL', label: 'Corredor Av. Tintal / Av. Cepeda', category: 'Arterias Distritales', color: '#E7C878', desc: 'Vía de penetración urbana afectada por retención en cola (Spillback) de hasta 3 km.', citation: 'SDM (2020) PMT Operación Agroalimentaria.', x: 310, y: 190, z: 80, radius: 24 },
+-
+-      // CLUSTER 4: NÚCLEO HIPERLOCAL CORABASTOS (Puertas 6, 7 y 8, Básculas, Malla Peri-Corabastos)
+-      { id: 'CORE_MAIN', label: 'Central Mayorista Corabastos', category: 'Núcleo Hiperlocal', color: '#84A48B', desc: 'Punto de recepción y comercialización final de carga agroalimentaria de la capital.', citation: 'Resolución SDM 184 de 2018 (Reglamento Interno).', x: -220, y: 140, z: 60, radius: 34 },
+-      { id: 'CORE_PUERTAS', label: 'Básculas Puertas 6, 7 y 8', category: 'Núcleo Hiperlocal', color: '#84A48B', desc: 'Embudos de control de pesaje e inspección que originan la cola de retención exterior.', citation: 'POT Decreto 555 de 2021 (Actuación Estratégica Chucua de la Vaca).', x: -300, y: 80, z: 40, radius: 24 },
+-      { id: 'CORE_MALLA', label: 'Malla Vial Local Peri-Corabastos', category: 'Núcleo Hiperlocal', color: '#84A48B', desc: 'Espacio público con velocidad media < 5 km/h por parqueo informal y bicipatines cargadores.', citation: 'Corabastos S.A. & SDM (2018).', x: -310, y: 190, z: 80, radius: 24 }
++      // NODO NÚCLEO CENTRAL (Crema / Dorado Pastel)
++      { id: 'CORE', label: 'Ecosistema Agroalimentario & Logístico', category: 'Núcleo Central', color: '#F7E1A0', desc: 'Centro neurálgico de abastecimiento alimentario y redistribución logística del Borde Occidental de Bogotá D.C.', citation: 'POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca.', x: 0, y: 0, z: 0, radius: 46 },
++
++      // CLUSTER 1: MACRO REGIONAL (Rosa / Terracota Pastel)
++      { id: 'REG_MAIN', label: 'Región Central & Accesos Periféricos', category: 'Macro Regional', color: '#FAD0C4', desc: 'Proveedor primario de carga agrícola e insumos pecuarios procesados en tractocamiones pesados C3-S3.', citation: 'SDM (2019) Estudio Origen-Destino de Carga.', x: -200, y: -190, z: -40, radius: 34 },
++      { id: 'REG_CALLE13', label: 'Corredor Calle 13 / Autosur', category: 'Macro Regional', color: '#F8B195', desc: 'Punto de ingreso del 68% de los alimentos de la capital y canalización de tráfico de carga intermunicipal.', citation: 'Decreto 319 de 2006 (Plan Maestro de Movilidad).', x: -270, y: -240, z: -60, radius: 24 },
++      { id: 'REG_PRODUCT', label: 'Productores Boyacá/Meta/Tolima', category: 'Macro Regional', color: '#F6D365', desc: 'Centros de despacho de alimentos perecederos y grano seco desde la Región Central.', citation: 'SDDE & CCB (2021) Diagnóstico de Cadena de Suministro.', x: -290, y: -140, z: -80, radius: 22 },
++
++      // CLUSTER 2: HUB LOGÍSTICO FONTIBÓN (Violeta / Púrpura Pastel)
++      { id: 'LOG_MAIN', label: 'Cluster Zona Franca de Bogotá', category: 'Hub Logístico', color: '#E2D4F0', desc: 'Hub de empaques, secos, mercancía industrializada de importación e intermediación logística.', citation: 'SDDE & Cámara de Comercio de Bogotá (2021).', x: 200, y: -190, z: -40, radius: 34 },
++      { id: 'LOG_CENTENARIO', label: 'Av. Centenario ⇄ Av. Cali', category: 'Hub Logístico', color: '#D6C7FF', desc: 'Corredor de conexión pesada bidireccional entre las industrias de Fontibón y los acopios de Kennedy.', citation: 'SDM (2022) Caracterización de Flujos Logísticos.', x: 280, y: -240, z: -60, radius: 24 },
++      { id: 'LOG_EMPAQUES', label: 'Procesamiento Secos & Empaques', category: 'Hub Logístico', color: '#C5A3FF', desc: 'Suministro masivo de empaques plásticos y costalería requerida para el embalaje en Corabastos.', citation: 'SDDE (2021) Diagnóstico Logística Urbana.', x: 270, y: -130, z: -80, radius: 22 },
++
++      // CLUSTER 3: ARTERIAS URBANAS KENNEDY (Azul Celesta / Cían Pastel)
++      { id: 'URB_MAIN', label: 'Arterias Urbanas Kennedy', category: 'Arterias Distritales', color: '#D0E1FD', desc: 'Malla vial colectora y distribuidora distrital que absorbe el flujo masivo de carga y pasajeros.', citation: 'IDU (2021) Informe de Capacidad Operativa en Kennedy.', x: 220, y: 140, z: 60, radius: 34 },
++      { id: 'URB_AMERICAS', label: 'Nodo Banderas / Av. Américas', category: 'Arterias Distritales', color: '#A1C4FD', desc: 'Confluencia de rutas troncales de TransMilenio, alimentadores, transporte particular y camiones.', citation: 'IDU (2021) Capacidad Operativa Kennedy.', x: 300, y: 80, z: 40, radius: 24 },
++      { id: 'URB_TINTAL', label: 'Corredor Av. Tintal / Av. Cepeda', category: 'Arterias Distritales', color: '#C2E9FB', desc: 'Vía de penetración urbana afectada por retención en cola (Spillback) de hasta 3 km.', citation: 'SDM (2020) PMT Operación Agroalimentaria.', x: 310, y: 190, z: 80, radius: 24 },
++
++      // CLUSTER 4: NÚCLEO HIPERLOCAL CORABASTOS (Verde Menta / Esmeralda Pastel)
++      { id: 'CORE_MAIN', label: 'Central Mayorista Corabastos', category: 'Núcleo Hiperlocal', color: '#D4EDDA', desc: 'Punto de recepción y comercialización final de carga agroalimentaria de la capital.', citation: 'Resolución SDM 184 de 2018 (Reglamento Interno).', x: -220, y: 140, z: 60, radius: 34 },
++      { id: 'CORE_PUERTAS', label: 'Básculas Puertas 6, 7 y 8', category: 'Núcleo Hiperlocal', color: '#C3ECE9', desc: 'Embudos de control de pesaje e inspección que originan la cola de retención exterior.', citation: 'POT Decreto 555 de 2021 (Actuación Estratégica Chucua de la Vaca).', x: -300, y: 80, z: 40, radius: 24 },
++      { id: 'CORE_MALLA', label: 'Malla Vial Local Peri-Corabastos', category: 'Núcleo Hiperlocal', color: '#B5EAD7', desc: 'Espacio público con velocidad media < 5 km/h por parqueo informal y bicipatines cargadores.', citation: 'Corabastos S.A. & SDM (2018).', x: -310, y: 190, z: 80, radius: 24 }
+     ];
+ 
+     const edges = [
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.
