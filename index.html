@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecosistema Radial Flat: Kennedy - Corabastos - Zona Franca</title>
+  <title>Ecosistema de Movilidad y Logística: Kennedy - Corabastos - Zona Franca</title>
   <style>
     * {
       box-sizing: border-box;
@@ -16,7 +16,7 @@
       overflow: hidden;
       background-color: #ffffff;
       color: #1e293b;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 12px;
       user-select: none;
       -webkit-font-smoothing: antialiased;
@@ -26,75 +26,46 @@
       width: 100%;
       height: 100%;
       display: block;
-      cursor: default;
+      cursor: grab;
+    }
+    #viewport:active {
+      cursor: grabbing;
     }
 
-    .glass-panel {
-      background: rgba(255, 255, 255, 0.95);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .top-header {
+    .header-panel {
       position: absolute;
-      top: 16px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
       pointer-events: none;
       z-index: 100;
     }
 
-    .brand-title {
-      padding: 10px 18px;
+    .main-title {
+      font-size: 20px;
       font-weight: 800;
-      letter-spacing: 0.5px;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      text-transform: uppercase;
-      pointer-events: auto;
-    }
-
-    .nav-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      pointer-events: auto;
-    }
-
-    .btn-flat {
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
       color: #334155;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 11.5px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
-    .btn-flat:hover {
-      background: #e2e8f0;
-      color: #0f172a;
+    .main-subtitle {
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 4px;
+      font-weight: 500;
     }
 
-    /* Inspector Popup Drawer */
+    /* Inspector Popup */
     .node-inspector {
       position: absolute;
-      top: 70px;
-      right: 16px;
+      top: 80px;
+      right: 20px;
       width: 360px;
-      max-height: calc(100vh - 140px);
-      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       padding: 18px;
       z-index: 120;
       display: flex;
@@ -103,18 +74,16 @@
     }
 
     .node-title {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 800;
       color: #0f172a;
-      line-height: 1.3;
     }
-
     .node-subtitle {
       font-size: 10px;
       color: #64748b;
       font-family: monospace;
-      margin-top: 3px;
       text-transform: uppercase;
+      margin-top: 2px;
     }
 
     .btn-close {
@@ -128,10 +97,6 @@
       cursor: pointer;
       font-size: 13px;
       color: #475569;
-    }
-    .btn-close:hover {
-      background: #e2e8f0;
-      color: #0f172a;
     }
 
     .text-content {
@@ -157,26 +122,17 @@
 
     .bottom-bar {
       position: absolute;
-      bottom: 16px;
-      left: 16px;
-      right: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: none;
-      z-index: 100;
-    }
-
-    .status-badge {
-      padding: 8px 16px;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      font-size: 11px;
       color: #475569;
-      font-size: 10.5px;
-      letter-spacing: 0.3px;
       pointer-events: auto;
-    }
-    .status-badge b {
-      color: #0f172a;
-      font-family: monospace;
+      z-index: 100;
     }
   </style>
 </head>
@@ -184,43 +140,33 @@
 
   <canvas id="viewport"></canvas>
 
-  <div class="top-header">
-    <div class="glass-panel brand-title">
-      <span>🚥 ECOSISTEMA RADIAL FLAT: KENNEDY - CORABASTOS - ZONA FRANCA</span>
-    </div>
-
-    <div class="nav-group">
-      <button class="btn-flat" onclick="resetZoom()">Restablecer Vista</button>
-    </div>
+  <div class="header-panel">
+    <div class="main-title">ACTORES DE MOVILIDAD Y LOGÍSTICA EN KENNEDY</div>
+    <div class="main-subtitle">CORABASTOS - ZONA FRANCA - BOGOTÁ D.C.</div>
   </div>
 
-  <div class="glass-panel node-inspector" id="nodeInspector" style="display:none;">
+  <div class="node-inspector" id="nodeInspector" style="display:none;">
     <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid #e2e8f0; padding-bottom:8px;">
       <div>
         <div class="node-title" id="mNodeTitle">Título Nodo</div>
-        <div class="node-subtitle" id="mNodeCategory">Categoría Radial</div>
+        <div class="node-subtitle" id="mNodeCategory">Categoría Ecosistémica</div>
       </div>
       <div class="btn-close" onclick="closeInspector()">×</div>
     </div>
 
-    <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:800;">Función Operativa en la Red</div>
-    <div class="text-content" id="mNodeDesc">Descripción.</div>
+    <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:800;">Función Operativa en el Ecosistema</div>
+    <div class="text-content" id="mNodeDesc">Descripción del actor.</div>
 
-    <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:800;">📜 Cita Técnica Oficial</div>
-    <div class="citation-box" id="mNodeCitation">Cita.</div>
+    <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:800;">📜 Cita Técnica Oficial Obligatoria</div>
+    <div class="citation-box" id="mNodeCitation">Cita oficial.</div>
 
-    <div style="display:flex; justify-content:flex-end; margin-top:6px;">
-      <button class="btn-flat" onclick="closeInspector()">Cerrar</button>
+    <div style="display:flex; justify-content:flex-end; margin-top:4px;">
+      <button style="background:#f1f5f9; border:1px solid #cbd5e1; padding:6px 12px; border-radius:6px; font-weight:700; cursor:pointer;" onclick="closeInspector()">Cerrar</button>
     </div>
   </div>
 
   <div class="bottom-bar">
-    <div class="glass-panel status-badge">
-      Anillos Radiales Flat: <b>Públicos / Macro • Hub Logístico Fontibón • Arterias Kennedy • Núcleo Corabastos</b>
-    </div>
-    <div class="glass-panel status-badge">
-      💡 Diseño Flat Vectorial 2D sin 3D ni sombras • Clic en nodos para interactuar
-    </div>
+    💡 Clic en cualquier esfera o grupo de actores para ver su ficha técnica • Arrastra para desplazar el mapa
   </div>
 
   <script>
@@ -232,70 +178,85 @@
     let isMouseDown = false, lastX = 0, lastY = 0, clickStartX = 0, clickStartY = 0;
     let hoveredNode = null, selectedNode = null;
 
-    // Paleta de colores FLAT pastel exacta de la infografía
-    const palette = {
+    // Colores Pastel calcados exactamente del referente visual de la imagen
+    const colors = {
       bg: '#ffffff',
-      ringLine: 'rgba(0, 0, 0, 0.06)',
-      edgeLine: 'rgba(0, 0, 0, 0.12)',
-      edgeActive: '#0284c7',
-      clusters: {
-        core: { fill: '#FFF3CD', stroke: '#E6C200', text: '#856404' },
-        macro: { fill: '#FAD0C4', stroke: '#E8A598', text: '#721C24' },
-        hub: { fill: '#E2D4F0', stroke: '#BEA6DE', text: '#38124D' },
-        arterias: { fill: '#D0E1FD', stroke: '#9EC2FC', text: '#004085' },
-        corabastos: { fill: '#D4EDDA', stroke: '#9BD4A7', text: '#155724' }
-      }
+      publicos: { sector: 'rgba(250, 208, 196, 0.35)', fill: '#FAD0C4', stroke: '#E8A598', text: '#5C1D24' },   // Rosa Pastel (Públicos / Región)
+      privados: { sector: 'rgba(247, 225, 160, 0.35)', fill: '#F7E1A0', stroke: '#E3C676', text: '#594406' },   // Crema Pastel (Privados / Gremios)
+      operadores: { sector: 'rgba(226, 212, 240, 0.35)', fill: '#E2D4F0', stroke: '#BEA6DE', text: '#36124A' }, // Violeta Pastel (Operadores / Hub)
+      oferta: { sector: 'rgba(212, 237, 218, 0.35)', fill: '#D4EDDA', stroke: '#9BD4A7', text: '#11471D' },     // Verde Menta (Oferta / Corabastos)
+      demanda: { sector: 'rgba(208, 225, 253, 0.35)', fill: '#D0E1FD', stroke: '#9EC2FC', text: '#002E66' },    // Azul Pastel (Demanda / Arterias)
+      espacio: { sector: 'rgba(226, 232, 240, 0.35)', fill: '#E2E8F0', stroke: '#CBD5E1', text: '#334155' }     // Gris Pastel (Espacio / Malla)
     };
 
-    // Dataset adaptado a disposición 2D FLAT RADIAL (Anillos concéntricos idénticos al plano)
+    // Dataset adaptado de Kennedy Bogotá conservando el esquema radial de la infografía
     const rawNodesData = [
-      // NODO CENTRO
-      { id: 'CORE', label: 'Ecosistema Agroalimentario & Logístico', category: 'Núcleo Central', cluster: 'core', desc: 'Centro neurálgico de abastecimiento alimentario y redistribución logística del Borde Occidental de Bogotá D.C.', citation: 'POT Decreto 555 de 2021 - Actuación Estratégica Chucua de la Vaca.', radius: 52, angle: 0, dist: 0 },
+      // === NODO CENTRAL MAESTRO ===
+      { id: 'CENTER', label: 'Ecosistema de Movilidad y Logística', category: 'Núcleo Central', cluster: 'privados', desc: 'Centro de coordinación de carga agroalimentaria y movilidad del Borde Occidental de Bogotá.', citation: 'POT Decreto 555 de 2021.', radius: 55, x: 0, y: 0 },
 
-      // NIVEL 1: PÚBLICOS / MACRO REGIONAL (Arriba - Tono Rosa Pastel)
-      { id: 'REG_MAIN', label: 'Región Central & Accesos', category: 'Macro Regional', cluster: 'macro', desc: 'Proveedor primario de carga agrícola e insumos pecuarios procesados en tractocamiones pesados C3-S3.', citation: 'SDM (2019) Estudio Origen-Destino de Carga.', radius: 36, angle: -Math.PI / 2, dist: 190 },
-      { id: 'REG_CALLE13', label: 'Corredor Calle 13 / Autosur', category: 'Macro Regional', cluster: 'macro', desc: 'Punto de ingreso del 68% de los alimentos de la capital.', citation: 'Decreto 319 de 2006 (Plan Maestro).', radius: 26, angle: -Math.PI / 2 - 0.35, dist: 280 },
-      { id: 'REG_PRODUCT', label: 'Boyacá / Meta / Tolima', category: 'Macro Regional', cluster: 'macro', desc: 'Despacho de alimentos perecederos y grano seco.', citation: 'SDDE & CCB (2021).', radius: 24, angle: -Math.PI / 2 + 0.35, dist: 280 },
+      // === SECTOR 1: INSTITUCIONES PÚBLICAS & REGION (Arriba - Rosa Pastel) ===
+      { id: 'PUB_MAIN', label: 'Sector Público & Región', category: 'Actores Públicos', cluster: 'publicos', desc: 'Secretaría de Movilidad (SDM), Gobernación de Cundinamarca y Ministerios reguladores.', citation: 'SDM (2019) Estudio Origen-Destino.', radius: 42, x: 0, y: -220 },
+      { id: 'PUB_SDM', label: 'Sec. Distrital de Movilidad', category: 'Públicos', cluster: 'publicos', desc: 'Regulación de PMT y tráfico de carga.', citation: 'Resolución SDM 184 de 2018.', radius: 24, x: -75, y: -290 },
+      { id: 'PUB_IDU', label: 'Instituto de Desarrollo Urbano', category: 'Públicos', cluster: 'publicos', desc: 'Infraestructura vial y mantenimientos.', citation: 'IDU (2021) Informe Capacidad.', radius: 24, x: 0, y: -310 },
+      { id: 'PUB_CARGA', label: 'Accesos Calle 13 / Autosur', category: 'Públicos', cluster: 'publicos', desc: 'Portales de entrada del 68% de alimentos.', citation: 'Decreto 319 de 2006.', radius: 24, x: 75, y: -290 },
 
-      // NIVEL 2: HUB LOGÍSTICO FONTIBÓN (Derecha Arriba - Tono Violeta Pastel)
-      { id: 'LOG_MAIN', label: 'Cluster Zona Franca Bogotá', category: 'Hub Logístico', cluster: 'hub', desc: 'Hub de empaques, secos, mercancía industrializada de importación e intermediación.', citation: 'SDDE & CCB (2021).', radius: 36, angle: -Math.PI / 6, dist: 200 },
-      { id: 'LOG_CENTENARIO', label: 'Av. Centenario ⇄ Av. Cali', category: 'Hub Logístico', cluster: 'hub', desc: 'Corredor de conexión pesada bidireccional entre Fontibón y Kennedy.', citation: 'SDM (2022) Flujos Logísticos.', radius: 26, angle: -Math.PI / 6 - 0.25, dist: 290 },
-      { id: 'LOG_EMPAQUES', label: 'Procesamiento Secos & Empaques', category: 'Hub Logístico', cluster: 'hub', desc: 'Suministro de empaques plásticos y costalería para Corabastos.', citation: 'SDDE (2021) Logística Urbana.', radius: 24, angle: -Math.PI / 6 + 0.25, dist: 290 },
+      // === SECTOR 2: GREMIOS PRIVADOS & EMPRESAS (Derecha Arriba - Crema Pastel) ===
+      { id: 'PRIV_MAIN', label: 'Gremios & Transportadores', category: 'Sector Privado', cluster: 'privados', desc: 'Asociaciones camioneras (C3-S3), Cámara de Comercio de Bogotá y gremios de carga.', citation: 'SDDE & CCB (2021).', radius: 42, x: 220, y: -120 },
+      { id: 'PRIV_CAMION', label: 'Asociaciones de Carga Pesada', category: 'Privados', cluster: 'privados', desc: 'Operación de tractocamiones regionales.', citation: 'SDM (2019).', radius: 24, x: 290, y: -190 },
+      { id: 'PRIV_CCB', label: 'Cámara de Comercio Bogotá', category: 'Privados', cluster: 'privados', desc: 'Promoción logística y articulación empresarial.', citation: 'SDDE & CCB (2021).', radius: 24, x: 310, y: -110 },
 
-      // NIVEL 3: ARTERIAS URBANAS KENNEDY (Derecha Abajo - Tono Azul Celeste Pastel)
-      { id: 'URB_MAIN', label: 'Arterias Urbanas Kennedy', category: 'Arterias Distritales', cluster: 'arterias', desc: 'Malla vial colectora y distribuidora distrital.', citation: 'IDU (2021) Capacidad Operativa en Kennedy.', radius: 36, angle: Math.PI / 4, dist: 200 },
-      { id: 'URB_AMERICAS', label: 'Nodo Banderas / Av. Américas', category: 'Arterias Distritales', cluster: 'arterias', desc: 'Confluencia de rutas troncales de TransMilenio, alimentadores y camiones.', citation: 'IDU (2021).', radius: 26, angle: Math.PI / 4 - 0.25, dist: 290 },
-      { id: 'URB_TINTAL', label: 'Corredor Av. Tintal / Av. Cepeda', category: 'Arterias Distritales', cluster: 'arterias', desc: 'Vía afectada por retención en cola (Spillback) de 3 km.', citation: 'SDM (2020) PMT Patio Bonito.', radius: 26, angle: Math.PI / 4 + 0.25, dist: 290 },
+      // === SECTOR 3: OPERADORES & HUB ZONA FRANCA (Derecha Abajo - Violeta Pastel) ===
+      { id: 'OP_MAIN', label: 'Cluster Zona Franca Fontibón', category: 'Hub Logístico', cluster: 'operadores', desc: 'Operadores logísticos, procesamiento de secos, empaques y bodegaje industrial.', citation: 'SDDE (2021) Diagnóstico Logística.', radius: 42, x: 220, y: 150 },
+      { id: 'OP_CENTENARIO', label: 'Corredor Av. Centenario', category: 'Operadores', cluster: 'operadores', desc: 'Vía de interconexión pesada Fontibón-Kennedy.', citation: 'SDM (2022).', radius: 24, x: 310, y: 100 },
+      { id: 'OP_EMPAQUES', label: 'Procesamiento de Empaques', category: 'Operadores', cluster: 'operadores', desc: 'Suministro de plásticos y empaques para Corabastos.', citation: 'SDDE (2021).', radius: 24, x: 290, y: 210 },
 
-      // NIVEL 4: NÚCLEO HIPERLOCAL CORABASTOS (Izquierda Abajo - Tono Verde Menta Pastel)
-      { id: 'CORE_MAIN', label: 'Central Mayorista Corabastos', category: 'Núcleo Hiperlocal', cluster: 'corabastos', desc: 'Punto de recepción y comercialización final de carga agroalimentaria.', citation: 'Resolución SDM 184 de 2018.', radius: 36, angle: Math.PI * 3 / 4, dist: 200 },
-      { id: 'CORE_PUERTAS', label: 'Básculas Puertas 6, 7 y 8', category: 'Núcleo Hiperlocal', cluster: 'corabastos', desc: 'Embudos de pesaje que originan la cola de retención exterior.', citation: 'POT Decreto 555 de 2021.', radius: 26, angle: Math.PI * 3 / 4 - 0.25, dist: 290 },
-      { id: 'CORE_MALLA', label: 'Malla Local Peri-Corabastos', category: 'Núcleo Hiperlocal', cluster: 'corabastos', desc: 'Velocidad < 5 km/h por parqueo informal y bicipatines cargadores.', citation: 'Corabastos S.A. & SDM (2018).', radius: 26, angle: Math.PI * 3 / 4 + 0.25, dist: 290 }
+      // === SECTOR 4: CENTRAL MAYORISTA CORABASTOS (Abajo - Verde Menta) ===
+      { id: 'OFERT_MAIN', label: 'Central Mayorista Corabastos', category: 'Oferta Agroalimentaria', cluster: 'oferta', desc: 'Núcleo de recepción de 13.500 ton/día de alimentos y comercio mayorista.', citation: 'POT Decreto 555 de 2021.', radius: 46, x: 0, y: 250 },
+      { id: 'OFERT_BASCULAS', label: 'Básculas Puertas 6, 7 y 8', category: 'Oferta', cluster: 'oferta', desc: 'Control de pesaje e inspección de entrada.', citation: 'Res. SDM 184 de 2018.', radius: 24, x: -80, y: 320 },
+      { id: 'OFERT_COMERCIO', label: 'Comerciantes & Mayoristas', category: 'Oferta', cluster: 'oferta', desc: 'Bodegas de acopio y redistribución urbana.', citation: 'SDDE & CCB (2021).', radius: 24, x: 80, y: 320 },
+
+      // === SECTOR 5: ARTERIAS URBANAS & TRANSMILENIO (Izquierda Abajo - Azul Celeste) ===
+      { id: 'DEM_MAIN', label: 'Arterias Urbanas Kennedy', category: 'Movilidad Urbana', cluster: 'demanda', desc: 'Corredores de transporte público masivo (TransMilenio), SITP y vehículos particulares.', citation: 'IDU (2021) Capacidad Operativa.', radius: 42, x: -220, y: 150 },
+      { id: 'DEM_BANDERAS', label: 'Nodo Banderas / Av. Américas', category: 'Demanda', cluster: 'demanda', desc: 'Intersección modal de alto tráfico mixto.', citation: 'IDU (2021).', radius: 24, x: -300, y: 210 },
+      { id: 'DEM_TINTAL', label: 'Av. Tintal (Spillback 3km)', category: 'Demanda', cluster: 'demanda', desc: 'Retención de cola que satura la red distrital.', citation: 'SDM (2020) PMT Patio Bonito.', radius: 24, x: -310, y: 100 },
+
+      // === SECTOR 6: ESPACIO LOCAL & COMUNIDAD (Izquierda Arriba - Gris Pastel) ===
+      { id: 'GEO_MAIN', label: 'Malla Local Peri-Corabastos', category: 'Espacio Local', cluster: 'espacio', desc: 'Entorno barrial del sector Patio Bonito, El Amparo y espacio público ocupado.', citation: 'Corabastos S.A. & SDM (2018).', radius: 42, x: -220, y: -120 },
+      { id: 'GEO_CARRETAS', label: 'Carga Informal & Carretilleros', category: 'Espacio Local', cluster: 'espacio', desc: 'Descargue sobre vía y maniobras menores.', citation: 'Resolución SDM 184 de 2018.', radius: 24, x: -310, y: -170 },
+      { id: 'GEO_RESIDENTES', label: 'Comunidad Patio Bonito / Amparo', category: 'Espacio Local', cluster: 'espacio', desc: 'Habitantes afectados por degradación de velocidad < 5 km/h.', citation: 'POT Decreto 555 de 2021.', radius: 24, x: -290, y: -70 }
     ];
 
     const edges = [
-      { source: 'CORE', target: 'REG_MAIN' },
-      { source: 'CORE', target: 'LOG_MAIN' },
-      { source: 'CORE', target: 'URB_MAIN' },
-      { source: 'CORE', target: 'CORE_MAIN' },
+      { source: 'CENTER', target: 'PUB_MAIN' },
+      { source: 'CENTER', target: 'PRIV_MAIN' },
+      { source: 'CENTER', target: 'OP_MAIN' },
+      { source: 'CENTER', target: 'OFERT_MAIN' },
+      { source: 'CENTER', target: 'DEM_MAIN' },
+      { source: 'CENTER', target: 'GEO_MAIN' },
 
-      { source: 'REG_MAIN', target: 'REG_CALLE13' },
-      { source: 'REG_MAIN', target: 'REG_PRODUCT' },
+      { source: 'PUB_MAIN', target: 'PUB_SDM' },
+      { source: 'PUB_MAIN', target: 'PUB_IDU' },
+      { source: 'PUB_MAIN', target: 'PUB_CARGA' },
 
-      { source: 'LOG_MAIN', target: 'LOG_CENTENARIO' },
-      { source: 'LOG_MAIN', target: 'LOG_EMPAQUES' },
+      { source: 'PRIV_MAIN', target: 'PRIV_CAMION' },
+      { source: 'PRIV_MAIN', target: 'PRIV_CCB' },
 
-      { source: 'URB_MAIN', target: 'URB_AMERICAS' },
-      { source: 'URB_MAIN', target: 'URB_TINTAL' },
+      { source: 'OP_MAIN', target: 'OP_CENTENARIO' },
+      { source: 'OP_MAIN', target: 'OP_EMPAQUES' },
 
-      { source: 'CORE_MAIN', target: 'CORE_PUERTAS' },
-      { source: 'CORE_MAIN', target: 'CORE_MALLA' },
+      { source: 'OFERT_MAIN', target: 'OFERT_BASCULAS' },
+      { source: 'OFERT_MAIN', target: 'OFERT_COMERCIO' },
 
-      // Intersecciones transversales
-      { source: 'LOG_MAIN', target: 'CORE_MAIN' },
-      { source: 'REG_MAIN', target: 'LOG_MAIN' },
-      { source: 'URB_MAIN', target: 'CORE_MAIN' },
-      { source: 'CORE_PUERTAS', target: 'URB_TINTAL' }
+      { source: 'DEM_MAIN', target: 'DEM_BANDERAS' },
+      { source: 'DEM_MAIN', target: 'DEM_TINTAL' },
+
+      { source: 'GEO_MAIN', target: 'GEO_CARRETAS' },
+      { source: 'GEO_MAIN', target: 'GEO_RESIDENTES' },
+
+      // Interconexiones cruzadas
+      { source: 'OP_MAIN', target: 'OFERT_MAIN' },
+      { source: 'OFERT_BASCULAS', target: 'DEM_TINTAL' },
+      { source: 'GEO_CARRETAS', target: 'OFERT_MAIN' }
     ];
 
     let nodes = [];
@@ -310,9 +271,7 @@
     function initTopology() {
       const nodeMap = new Map();
       nodes = rawNodesData.map((d, idx) => {
-        const x = Math.cos(d.angle) * d.dist;
-        const y = Math.sin(d.angle) * d.dist;
-        const n = { ...d, nodeId: idx, x, y };
+        const n = { ...d, nodeId: idx };
         nodeMap.set(d.id, n);
         return n;
       });
@@ -323,14 +282,10 @@
       });
     }
 
-    function resetZoom() {
-      targetScale = 1.0; targetPanX = 0; targetPanY = 0;
-    }
-
     function openInspector(node) {
       selectedNode = node;
       document.getElementById('mNodeTitle').innerText = node.label;
-      document.getElementById('mNodeCategory').innerText = `Cluster: ${node.category}`;
+      document.getElementById('mNodeCategory').innerText = `Categoría: ${node.category}`;
       document.getElementById('mNodeDesc').innerText = node.desc;
       document.getElementById('mNodeCitation').innerText = node.citation;
       document.getElementById('nodeInspector').style.display = 'flex';
@@ -350,26 +305,42 @@
       panX += (targetPanX - panX) * 0.12;
       panY += (targetPanY - panY) * 0.12;
 
-      // 1. Fondo Blanco Puro
-      ctx.fillStyle = palette.bg;
+      ctx.fillStyle = colors.bg;
       ctx.fillRect(0, 0, w, h);
 
       ctx.save();
       ctx.translate(cx, cy);
       ctx.scale(scale, scale);
 
-      // 2. Anillos Concéntricos Flat de Fondo (Guias Radiales)
-      [190, 280, 360].forEach(r => {
+      // 1. Dibujar Sectores de Fondo en Arcos Pastel (Igual al gráfico)
+      const sectors = [
+        { start: -Math.PI * 0.75, end: -Math.PI * 0.25, color: colors.publicos.sector, label: 'INSTITUCIONES & REGIÓN' },
+        { start: -Math.PI * 0.25, end: 0, color: colors.privados.sector, label: 'GREMIOS & CARGA' },
+        { start: 0, end: Math.PI * 0.4, color: colors.operadores.sector, label: 'HUB LOGÍSTICO FONTIBÓN' },
+        { start: Math.PI * 0.4, end: Math.PI * 0.75, color: colors.oferta.sector, label: 'CORABASTOS / OFERTA' },
+        { start: Math.PI * 0.75, end: Math.PI * 1.15, color: colors.demanda.sector, label: 'ARTERIAS / MOVILIDAD' },
+        { start: Math.PI * 1.15, end: Math.PI * 1.5, color: colors.espacio.sector, label: 'ESPACIO LOCAL' }
+      ];
+
+      sectors.forEach(s => {
         ctx.beginPath();
-        ctx.arc(0, 0, r, 0, Math.PI * 2);
-        ctx.strokeStyle = palette.ringLine;
-        ctx.lineWidth = 1;
-        ctx.setLineDash([4, 4]);
-        ctx.stroke();
-        ctx.setLineDash([]);
+        ctx.moveTo(0, 0);
+        ctx.arc(0, 0, 360, s.start, s.end);
+        ctx.closePath();
+        ctx.fillStyle = s.color;
+        ctx.fill();
       });
 
-      // 3. Render Edges (Líneas de Conexión Flat Limpias)
+      // 2. Anillos Concéntricos de Guía
+      [140, 240, 340].forEach(r => {
+        ctx.beginPath();
+        ctx.arc(0, 0, r, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      });
+
+      // 3. Dibujar Conexiones Limpias entre Nodos
       edges.forEach(e => {
         const s = e.sourceNode, t = e.targetNode;
         if (!s || !t) return;
@@ -381,42 +352,41 @@
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
         ctx.lineTo(t.x, t.y);
-        ctx.strokeStyle = (isHov || isSel) ? palette.edgeActive : palette.edgeLine;
+        ctx.strokeStyle = (isHov || isSel) ? '#0284c7' : 'rgba(0, 0, 0, 0.12)';
         ctx.lineWidth = (isHov || isSel) ? 2.5 : 1.2;
         ctx.stroke();
         ctx.restore();
       });
 
-      // 4. Render Nodos Círculos Flat Sólidos Pastel (Sin Gradientes 3D)
+      // 4. Dibujar Esferas FLAT Pastel con Borde y Texto
       nodes.forEach(n => {
         const isHov = hoveredNode && hoveredNode.id === n.id;
         const isSel = selectedNode && selectedNode.id === n.id;
-        const cStyle = palette.clusters[n.cluster] || palette.clusters.core;
+        const cStyle = colors[n.cluster] || colors.privados;
 
         ctx.save();
 
-        // Relleno Sólido Flat Pastel
+        // Círculo Relleno Flat
         ctx.fillStyle = cStyle.fill;
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // Borde Vectorial Limpio
+        // Borde Sólido
         ctx.strokeStyle = (isHov || isSel) ? '#0f172a' : cStyle.stroke;
         ctx.lineWidth = (isHov || isSel) ? 3 : 1.8;
         ctx.stroke();
 
-        // Texto Integrado Dentro o Debajo del Nodo
+        // Texto Integrado en Círculo o Flotante
         ctx.font = (isHov || isSel) ? 'bold 11px sans-serif' : '10px sans-serif';
         ctx.fillStyle = cStyle.text;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
-        // Wrap label text inside circle if it's large, or underneath
-        if (n.radius >= 36) {
+        if (n.radius >= 38) {
           const words = n.label.split(' ');
           if (words.length > 2) {
-            ctx.fillText(words.slice(0, 2).join(' '), n.x, n.y - 6);
+            ctx.fillText(words.slice(0, 2).join(' '), n.x, n.y - 7);
             ctx.fillText(words.slice(2).join(' '), n.x, n.y + 8);
           } else {
             ctx.fillText(n.label, n.x, n.y);
@@ -433,7 +403,7 @@
       requestAnimationFrame(render);
     }
 
-    // Controls
+    // Eventos Mouse
     canvas.addEventListener('mousedown', e => {
       isMouseDown = true;
       lastX = e.clientX; lastY = e.clientY;
