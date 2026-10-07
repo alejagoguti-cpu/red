@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecosistema de Actores del Turismo en Valparaíso - Red 3D</title>
+  <title>Red Causal Matrioshka: Actores del Turismo en Valparaíso</title>
   <style>
     * {
       box-sizing: border-box;
@@ -26,10 +26,7 @@
       width: 100%;
       height: 100%;
       display: block;
-      cursor: grab;
-    }
-    #viewport:active {
-      cursor: grabbing;
+      cursor: crosshair;
     }
 
     .glass-panel {
@@ -54,7 +51,7 @@
     }
 
     .brand-title {
-      padding: 8px 16px;
+      padding: 8px 14px;
       font-weight: 800;
       letter-spacing: 0.5px;
       color: #E7C878;
@@ -93,12 +90,12 @@
       color: #ffffff;
     }
 
-    /* Node Inspector Modal */
+    /* Inspector Drawer */
     .node-inspector {
       position: absolute;
       top: 62px;
       right: 12px;
-      width: 360px;
+      width: 380px;
       max-height: calc(100vh - 120px);
       overflow-y: auto;
       padding: 16px;
@@ -109,9 +106,10 @@
     }
 
     .node-title {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       color: #E7C878;
+      line-height: 1.35;
     }
     .node-subtitle {
       font-size: 10px;
@@ -119,6 +117,20 @@
       font-family: monospace;
       margin-top: 2px;
     }
+
+    .triad-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 9.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .triad-sintoma { background: rgba(230, 152, 136, 0.2); border: 1px solid #E69888; color: #E69888; }
+    .triad-causa { background: rgba(231, 200, 120, 0.2); border: 1px solid #E7C878; color: #E7C878; }
+    .triad-efecto { background: rgba(201, 99, 73, 0.2); border: 1px solid #C96349; color: #C96349; }
 
     .btn-close {
       width: 22px;
@@ -132,16 +144,12 @@
       font-size: 12px;
       color: #cbd5e1;
     }
-    .btn-close:hover {
-      background: rgba(255, 0, 85, 0.3);
-      color: #ffffff;
-    }
 
     .text-content {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 6px;
-      padding: 10px;
+      padding: 8px 10px;
       color: #cbd5e1;
       font-size: 11px;
       line-height: 1.45;
@@ -174,13 +182,11 @@
 </head>
 <body>
 
-  <!-- 3D Canvas Viewport -->
   <canvas id="viewport"></canvas>
 
-  <!-- Top Navigation Header -->
   <div class="top-header">
     <div class="glass-panel brand-title">
-      <span>🏛️ ACTORES DEL TURISMO EN LA CIUDAD DE VALPARAÍSO</span>
+      <span>🏛️ RED CAUSAL MATRIOSHKA: ACTORES DEL TURISMO EN VALPARAÍSO</span>
     </div>
 
     <div class="nav-group">
@@ -188,31 +194,34 @@
     </div>
   </div>
 
-  <!-- Pop-Up Node Inspector Modal -->
+  <!-- Inspector Modal -->
   <div class="glass-panel node-inspector" id="nodeInspector" style="display:none;">
-    <div style="display:flex; align-items:flex-start; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px;">
       <div>
-        <div class="node-title" id="mNodeTitle">Título de Actor</div>
-        <div class="node-subtitle" id="mNodeCategory">Categoría Ecosistémica</div>
+        <div class="node-title" id="mNodeTitle">Título Nodo</div>
+        <div class="node-subtitle" id="mNodeCode">ID Nodo</div>
+        <div id="mTriadBadge" class="triad-badge triad-sintoma">SÍNTOMA</div>
       </div>
       <div class="btn-close" onclick="closeInspector()">×</div>
     </div>
 
-    <div style="font-size:10px; text-transform:uppercase; color:#64748b; font-weight:700;">Rol y Función Operativa</div>
-    <div class="text-content" id="mNodeDesc">Descripción del rol dentro del ecosistema turístico de Valparaíso.</div>
+    <div style="font-size:9.5px; text-transform:uppercase; color:#64748b; font-weight:700;">Diagnóstico & Función</div>
+    <div class="text-content" id="mFunction">Descripción</div>
 
-    <div style="display:flex; justify-content:flex-end; margin-top:8px;">
-      <button class="btn-flat" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); color:#cbd5e1;" onclick="closeInspector()">Cerrar</button>
+    <div style="font-size:9.5px; text-transform:uppercase; color:#64748b; font-weight:700;">Impacto en el Ecosistema</div>
+    <div class="text-content" id="mImpact">Impacto</div>
+
+    <div style="display:flex; justify-content:flex-end; gap:6px;">
+      <button class="btn-flat" onclick="closeInspector()">Cerrar</button>
     </div>
   </div>
 
-  <!-- Bottom Bar -->
   <div class="bottom-bar">
     <div class="glass-panel status-badge">
-      Categorías Ecosistémicas: <b>Públicos • Privados • Operadores • Oferta • Demanda • Espacio Geográfico</b>
+      Niveles Matrioshka: <b>N1 Macro Estatal • N2 Gremios & Privados • N3 Mercado & Oferta • N4 Espacio Cerros & Residentes</b>
     </div>
     <div class="glass-panel status-badge">
-      💡 Clic en cualquier nodo para inspeccionar detalles • Drag para rotar 3D
+      💡 Nodos rectangulares estáticos con texto integrado • Drag para rotar
     </div>
   </div>
 
@@ -220,86 +229,171 @@
     const canvas = document.getElementById('viewport');
     const ctx = canvas.getContext('2d');
 
-    let rotX = 0.2, rotY = 0.3, zoom = 450;
-    let targetRotX = 0.2, targetRotY = 0.3, targetZoom = 450;
+    let rotX = 0.35, rotY = 0.65, zoom = 480;
+    let targetRotX = 0.35, targetRotY = 0.65, targetZoom = 480;
     let panX = 0, panY = 0, targetPanX = 0, targetPanY = 0;
     let isMouseDown = false, mouseBtn = 0, lastX = 0, lastY = 0, clickStartX = 0, clickStartY = 0;
     let hoveredNode = null, selectedNode = null;
 
-    // Master dataset de la infografía "Actores del Turismo en Valparaíso"
+    const palette = {
+      bg: '#000000',
+      levelColors: {
+        1: '#C96349', // N1 Macro
+        2: '#E69888', // N2 Gremios
+        3: '#E7C878', // N3 Oferta
+        4: '#84A48B'  // N4 Espacio
+      }
+    };
+
+    // Master dataset de Valparaíso adaptado a la lógica MATRIOSHKA (Síntoma - Causa - Efecto)
     const rawNodesData = [
-      // NODO CENTRAL MAESTRO
-      { id: 'CENTER', label: 'Ecosistema Turístico Valparaíso', category: 'Núcleo', color: '#E7C878', desc: 'Conjunto coordinado de actores públicos, privados, oferentes y demanda turística de la ciudad.', x: 0, y: 0, z: 0, radius: 42 },
+      // === NIVEL 1: MACRO ESTATAL / POLÍTICA NACIONAL ===
+      {
+        id: 'VAL-N1-S',
+        name: 'Fragmentación en la Regulación del Sitio Patrimonio UNESCO',
+        shortLabel: 'Fragmentación Sitio UNESCO Valparaíso',
+        level: 1,
+        triadRole: 'sintoma',
+        function: 'Falta de ventanilla única entre Ministerio de las Culturas, SERNATUR y Gobierno Central.',
+        impact: 'Deterioro acelerado del casco histórico e inseguridad jurídica para inversionistas patrimoniales.',
+        x: -260, y: -180, z: -180
+      },
+      {
+        id: 'VAL-N1-C',
+        name: 'Burocracia Centralizada & Presupuesto Desarticulado',
+        shortLabel: 'Burocracia Centralizada Subsecretaría',
+        level: 1,
+        triadRole: 'causa',
+        function: 'Subsecretaría de Turismo y SERNATUR operan de forma desconectada de las necesidades comunales.',
+        impact: 'Retraso en la ejecución del Plan Maestro de Desarrollo Turístico Sustentable.',
+        x: -200, y: -120, z: -120
+      },
+      {
+        id: 'VAL-N1-E',
+        name: 'Pérdida de Competitividad Internacional de Valparaíso',
+        shortLabel: 'Pérdida Competitividad Marca Ciudad',
+        level: 1,
+        triadRole: 'efecto',
+        function: 'Disminución relativa en la llegada de visitantes internacionales de estancia prolongada.',
+        impact: 'Transferencia de flujo turístico hacia otros destinos regionales emergentes.',
+        x: -140, y: -60, z: -60
+      },
 
-      // CLUSTER 1: PÚBLICOS
-      { id: 'PUB_MAIN', label: 'Sector Público', category: 'Públicos', color: '#E69888', desc: 'Instituciones del Estado con atribuciones reguladoras, de fomento y protección patrimonial.', x: -180, y: -180, z: -50, radius: 30 },
-      { id: 'PUB_MUN', label: 'Municipalidad de Valparaíso', category: 'Públicos', color: '#E69888', desc: 'Dirección de Turismo, gestión municipal local y proyectos urbanos comunales.', x: -240, y: -220, z: -70, radius: 22 },
-      { id: 'PUB_MIN_CULT', label: 'Ministerio de las Culturas', category: 'Públicos', color: '#E69888', desc: 'Consejo de Monumentos Nacionales, protección del sitio Patrimonio Mundial de la Humanidad UNESCO.', x: -160, y: -260, z: -30, radius: 20 },
-      { id: 'PUB_MIN_ECON', label: 'Ministerio de Economía', category: 'Públicos', color: '#E69888', desc: 'Subsecretaría de Turismo y SERNATUR, fomento al desarrollo económico del sector.', x: -280, y: -140, z: -90, radius: 20 },
+      // === NIVEL 2: GREMIOS & ASOCIACIONES PRIVADAS ===
+      {
+        id: 'VAL-N2-S',
+        name: 'Fricción Operativa Comercio Formal vs. Informalidad',
+        shortLabel: 'Fricción Formalidad vs Informalidad',
+        level: 2,
+        triadRole: 'sintoma',
+        catName: 'Síntoma - N2 Gremios',
+        function: 'Conflicto entre la Cámara de Comercio y la ocupación no regulada del espacio público en el Plan.',
+        impact: 'Cierre de locales tradicionales en Barrio Puerto y sector Almendral.',
+        x: 140, y: -140, z: -140
+      },
+      {
+        id: 'VAL-N2-C',
+        name: 'Débil Articulación Gremial y Falta de Protocolos Unificados',
+        shortLabel: 'Sin Protocolo Integrado Comercio-Hoteles',
+        level: 2,
+        triadRole: 'causa',
+        function: 'Desconexión entre la Asociación de Hoteles Boutique y los gremios gastronómicos.',
+        impact: 'Oferta dispersa sin estándares homogéneos de calidad y servicio.',
+        x: 190, y: -80, z: -80
+      },
+      {
+        id: 'VAL-N2-E',
+        name: 'Fuga de Capitales y Cierre de Establecimientos Históricos',
+        shortLabel: 'Fuga de Inversión en Comercio Tradicional',
+        level: 2,
+        triadRole: 'efecto',
+        function: 'Desinversión en restauración de inmuebles de conservación histórica.',
+        impact: 'Abandono de fachadas e incremento del riesgo de deterioro estructural.',
+        x: 240, y: -20, z: -20
+      },
 
-      // CLUSTER 2: PRIVADOS Y GREMIOS
-      { id: 'PRIV_MAIN', label: 'Sector Privado y Gremios', category: 'Privados', color: '#C96349', desc: 'Organizaciones gremiales, asociaciones hoteleras, gastronómicas y comercio local.', x: 180, y: -180, z: -50, radius: 30 },
-      { id: 'PRIV_GREM', label: 'Confederaciones y Gremios', category: 'Privados', color: '#C96349', desc: 'Cámara de Comercio y Turismo de Valparaíso, gremios de hotelería y gastronomía.', x: 250, y: -230, z: -70, radius: 22 },
-      { id: 'PRIV_ONG', label: 'ONGs y Fundaciones', category: 'Privados', color: '#C96349', desc: 'Organizaciones comunitarias para la conservación patrimonial y desarrollo sustentable.', x: 220, y: -120, z: -30, radius: 18 },
+      // === NIVEL 3: MERCADO, OPERADORES & OFERTA TURÍSTICA ===
+      {
+        id: 'VAL-N3-S',
+        name: 'Predominio de Turismo "Pasadía" de Bajo Retorno Económico',
+        shortLabel: 'Predominio Turista Pasadía (Sin Pernoctar)',
+        level: 3,
+        triadRole: 'sintoma',
+        function: 'Visitantes que permanecen menos de 6 horas en la ciudad sin consumir hotelería.',
+        impact: 'Baja tasa de ocupación en la planta hotelera de los cerros Alegre y Concepción.',
+        x: -90, y: 70, z: 50
+      },
+      {
+        id: 'VAL-N3-C',
+        name: 'Inoperatividad Parcial de Ascensores Patrimoniales',
+        shortLabel: 'Ascensores Fuera de Servicio (Báscula/Conexión)',
+        level: 3,
+        triadRole: 'causa',
+        function: 'Paro técnico y mantenimiento tardío en los elevadores históricos de la ciudad.',
+        impact: 'Desconexión física entre el Plan de la Ciudad y la red de miradores en los Cerros.',
+        x: -30, y: 120, z: 90
+      },
+      {
+        id: 'VAL-N3-E',
+        name: 'Saturación Puntual de Cerros Emblemáticos (Alegre / Concepción)',
+        shortLabel: 'Saturación en Cerros Alegre & Concepción',
+        level: 3,
+        triadRole: 'efecto',
+        function: 'Concentración excesiva del flujo turístico en solo 2 de los 42 cerros de Valparaíso.',
+        impact: 'Sobrecarga de servicios básicos y congestión en paseos peatonales (Atkinson, Dimalow).',
+        x: 30, y: 170, z: 130
+      },
 
-      // CLUSTER 3: OPERADORES DE MERCADO
-      { id: 'OP_MAIN', label: 'Operadores de Mercado', category: 'Operadores', color: '#84A48B', desc: 'Empresas intermediarias que facilitan la relación entre la oferta y la demanda turística.', x: 0, y: -210, z: 80, radius: 32 },
-      { id: 'OP_AGEN', label: 'Agencias de Viaje y Receptivos', category: 'Operadores', color: '#84A48B', desc: 'Tour operadores locales y agencias comunitarias de guías de turismo.', x: -60, y: -270, z: 100, radius: 20 },
-      { id: 'OP_TOURS', label: 'Operadores de Tours Urbanos', category: 'Operadores', color: '#84A48B', desc: 'Rutas por cerros, ascensores patrimoniales, navegaciones en la bahía y circuitos culturales.', x: 60, y: -270, z: 100, radius: 20 },
-
-      // CLUSTER 4: OFERTA TURÍSTICA Y SERVICIOS
-      { id: 'OF_MAIN', label: 'Oferta Turística', category: 'Oferta', color: '#84A48B', desc: 'Conjunto de servicios, equipamientos y atractivos que conforman la experiencia del visitante.', x: 220, y: 120, z: 50, radius: 32 },
-      { id: 'OF_ALOJ', label: 'Alojamiento', category: 'Oferta', color: '#84A48B', desc: 'Hoteles boutique en cerros, hostales patrimoniales, departamentos y residenciales.', x: 290, y: 50, z: 30, radius: 22 },
-      { id: 'OF_GAST', label: 'Gastronomía y Cafés', category: 'Oferta', color: '#84A48B', desc: 'Restaurantes de mariscos, picadas tradicionales, cafeterías de especialidad y bares nocturnos.', x: 310, y: 140, z: 70, radius: 22 },
-      { id: 'OF_ATRACT', label: 'Atractivos y Servicios', category: 'Oferta', color: '#84A48B', desc: 'Ascensores declarados Monumento Histórico, museos (La Sebastiana), miradores y galerías.', x: 240, y: 220, z: 40, radius: 22 },
-
-      // CLUSTER 5: DEMANDA Y TURISTAS
-      { id: 'DEM_MAIN', label: 'Demanda Turística', category: 'Demanda', color: '#558E9B', desc: 'Perfil y flujo de visitantes nacionales e internacionales que consumen la oferta de la ciudad.', x: -220, y: 120, z: 50, radius: 32 },
-      { id: 'DEM_INT', label: 'Turistas Internacionales (76%)', category: 'Demanda', color: '#558E9B', desc: 'Visitantes de Europa, Norteamérica y Latinoamérica atraídos por la arquitectura y cultura.', x: -300, y: 60, z: 30, radius: 22 },
-      { id: 'DEM_NAC', label: 'Turistas Nacionales (24%)', category: 'Demanda', color: '#558E9B', desc: 'Visitantes de Santiago y regiones cercanas en fin de semana y vacaciones.', x: -310, y: 170, z: 70, radius: 22 },
-
-      // CLUSTER 6: ESPACIO GEOGRÁFICO Y POBLACIÓN RESIDENTE
-      { id: 'GEO_MAIN', label: 'Espacio Geográfico y Residentes', category: 'Espacio', color: '#A4C3B2', desc: 'Base física donde conviven los residentes de la ciudad con la actividad turística.', x: 0, y: 220, z: -60, radius: 32 },
-      { id: 'GEO_CERROS', label: 'Cerros Patrimoniales', category: 'Espacio', color: '#A4C3B2', desc: 'Cerro Alegre, Cerro Concepción, Cerro Artavia, Cerro Bellavista y sus miradores.', x: -90, y: 280, z: -80, radius: 20 },
-      { id: 'GEO_PLAN', label: 'Plan de la Ciudad y Borde Costero', category: 'Espacio', color: '#A4C3B2', desc: 'Sector Almendral, Barrio Puerto, Plaza Sotomayor y frente marítimo del puerto.', x: 90, y: 280, z: -80, radius: 20 }
+      // === NIVEL 4: ESPACIO GEOGRÁFICO & COMUNIDAD RESIDENTE ===
+      {
+        id: 'VAL-N4-S',
+        name: 'Gentrificación y Desplazamiento de Población Residente',
+        shortLabel: 'Gentrificación & Expulsión de Residentes',
+        level: 4,
+        triadRole: 'sintoma',
+        function: 'Aumento del costo de vida y conversión de viviendas familiares en hospedajes informales.',
+        impact: 'Pérdida de la identidad vecinal y del patrimonio inmaterial barrial.',
+        x: 80, y: 170, z: 150
+      },
+      {
+        id: 'VAL-N4-C',
+        name: 'Falta de Plan de Manejo Micro-Territorial y Seguridad Urbana',
+        shortLabel: 'Falta Control Micro-Territorial & Seguridad',
+        level: 4,
+        triadRole: 'causa',
+        function: 'Escasa presencia policial y desorden nocturno en ejes gastronómicos de los cerros.',
+        impact: 'Aumento en la percepción de inseguridad para turistas y comunidad residente.',
+        x: 140, y: 220, z: 200
+      },
+      {
+        id: 'VAL-N4-E',
+        name: 'Tensión Vecinos-Turismo y Devaluación del Espacio Público',
+        shortLabel: 'Tensión Comunitaria Vecinos vs Turismo',
+        level: 4,
+        triadRole: 'efecto',
+        function: 'Rechazo ciudadano hacia la actividad turística desregulada.',
+        impact: 'Ruptura del tejido social y deterioro ambiental de miradores y quebradas.',
+        x: 200, y: 270, z: 250
+      }
     ];
 
-    const edges = [
-      { source: 'CENTER', target: 'PUB_MAIN' },
-      { source: 'CENTER', target: 'PRIV_MAIN' },
-      { source: 'CENTER', target: 'OP_MAIN' },
-      { source: 'CENTER', target: 'OF_MAIN' },
-      { source: 'CENTER', target: 'DEM_MAIN' },
-      { source: 'CENTER', target: 'GEO_MAIN' },
-
-      { source: 'PUB_MAIN', target: 'PUB_MUN' },
-      { source: 'PUB_MAIN', target: 'PUB_MIN_CULT' },
-      { source: 'PUB_MAIN', target: 'PUB_MIN_ECON' },
-
-      { source: 'PRIV_MAIN', target: 'PRIV_GREM' },
-      { source: 'PRIV_MAIN', target: 'PRIV_ONG' },
-
-      { source: 'OP_MAIN', target: 'OP_AGEN' },
-      { source: 'OP_MAIN', target: 'OP_TOURS' },
-
-      { source: 'OF_MAIN', target: 'OF_ALOJ' },
-      { source: 'OF_MAIN', target: 'OF_GAST' },
-      { source: 'OF_MAIN', target: 'OF_ATRACT' },
-
-      { source: 'DEM_MAIN', target: 'DEM_INT' },
-      { source: 'DEM_MAIN', target: 'DEM_NAC' },
-
-      { source: 'GEO_MAIN', target: 'GEO_CERROS' },
-      { source: 'GEO_MAIN', target: 'GEO_PLAN' },
-
-      // Interconexiones cruzadas de ecosistema
-      { source: 'OP_MAIN', target: 'OF_MAIN' },
-      { source: 'DEM_MAIN', target: 'OP_MAIN' },
-      { source: 'OF_MAIN', target: 'GEO_MAIN' },
-      { source: 'PUB_MAIN', target: 'PRIV_MAIN' }
+    const rawEdgesData = [
+      { id: 'E1', source: 'VAL-N1-S', target: 'VAL-N1-C' },
+      { id: 'E2', source: 'VAL-N1-C', target: 'VAL-N1-E' },
+      { id: 'E3', source: 'VAL-N2-S', target: 'VAL-N2-C' },
+      { id: 'E4', source: 'VAL-N2-C', target: 'VAL-N2-E' },
+      { id: 'E5', source: 'VAL-N3-S', target: 'VAL-N3-C' },
+      { id: 'E6', source: 'VAL-N3-C', target: 'VAL-N3-E' },
+      { id: 'E7', source: 'VAL-N4-S', target: 'VAL-N4-C' },
+      { id: 'E8', source: 'VAL-N4-C', target: 'VAL-N4-E' },
+      // Feedback loops inter-nivel Matrioshka
+      { id: 'E-N1-N2', source: 'VAL-N1-E', target: 'VAL-N2-S' },
+      { id: 'E-N2-N3', source: 'VAL-N2-E', target: 'VAL-N3-S' },
+      { id: 'E-N3-N4', source: 'VAL-N3-E', target: 'VAL-N4-S' },
+      { id: 'E-N4-N1', source: 'VAL-N4-E', target: 'VAL-N1-S' }
     ];
 
-    let nodes = [];
+    let nodes = [], edges = [];
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -308,18 +402,18 @@
     window.addEventListener('resize', resize);
     resize();
 
-    function initTopology() {
-      const nodeMap = new Map();
-      nodes = rawNodesData.map((d, idx) => {
-        const n = { ...d, nodeId: idx };
-        nodeMap.set(d.id, n);
-        return n;
-      });
-
-      edges.forEach(e => {
-        e.sourceNode = nodeMap.get(e.source);
-        e.targetNode = nodeMap.get(e.target);
-      });
+    function buildTopology() {
+      nodes = rawNodesData.map((d, idx) => ({
+        ...d,
+        nodeId: idx,
+        ox: d.x, oy: d.y, oz: d.z
+      }));
+      const nodeMap = new Map(nodes.map(n => [n.id, n]));
+      edges = rawEdgesData.map(e => ({
+        ...e,
+        sourceNode: nodeMap.get(e.source),
+        targetNode: nodeMap.get(e.target)
+      }));
     }
 
     function project(x, y, z, w, h) {
@@ -334,7 +428,7 @@
       const cx = x1 + panX;
       const cy = y2 + panY;
 
-      const dist = 600;
+      const dist = 650;
       const scale = zoom / (z2 + dist);
 
       return {
@@ -347,14 +441,28 @@
     }
 
     function resetCamera() {
-      targetRotX = 0.2; targetRotY = 0.3; targetZoom = 450; targetPanX = 0; targetPanY = 0;
+      targetRotX = 0.35; targetRotY = 0.65; targetZoom = 480; targetPanX = 0; targetPanY = 0;
     }
 
     function openInspector(node) {
       selectedNode = node;
-      document.getElementById('mNodeTitle').innerText = node.label;
-      document.getElementById('mNodeCategory').innerText = `Categoría: ${node.category}`;
-      document.getElementById('mNodeDesc').innerText = node.desc;
+      document.getElementById('mNodeTitle').innerText = node.name;
+      document.getElementById('mNodeCode').innerText = `Nivel Matrioshka ${node.level} • ID: ${node.id}`;
+      document.getElementById('mFunction').innerText = node.function;
+      document.getElementById('mImpact').innerText = node.impact;
+      
+      const badge = document.getElementById('mTriadBadge');
+      if (node.triadRole === 'sintoma') {
+        badge.innerText = '🔴 SÍNTOMA VISIBLE';
+        badge.className = 'triad-badge triad-sintoma';
+      } else if (node.triadRole === 'causa') {
+        badge.innerText = '🟡 CAUSA ESTRUCTURAL';
+        badge.className = 'triad-badge triad-causa';
+      } else {
+        badge.innerText = '🟧 EFECTO SISTÉMICO';
+        badge.className = 'triad-badge triad-efecto';
+      }
+
       document.getElementById('nodeInspector').style.display = 'flex';
     }
 
@@ -372,10 +480,9 @@
       panX += (targetPanX - panX) * 0.12;
       panY += (targetPanY - panY) * 0.12;
 
-      ctx.fillStyle = '#000000';
+      ctx.fillStyle = palette.bg;
       ctx.fillRect(0, 0, w, h);
 
-      // Project Nodes
       nodes.forEach(n => {
         n.proj = project(n.x, n.y, n.z, w, h);
       });
@@ -389,51 +496,72 @@
         const isSel = selectedNode && (s.id === selectedNode.id || t.id === selectedNode.id);
 
         ctx.save();
+        ctx.strokeStyle = (isHov || isSel) ? '#E7C878' : 'rgba(231, 200, 120, 0.45)';
+        ctx.lineWidth = (isHov || isSel) ? 3.5 : 1.6;
         ctx.beginPath();
         ctx.moveTo(s.proj.x, s.proj.y);
         ctx.lineTo(t.proj.x, t.proj.y);
-        ctx.strokeStyle = (isHov || isSel) ? '#E7C878' : 'rgba(255, 255, 255, 0.15)';
-        ctx.lineWidth = (isHov || isSel) ? 2.5 : 1.2;
         ctx.stroke();
         ctx.restore();
       });
 
-      // Sort Nodes by Z Depth
+      // Render Rectangular Card Nodes with Text Inside
       const sorted = [...nodes].filter(n => n.proj && n.proj.visible).sort((a, b) => a.proj.z - b.proj.z);
 
-      // Render Bubble Spheres
       sorted.forEach(n => {
         const px = Math.round(n.proj.x);
         const py = Math.round(n.proj.y);
-        const scale = n.proj.scale || 1.0;
-        const rad = Math.max(12, Math.round(n.radius * scale));
-
         const isHov = hoveredNode && hoveredNode.id === n.id;
         const isSel = selectedNode && selectedNode.id === n.id;
 
-        ctx.save();
-        
-        // Sphere Radial Gradient
-        const grad = ctx.createRadialGradient(px - rad * 0.3, py - rad * 0.3, rad * 0.1, px, py, rad);
-        grad.addColorStop(0, '#ffffff');
-        grad.addColorStop(0.4, n.color);
-        grad.addColorStop(1, '#050505');
+        const scale = n.proj.scale || 1.0;
+        const boxW = Math.max(160, Math.round(210 * scale));
+        const boxH = Math.max(48, Math.round(58 * scale));
+        const xPos = px - boxW / 2;
+        const yPos = py - boxH / 2;
 
-        ctx.fillStyle = grad;
+        const levelColor = palette.levelColors[n.level] || '#E7C878';
+        const triadBorder = n.triadRole === 'sintoma' ? '#E69888' : (n.triadRole === 'causa' ? '#E7C878' : '#C96349');
+        const triadTag = n.triadRole === 'sintoma' ? '🔴 SÍNTOMA' : (n.triadRole === 'causa' ? '🟡 CAUSA' : '🟧 EFECTO');
+
+        ctx.save();
+        ctx.fillStyle = (isHov || isSel) ? '#0f172a' : '#06090f';
         ctx.beginPath();
-        ctx.arc(px, py, rad, 0, Math.PI * 2);
+        ctx.roundRect(xPos, yPos, boxW, boxH, 6);
         ctx.fill();
 
-        // Stroke
-        ctx.strokeStyle = (isHov || isSel) ? '#ffffff' : 'rgba(255,255,255,0.4)';
-        ctx.lineWidth = (isHov || isSel) ? 3 : 1.2;
+        ctx.strokeStyle = (isHov || isSel) ? '#ffffff' : triadBorder;
+        ctx.lineWidth = (isHov || isSel) ? 2.5 : 1.8;
         ctx.stroke();
 
-        // Label
-        ctx.font = isHov || isSel ? 'bold 11px -apple-system, sans-serif' : '10px -apple-system, sans-serif';
-        ctx.fillStyle = (isHov || isSel) ? '#ffffff' : '#cbd5e1';
-        ctx.textAlign = 'center';
-        ctx.fillText(n.label, px, py + rad + 14);
+        ctx.fillStyle = levelColor;
+        ctx.fillRect(xPos, yPos, 5, boxH);
+
+        ctx.font = 'bold 9px ui-monospace, monospace';
+        ctx.fillStyle = triadBorder;
+        ctx.textAlign = 'left';
+        ctx.fillText(`[${n.id}] ${triadTag} (N${n.level})`, xPos + 10, yPos + 14);
+
+        ctx.font = 'bold 10px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.fillStyle = '#f8fafc';
+        
+        const maxTextW = boxW - 16;
+        const words = n.shortLabel.split(' ');
+        let line = '';
+        let lineY = yPos + 28;
+
+        for (let nIdx = 0; nIdx < words.length; nIdx++) {
+          const testLine = line + words[nIdx] + ' ';
+          const metrics = ctx.measureText(testLine);
+          if (metrics.width > maxTextW && nIdx > 0) {
+            ctx.fillText(line, xPos + 10, lineY);
+            line = words[nIdx] + ' ';
+            lineY += 13;
+          } else {
+            line = testLine;
+          }
+        }
+        ctx.fillText(line, xPos + 10, lineY);
 
         ctx.restore();
       });
@@ -441,7 +569,7 @@
       requestAnimationFrame(render);
     }
 
-    // Controls
+    // Mouse Controls
     canvas.addEventListener('mousedown', e => {
       isMouseDown = true; mouseBtn = e.button;
       lastX = e.clientX; lastY = e.clientY;
@@ -468,7 +596,7 @@
         lastX = e.clientX; lastY = e.clientY;
       } else {
         const mx = e.clientX, my = e.clientY;
-        let closest = null, minDist = 35;
+        let closest = null, minDist = 40;
         nodes.forEach(n => {
           if (!n.proj || !n.proj.visible) return;
           const d = Math.hypot(n.proj.x - mx, n.proj.y - my);
@@ -485,7 +613,7 @@
       targetZoom = Math.max(120, Math.min(1800, targetZoom * zoomFactor));
     }, { passive: false });
 
-    initTopology();
+    buildTopology();
     requestAnimationFrame(render);
   </script>
 </body>
