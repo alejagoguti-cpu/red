@@ -687,20 +687,20 @@
       // === NIVEL 1: MACRO PERIFERIA REGIONAL ===
       {
         id: 'S1-SÍNTOMA',
-        name: 'Embotellamiento en Accesos Regionales (Calle 13 / Autosur)',
-        shortLabel: 'Embotellamiento Accesos Regionales',
+        name: 'Saturación Operativa de Capacidad Vial en Portales Periféricos (Calle 13 / Autosur)',
+        shortLabel: 'Saturación Capacidad Vial Portales Periféricos',
         level: 1,
         triadRole: 'sintoma',
         catName: 'Síntoma - Macro Periferia',
-        function: 'Filas de vehículos pesados varados en los puntos de ingreso regional a la capital.',
-        impact: 'Congestión severa en bordes de entrada y fricción con tráfico intermunicipal.',
+        function: 'Puntos de congestión fija por represamiento de tractocamiones C3-S3 en accesos distritales.',
+        impact: 'Degradación del nivel de servicio vial (LOS F) en los accesos de entrada a Bogotá.',
         citation: 'Secretaría Distrital de Movilidad (SDM). (2019). Estudio de Origen-Destino de Carga para Bogotá D.C. y la Región.',
         x: -260, y: -180, z: -180
       },
       {
         id: 'S1-CAUSA',
-        name: 'Monopolio Carga Pesada & 68% Ingreso Alimentario',
-        shortLabel: '68% Carga Alimentaria Regional',
+        name: 'Monopolio Carga Pesada & 68% Ingreso Alimentario Regional',
+        shortLabel: '68% Carga Agroalimentaria Regional',
         level: 1,
         triadRole: 'causa',
         catName: 'Causa Estructural Regional',
@@ -711,13 +711,13 @@
       },
       {
         id: 'S1-EFECTO',
-        name: 'Sobrecarga y Colapso en Puertas de Entrada Distritales',
-        shortLabel: 'Sobrecarga Entradas Distritales',
+        name: 'Inflexibilidad Severa y Colapso Estructural de Entradas Distritales',
+        shortLabel: 'Inflexibilidad Estructural Entradas Distritales',
         level: 1,
         triadRole: 'efecto',
         catName: 'Efecto Sistémico Regional',
-        function: 'Superación de la capacidad vial de soporte en los corredores periféricos de Bogotá.',
-        impact: 'Transmisión directa de presión vehicular hacia la red urbana interior.',
+        function: 'Superación de la capacidad de soporte de la calzada de carga pesada en la entrada distrital.',
+        impact: 'Transmisión directa de presión vehicular e ineficiencia hacia la red urbana interior.',
         citation: 'Alcaldía Mayor de Bogotá. (2021). Plan de Ordenamiento Territorial (POT) Decreto 555 de 2021.',
         x: -140, y: -60, z: -60
       },
@@ -725,20 +725,20 @@
       // === NIVEL 2: EJE LOGÍSTICO INTER-LOCAL ===
       {
         id: 'S2-SÍNTOMA',
-        name: 'Fricción Vehicular en Corredor Av. Centenario ⇄ Av. Cali',
-        shortLabel: 'Fricción Av. Centenario ⇄ Av. Cali',
+        name: 'Fricción Vehicular de Fricción Media en Corredor Av. Centenario ⇄ Av. Cali',
+        shortLabel: 'Fricción Vehicular Av. Centenario ⇄ Av. Cali',
         level: 2,
         triadRole: 'sintoma',
         catName: 'Síntoma - Eje Inter-Local',
         function: 'Interrupción continua del flujo vehicular entre los sectores industriales de Fontibón y Kennedy.',
-        impact: 'Reducción de velocidad media en la arteria de interconexión inter-local.',
+        impact: 'Reducción severa de la velocidad media de recorrido en la arteria de interconexión inter-local.',
         citation: 'SDM. (2022). Caracterización de Flujos Logísticos en el Borde Occidental de Bogotá.',
         x: 140, y: -140, z: -140
       },
       {
         id: 'S2-CAUSA',
-        name: 'Ausencia de Vía Logística Segregada Zona Franca ⇄ Corabastos',
-        shortLabel: 'Sin Vía Segregada Zona Franca-Corabastos',
+        name: 'Ausencia de Corredor Logístico Segregado Zona Franca ⇄ Corabastos',
+        shortLabel: 'Sin Corredor Segregado Zona Franca-Corabastos',
         level: 2,
         triadRole: 'causa',
         catName: 'Causa Estructural Inter-Local',
@@ -750,7 +750,7 @@
       {
         id: 'S2-EFECTO',
         name: 'Bloqueo del Corredor Inter-Local e Ineficiencia Logística',
-        shortLabel: 'Bloqueo Inter-Local e Ineficiencia',
+        shortLabel: 'Bloqueo Inter-Local e Ineficiencia Logística',
         level: 2,
         triadRole: 'efecto',
         catName: 'Efecto Sistémico Inter-Local',
@@ -763,7 +763,7 @@
       // === NIVEL 3: ARTERIAS URBANAS DISTRITALES ===
       {
         id: 'S3-SÍNTOMA',
-        name: 'Retención en Cola (Spillback) de 3 km en Av. Tintal / Av. Cali',
+        name: 'Retención en Cola (Spillback) de 3 km en Corredor Av. Tintal / Av. Cepeda',
         shortLabel: 'Retención Spillback 3 km en Av. Tintal',
         level: 3,
         triadRole: 'sintoma',
@@ -801,8 +801,8 @@
       // === NIVEL 4: NÚCLEO HIPERLOCAL CORABASTOS ===
       {
         id: 'S4-SÍNTOMA',
-        name: 'Degradación de Velocidad Media a menos de 5 km/h',
-        shortLabel: 'Velocidad Media < 5 km/h en Ronda',
+        name: 'Degradación de Velocidad Media Operativa a menos de 5 km/h en Ronda',
+        shortLabel: 'Velocidad Media Operativa < 5 km/h',
         level: 4,
         triadRole: 'sintoma',
         catName: 'Síntoma - Núcleo Hiperlocal',
@@ -814,6 +814,7 @@
       {
         id: 'S4-CAUSA',
         name: 'Demoras en Básculas, Inspección y Pesaje (Puertas 6, 7 y 8)',
+        shortLabel: 'Demoras Pesaje Básculas Puertas 6, 7 y 8',
         level: 4,
         triadRole: 'causa',
         catName: 'Causa Hiperlocal Núcleo',
